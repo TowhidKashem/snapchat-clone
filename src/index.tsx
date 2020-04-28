@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import Layout from './pages/Layout';
+import Camera from './pages/Camera';
+import NotFound from './pages/404';
+
 import * as serviceWorker from './serviceWorker';
+import './static/styles/global.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Camera} />
+          <Route component={NotFound} />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
