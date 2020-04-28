@@ -1,0 +1,21 @@
+.toolbar {
+  color: white;
+  padding: 5px 10px 10px;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  article {
+  }
+
+  svg {
+    color: white;
+    margin-left: 8px;
+  }
+
+  .left {
+  }
+  .right {
+    text-align: right;
+  }
+}

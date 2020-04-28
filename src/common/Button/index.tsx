@@ -28,6 +28,7 @@ const Button: React.FC<Props> = ({
     {icons ? (
       icons.map((icon, index) => (
         <FontAwesomeIcon
+          key={index}
           icon={icon}
           className={classNames({
             [iconClasses[index] as string]: iconClasses[index]

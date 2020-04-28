@@ -1,4 +1,5 @@
 import React from 'react';
+import Toolbar from './Toolbar';
 import Header from './Header';
 import Footer from './Footer';
 import Menu from './Menu';
@@ -14,6 +15,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
   return (
     <div className={styles.menu}>
+      <Toolbar />
       <Header setToggleMenu={() => setToggleMenu(!toggleMenu)} />
       <section className={styles.wrapper}>{children}</section>
       <Menu
