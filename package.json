@@ -52,5 +52,10 @@
     "node-sass": "^4.14.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   }
 }
