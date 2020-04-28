@@ -1,0 +1,40 @@
+@import 'vars';
+//@import 'mixins';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font: normal 14px 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+
+  &:active,
+  &:focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+    outline-style: none;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}

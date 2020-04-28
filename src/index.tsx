@@ -7,6 +7,7 @@ import Camera from './pages/Camera';
 import NotFound from './pages/404';
 
 import * as serviceWorker from './serviceWorker';
+import 'normalize.css';
 import './static/styles/global.scss';
 
 ReactDOM.render(
