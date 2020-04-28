@@ -1,6 +1,34 @@
 .footer {
-  background-color: red;
   position: fixed;
   bottom: 0;
   width: 100%;
+
+  article {
+    text-align: center;
+  }
+
+  .top {
+    text-align: center;
+
+    .capture {
+      font-size: 75px;
+    }
+
+    .filter {
+      font-size: 25px;
+      margin: 20px 0 0 15px;
+      vertical-align: top;
+    }
+  }
+
+  .bottom {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    padding: 15px 0 25px;
+
+    svg {
+      font-size: 25px;
+    }
+  }
 }
