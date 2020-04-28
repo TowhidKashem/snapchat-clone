@@ -15,6 +15,8 @@ body {
   font: normal 14px 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #222;
 }
 
 a {
@@ -40,6 +42,5 @@ button {
 }
 
 .svg-inline--fa {
-  color: $color-white;
-  // font-size: 200px !important;
+  color: $color-dark-grey;
 }

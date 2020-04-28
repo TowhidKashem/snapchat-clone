@@ -1,7 +1,14 @@
+@import '../../../static/styles/vars';
+
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  color: $color-white;
+
+  svg {
+    color: $color-white;
+  }
 
   article {
     text-align: center;
@@ -9,14 +16,21 @@
 
   .top {
     text-align: center;
+    padding-left: 40px;
+
+    .capture,
+    .filter {
+      display: inline-block;
+      vertical-align: top;
+    }
 
     .capture {
-      font-size: 75px;
+      font-size: 70px;
     }
 
     .filter {
       font-size: 25px;
-      margin: 20px 0 0 15px;
+      margin: 20px 0 0 10px;
       vertical-align: top;
     }
   }
@@ -25,10 +39,48 @@
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
     grid-template-rows: 33.3% 33.3% 33.3%;
-    padding: 15px 0 25px;
+    grid-template-rows: auto;
+    align-items: center;
+    margin: 20px 0 25px;
 
-    svg {
-      font-size: 25px;
+    article {
+      svg {
+        font-size: 25px;
+      }
+
+      .chatBtn {
+        position: relative;
+
+        svg {
+          &:first-child {
+            font-size: 21px;
+          }
+          &.msgNotification {
+            color: $color-blue;
+            font-size: 12px;
+            position: absolute;
+            top: -5px;
+            right: -3px;
+          }
+        }
+      }
+
+      .archiveBtn {
+        svg {
+          &:first-child {
+            transform: rotate(-5deg);
+          }
+          &:last-child {
+            transform: rotate(5deg);
+          }
+        }
+      }
+
+      .discoverBtn {
+        svg {
+          //
+        }
+      }
     }
   }
 }

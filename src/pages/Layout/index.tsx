@@ -4,13 +4,25 @@ import Footer from './Footer';
 import Menu from './Menu';
 import styles from './index.module.scss';
 
-const Layout = ({ children }) => (
-  <div className={styles.wrapper}>
-    <Header />
-    <section className={styles.wrapper}>{children}</section>
-    <Menu />
-    <Footer />
-  </div>
-);
+interface Props {
+  children: JSX.Element;
+}
+
+const Layout: React.FC<Props> = ({ children }) => {
+  const { useState } = React;
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  return (
+    <div className={styles.menu}>
+      <Header setToggleMenu={() => setToggleMenu(!toggleMenu)} />
+      <section className={styles.wrapper}>{children}</section>
+      <Menu
+        toggleMenu={toggleMenu}
+        setToggleMenu={() => setToggleMenu(!toggleMenu)}
+      />
+      <Footer />
+    </div>
+  );
+};
 
 export default Layout;

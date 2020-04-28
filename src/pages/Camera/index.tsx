@@ -33,16 +33,16 @@ const Camera = () => {
       };
     }
 
-    // Ask for permission then display stream to canvas
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: true
-        // audio: true
-      });
-      videoPlayer.current.srcObject = stream;
-    } catch (err) {
-      alert(err);
-    }
+    // // Ask for permission then display stream to canvas
+    // try {
+    //   const stream = await navigator.mediaDevices.getUserMedia({
+    //     video: true
+    //     // audio: true
+    //   });
+    //   videoPlayer.current.srcObject = stream;
+    // } catch (err) {
+    //   alert(err);
+    // }
   };
 
   return (

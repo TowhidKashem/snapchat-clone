@@ -1,3 +1,11 @@
+@import '../../../static/styles/vars';
+
 .header {
-  //
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  svg {
+    color: $color-white;
+  }
 }
