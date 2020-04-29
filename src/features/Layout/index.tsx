@@ -1,4 +1,6 @@
 import React from 'react';
+import { DrawerContext } from 'contexts/drawer';
+import { useDrawer } from 'hooks/useDrawer';
 import Toolbar from './Toolbar';
 import Header from './Header';
 import Footer from './Footer';
@@ -10,16 +12,17 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
-  const { useState } = React;
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const drawer = useDrawer();
 
   return (
     <div className={styles.wrapper}>
-      <Toolbar />
-      <Header setToggleMenu={() => setToggleMenu(!toggleMenu)} />
-      <section className={styles.view}>{children}</section>
-      <Menu toggleMenu={toggleMenu} setToggleMenu={() => setToggleMenu(!toggleMenu)} />
-      <Footer />
+      <DrawerContext.Provider value={drawer}>
+        <Toolbar />
+        <Header />
+        <section className={styles.view}>{children}</section>
+        <Menu />
+        <Footer />
+      </DrawerContext.Provider>
     </div>
   );
 };

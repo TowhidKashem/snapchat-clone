@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './index.module.scss';
 
@@ -18,15 +17,11 @@ const Input: React.FC<Props> = ({ placeholder, leftIcon, rightIcon, rightIconCli
     : {};
   return (
     <div className={styles.input}>
-      <Grid fluid>
-        <Row middle="xs" center="xs">
-          <Col xs={4}>{leftIcon && <FontAwesomeIcon icon={leftIcon} />}</Col>
-          <Col xs={4}>
-            <input type="text" placeholder={placeholder} />
-          </Col>
-          <Col xs={4}>{rightIcon && <FontAwesomeIcon icon={rightIcon} {...iconClick} />}</Col>
-        </Row>
-      </Grid>
+      {leftIcon && <FontAwesomeIcon icon={leftIcon} className={styles.leftIcon} />}
+      <input type="text" placeholder={placeholder} />
+      {rightIcon && (
+        <FontAwesomeIcon icon={rightIcon} className={styles.rightIcon} {...iconClick} />
+      )}
     </div>
   );
 };

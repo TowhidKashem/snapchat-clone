@@ -1,6 +1,30 @@
 .input {
+  position: relative;
+  margin: 0 10px;
+
   input[type='text'] {
     border: 0;
+    outline: 0;
     width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+    padding: 10px 5px;
+    border-radius: 15px;
+    text-indent: 25px;
+  }
+
+  .leftIcon,
+  .rightIcon {
+    position: absolute;
+    top: 50%;
+    margin-top: -7px;
+  }
+
+  .leftIcon {
+    left: 10px;
+  }
+
+  .rightIcon {
+    right: 10px;
   }
 }
