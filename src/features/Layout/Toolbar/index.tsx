@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationArrow, faSignal, faBatteryHalf } from '@fortawesome/free-solid-svg-icons';
 import styles from './index.module.scss';
@@ -22,14 +23,22 @@ const Toolbar: React.SFC<{}> = () => {
 
   return (
     <div className={styles.toolbar}>
-      <article className={styles.left}>
-        <time>{time}</time>
-        <FontAwesomeIcon icon={faLocationArrow} />
-      </article>
-      <article className={styles.right}>
-        <FontAwesomeIcon icon={faSignal} />
-        <FontAwesomeIcon icon={faBatteryHalf} />
-      </article>
+      <Grid fluid>
+        <Row middle="xs">
+          <Col xs={6}>
+            <time>{time}</time>
+            <FontAwesomeIcon icon={faLocationArrow} />
+          </Col>
+          <Col xs={6}>
+            <Row middle="xs" end="xs">
+              <Col xs={12}>
+                <FontAwesomeIcon icon={faSignal} />
+                <FontAwesomeIcon icon={faBatteryHalf} />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Grid>
     </div>
   );
 };

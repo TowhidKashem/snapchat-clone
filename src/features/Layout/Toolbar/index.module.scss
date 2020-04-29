@@ -1,28 +1,10 @@
 .toolbar {
   color: white;
-  padding: 5px 10px 10px;
-  // border: 1px solid yellow;
-
-  display: grid;
-  grid-template-columns: 50% 50%;
-
-  // padding: 0;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-
-  article {
-  }
+  padding: 5px 0;
+  // border: 2px solid yellow;
 
   svg {
     color: white;
     margin-left: 8px;
-  }
-
-  .left {
-  }
-  .right {
-    text-align: right;
   }
 }

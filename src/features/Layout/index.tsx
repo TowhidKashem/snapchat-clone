@@ -17,7 +17,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     <div className={styles.wrapper}>
       <Toolbar />
       <Header setToggleMenu={() => setToggleMenu(!toggleMenu)} />
-      <section className={styles.wrapper}>{children}</section>
+      <section className={styles.view}>{children}</section>
       <Menu toggleMenu={toggleMenu} setToggleMenu={() => setToggleMenu(!toggleMenu)} />
       <Footer />
     </div>

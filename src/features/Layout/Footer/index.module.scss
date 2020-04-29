@@ -2,8 +2,8 @@
 
 .footer {
   position: fixed;
-  bottom: 0;
-  width: 100%;
+  bottom: 20px;
+  width: $app-width;
   color: $color-white;
 
   svg {
@@ -16,7 +16,7 @@
 
   .top {
     text-align: center;
-    padding-left: 40px;
+    padding: 0 0 10px 40px;
 
     .capture,
     .filter {
@@ -36,50 +36,43 @@
   }
 
   .bottom {
-    display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
-    grid-template-rows: 33.3% 33.3% 33.3%;
-    grid-template-rows: auto;
     align-items: center;
-    margin: 20px 0 25px;
 
-    article {
+    svg {
+      font-size: 25px;
+    }
+
+    .chatBtn {
+      position: relative;
+
       svg {
-        font-size: 25px;
-      }
-
-      .chatBtn {
-        position: relative;
-
-        svg {
-          &:first-child {
-            font-size: 21px;
-          }
-          &.msgNotification {
-            color: $color-blue;
-            font-size: 12px;
-            position: absolute;
-            top: -5px;
-            right: -3px;
-          }
+        &:first-child {
+          font-size: 21px;
+        }
+        &.msgNotification {
+          color: $color-blue;
+          font-size: 12px;
+          position: absolute;
+          top: -5px;
+          right: -3px;
         }
       }
+    }
 
-      .archiveBtn {
-        svg {
-          &:first-child {
-            transform: rotate(-5deg);
-          }
-          &:last-child {
-            transform: rotate(5deg);
-          }
+    .archiveBtn {
+      svg {
+        &:first-child {
+          transform: rotate(-5deg);
+        }
+        &:last-child {
+          transform: rotate(5deg);
         }
       }
+    }
 
-      .discoverBtn {
-        svg {
-          //
-        }
+    .discoverBtn {
+      svg {
+        //
       }
     }
   }

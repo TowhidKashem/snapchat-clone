@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import {
   faCommentAlt,
   faMobile,
@@ -17,20 +18,28 @@ const Footer: React.FC<{}> = () => (
       <Button icon={faLaugh} iconClass={styles.filter} />
     </section>
     <section className={styles.bottom}>
-      <article>
-        <Button
-          icons={[faCommentAlt, faCircle]}
-          iconClasses={[null, styles.msgNotification]}
-          buttonClass={styles.chatBtn}
-          label="Chat"
-        />
-      </article>
-      <article>
-        <Button icons={[faMobile, faMobileAlt]} buttonClass={styles.archiveBtn} />
-      </article>
-      <article>
-        <Button icons={[faMobile, faMobile]} label="Discover" buttonClass={styles.discoverBtn} />
-      </article>
+      <Grid fluid>
+        <Row middle="xs" center="xs">
+          <Col xs={4}>
+            <Button
+              icons={[faCommentAlt, faCircle]}
+              iconClasses={[null, styles.msgNotification]}
+              buttonClass={styles.chatBtn}
+              label="Chat"
+            />
+          </Col>
+          <Col xs={4}>
+            <Button icons={[faMobile, faMobileAlt]} buttonClass={styles.archiveBtn} />
+          </Col>
+          <Col xs={4}>
+            <Button
+              icons={[faMobile, faMobile]}
+              label="Discover"
+              buttonClass={styles.discoverBtn}
+            />
+          </Col>
+        </Row>
+      </Grid>
     </section>
   </footer>
 );
