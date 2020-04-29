@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Layout from './pages/Layout';
-import Camera from './pages/Camera';
-import NotFound from './pages/404';
+import Layout from './features/Layout';
+import Camera from './features/Camera';
+import NotFound from './features/404';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -12,7 +12,7 @@ import 'normalize.css';
 import 'animate.css';
 import './static/styles/global.scss';
 
-ReactDOM.render(
+const app = (
   <React.StrictMode>
     <BrowserRouter>
       <Layout>
@@ -22,9 +22,10 @@ ReactDOM.render(
         </Switch>
       </Layout>
     </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
+
+ReactDOM.render(app, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

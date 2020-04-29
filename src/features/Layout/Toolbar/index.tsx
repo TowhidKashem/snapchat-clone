@@ -1,17 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faLocationArrow,
-  faSignal,
-  faBatteryHalf
-} from '@fortawesome/free-solid-svg-icons';
+import { faLocationArrow, faSignal, faBatteryHalf } from '@fortawesome/free-solid-svg-icons';
 import styles from './index.module.scss';
 
 const Toolbar: React.SFC<{}> = () => {
-  const { useState } = React;
+  const { useState, useEffect } = React;
   const [time, setTime] = useState<string>();
 
-  const updateTime = () => {
+  const updateTime = (): void => {
     const time = new Date().toLocaleTimeString('en-us', {
       hour: 'numeric',
       minute: '2-digit'
@@ -19,7 +15,10 @@ const Toolbar: React.SFC<{}> = () => {
     setTime(time);
   };
 
-  setInterval(updateTime, 1000);
+  useEffect(() => {
+    updateTime();
+    setInterval(updateTime, 1000);
+  }, []);
 
   return (
     <div className={styles.toolbar}>

@@ -17,9 +17,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-color: #333;
+  overflow: hidden;
 }
 
 a {
+  color: $color-white;
   text-decoration: none;
 
   &:active,
@@ -43,4 +45,15 @@ button {
 
 .svg-inline--fa {
   color: $color-dark-grey;
+}
+
+///////
+
+.static {
+  background: #fff;
+  // border: 1px solid red;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // height: 100vh;
 }

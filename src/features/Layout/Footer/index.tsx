@@ -7,7 +7,7 @@ import {
   faCircleNotch,
   faLaugh
 } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../../common/Button';
+import Button from 'common/Button';
 import styles from './index.module.scss';
 
 const Footer: React.FC<{}> = () => (
@@ -26,17 +26,10 @@ const Footer: React.FC<{}> = () => (
         />
       </article>
       <article>
-        <Button
-          icons={[faMobile, faMobileAlt]}
-          buttonClass={styles.archiveBtn}
-        />
+        <Button icons={[faMobile, faMobileAlt]} buttonClass={styles.archiveBtn} />
       </article>
       <article>
-        <Button
-          icons={[faMobile, faMobile]}
-          label="Discover"
-          buttonClass={styles.discoverBtn}
-        />
+        <Button icons={[faMobile, faMobile]} label="Discover" buttonClass={styles.discoverBtn} />
       </article>
     </section>
   </footer>

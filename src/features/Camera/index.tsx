@@ -44,7 +44,7 @@ const Camera = () => {
   //test
 
   return (
-    <main className={styles.camera}>
+    <main className={`static ${styles.camera}`}>
       <video id="player" ref={videoPlayer} autoPlay></video>
     </main>
   );

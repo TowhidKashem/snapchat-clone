@@ -14,14 +14,11 @@ const Layout: React.FC<Props> = ({ children }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
-    <div className={styles.menu}>
+    <div className={styles.wrapper}>
       <Toolbar />
       <Header setToggleMenu={() => setToggleMenu(!toggleMenu)} />
       <section className={styles.wrapper}>{children}</section>
-      <Menu
-        toggleMenu={toggleMenu}
-        setToggleMenu={() => setToggleMenu(!toggleMenu)}
-      />
+      <Menu toggleMenu={toggleMenu} setToggleMenu={() => setToggleMenu(!toggleMenu)} />
       <Footer />
     </div>
   );
