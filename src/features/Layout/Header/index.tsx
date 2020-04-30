@@ -21,7 +21,8 @@ const Header: React.FC<{}> = () => {
               placeholder="Search"
               leftIcon={faSearch}
               rightIcon={faUserPlus}
-              rightIconClick={() => setPage('search')}
+              rightIconClick={() => {}}
+              onFocus={() => setPage('search')}
             />
           </Col>
           <Col xs={1}>

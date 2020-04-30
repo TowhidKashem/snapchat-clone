@@ -5,11 +5,20 @@ import styles from './index.module.scss';
 interface Props {
   placeholder: string;
   leftIcon: any;
-  rightIcon: any;
-  rightIconClick: () => void;
+  rightIcon?: any;
+  rightIconClick?: () => void;
+  onFocus?: () => void;
+  onChange?: () => void;
 }
 
-const Input: React.FC<Props> = ({ placeholder, leftIcon, rightIcon, rightIconClick }) => {
+const Input: React.FC<Props> = ({
+  placeholder,
+  leftIcon,
+  rightIcon,
+  rightIconClick,
+  onFocus,
+  onChange
+}) => {
   const iconClick = rightIconClick
     ? {
         onClick: rightIconClick
@@ -18,7 +27,7 @@ const Input: React.FC<Props> = ({ placeholder, leftIcon, rightIcon, rightIconCli
   return (
     <div className={styles.input}>
       {leftIcon && <FontAwesomeIcon icon={leftIcon} className={styles.leftIcon} />}
-      <input type="text" placeholder={placeholder} />
+      <input type="text" placeholder={placeholder} onFocus={onFocus} onChange={onChange} />
       {rightIcon && (
         <FontAwesomeIcon icon={rightIcon} className={styles.rightIcon} {...iconClick} />
       )}

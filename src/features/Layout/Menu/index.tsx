@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { DrawerContext } from 'contexts/drawer';
 import Search from 'features/Search';
-
-import { Animated } from 'react-animated-css';
 import styles from './index.module.scss';
 
 const Menu: React.SFC<{}> = () => {
@@ -17,19 +15,14 @@ const Menu: React.SFC<{}> = () => {
   }
 
   return (
-    <Animated
-      animationIn="slideInUp"
-      animationOut="slideOutDown"
-      animationInDuration={300}
-      animationOutDuration={350}
-      isVisible={component ? true : false}
-      animateOnMount={false}
-    >
-      <aside className={styles.menu}>
-        <FontAwesomeIcon icon={faAngleDown} size="2x" onClick={() => setPage('')} />
-        {component}
-      </aside>
-    </Animated>
+    <>
+      {page && (
+        <aside className={styles.menu}>
+          <FontAwesomeIcon icon={faAngleDown} size="2x" onClick={() => setPage('')} />
+          {component}
+        </aside>
+      )}
+    </>
   );
 };
 
