@@ -11,7 +11,7 @@
   "requirePragma": false,
   "insertPragma": false,
   "singleQuote": true,
-  "arrowParens": "avoid",
+  "arrowParens": "always",
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "strict"
 }

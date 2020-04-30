@@ -8,13 +8,39 @@ import NotFound from './features/404';
 
 import * as serviceWorker from './serviceWorker';
 
+// Redux
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+
+import app from 'redux/reducers/app';
+import user from 'redux/reducers/user';
+
 import 'normalize.css';
 import 'animate.css';
 import './static/styles/global.scss';
 
-const App = () => {
-  return (
-    <React.StrictMode>
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
+  }
+}
+
+const rootReducer = combineReducers({
+  app,
+  user
+});
+
+const composeEnhancers =
+  process.env.NODE_ENV === 'development'
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null || compose;
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+
+const App = () => (
+  <React.StrictMode>
+    <Provider store={store}>
       <Router>
         <Layout>
           <Switch>
@@ -23,9 +49,9 @@ const App = () => {
           </Switch>
         </Layout>
       </Router>
-    </React.StrictMode>
-  );
-};
+    </Provider>
+  </React.StrictMode>
+);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

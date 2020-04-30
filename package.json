@@ -23,9 +23,11 @@
     "react-animated-css": "^1.2.1",
     "react-dom": "^16.13.1",
     "react-flexbox-grid": "^2.1.2",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "react-transition-group": "^4.3.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "typescript": "~3.7.2"
   },
   "scripts": {

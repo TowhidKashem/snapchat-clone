@@ -30,20 +30,20 @@ const Search = () => {
               placeholder="Search"
               leftIcon={faSearch}
               rightIconClick={() => {}}
-              onChange={search}
+              // onChange={search}
             />
           </Col>
           <Col xs={2}>Cancel</Col>
         </Row>
       </Grid>
-      {results ? (
+      {/* {results ? (
         results.filter(({ title }) => title.charAt(0) === 'a').map(({ title }) => <h2>{title}</h2>)
       ) : (
         <p>
           <FontAwesomeIcon icon={faSearch} />
           Search for people, stories, games and more
         </p>
-      )}
+      )} */}
     </main>
   );
 };
