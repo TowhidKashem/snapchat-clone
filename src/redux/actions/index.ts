@@ -1,2 +1,2 @@
 export { loadMenu } from './app';
-export { autoLogin } from './user';
+export { getUsers } from './users';

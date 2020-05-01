@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import { loadMenu, autoLogin } from 'redux/actions';
+import { loadMenu } from 'redux/actions';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +11,10 @@ import styles from './index.module.scss';
 interface Props {}
 
 const Menu: React.SFC<any> = ({ app }) => {
+  useEffect(() => {
+    console.warn('mma', app);
+  }, []);
+
   let component: JSX.Element | null = null;
   switch (app.drawer) {
     case 'search':
@@ -28,9 +32,6 @@ const Menu: React.SFC<any> = ({ app }) => {
   );
 };
 
-const mapStateToProps = ({ app, user }) => ({
-  app,
-  user
-});
+const mapStateToProps = ({ app, user }) => ({ app, user });
 
 export default connect(mapStateToProps)(Menu);

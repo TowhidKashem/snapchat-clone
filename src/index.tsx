@@ -14,7 +14,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import app from 'redux/reducers/app';
-import user from 'redux/reducers/user';
+import users from 'redux/reducers/users';
 
 import 'normalize.css';
 import 'animate.css';
@@ -26,10 +26,7 @@ declare global {
   }
 }
 
-const rootReducer = combineReducers({
-  app,
-  user
-});
+const rootReducer = combineReducers({ app, users });
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'

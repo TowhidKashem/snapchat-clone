@@ -19,7 +19,7 @@ const Camera = () => {
     }
 
     if (!('getUserMedia' in navigator.mediaDevices)) {
-      navigator.mediaDevices.getUserMedia = constraints => {
+      navigator.mediaDevices.getUserMedia = (constraints) => {
         const getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
         if (!getUserMedia) {
           return Promise.reject(new Error('getUserMedia() is not implemented!'));
@@ -33,7 +33,9 @@ const Camera = () => {
     // // Ask for permission then display stream to canvas
     // try {
     //   const stream = await navigator.mediaDevices.getUserMedia({
-    //     video: true
+    //     video: {
+    //       facingMode: 'user'
+    //     }
     //     // audio: true
     //   });
     //   videoPlayer.current.srcObject = stream;
