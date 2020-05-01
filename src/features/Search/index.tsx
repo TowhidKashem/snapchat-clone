@@ -2,24 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { escapeRegex } from 'utils';
 import Input from 'common/Input';
 import styles from './index.module.scss';
 
-const Search = () => {
-  const search = (e): void => {
-    console.warn(e.currentTarget.value);
-  };
+import Article from 'common/Article';
 
-  const [results, setResults] = useState<Array<any>>([]);
+import { connect } from 'react-redux';
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/photos');
-      const photos = await response.json();
-      setResults(photos);
-      console.warn('mma', photos);
-    })();
-  }, []);
+const Search = ({ app, users, loadMenu }) => {
+  const [query, setQuery] = useState<string>('s');
+
+  const results = users
+    .filter(({ username }) => username.match(new RegExp(escapeRegex(query), 'gi')))
+    .map((user) => <Article key={user.id} user={user} />);
 
   return (
     <main className={styles.search}>
@@ -30,22 +26,33 @@ const Search = () => {
               placeholder="Search"
               leftIcon={faSearch}
               rightIconClick={() => {}}
-              // onChange={search}
+              onChange={(e) => setQuery(e.currentTarget.value.trim())}
             />
           </Col>
           <Col xs={2}>Cancel</Col>
         </Row>
       </Grid>
-      {/* {results ? (
-        results.filter(({ title }) => title.charAt(0) === 'a').map(({ title }) => <h2>{title}</h2>)
-      ) : (
-        <p>
-          <FontAwesomeIcon icon={faSearch} />
-          Search for people, stories, games and more
-        </p>
-      )} */}
+      <section className={styles.results}>
+        {query.length ? (
+          results.length ? (
+            results
+          ) : (
+            '💩 No results'
+          )
+        ) : (
+          <p>
+            <FontAwesomeIcon icon={faSearch} />
+            Search for people, stories, games and more
+          </p>
+        )}
+      </section>
     </main>
   );
 };
 
-export default Search;
+const mapStateToProps = ({ app, users }) => ({
+  app,
+  users: users.dummyUsers
+});
+
+export default connect(mapStateToProps)(Search);

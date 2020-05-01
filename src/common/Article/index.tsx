@@ -1,16 +1,29 @@
 import React from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { User } from 'types';
+import Avatar from 'common/Avatar';
+import Divider from 'common/Divider';
 import styles from './index.module.scss';
 
 interface Props {
-  username: string;
-  avatar: string;
+  user: User;
 }
 
-const Article: React.FC<Props> = ({ username, avatar }) => {
+const Article: React.FC<Props> = ({ user: { username, fullName, avatar } }) => {
   return (
     <article className={styles.pod}>
-      <header>{username}</header>
-      <img src={avatar} />
+      <Grid fluid>
+        <Row middle="xs">
+          <Col xs={2}>
+            <Avatar src={avatar} />
+          </Col>
+          <Col xs={10}>
+            <h3>{username}</h3>
+            <span>{fullName}</span>
+          </Col>
+        </Row>
+      </Grid>
+      <Divider />
     </article>
   );
 };

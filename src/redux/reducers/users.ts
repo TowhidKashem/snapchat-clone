@@ -6,7 +6,7 @@ const initialState = {
 
 const setUsers = (prevState, action) => ({
   ...prevState,
-  dummyUsers: action.users.results
+  dummyUsers: action.users
 });
 
 const reducer = (prevState = initialState, action) => {

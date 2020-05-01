@@ -8,7 +8,7 @@ interface Props {
   rightIcon?: any;
   rightIconClick?: () => void;
   onFocus?: () => void;
-  onChange?: () => void;
+  onChange?: (e: React.SyntheticEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<Props> = ({
@@ -27,7 +27,12 @@ const Input: React.FC<Props> = ({
   return (
     <div className={styles.input}>
       {leftIcon && <FontAwesomeIcon icon={leftIcon} className={styles.leftIcon} />}
-      <input type="text" placeholder={placeholder} onFocus={onFocus} onChange={onChange} />
+      <input
+        type="text"
+        placeholder={placeholder}
+        onFocus={onFocus}
+        onChange={onChange}
+      />
       {rightIcon && (
         <FontAwesomeIcon icon={rightIcon} className={styles.rightIcon} {...iconClick} />
       )}

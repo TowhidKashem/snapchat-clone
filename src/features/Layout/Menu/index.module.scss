@@ -6,6 +6,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: $color-white;
+  background: $color-light-grey;
   z-index: 1;
+  overflow: scroll;
+  padding: 10px;
 }

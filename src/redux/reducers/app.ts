@@ -1,7 +1,7 @@
 import { LOAD_MENU } from 'redux/actions/actionTypes';
 
 const initialState = {
-  drawer: ''
+  drawer: 'search'
 };
 
 const setMessage = (prevState, action) => ({
