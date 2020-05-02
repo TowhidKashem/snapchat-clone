@@ -1,37 +1,44 @@
-import React, { useEffect } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { loadMenu } from 'redux/actions';
-
+import * as actions from 'redux/actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Search from 'features/Search';
 import styles from './index.module.scss';
 
-interface Props {}
+import { Animated } from 'react-animated-css';
 
-const Menu: React.SFC<any> = ({ app }) => {
-  useEffect(() => {
-    console.warn('mma', app);
-  }, []);
-
+const Menu: React.SFC<any> = ({ app, hideDrawer }) => {
   let component: JSX.Element | null = null;
-  switch (app.drawer) {
+  switch (app.drawerComponent) {
     case 'search':
       component = <Search />;
   }
+
   return (
-    <>
-      {app.drawer && (
-        <aside className={styles.menu}>
-          <FontAwesomeIcon icon={faAngleDown} size="2x" onClick={() => {}} />
+    <aside className={styles.menu}>
+      <Animated
+        animationIn="slideInUp"
+        animationOut="slideOutDown"
+        animationInDuration={300}
+        animationOutDuration={300}
+        isVisible={app.showDrawer}
+        animateOnMount={false}
+      >
+        <section className={styles.content}>
+          <FontAwesomeIcon icon={faAngleDown} size="2x" onClick={() => hideDrawer()} />
           {component}
-        </aside>
-      )}
-    </>
+        </section>
+      </Animated>
+    </aside>
   );
 };
 
-const mapStateToProps = ({ app, user }) => ({ app, user });
+const mapStateToProps = ({ app, users }) => ({ app, users });
 
-export default connect(mapStateToProps)(Menu);
+const mapDispatchToProps = (dispatch) => ({
+  showDrawer: (component) => dispatch(actions.showDrawer(component)),
+  hideDrawer: () => dispatch(actions.hideDrawer())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

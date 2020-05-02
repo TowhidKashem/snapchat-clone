@@ -11,11 +11,13 @@ import Article from 'common/Article';
 import { connect } from 'react-redux';
 
 const Search = ({ app, users, loadMenu }) => {
-  const [query, setQuery] = useState<string>('s');
+  const [query, setQuery] = useState<string>('');
 
-  const results = users
-    .filter(({ username }) => username.match(new RegExp(escapeRegex(query), 'gi')))
-    .map((user) => <Article key={user.id} user={user} />);
+  const filteredUsers = query
+    ? users.filter(({ username }) => username.match(new RegExp(escapeRegex(query), 'gi')))
+    : users;
+
+  const results = filteredUsers.map((user) => <Article key={user.id} user={user} />);
 
   return (
     <main className={styles.search}>

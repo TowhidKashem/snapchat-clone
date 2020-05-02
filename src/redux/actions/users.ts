@@ -2,7 +2,7 @@ import { GET_USERS } from 'redux/actions/actionTypes';
 import { User } from 'types';
 
 export const getUsers = () => async (dispatch) => {
-  const response = await fetch('https://randomuser.me/api/?results=500');
+  const response = await fetch('https://randomuser.me/api/?results=3');
   const users = await response.json();
   dispatch({
     type: GET_USERS,
@@ -12,13 +12,13 @@ export const getUsers = () => async (dispatch) => {
 
 const _parseUsers = (users): User[] =>
   users.map(
-    ({ gender, dob, uuid, login, picture, name }): User => ({
-      id: uuid,
+    ({ gender, dob, login, picture, name }): User => ({
+      id: login.uuid,
       username: login.username,
       avatar: picture.thumbnail,
       gender,
       age: dob.age,
-      fullName: `${name.first} ${name.last}`
+      fullName: name.first + ' ' + name.last
     })
   );
 

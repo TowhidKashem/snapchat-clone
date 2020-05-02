@@ -1,7 +1,9 @@
-import { LOAD_MENU } from 'redux/actions/actionTypes';
+import { SHOW_DRAWER, HIDE_DRAWER } from 'redux/actions/actionTypes';
 
-export const loadMenu = (component) => (dispatch) =>
+export const showDrawer = (component) => (dispatch) =>
   dispatch({
-    type: LOAD_MENU,
+    type: SHOW_DRAWER,
     component
   });
+
+export const hideDrawer = () => (dispatch) => dispatch({ type: HIDE_DRAWER });

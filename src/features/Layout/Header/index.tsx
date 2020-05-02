@@ -14,7 +14,7 @@ import styles from './index.module.scss';
 import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 
-const Header: React.FC<{}> = ({ app, users, loadMenu, getUsers }) => {
+const Header: React.FC<{}> = ({ app, users, showDrawer, getUsers }) => {
   useEffect(() => {
     getUsers();
   }, []);
@@ -30,7 +30,7 @@ const Header: React.FC<{}> = ({ app, users, loadMenu, getUsers }) => {
               placeholder="Search"
               leftIcon={faSearch}
               rightIcon={faUserPlus}
-              rightIconClick={() => loadMenu('search')}
+              rightIconClick={() => showDrawer('search')}
               onFocus={() => {}}
             />
           </Col>
@@ -46,7 +46,7 @@ const Header: React.FC<{}> = ({ app, users, loadMenu, getUsers }) => {
 const mapStateToProps = ({ app, users }) => ({ app, users });
 
 const mapDispatchToProps = (dispatch) => ({
-  loadMenu: (component) => dispatch(actions.loadMenu(component)),
+  showDrawer: (component) => dispatch(actions.showDrawer(component)),
   getUsers: () => dispatch(actions.getUsers())
 });
 

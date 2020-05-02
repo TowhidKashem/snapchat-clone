@@ -1,18 +1,27 @@
-import { LOAD_MENU } from 'redux/actions/actionTypes';
+import { SHOW_DRAWER, HIDE_DRAWER } from 'redux/actions/actionTypes';
 
 const initialState = {
-  drawer: 'search'
+  showDrawer: false,
+  drawerComponent: ''
 };
 
-const setMessage = (prevState, action) => ({
+const setShowDrawer = (prevState, action) => ({
   ...prevState,
-  drawer: action.component
+  showDrawer: true,
+  drawerComponent: action.component
+});
+
+const setHideDrawer = (prevState) => ({
+  ...prevState,
+  showDrawer: false
 });
 
 const reducer = (prevState = initialState, action) => {
   switch (action.type) {
-    case LOAD_MENU:
-      return setMessage(prevState, action);
+    case SHOW_DRAWER:
+      return setShowDrawer(prevState, action);
+    case HIDE_DRAWER:
+      return setHideDrawer(prevState);
     default:
       return prevState;
   }
