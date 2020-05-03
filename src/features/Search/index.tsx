@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import * as actions from 'redux/actions';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import { escapeRegex } from 'utils';
@@ -7,7 +8,7 @@ import Input from 'common/Input';
 import UserPod from 'common/Pod/User';
 import styles from './index.module.scss';
 
-const Search = ({ app, users, loadMenu }) => {
+const Search = ({ app, users, hideDrawer }) => {
   const [query, setQuery] = useState<string>('');
 
   const filteredUsers = query
@@ -27,7 +28,9 @@ const Search = ({ app, users, loadMenu }) => {
               onChange={(e) => setQuery(e.currentTarget.value.trim())}
             />
           </Col>
-          <Col xs={2}>Cancel</Col>
+          <Col xs={2}>
+            <button onClick={() => hideDrawer('search')}>Cancel</button>
+          </Col>
         </Row>
       </Grid>
       <section className={styles.results}>
@@ -53,4 +56,9 @@ const mapStateToProps = ({ app, users }) => ({
   users: users.dummyUsers
 });
 
-export default connect(mapStateToProps)(Search);
+const mapDispatchToProps = (dispatch) => ({
+  // showDrawer: (component) => dispatch(actions.showDrawer(component)),
+  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

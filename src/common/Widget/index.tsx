@@ -8,8 +8,8 @@ interface Props {
   children: any;
 }
 
-const Module: React.SFC<Props> = ({ header, transparent, children }) => (
-  <section className={styles.module}>
+const Widget: React.SFC<Props> = ({ header, transparent, children }) => (
+  <section className={styles.widget}>
     <header>{header}</header>
     <div
       className={classNames(styles.content, {
@@ -21,4 +21,4 @@ const Module: React.SFC<Props> = ({ header, transparent, children }) => (
   </section>
 );
 
-export default Module;
+export default Widget;

@@ -2,23 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import Module from 'common/Module';
+import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';
 import Icon from 'common/Icon';
 import Map from './Map';
 import styles from './index.module.scss';
 
-const Account: React.SFC<any> = ({ user, hideDrawer }) => (
+const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => (
   <main className={styles.account}>
     <Grid fluid>
       <Row middle="xs">
         <Col xs={6}>
-          <Icon icon="faAngleDown" onClick={hideDrawer} size="2x" />
+          <Icon icon="faAngleDown" onClick={() => hideDrawer('account')} size="2x" />
         </Col>
         <Col xs={6}>
           <Row end="xs">
             <Col>
-              <Icon icon="faCog" size="1x" />
+              <Icon
+                icon="faCog"
+                size="2x"
+                onClick={() => showDrawer('search', 'slideInRight', 'slideOutRight')}
+              />
             </Col>
           </Row>
         </Col>
@@ -33,18 +37,18 @@ const Account: React.SFC<any> = ({ user, hideDrawer }) => (
         </Row>
       </Col>
     </Grid>
-    <Module header="Stories" transparent>
+    <Widget header="Stories" transparent>
       <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to My Story" />
       <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to Our Story" />
-    </Module>
-    <Module header="Friends" transparent>
+    </Widget>
+    <Widget header="Friends" transparent>
       <ActionItem leftIcon="faUserPlus" rightIcon="faAngleRight" label="Add Friends" />
       <ActionItem leftIcon="faListAlt" rightIcon="faAngleRight" label="My Friends" />
-    </Module>
-    <Module header="Bitmoji" transparent>
+    </Widget>
+    <Widget header="Bitmoji" transparent>
       <ActionItem leftIcon="faGrinBeam" rightIcon="faAngleRight" label="Create Bitmoji" />
-    </Module>
-    <Module header="Snap Map">
+    </Widget>
+    <Widget header="Snap Map">
       <Map />
       <ActionItem
         leftIcon="faCompass"
@@ -52,7 +56,7 @@ const Account: React.SFC<any> = ({ user, hideDrawer }) => (
         label="Set a Status"
         transparent
       />
-    </Module>
+    </Widget>
   </main>
 );
 
@@ -62,7 +66,9 @@ const mapStateToProps = ({ app, session }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: () => dispatch(actions.hideDrawer())
+  showDrawer: (component, animationIn, animationOut) =>
+    dispatch(actions.showDrawer(component, animationIn, animationOut)),
+  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);

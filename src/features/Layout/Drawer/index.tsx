@@ -7,40 +7,40 @@ import Account from 'features/Account';
 import Search from 'features/Search';
 import styles from './index.module.scss';
 
-const Drawer: React.SFC<any> = ({ app, hideDrawer }) => {
-  let component: JSX.Element | null = null;
-  switch (app.drawerComponent) {
-    case 'account':
-      component = <Account />;
-      break;
-    case 'search':
-      component = <Search />;
-      break;
-  }
+interface Props {
+  app: any;
+  hideDrawer: (component: string) => void;
+}
 
-  return (
-    <aside className={styles.drawer}>
-      <Animated
-        animationIn="slideInUp"
-        animationOut="slideOutDown"
-        animationInDuration={300}
-        animationOutDuration={300}
-        animateOnMount={false}
-        isVisible={app.showDrawer}
-      >
-        <section className={styles.content}>
-          {/* <Icon icon="faAngleDown" onClick={hideDrawer} size="2x" /> */}
-          {component}
-        </section>
-      </Animated>
-    </aside>
-  );
+const Drawer: React.SFC<Props> = ({ app, hideDrawer }) => {
+  const componentMap = {
+    account: <Account />,
+    search: <Search />
+  };
+  return app.drawers
+    ? app.drawers.map(({ component, animationIn, animationOut, show }) => (
+        <aside className={styles.drawer}>
+          <Animated
+            animationIn={animationIn}
+            animationOut={animationOut}
+            animationInDuration={300}
+            animationOutDuration={300}
+            isVisible={show}
+          >
+            <section className={styles.content}>
+              {/* <Icon icon="faAngleDown" onClick={() => hideDrawer(component)} size="2x" /> */}
+              {componentMap[component]}
+            </section>
+          </Animated>
+        </aside>
+      ))
+    : null;
 };
 
 const mapStateToProps = ({ app, users }) => ({ app, users });
 
 const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: () => dispatch(actions.hideDrawer())
+  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Drawer);

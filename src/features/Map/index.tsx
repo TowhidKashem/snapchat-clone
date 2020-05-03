@@ -32,7 +32,7 @@ const Map: React.SFC<Props> = ({ showModal }) => {
 
   return (
     <div className={styles.map} onClick={() => showModal('map')}>
-      <div ref={mapRef}></div>
+      <div ref={mapRef} className={styles.content}></div>
     </div>
   );
 };
