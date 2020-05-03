@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSnapchatSquare } from '@fortawesome/free-brands-svg-icons';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faCamera,
   faCommentDots,
@@ -19,8 +20,7 @@ import {
   faCommentAlt,
   faMobile,
   faMobileAlt,
-  faCircle,
-  faCircleNotch,
+  faCircle as faDot,
   faLaugh
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -34,6 +34,8 @@ const Icon: React.FC<Props> = ({ icon, onClick, className }) => {
   const iconMap = {
     // free-brands-svg-icons
     faSnapchatSquare,
+    // free-regular-svg-icons
+    faCircle,
     // free-solid-svg-icons
     faCamera,
     faCommentDots,
@@ -52,8 +54,7 @@ const Icon: React.FC<Props> = ({ icon, onClick, className }) => {
     faCommentAlt,
     faMobile,
     faMobileAlt,
-    faCircle,
-    faCircleNotch,
+    faDot,
     faLaugh
   };
   return icon ? (

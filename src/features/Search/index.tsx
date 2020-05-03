@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import { escapeRegex } from 'utils';
 import Input from 'common/Input';
+import UserPod from 'common/Pod/User';
 import styles from './index.module.scss';
-
-import Article from 'common/Article';
-
-import { connect } from 'react-redux';
 
 const Search = ({ app, users, loadMenu }) => {
   const [query, setQuery] = useState<string>('');
@@ -16,7 +14,7 @@ const Search = ({ app, users, loadMenu }) => {
     ? users.filter(({ username }) => username.match(new RegExp(escapeRegex(query), 'gi')))
     : users;
 
-  const results = filteredUsers.map((user) => <Article key={user.id} user={user} />);
+  const results = filteredUsers.map((user) => <UserPod key={user.id} user={user} />);
 
   return (
     <main className={styles.search}>
@@ -26,8 +24,7 @@ const Search = ({ app, users, loadMenu }) => {
             <Input
               placeholder="Find Friends"
               leftIcon="faSearch"
-              // rightIconClick={() => {}}
-              // onChange={(e) => setQuery(e.currentTarget.value.trim())}
+              onChange={(e) => setQuery(e.currentTarget.value.trim())}
             />
           </Col>
           <Col xs={2}>Cancel</Col>

@@ -1,37 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { mapOptions } from 'config';
-import UL from 'common/UL';
-import LI from 'common/LI';
+import Module from 'common/Module';
+import ActionItem from 'common/Pod/ActionItem';
+import Icon from 'common/Icon';
 import Map from './Map';
 import styles from './index.module.scss';
 
-interface MapOptions {
-  googleMapURL: string;
-  loadingElement: string;
-  containerElement: string;
-  mapElement: string;
-}
-
-const Account: React.FC<any> = ({ app, users, loadMenu }) => (
+const Account: React.SFC<any> = ({ app }) => (
   <main className={styles.account}>
-    <UL header="Stories">
-      <LI leftIcon="faCamera" rightIcon="faCommentDots" label="Add to My Story" />
-      <LI leftIcon="faCamera" rightIcon="faCommentDots" label="Add to Our Story" />
-    </UL>
-    <UL header="Friends">
-      <LI leftIcon="faUserPlus" rightIcon="faAngleRight" label="Add Friends" />
-      <LI leftIcon="faListAlt" rightIcon="faAngleRight" label="My Friends" />
-    </UL>
-    <UL header="Bitmoji">
-      <LI leftIcon="faGrinBeam" rightIcon="faAngleRight" label="Create Bitmoji" />
-    </UL>
-    <UL header="Snap Map">
-      <LI>
-        {/* <Map {...(mapOptions as MapOptions)} lat={-34.397} lng={150.644} showMarker /> */}
-      </LI>
-      <LI leftIcon="faCompass" rightIcon="faAngleRight" label="Set a Status" />
-    </UL>
+    <Icon icon="faSnapchatSquare" />
+    <Module title="Stories">
+      <ActionItem leftIcon="faCamera" rightIcon="faCommentDots" label="Add to My Story" />
+      <ActionItem
+        leftIcon="faCamera"
+        rightIcon="faCommentDots"
+        label="Add to Our Story"
+      />
+    </Module>
+    <Module title="Friends">
+      <ActionItem leftIcon="faUserPlus" rightIcon="faAngleRight" label="Add Friends" />
+      <ActionItem leftIcon="faListAlt" rightIcon="faAngleRight" label="My Friends" />
+    </Module>
+    <Module title="Bitmoji">
+      <ActionItem leftIcon="faGrinBeam" rightIcon="faAngleRight" label="Create Bitmoji" />
+    </Module>
+    <Module title="Snap Map">
+      <Map />
+      <ActionItem leftIcon="faCompass" rightIcon="faAngleRight" label="Set a Status" />
+    </Module>
   </main>
 );
 

@@ -6,7 +6,7 @@ import styles from './index.module.scss';
 const Footer: React.FC<{}> = () => (
   <footer className={styles.footer}>
     <section className={styles.top}>
-      <Button icon="faCircleNotch" iconClass={styles.capture} />
+      <Button icon="faCircle" iconClass={styles.capture} />
       <Button icon="faLaugh" iconClass={styles.filter} />
     </section>
     <section className={styles.bottom}>
@@ -14,7 +14,7 @@ const Footer: React.FC<{}> = () => (
         <Row middle="xs" center="xs">
           <Col xs={4}>
             <Button
-              icons={['faCommentAlt', 'faCircle']}
+              icons={['faCommentAlt', 'faDot']}
               iconClasses={[null, styles.msgNotification]}
               buttonClass={styles.chatBtn}
               label="Chat"

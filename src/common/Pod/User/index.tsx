@@ -1,15 +1,15 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { User } from 'types';
+import { User as UserInterface } from 'types';
 import Avatar from 'common/Avatar';
 import Divider from 'common/Divider';
 import styles from './index.module.scss';
 
 interface Props {
-  user: User;
+  user: UserInterface;
 }
 
-const Article: React.FC<Props> = ({ user: { username, fullName, avatar } }) => {
+const User: React.FC<Props> = ({ user: { username, fullName, avatar } }) => {
   return (
     <article className={styles.pod}>
       <Grid fluid>
@@ -28,4 +28,4 @@ const Article: React.FC<Props> = ({ user: { username, fullName, avatar } }) => {
   );
 };
 
-export default Article;
+export default User;
