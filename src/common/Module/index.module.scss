@@ -1,4 +1,21 @@
 @import '~static/styles/vars';
 
 .module {
+  header {
+    color: $color-dark-grey;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .content {
+    border-radius: 10px;
+    overflow: hidden;
+
+    &:not(.transparent) {
+      background: $color-white;
+      box-shadow: 0 0 8px $color-light-grey;
+      border-radius: 7px;
+    }
+  }
 }

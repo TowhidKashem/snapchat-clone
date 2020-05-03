@@ -15,11 +15,7 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
     <Grid fluid>
       <Row middle="xs">
         <Col xs={1}>
-          <Icon
-            icon="faUserCircle"
-            // size="2x"
-            onClick={() => showDrawer('account')}
-          />
+          <Icon icon="faUserCircle" size="2x" onClick={() => showDrawer('account')} />
         </Col>
         <Col xs={10}>
           <Input

@@ -4,7 +4,6 @@ import { faSnapchatSquare } from '@fortawesome/free-brands-svg-icons';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faCamera,
-  faCommentDots,
   faUserPlus,
   faListAlt,
   faGrinBeam,
@@ -21,45 +20,54 @@ import {
   faMobile,
   faMobileAlt,
   faCircle as faDot,
-  faLaugh
+  faLaugh,
+  faEllipsisV,
+  faCog
 } from '@fortawesome/free-solid-svg-icons';
+
+const iconMap = {
+  // free-brands-svg-icons
+  faSnapchatSquare,
+  // free-regular-svg-icons
+  faCircle,
+  // free-solid-svg-icons
+  faCamera,
+  faUserPlus,
+  faListAlt,
+  faGrinBeam,
+  faAngleRight,
+  faCompass,
+  faUserCircle,
+  faSearch,
+  faRetweet,
+  faAngleDown,
+  faLocationArrow,
+  faSignal,
+  faBatteryHalf,
+  faCommentAlt,
+  faMobile,
+  faMobileAlt,
+  faDot,
+  faLaugh,
+  faEllipsisV,
+  faCog
+};
 
 interface Props {
   icon: string;
+  size?: string;
   onClick?: () => void;
   className?: string;
 }
 
-const Icon: React.FC<Props> = ({ icon, onClick, className }) => {
-  const iconMap = {
-    // free-brands-svg-icons
-    faSnapchatSquare,
-    // free-regular-svg-icons
-    faCircle,
-    // free-solid-svg-icons
-    faCamera,
-    faCommentDots,
-    faUserPlus,
-    faListAlt,
-    faGrinBeam,
-    faAngleRight,
-    faCompass,
-    faUserCircle,
-    faSearch,
-    faRetweet,
-    faAngleDown,
-    faLocationArrow,
-    faSignal,
-    faBatteryHalf,
-    faCommentAlt,
-    faMobile,
-    faMobileAlt,
-    faDot,
-    faLaugh
-  };
-  return icon ? (
-    <FontAwesomeIcon icon={iconMap[icon]} onClick={onClick} className={className} />
+const Icon: React.SFC<Props> = ({ icon, size, onClick, className }) =>
+  icon ? (
+    <FontAwesomeIcon
+      icon={iconMap[icon]}
+      size={size as any}
+      onClick={onClick}
+      className={className}
+    />
   ) : null;
-};
 
 export default Icon;

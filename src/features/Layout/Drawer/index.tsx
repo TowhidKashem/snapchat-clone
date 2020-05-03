@@ -29,11 +29,7 @@ const Drawer: React.SFC<any> = ({ app, hideDrawer }) => {
         isVisible={app.showDrawer}
       >
         <section className={styles.content}>
-          <Icon
-            icon="faAngleDown"
-            onClick={hideDrawer}
-            //size="2x"
-          />
+          {/* <Icon icon="faAngleDown" onClick={hideDrawer} size="2x" /> */}
           {component}
         </section>
       </Animated>

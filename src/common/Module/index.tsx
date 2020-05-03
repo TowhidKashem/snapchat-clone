@@ -1,15 +1,23 @@
 import React from 'react';
+import classNames from 'classnames';
 import styles from './index.module.scss';
 
 interface Props {
-  title: string;
+  header: string;
+  transparent?: boolean;
   children: any;
 }
 
-const Module: React.FC<Props> = ({ title, children }) => (
+const Module: React.SFC<Props> = ({ header, transparent, children }) => (
   <section className={styles.module}>
-    <header>{title}</header>
-    {children}
+    <header>{header}</header>
+    <div
+      className={classNames(styles.content, {
+        [styles.transparent]: transparent
+      })}
+    >
+      {children}
+    </div>
   </section>
 );
 
