@@ -1,7 +1,8 @@
-@import '../../../static/styles/vars';
+@import '~static/styles/vars';
 
 .header {
-  // border: 2px solid red;
+  margin-top: $toolbar-height;
+  // border: 1px solid red;
 
   svg {
     color: $color-white;

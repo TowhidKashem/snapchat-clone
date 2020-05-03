@@ -1,53 +1,45 @@
-// @ts-nocheck
-import React, { useEffect } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from 'redux/actions';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUserCircle,
-  faSearch,
-  faUserPlus,
-  faRetweet
-} from '@fortawesome/free-solid-svg-icons';
+import Icon from 'common/Icon';
 import Input from 'common/Input';
 import styles from './index.module.scss';
 
-import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+interface Props {
+  showDrawer: (component: string) => void;
+}
 
-const Header: React.FC<{}> = ({ app, users, showDrawer, getUsers }) => {
-  useEffect(() => {
-    getUsers();
-  }, []);
-  return (
-    <header className={styles.header}>
-      <Grid fluid>
-        <Row middle="xs">
-          <Col xs={1}>
-            <FontAwesomeIcon icon={faUserCircle} size="2x" />
-          </Col>
-          <Col xs={10}>
-            <Input
-              placeholder="Search"
-              leftIcon={faSearch}
-              rightIcon={faUserPlus}
-              rightIconClick={() => showDrawer('search')}
-              onFocus={() => {}}
-            />
-          </Col>
-          <Col xs={1}>
-            <FontAwesomeIcon icon={faRetweet} />
-          </Col>
-        </Row>
-      </Grid>
-    </header>
-  );
-};
-
-const mapStateToProps = ({ app, users }) => ({ app, users });
+const Header: React.FC<Props> = ({ showDrawer }) => (
+  <header className={styles.header}>
+    <Grid fluid>
+      <Row middle="xs">
+        <Col xs={1}>
+          <Icon
+            icon="faUserCircle"
+            // size="2x"
+            onClick={() => showDrawer('account')}
+          />
+        </Col>
+        <Col xs={10}>
+          <Input
+            placeholder="Search"
+            leftIcon="faSearch"
+            rightIcon="faUserPlus"
+            rightIconClick={() => showDrawer('search')}
+            onFocus={() => {}}
+          />
+        </Col>
+        <Col xs={1}>
+          <Icon icon="faRetweet" />
+        </Col>
+      </Row>
+    </Grid>
+  </header>
+);
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (component) => dispatch(actions.showDrawer(component)),
-  getUsers: () => dispatch(actions.getUsers())
+  showDrawer: (component) => dispatch(actions.showDrawer(component))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);

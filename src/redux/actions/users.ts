@@ -2,7 +2,7 @@ import { GET_USERS } from 'redux/actions/actionTypes';
 import { User } from 'types';
 
 export const getUsers = () => async (dispatch) => {
-  const response = await fetch('https://randomuser.me/api/?results=3');
+  const response = await fetch('https://randomuser.me/api/?results=100');
   const users = await response.json();
   dispatch({
     type: GET_USERS,

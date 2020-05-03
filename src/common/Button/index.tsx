@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Icon from 'common/Icon';
 import styles from './index.module.scss';
 
 interface Props {
@@ -27,7 +27,7 @@ const Button: React.FC<Props> = ({
   >
     {icons ? (
       icons.map((icon, index) => (
-        <FontAwesomeIcon
+        <Icon
           key={index}
           icon={icon}
           className={classNames({
@@ -36,7 +36,7 @@ const Button: React.FC<Props> = ({
         />
       ))
     ) : (
-      <FontAwesomeIcon
+      <Icon
         icon={icon}
         className={classNames({
           [iconClass]: iconClass

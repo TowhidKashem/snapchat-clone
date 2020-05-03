@@ -1,8 +1,8 @@
 import { SHOW_DRAWER, HIDE_DRAWER } from 'redux/actions/actionTypes';
 
 const initialState = {
-  showDrawer: false,
-  drawerComponent: ''
+  showDrawer: true,
+  drawerComponent: 'account'
 };
 
 const setShowDrawer = (prevState, action) => ({

@@ -1,8 +1,9 @@
-@import '../../../static/styles/vars';
+@import '~static/styles/vars';
 
 .footer {
   position: fixed;
-  bottom: 20px;
+  bottom: 0;
+  padding-bottom: 20px;
   width: $app-width;
   color: $color-white;
 

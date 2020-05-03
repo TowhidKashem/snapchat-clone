@@ -1,0 +1,16 @@
+@import '~static/styles/vars';
+
+.list {
+  margin-bottom: 20px;
+
+  header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+}

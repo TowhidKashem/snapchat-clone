@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import Icon from 'common/Icon';
 import { escapeRegex } from 'utils';
 import Input from 'common/Input';
 import styles from './index.module.scss';
@@ -25,10 +24,10 @@ const Search = ({ app, users, loadMenu }) => {
         <Row middle="xs">
           <Col xs={10}>
             <Input
-              placeholder="Search"
-              leftIcon={faSearch}
-              rightIconClick={() => {}}
-              onChange={(e) => setQuery(e.currentTarget.value.trim())}
+              placeholder="Find Friends"
+              leftIcon="faSearch"
+              // rightIconClick={() => {}}
+              // onChange={(e) => setQuery(e.currentTarget.value.trim())}
             />
           </Col>
           <Col xs={2}>Cancel</Col>
@@ -43,7 +42,7 @@ const Search = ({ app, users, loadMenu }) => {
           )
         ) : (
           <p>
-            <FontAwesomeIcon icon={faSearch} />
+            <Icon icon="faSearch" />
             Search for people, stories, games and more
           </p>
         )}

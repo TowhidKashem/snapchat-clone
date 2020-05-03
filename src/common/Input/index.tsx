@@ -1,11 +1,11 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Icon from 'common/Icon';
 import styles from './index.module.scss';
 
 interface Props {
   placeholder: string;
-  leftIcon: any;
-  rightIcon?: any;
+  leftIcon: string;
+  rightIcon?: string;
   rightIconClick?: () => void;
   onFocus?: () => void;
   onChange?: (e: React.SyntheticEvent<HTMLInputElement>) => void;
@@ -19,14 +19,9 @@ const Input: React.FC<Props> = ({
   onFocus,
   onChange
 }) => {
-  const iconClick = rightIconClick
-    ? {
-        onClick: rightIconClick
-      }
-    : {};
   return (
     <div className={styles.input}>
-      {leftIcon && <FontAwesomeIcon icon={leftIcon} className={styles.leftIcon} />}
+      {leftIcon && <Icon icon={leftIcon} className={styles.leftIcon} />}
       <input
         type="text"
         placeholder={placeholder}
@@ -34,7 +29,7 @@ const Input: React.FC<Props> = ({
         onChange={onChange}
       />
       {rightIcon && (
-        <FontAwesomeIcon icon={rightIcon} className={styles.rightIcon} {...iconClick} />
+        <Icon icon={rightIcon} className={styles.rightIcon} onClick={rightIconClick} />
       )}
     </div>
   );

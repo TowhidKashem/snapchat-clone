@@ -1,11 +1,24 @@
+@import '~static/styles/vars';
+
 .toolbar {
-  color: white;
+  position: fixed;
+  width: $app-width;
+  top: 0;
+  color: $color-white;
   padding: 5px 0;
-  margin-bottom: 5px;
-  // border: 2px solid yellow;
+  z-index: 10;
+  font-weight: bold;
 
   svg {
-    color: white;
+    color: $color-white;
     margin-left: 8px;
+  }
+
+  &.dark {
+    color: $color-black;
+
+    svg {
+      color: $color-black;
+    }
   }
 }
