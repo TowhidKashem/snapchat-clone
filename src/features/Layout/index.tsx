@@ -8,13 +8,15 @@ import Drawer from './Drawer';
 import styles from './index.module.scss';
 
 interface Props {
+  getUser: () => void;
   getUsers: () => void;
   children: JSX.Element;
 }
 
-const Layout: React.FC<Props> = ({ getUsers, children }) => {
+const Layout: React.FC<Props> = ({ getUser, getUsers, children }) => {
   useEffect(() => {
     // Load some dummy data
+    getUser();
     getUsers();
   }, []);
   return (
@@ -28,9 +30,10 @@ const Layout: React.FC<Props> = ({ getUsers, children }) => {
   );
 };
 
-const mapStateToProps = ({ app, users }) => ({ app, users });
+const mapStateToProps = ({ app, session, users }) => ({ app, session, users });
 
 const mapDispatchToProps = (dispatch) => ({
+  getUser: () => dispatch(actions.getUser()),
   getUsers: () => dispatch(actions.getUsers())
 });
 

@@ -8,7 +8,7 @@ import Icon from 'common/Icon';
 import Map from './Map';
 import styles from './index.module.scss';
 
-const Account: React.SFC<any> = ({ app, hideDrawer }) => (
+const Account: React.SFC<any> = ({ user, hideDrawer }) => (
   <main className={styles.account}>
     <Grid fluid>
       <Row middle="xs">
@@ -16,13 +16,23 @@ const Account: React.SFC<any> = ({ app, hideDrawer }) => (
           <Icon icon="faAngleDown" onClick={hideDrawer} size="2x" />
         </Col>
         <Col xs={6}>
-          <Icon icon="faCog" size="1x" />
+          <Row end="xs">
+            <Col>
+              <Icon icon="faCog" size="1x" />
+            </Col>
+          </Row>
         </Col>
       </Row>
+      <Col xs={12}>
+        <Row center="xs">
+          <Col>
+            <Icon icon="faSnapchatSquare" size="7x" />
+            <br />
+            {user.username}
+          </Col>
+        </Row>
+      </Col>
     </Grid>
-
-    <Icon icon="faSnapchatSquare" size="7x" />
-
     <Module header="Stories" transparent>
       <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to My Story" />
       <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to Our Story" />
@@ -46,9 +56,9 @@ const Account: React.SFC<any> = ({ app, hideDrawer }) => (
   </main>
 );
 
-const mapStateToProps = ({ app, users }) => ({
+const mapStateToProps = ({ app, session }) => ({
   app,
-  users: users.dummyUsers
+  user: session.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
