@@ -4,7 +4,10 @@ const initialState = {
   video: null
 };
 
-const setVideo = (prevState, video) => ({ ...prevState, ...video });
+const setVideo = (prevState, action) => ({
+  ...prevState,
+  video: action.video
+});
 
 const reducer = (prevState = initialState, action) => {
   switch (action.type) {

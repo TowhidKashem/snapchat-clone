@@ -7,7 +7,7 @@ import Input from 'common/Input';
 import styles from './index.module.scss';
 
 interface Props {
-  showDrawer: (component: string) => void;
+  showDrawer: any;
 }
 
 const Header: React.FC<Props> = ({ showDrawer }) => (
@@ -15,14 +15,18 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
     <Grid fluid>
       <Row middle="xs">
         <Col xs={1}>
-          <Icon icon="faUserCircle" size="2x" onClick={() => showDrawer('account')} />
+          <Icon
+            icon="faUserCircle"
+            size="2x"
+            onClick={() => showDrawer({ component: 'account' })}
+          />
         </Col>
         <Col xs={10}>
           <Input
             placeholder="Search"
             leftIcon="faSearch"
             rightIcon="faUserPlus"
-            rightIconClick={() => showDrawer('search')}
+            rightIconClick={() => showDrawer({ component: 'search' })}
             onFocus={() => {}}
           />
         </Col>
@@ -35,7 +39,7 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (component) => dispatch(actions.showDrawer(component))
+  showDrawer: (drawer) => dispatch(actions.showDrawer(drawer))
 });
 
 export default connect(null, mapDispatchToProps)(Header);

@@ -21,7 +21,13 @@ const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => (
               <Icon
                 icon="faCog"
                 size="2x"
-                onClick={() => showDrawer('settings', 'slideInRight', 'slideOutRight')}
+                onClick={() =>
+                  showDrawer({
+                    component: 'settings',
+                    animationIn: 'slideInRight',
+                    animationOut: 'slideOutRight'
+                  })
+                }
               />
             </Col>
           </Row>
@@ -66,8 +72,7 @@ const mapStateToProps = ({ app, session }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (component, animationIn, animationOut) =>
-    dispatch(actions.showDrawer(component, animationIn, animationOut)),
+  showDrawer: (drawer) => dispatch(actions.showDrawer(drawer)),
   hideDrawer: (component) => dispatch(actions.hideDrawer(component))
 });
 

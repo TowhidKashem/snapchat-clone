@@ -4,11 +4,13 @@ import * as actions from 'redux/actions';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
 import Icon from 'common/Icon';
+
 import Account from 'features/Account';
 import Settings from 'features/Account/Settings';
 import Search from 'features/Search';
 import Map from 'features/Map';
 import Video from 'features/Video';
+
 import styles from './index.module.scss';
 
 interface Props {
@@ -30,6 +32,7 @@ const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
         <aside
           className={classNames(styles.drawer, {
             [styles.dark]: theme === 'dark'
+            // [styles.dark]: true
           })}
         >
           <Animated

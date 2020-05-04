@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import mapboxgl from 'mapbox-gl';
 import { MAP_BOX_API_KEY } from 'config';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import styles from './index.module.scss';
 
@@ -21,20 +22,25 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
   //   // locationBtn.style.display = 'none';
   // }
 
-  const setMarker = (map, lng, lat): void => {
+  const setMarker = (map, lng, lat) => {
     const marker = document.createElement('div');
     marker.className = styles.marker;
     marker.onclick = openVideo;
     new mapboxgl.Marker(marker).setLngLat([lng, lat]).addTo(map);
   };
 
-  const openVideo = (): void => {
+  const openVideo = () => {
     showVideo({
       videoId: 'UBX8MWYel3s',
       location: 'New York City, New York',
       time: 'Sat'
     });
-    showDrawer('video', 'zoomIn', 'zoomOut', 'dark');
+    showDrawer({
+      component: 'video',
+      animationIn: 'zoomIn',
+      animationOut: 'zoomOut',
+      theme: 'dark'
+    });
   };
 
   useEffect(() => {
@@ -81,8 +87,33 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
 
   return (
     <div className={styles.map}>
-      <Icon icon="faTimesCircle" onClick={() => hideDrawer('map')} size="2x" />
-      <div ref={mapRef} className={styles.content}></div>
+      <div className={styles.inner}>
+        <header>
+          <Grid fluid>
+            <Row middle="xs">
+              <Col xs={3}>
+                <Icon
+                  icon="faTimesCircle"
+                  onClick={() => hideDrawer('map')}
+                  size="2x"
+                  className="close"
+                />
+                <Icon
+                  icon="faSearchPlus"
+                  onClick={() => {}}
+                  size="2x"
+                  className="close"
+                />
+              </Col>
+              <Col xs={6}>//astoria</Col>
+              <Col xs={3}>
+                <Icon icon="faCog" onClick={() => {}} size="2x" className="close" />
+              </Col>
+            </Row>
+          </Grid>
+        </header>
+        <div ref={mapRef} className={styles.content}></div>
+      </div>
     </div>
   );
 };
@@ -90,9 +121,8 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
 const mapStateToProps = ({ app }) => ({ app });
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (component, animationIn, animationOut, theme) =>
-    dispatch(actions.showDrawer(component, animationIn, animationOut, theme)),
-  hideDrawer: (component) => dispatch(actions.showDrawer(component)),
+  showDrawer: (drawer) => dispatch(actions.showDrawer(drawer)),
+  hideDrawer: (component) => dispatch(actions.hideDrawer(component)),
   showVideo: (video) => dispatch(actions.showVideo(video))
 });
 

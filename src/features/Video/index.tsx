@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import YouTube from 'react-youtube';
@@ -10,23 +10,30 @@ interface Props {
   hideDrawer: (component: string) => void;
 }
 
-const Video: React.SFC<Props> = ({ media, hideDrawer }) => {
-  return (
-    <main className={styles.video}>
-      <header>
-        {media.video.location}
-        <time>{media.video.time}</time>
-      </header>
-      <YouTube
-        videoId={media.video.videoId}
-        opts={{ playerVars: { autoplay: 1 } }}
-        onEnd={() => hideDrawer('video')}
-      />
-    </main>
-  );
+const videoOptions: any = {
+  playerVars: {
+    autoplay: 1,
+    modestbranding: 1,
+    controls: 0
+  }
 };
 
-const mapStateToProps = ({ media }) => ({ media });
+const Video: React.SFC<Props> = ({ media, hideDrawer }) => (
+  <main className={styles.video}>
+    <header>
+      {media.video.location}
+      <time>{media.video.time}</time>
+    </header>
+    <YouTube
+      videoId={media.video.videoId}
+      opts={videoOptions}
+      className={styles.videoContainer}
+      onEnd={() => hideDrawer('video')}
+    />
+  </main>
+);
+
+const mapStateToProps = ({ app, media }) => ({ app, media });
 
 const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component) => dispatch(actions.hideDrawer(component))

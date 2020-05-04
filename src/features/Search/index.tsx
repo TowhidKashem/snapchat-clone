@@ -57,7 +57,6 @@ const mapStateToProps = ({ app, users }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  // showDrawer: (component) => dispatch(actions.showDrawer(component)),
   hideDrawer: (component) => dispatch(actions.hideDrawer(component))
 });
 

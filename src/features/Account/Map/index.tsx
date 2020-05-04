@@ -30,7 +30,16 @@ const Map: React.SFC<Props> = ({ showDrawer }) => {
   }, []);
 
   return (
-    <div className={styles.map} onClick={() => showDrawer('map', 'fadeIn', 'fadeOut')}>
+    <div
+      className={styles.map}
+      onClick={() =>
+        showDrawer({
+          component: 'map',
+          animationIn: 'fadeIn',
+          animationOut: 'fadeOut'
+        })
+      }
+    >
       <div ref={mapRef}></div>
     </div>
   );
@@ -39,9 +48,7 @@ const Map: React.SFC<Props> = ({ showDrawer }) => {
 const mapStateToProps = ({ app }) => ({ app });
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (component, animationIn, animationOut) =>
-    dispatch(actions.showDrawer(component, animationIn, animationOut))
-  // showModal: (component) => dispatch(actions.showModal(component))
+  showDrawer: (drawer) => dispatch(actions.showDrawer(drawer))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

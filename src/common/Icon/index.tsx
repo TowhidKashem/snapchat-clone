@@ -24,7 +24,8 @@ import {
   faEllipsisV,
   faCog,
   faTimesCircle,
-  faAngleLeft
+  faAngleLeft,
+  faSearchPlus
 } from '@fortawesome/free-solid-svg-icons';
 
 const iconMap = {
@@ -54,7 +55,8 @@ const iconMap = {
   faEllipsisV,
   faCog,
   faTimesCircle,
-  faAngleLeft
+  faAngleLeft,
+  faSearchPlus
 };
 
 interface Props {
