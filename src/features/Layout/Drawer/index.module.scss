@@ -14,4 +14,10 @@
     overflow: scroll;
     background: $color-light-grey;
   }
+
+  &.dark {
+    .content {
+      background: $color-black;
+    }
+  }
 }

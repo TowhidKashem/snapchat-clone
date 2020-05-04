@@ -1,7 +1,13 @@
+@import '~static/styles/vars';
+
 .video {
+  header {
+    color: $color-white !important;
+  }
+
   iframe {
     position: absolute;
-    top: 0;
+    top: 30px;
     left: 0;
     width: 100%;
     height: 100vh;

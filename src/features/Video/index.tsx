@@ -1,17 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from 'redux/actions';
+import YouTube from 'react-youtube';
 import styles from './index.module.scss';
 
-const Video = () => (
-  <main className={styles.video}>
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/Jhq6RyOGVU4?controls=0&autoplay=0"
-      frameBorder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    ></iframe>
-  </main>
-);
+interface Props {
+  media: any;
+  videoId: string;
+  hideDrawer: (component: string) => void;
+}
 
-export default Video;
+const Video: React.SFC<Props> = ({ media, hideDrawer }) => {
+  return (
+    <main className={styles.video}>
+      <header>
+        {media.video.location}
+        <time>{media.video.time}</time>
+      </header>
+      <YouTube
+        videoId={media.video.videoId}
+        opts={{ playerVars: { autoplay: 1 } }}
+        onEnd={() => hideDrawer('video')}
+      />
+    </main>
+  );
+};
+
+const mapStateToProps = ({ media }) => ({ media });
+
+const mapDispatchToProps = (dispatch) => ({
+  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Video);

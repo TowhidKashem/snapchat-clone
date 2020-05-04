@@ -9,9 +9,10 @@ import styles from './index.module.scss';
 interface Props {
   showDrawer: any;
   hideDrawer: (component: string) => void;
+  showVideo: any;
 }
 
-const Map: React.SFC<Props> = ({ showDrawer, hideDrawer }) => {
+const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
   const mapRef = useRef<any>();
 
   // if (!('geolocation' in navigator)) {
@@ -28,7 +29,12 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer }) => {
   };
 
   const openVideo = (): void => {
-    showDrawer('video', 'zoomIn', 'zoomOut');
+    showVideo({
+      videoId: 'UBX8MWYel3s',
+      location: 'New York City, New York',
+      time: 'Sat'
+    });
+    showDrawer('video', 'zoomIn', 'zoomOut', 'dark');
   };
 
   useEffect(() => {
@@ -58,9 +64,10 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer }) => {
           )
           .addTo(map);
 
-        // sssssss
+        // Show some dummy snaps nearby
         setMarker(map, lng - 0.005, lat + 0.003);
         setMarker(map, lng + 0.002, lat + 0.007);
+        setMarker(map, lng + 0.003, lat - 0.006);
       },
       (err) => {
         console.log(err);
@@ -83,9 +90,10 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer }) => {
 const mapStateToProps = ({ app }) => ({ app });
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (component, animationIn, animationOut) =>
-    dispatch(actions.showDrawer(component, animationIn, animationOut)),
-  hideDrawer: (component) => dispatch(actions.showDrawer(component))
+  showDrawer: (component, animationIn, animationOut, theme) =>
+    dispatch(actions.showDrawer(component, animationIn, animationOut, theme)),
+  hideDrawer: (component) => dispatch(actions.showDrawer(component)),
+  showVideo: (video) => dispatch(actions.showVideo(video))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

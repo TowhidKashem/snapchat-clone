@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
+import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
 import Icon from 'common/Icon';
 import Account from 'features/Account';
@@ -12,10 +13,11 @@ import styles from './index.module.scss';
 
 interface Props {
   app: any;
+  media: any;
   hideDrawer: (component: string) => void;
 }
 
-const Drawer: React.SFC<Props> = ({ app, hideDrawer }) => {
+const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
   const componentMap = {
     account: <Account />,
     settings: <Settings />,
@@ -24,8 +26,12 @@ const Drawer: React.SFC<Props> = ({ app, hideDrawer }) => {
     video: <Video />
   };
   return app.drawers
-    ? app.drawers.map(({ component, animationIn, animationOut, show }) => (
-        <aside className={styles.drawer}>
+    ? app.drawers.map(({ component, animationIn, animationOut, show, theme }) => (
+        <aside
+          className={classNames(styles.drawer, {
+            [styles.dark]: theme === 'dark'
+          })}
+        >
           <Animated
             animationIn={animationIn}
             animationOut={animationOut}
@@ -43,7 +49,7 @@ const Drawer: React.SFC<Props> = ({ app, hideDrawer }) => {
     : null;
 };
 
-const mapStateToProps = ({ app, users }) => ({ app, users });
+const mapStateToProps = ({ app, users, media }) => ({ app, users, media });
 
 const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component) => dispatch(actions.hideDrawer(component))

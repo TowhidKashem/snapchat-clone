@@ -2,14 +2,14 @@ import { SHOW_DRAWER, HIDE_DRAWER } from 'redux/actions/actionTypes';
 
 const initialState = {
   drawers: [
-    // {
-    //   component: 'video',
-    //   show: true
-    // }
+    {
+      component: 'map',
+      show: true
+    }
   ]
 };
 
-const setShowDrawer = (prevState, { component, animationIn, animationOut }) => {
+const setShowDrawer = (prevState, { component, animationIn, animationOut, theme }) => {
   let found = false;
   const drawers = prevState.drawers.map((drawer) => {
     if (drawer.component === component) {
@@ -23,6 +23,7 @@ const setShowDrawer = (prevState, { component, animationIn, animationOut }) => {
       component,
       animationIn,
       animationOut,
+      theme,
       show: true
     });
   return { ...prevState, drawers };
