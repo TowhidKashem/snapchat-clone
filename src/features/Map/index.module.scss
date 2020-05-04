@@ -13,3 +13,23 @@
   top: 0;
   left: 0;
 }
+
+.selfMarker {
+  background-image: url('http://localhost:3000/self-marker.png');
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.marker {
+  // background-image: url('http://localhost:3000/heat-map.png');
+  // background-image: url('http://localhost:3000/heat-map-2.png');
+  background-image: url('http://localhost:3000/heat-map-3.png');
+  background-size: cover;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -6,12 +6,11 @@ import { MAP_BOX_API_KEY } from 'config';
 import styles from './index.module.scss';
 
 interface Props {
-  // lat: number;
-  // lng: number;
-  showModal: (component: string) => void;
+  // showModal: (component: string) => void;
+  showDrawer: any;
 }
 
-const Map: React.SFC<Props> = ({ showModal }) => {
+const Map: React.SFC<Props> = ({ showDrawer }) => {
   const lat = 40.76122;
   const lng = -73.92318;
 
@@ -31,7 +30,7 @@ const Map: React.SFC<Props> = ({ showModal }) => {
   }, []);
 
   return (
-    <div className={styles.map} onClick={() => showModal('map')}>
+    <div className={styles.map} onClick={() => showDrawer('map', 'fadeIn', 'fadeOut')}>
       <div ref={mapRef}></div>
     </div>
   );
@@ -40,7 +39,9 @@ const Map: React.SFC<Props> = ({ showModal }) => {
 const mapStateToProps = ({ app }) => ({ app });
 
 const mapDispatchToProps = (dispatch) => ({
-  showModal: (component) => dispatch(actions.showModal(component))
+  showDrawer: (component, animationIn, animationOut) =>
+    dispatch(actions.showDrawer(component, animationIn, animationOut))
+  // showModal: (component) => dispatch(actions.showModal(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

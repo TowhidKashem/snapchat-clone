@@ -31,7 +31,7 @@ const Toolbar: React.SFC<Props> = ({ app }) => {
   return (
     <div
       className={classNames(styles.toolbar, {
-        [styles.dark]: app.showDrawer
+        [styles.dark]: app.drawers.some(({ show }) => show)
       })}
     >
       <Grid fluid>

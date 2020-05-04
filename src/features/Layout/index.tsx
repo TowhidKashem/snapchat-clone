@@ -5,7 +5,6 @@ import Toolbar from './Toolbar';
 import Header from './Header';
 import Footer from './Footer';
 import Drawer from './Drawer';
-import Modal from './Modal';
 import styles from './index.module.scss';
 
 interface Props {
@@ -28,7 +27,6 @@ const Layout: React.FC<Props> = ({ app, getUser, getUsers, children }) => {
       <Header />
       <section className={styles.view}>{children}</section>
       <Drawer />
-      <Modal />
       <Footer />
     </div>
   );

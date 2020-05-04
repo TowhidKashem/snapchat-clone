@@ -1,16 +1,12 @@
-import {
-  SHOW_DRAWER,
-  HIDE_DRAWER,
-  SHOW_MODAL,
-  HIDE_MODAL
-} from 'redux/actions/actionTypes';
+import { SHOW_DRAWER, HIDE_DRAWER } from 'redux/actions/actionTypes';
 
 const initialState = {
-  drawers: [],
-  showModal: false,
-  modalComponent: ''
-  // showModal: true,
-  // modalComponent: 'map'
+  drawers: [
+    // {
+    //   component: 'video',
+    //   show: true
+    // }
+  ]
 };
 
 const setShowDrawer = (prevState, { component, animationIn, animationOut }) => {
@@ -42,27 +38,12 @@ const setHideDrawer = (prevState, action) => {
   return { ...prevState, drawers };
 };
 
-const setShowModal = (prevState, action) => ({
-  ...prevState,
-  showModal: true,
-  modalComponent: action.component
-});
-
-const setHideModal = (prevState) => ({
-  ...prevState,
-  showModal: false
-});
-
 const reducer = (prevState = initialState, action) => {
   switch (action.type) {
     case SHOW_DRAWER:
       return setShowDrawer(prevState, action);
     case HIDE_DRAWER:
       return setHideDrawer(prevState, action);
-    case SHOW_MODAL:
-      return setShowModal(prevState, action);
-    case HIDE_MODAL:
-      return setHideModal(prevState);
     default:
       return prevState;
   }

@@ -21,7 +21,7 @@ const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => (
               <Icon
                 icon="faCog"
                 size="2x"
-                onClick={() => showDrawer('search', 'slideInRight', 'slideOutRight')}
+                onClick={() => showDrawer('settings', 'slideInRight', 'slideOutRight')}
               />
             </Col>
           </Row>
