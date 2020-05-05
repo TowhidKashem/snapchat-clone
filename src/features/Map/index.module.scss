@@ -8,13 +8,6 @@
     top: 0;
     left: 0;
 
-    header {
-      position: absolute;
-      top: $toolbar-height;
-      z-index: 1;
-      width: 100%;
-    }
-
     .content {
       height: 100vh;
     }

@@ -1,2 +1,4 @@
 export const MAP_BOX_API_KEY =
   'pk.eyJ1IjoidGtwb3A3NzciLCJhIjoiY2s5cWxleDZ2MDBpaDNtbXRnOG5pNTJoOSJ9.-_8OPAl-YXDO8g6kRAFNYg';
+
+export const WEATHER_API_KEY = 'c52881b3c6124b2bbdf224428200405';

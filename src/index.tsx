@@ -15,7 +15,7 @@ import thunk from 'redux-thunk';
 
 import app from 'redux/reducers/app';
 import session from 'redux/reducers/session';
-import users from 'redux/reducers/users';
+import user from 'redux/reducers/user';
 import media from 'redux/reducers/media';
 
 import 'normalize.css';
@@ -28,7 +28,7 @@ declare global {
   }
 }
 
-const rootReducer = combineReducers({ app, session, users, media });
+const rootReducer = combineReducers({ app, session, user, media });
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'

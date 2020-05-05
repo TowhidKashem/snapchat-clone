@@ -1,0 +1,9 @@
+@import '~static/styles/vars';
+
+.header {
+  position: absolute;
+  top: $toolbar-height;
+  z-index: 1;
+  width: 100%;
+  font-weight: bold;
+}

@@ -18,7 +18,7 @@ const Layout: React.FC<Props> = ({ app, getUser, getUsers, children }) => {
   useEffect(() => {
     // Load some dummy data
     getUser();
-    getUsers();
+    // getUsers();
   }, []);
 
   return (

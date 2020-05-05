@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import mapboxgl from 'mapbox-gl';
 import { MAP_BOX_API_KEY } from 'config';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import Icon from 'common/Icon';
+import Header from './Header';
 import styles from './index.module.scss';
 
 interface Props {
+  user: any;
+  getWeather: any;
   showDrawer: any;
-  hideDrawer: (component: string) => void;
   showVideo: any;
 }
 
-const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
+const Map: React.SFC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
   const mapRef = useRef<any>();
 
   // if (!('geolocation' in navigator)) {
@@ -22,11 +22,11 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
   //   // locationBtn.style.display = 'none';
   // }
 
-  const setMarker = (map, lng, lat) => {
+  const setMarker = (lat, lon, map) => {
     const marker = document.createElement('div');
     marker.className = styles.marker;
     marker.onclick = openVideo;
-    new mapboxgl.Marker(marker).setLngLat([lng, lat]).addTo(map);
+    new mapboxgl.Marker(marker).setLngLat([lon, lat]).addTo(map);
   };
 
   const openVideo = () => {
@@ -46,15 +46,18 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
   useEffect(() => {
     mapboxgl.accessToken = MAP_BOX_API_KEY;
 
+    // // Weather
+    // getWeather(40.761219, -73.92318);
+
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
-        const lng = coords.longitude;
         const lat = coords.latitude;
+        const lon = coords.longitude;
 
         const map = new mapboxgl.Map({
           container: mapRef.current,
           style: 'mapbox://styles/mapbox/streets-v11',
-          center: [lng, lat],
+          center: [lon, lat],
           zoom: 14
         });
 
@@ -63,7 +66,7 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
         el.className = styles.selfMarker;
 
         new mapboxgl.Marker(el)
-          .setLngLat([lng, lat])
+          .setLngLat([lon, lat])
           .setPopup(
             new mapboxgl.Popup({ offset: 25 }) // add popups
               .setHTML('<h3>Me</h3><p>Not Sharing Location</p>')
@@ -71,9 +74,25 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
           .addTo(map);
 
         // Show some dummy snaps nearby
-        setMarker(map, lng - 0.005, lat + 0.003);
-        setMarker(map, lng + 0.002, lat + 0.007);
-        setMarker(map, lng + 0.003, lat - 0.006);
+        const snapCoordinates = [
+          {
+            lat: lat + 0.003,
+            lon: lon - 0.005
+          },
+          {
+            lat: lat + 0.007,
+            lon: lon - 0.002
+          },
+          {
+            lat: lat + 0.006,
+            lon: lon - 0.003
+          }
+        ];
+
+        snapCoordinates.forEach(({ lat, lon }) => setMarker(lat, lon, map));
+
+        // Weather
+        getWeather(lat, lon);
       },
       (err) => {
         console.log(err);
@@ -88,42 +107,19 @@ const Map: React.SFC<Props> = ({ showDrawer, hideDrawer, showVideo }) => {
   return (
     <div className={styles.map}>
       <div className={styles.inner}>
-        <header>
-          <Grid fluid>
-            <Row middle="xs">
-              <Col xs={3}>
-                <Icon
-                  icon="faTimesCircle"
-                  onClick={() => hideDrawer('map')}
-                  size="2x"
-                  className="close"
-                />
-                <Icon
-                  icon="faSearchPlus"
-                  onClick={() => {}}
-                  size="2x"
-                  className="close"
-                />
-              </Col>
-              <Col xs={6}>//astoria</Col>
-              <Col xs={3}>
-                <Icon icon="faCog" onClick={() => {}} size="2x" className="close" />
-              </Col>
-            </Row>
-          </Grid>
-        </header>
+        <Header />
         <div ref={mapRef} className={styles.content}></div>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ app }) => ({ app });
+const mapStateToProps = ({ user }) => ({ user });
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(actions.showDrawer(drawer)),
-  hideDrawer: (component) => dispatch(actions.hideDrawer(component)),
-  showVideo: (video) => dispatch(actions.showVideo(video))
+  showVideo: (video) => dispatch(actions.showVideo(video)),
+  getWeather: (lat, lon) => dispatch(actions.getWeather(lat, lon))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
