@@ -38,7 +38,7 @@ const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => (
           <Col>
             <Icon icon="faSnapchatSquare" size="7x" />
             <br />
-            {user.username}
+            {user.currentUser.username}
           </Col>
         </Row>
       </Col>
@@ -66,10 +66,7 @@ const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => (
   </main>
 );
 
-const mapStateToProps = ({ app, session }) => ({
-  app,
-  user: session.user
-});
+const mapStateToProps = ({ app, user }) => ({ app, user });
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(actions.showDrawer(drawer)),

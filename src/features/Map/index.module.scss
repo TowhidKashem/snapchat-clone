@@ -28,6 +28,28 @@
   background-size: cover;
   width: 70px;
   height: 70px;
-  border-radius: 50%;
+  border-radius: 100%;
   cursor: pointer;
+
+  &.active {
+    animation: shadow-pulse 0.5s infinite;
+  }
+}
+
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes shadow-pulse-big {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 70px rgba(0, 0, 0, 0);
+  }
 }

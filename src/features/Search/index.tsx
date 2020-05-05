@@ -51,9 +51,9 @@ const Search = ({ app, users, hideDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ app, users }) => ({
+const mapStateToProps = ({ app, user }) => ({
   app,
-  users: users.dummyUsers
+  users: user.dummyUsers
 });
 
 const mapDispatchToProps = (dispatch) => ({

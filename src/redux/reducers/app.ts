@@ -2,10 +2,10 @@ import { SHOW_DRAWER, HIDE_DRAWER } from 'redux/actions/actionTypes';
 
 const initialState = {
   drawers: [
-    {
-      component: 'map',
-      show: true
-    }
+    // {
+    //   component: 'map',
+    //   show: true
+    // }
   ]
 };
 

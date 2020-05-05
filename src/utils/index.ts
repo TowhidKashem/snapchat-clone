@@ -13,7 +13,7 @@ export const promise = (promise) =>
     })
     .catch((err) => [err]);
 
-export const api = async (url, params) => {
+export const api = async (url, params = {}) => {
   url += qs.stringify(params, { addQueryPrefix: true });
   const [error, response] = await promise(fetch(url).then((response) => response.json()));
   return [error, response];

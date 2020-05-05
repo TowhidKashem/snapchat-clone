@@ -6,4 +6,39 @@
   z-index: 1;
   width: 100%;
   font-weight: bold;
+
+  background: rgba($color-black, 0.3);
+  color: $color-white;
+  text-shadow: 0 0 1px $color-black;
+
+  svg {
+    color: $color-white;
+  }
+
+  .weather {
+    text-align: center;
+
+    h3 {
+      margin: 0 0 2px;
+    }
+
+    .iconTemp {
+      display: flex;
+      justify-content: center;
+
+      img {
+        margin-right: 3px;
+      }
+
+      img,
+      .temp {
+        display: inline-block;
+        align-self: flex-end;
+      }
+
+      .temp {
+        padding-bottom: 7px;
+      }
+    }
+  }
 }

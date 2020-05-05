@@ -20,6 +20,10 @@ const videoOptions: any = {
 
 const Video: React.SFC<Props> = ({ media, hideDrawer }) => (
   <main className={styles.video}>
+    <button onClick={() => hideDrawer('video')} style={{ color: '#fff' }}>
+      Close
+    </button>
+
     <header>
       {media.video.location}
       <time>{media.video.time}</time>

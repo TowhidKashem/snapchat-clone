@@ -27,12 +27,24 @@ const Header: React.SFC<Props> = ({ user, hideDrawer }) => {
             <Icon icon="faSearchPlus" onClick={() => {}} size="2x" className="close" />
           </Col>
           <Col xs={6}>
-            <h3>{city}</h3>
-            <img src={icon} width={30} />
-            {temperature}&deg;F
+            <Row bottom="xs">
+              <Col xs={12}>
+                <article className={styles.weather}>
+                  <h3>{city}</h3>
+                  <div className={styles.iconTemp}>
+                    <img src={icon} width={30} />
+                    <span className={styles.temp}>{temperature}&deg;F</span>
+                  </div>
+                </article>
+              </Col>
+            </Row>
           </Col>
           <Col xs={3}>
-            <Icon icon="faCog" onClick={() => {}} size="2x" className="close" />
+            <Row end="xs">
+              <Col xs={3}>
+                <Icon icon="faCog" onClick={() => {}} size="2x" className="close" />
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Grid>

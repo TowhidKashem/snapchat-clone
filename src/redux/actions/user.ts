@@ -1,4 +1,4 @@
-import { GET_WEATHER, GET_USERS } from 'redux/actions/actionTypes';
+import { GET_WEATHER, GET_USER, GET_USERS } from 'redux/actions/actionTypes';
 import { Weather, User } from 'types';
 import { WEATHER_API_KEY } from 'config';
 import { api } from 'utils';
@@ -13,6 +13,17 @@ export const getWeather = (lat, lon) => async (dispatch) => {
     dispatch({
       type: GET_WEATHER,
       weather: _parseWeather(response)
+    });
+  }
+};
+
+export const getUser = () => async (dispatch) => {
+  const [error, response] = await api('https://randomuser.me/api');
+
+  if (!error) {
+    dispatch({
+      type: GET_USER,
+      user: _parseUsers(response.results)[0]
     });
   }
 };
