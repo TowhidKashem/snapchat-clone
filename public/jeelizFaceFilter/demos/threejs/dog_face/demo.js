@@ -1,4 +1,5 @@
 'use strict';
+
 const BASE_URL = './jeelizFaceFilter/demos/threejs/dog_face';
 let THREECAMERA = null,
   ISDETECTED = !1,

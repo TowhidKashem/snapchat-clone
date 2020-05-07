@@ -24,15 +24,27 @@ const Camera = () => {
   useEffect(() => {
     loadScripts(
       [
+        // both
         './jeelizFaceFilter/dist/jeelizFaceFilter.js',
         './jeelizFaceFilter/libs/threejs/v97/three.js',
         './jeelizFaceFilter/helpers/JeelizResizer.js',
         './jeelizFaceFilter/helpers/JeelizThreejsHelper.js',
-        './jeelizFaceFilter/libs/threejs/customMaterials/FlexMaterial/ThreeFlexMaterial.js',
+
+        // dog + miel pops
         './jeelizFaceFilter/libs/tween/v16_3_5/Tween.min.js',
+
+        // dog face only
+        './jeelizFaceFilter/libs/threejs/customMaterials/FlexMaterial/ThreeFlexMaterial.js',
         './glfx.js',
+
+        // dog and miel pops
         './jeelizFaceFilter/helpers/addDragEventListener.js',
-        './jeelizFaceFilter/demos/threejs/dog_face/demo.js'
+
+        // demos
+        // './jeelizFaceFilter/demos/threejs/halloween_spider/demo.js'
+        // './jeelizFaceFilter/demos/threejs/dog_face/demo.js'
+        // './jeelizFaceFilter/demos/threejs/faceDeform/demo.js'
+        './jeelizFaceFilter/demos/threejs/miel_pops/demo.js'
       ],
       () => {
         // main();

@@ -1,285 +1,197 @@
-"use strict";
-
-// SETTINGS of this demo :
-const SETTINGS = {
-  numberBees: 8
-};
-
-// some globalz:
-let THREECAMERA = null;
-let GLASSESOBJ3D = null
-
-const ACTIONS = [];
-const MIXERS = [];
-
-let ISANIMATED = false;
-let BEEMESH = null, BEEOBJ3D = null;
-
-
-// callback: launched if a face is detected or lost
-function detect_callback(isDetected) {
-  if (isDetected) {
-    console.log('INFO in detect_callback(): DETECTED');
-  } else {
-    console.log('INFO in detect_callback(): LOST');
-  }
-}
-
-// build the 3D. called once when Jeeliz Face Filter is OK
-function init_threeScene(spec) {
-  const threeStuffs = THREE.JeelizHelper.init(spec, detect_callback);
-
-  let frameMesh = null;
-  let lensesMesh = null;
-  let branchesMesh = null;
-  let decoMesh = null;
-
-  const loadingManager = new THREE.LoadingManager();
-
-  // CREATE OUR FRAME
-  const loaderFrame = new THREE.BufferGeometryLoader(loadingManager);
-
-  loaderFrame.load(
-    './models/glasses/frame.json',
-    (geometry) => {
-      const mat = new THREE.MeshPhongMaterial({
-        color: 0x000000,
-        shininess: 2,
-        specular: 0xffffff,
-        transparent: true
-      });
-
-      frameMesh = new THREE.Mesh(geometry, mat);
-      frameMesh.scale.multiplyScalar(0.0067);
-      frameMesh.frustumCulled = false;
-      frameMesh.renderOrder = 10000;
-    }
-  );
-
-  // CREATE LENSES:
-  const loaderLenses = new THREE.BufferGeometryLoader(loadingManager);
-
-  loaderLenses.load(
-    './models/glasses/lenses.json',
-    (geometry) => {
-      const mat = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('./models/glasses/texture_mp.jpg')
-      });
-
-      lensesMesh = new THREE.Mesh(geometry, mat);
-      lensesMesh.scale.multiplyScalar(0.0067);
-      lensesMesh.frustumCulled = false;
-      lensesMesh.renderOrder = 10000;
-    }
-  );
-
-  // CREATE GLASSES BRANCHES:
-  const loaderBranches = new THREE.BufferGeometryLoader(loadingManager);
-
-  loaderBranches.load(
-    './models/glasses/branches.json',
-    (geometry) => {
-      const mat = new THREE.MeshBasicMaterial({
-        alphaMap: new THREE.TextureLoader().load('./models/glasses/alpha_branches.jpg'),
-        map: new THREE.TextureLoader().load('./models/glasses/textureBlack.jpg'),
-        transparent: true
-      });
-
-      branchesMesh = new THREE.Mesh(geometry, mat);
-      branchesMesh.scale.multiplyScalar(0.0067);
-      branchesMesh.frustumCulled = false;
-      branchesMesh.renderOrder = 10000;
-    }
-  );
-
-  // CREATE DECO:
-  const loaderDeco = new THREE.BufferGeometryLoader(loadingManager);
-
-  loaderDeco.load(
-    './models/glasses/deco.json',
-    (geometry) => {
-      const mat = new THREE.MeshBasicMaterial({
-        color: 0xffffff
-      });
-
-      decoMesh = new THREE.Mesh(geometry, mat);
-      decoMesh.scale.multiplyScalar(0.0067);
-      
-      decoMesh.frustumCulled = false;
-      decoMesh.renderOrder = 10000;
-    }
-  );
-
-  loadingManager.onLoad = () => {
-    GLASSESOBJ3D.add(branchesMesh, frameMesh, lensesMesh, decoMesh);
-    GLASSESOBJ3D.scale.multiplyScalar(1.1);
-    GLASSESOBJ3D.position.setY(0.05); // move glasses a bit up
-    GLASSESOBJ3D.position.setZ(0.25);// move glasses a bit forward
-    
-    addDragEventListener(GLASSESOBJ3D);
-
-    threeStuffs.faceObject.add(GLASSESOBJ3D);
+'use strict';
+const BASE_URL = './jeelizFaceFilter/demos/threejs/miel_pops',
+  SETTINGS = {
+    numberBees: 8
   };
+let THREECAMERA = null,
+  GLASSESOBJ3D = null;
+const ACTIONS = [],
+  MIXERS = [];
+let ISANIMATED = !1,
+  BEEMESH = null,
+  BEEOBJ3D = null;
 
-  // ADD OUR BEES
-  const beeLoader = new THREE.JSONLoader();
+function detect_callback(e) {
+  e
+    ? console.log('INFO in detect_callback(): DETECTED')
+    : console.log('INFO in detect_callback(): LOST');
+}
 
-  beeLoader.load(
-    './models/bee/bee.json',
-    (geometry) => {
-
-      const materialBee = new THREE.MeshLambertMaterial({
-        map: new THREE.TextureLoader().load('./models/bee/texture_bee.jpg'),
-        transparent: true,
-        morphTargets: true
-      });
-
-      BEEMESH = new THREE.Mesh(geometry, materialBee);      
-      BEEOBJ3D = new THREE.Object3D();
-
-      for (let i = 1; i < SETTINGS.numberBees; i++) {
-        const sign = i % 2 === 0 ? 1 : -1;
-        const beeInstance = BEEMESH.clone();
-
-        const xRand = Math.random() * 1.5 - 0.75;
-        const yRand = Math.random() * 2 - 1 + 1;
-        const zRand = Math.random() * 0.5 - 0.25;
-
-        beeInstance.position.set(xRand, yRand, zRand);
-        beeInstance.scale.multiplyScalar(0.1);
-        animateFlyBees(beeInstance, sign * ((i + 1) * 0.005 + 0.01), sign);
-        let BEEINSTANCEOBJ3D = new THREE.Object3D();
-        BEEINSTANCEOBJ3D.add(beeInstance);
-
-        // CREATE BATTEMENT D'AILE ANIMATION
-        if (!ISANIMATED) {
-          // This is where adding our animation begins
-          const mixer = new THREE.AnimationMixer(beeInstance);
-
-          const clips = beeInstance.geometry.animations;
-          const clip = clips[0];
-          const action = mixer.clipAction(clip);
-
-          ACTIONS.push(action);
-          MIXERS.push(mixer);
-        }
-
-        BEEOBJ3D.add(BEEINSTANCEOBJ3D);
-      }
-
-      // We play the animation for each butterfly and shift their cycles
-      // by adding a small timeout
-      ACTIONS.forEach((a, index) => {
-        setTimeout(() => {
-          a.play();
-        }, index*33);
-      });
-
-      ISANIMATED = true;
-      
-      threeStuffs.faceObject.add(BEEOBJ3D);
-    }
-  );
-
-  // CREATE THE VIDEO BACKGROUND:
-  function create_mat2d(threeTexture, isTransparent){ //MT216 : we put the creation of the video material in a func because we will also use it for the frame
-    return new THREE.RawShaderMaterial({
-      depthWrite: false,
-      depthTest: false,
-      transparent: isTransparent,
-      vertexShader: "attribute vec2 position;\n\
-        varying vec2 vUV;\n\
-        void main(void){\n\
-          gl_Position=vec4(position, 0., 1.);\n\
-          vUV=0.5+0.5*position;\n\
-        }",
-      fragmentShader: "precision lowp float;\n\
-        uniform sampler2D samplerVideo;\n\
-        varying vec2 vUV;\n\
-        void main(void){\n\
-          gl_FragColor = texture2D(samplerVideo, vUV);\n\
-        }",
-       uniforms:{
-        samplerVideo: { value: threeTexture }
-       }
+function init_threeScene(e) {
+  const a = THREE.JeelizHelper.init(e, detect_callback);
+  let n = null,
+    t = null,
+    s = null,
+    l = null;
+  const o = new THREE.LoadingManager();
+  new THREE.BufferGeometryLoader(o).load(`${BASE_URL}/models/glasses/frame.json`, (e) => {
+    const a = new THREE.MeshPhongMaterial({
+      color: 0,
+      shininess: 2,
+      specular: 16777215,
+      transparent: !0
     });
-  }
+    (n = new THREE.Mesh(e, a)).scale.multiplyScalar(0.0067),
+      (n.frustumCulled = !1),
+      (n.renderOrder = 1e4);
+  }),
+    new THREE.BufferGeometryLoader(o).load(
+      `${BASE_URL}/models/glasses/lenses.json`,
+      (e) => {
+        const a = new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load(`${BASE_URL}/models/glasses/texture_mp.jpg`)
+        });
+        (t = new THREE.Mesh(e, a)).scale.multiplyScalar(0.0067),
+          (t.frustumCulled = !1),
+          (t.renderOrder = 1e4);
+      }
+    ),
+    new THREE.BufferGeometryLoader(o).load(
+      `${BASE_URL}/models/glasses/branches.json`,
+      (e) => {
+        const a = new THREE.MeshBasicMaterial({
+          alphaMap: new THREE.TextureLoader().load(
+            `${BASE_URL}/models/glasses/alpha_branches.jpg`
+          ),
+          map: new THREE.TextureLoader().load(
+            `${BASE_URL}/models/glasses/textureBlack.jpg`
+          ),
+          transparent: !0
+        });
+        (s = new THREE.Mesh(e, a)).scale.multiplyScalar(0.0067),
+          (s.frustumCulled = !1),
+          (s.renderOrder = 1e4);
+      }
+    ),
+    new THREE.BufferGeometryLoader(o).load(
+      `${BASE_URL}/models/glasses/deco.json`,
+      (e) => {
+        const a = new THREE.MeshBasicMaterial({
+          color: 16777215
+        });
+        (l = new THREE.Mesh(e, a)).scale.multiplyScalar(0.0067),
+          (l.frustumCulled = !1),
+          (l.renderOrder = 1e4);
+      }
+    ),
+    (o.onLoad = () => {
+      GLASSESOBJ3D.add(s, n, t, l),
+        GLASSESOBJ3D.scale.multiplyScalar(1.1),
+        GLASSESOBJ3D.position.setY(0.05),
+        GLASSESOBJ3D.position.setZ(0.25),
+        addDragEventListener(GLASSESOBJ3D),
+        a.faceObject.add(GLASSESOBJ3D);
+    }),
+    new THREE.JSONLoader().load(`${BASE_URL}/models/bee/bee.json`, (e) => {
+      const n = new THREE.MeshLambertMaterial({
+        map: new THREE.TextureLoader().load(`${BASE_URL}/models/bee/texture_bee.jpg`),
+        transparent: !0,
+        morphTargets: !0
+      });
+      (BEEMESH = new THREE.Mesh(e, n)), (BEEOBJ3D = new THREE.Object3D());
+      for (let e = 1; e < SETTINGS.numberBees; e++) {
+        const a = e % 2 == 0 ? 1 : -1,
+          n = BEEMESH.clone(),
+          t = 1.5 * Math.random() - 0.75,
+          s = 2 * Math.random() - 1 + 1,
+          l = 0.5 * Math.random() - 0.25;
+        n.position.set(t, s, l),
+          n.scale.multiplyScalar(0.1),
+          animateFlyBees(n, a * (0.005 * (e + 1) + 0.01), a);
+        let o = new THREE.Object3D();
+        if ((o.add(n), !ISANIMATED)) {
+          const e = new THREE.AnimationMixer(n),
+            a = n.geometry.animations[0],
+            t = e.clipAction(a);
+          ACTIONS.push(t), MIXERS.push(e);
+        }
+        BEEOBJ3D.add(o);
+      }
+      ACTIONS.forEach((e, a) => {
+        setTimeout(() => {
+          e.play();
+        }, 33 * a);
+      }),
+        (ISANIMATED = !0),
+        a.faceObject.add(BEEOBJ3D);
+    });
+  const E = new THREE.Mesh(
+    a.videoMesh.geometry,
+    ((r = new THREE.TextureLoader().load(`${BASE_URL}/images/frame.png`)),
+    (i = !0),
+    new THREE.RawShaderMaterial({
+      depthWrite: !1,
+      depthTest: !1,
+      transparent: i,
+      vertexShader:
+        'attribute vec2 position;\n        varying vec2 vUV;\n        void main(void){\n          gl_Position=vec4(position, 0., 1.);\n          vUV=0.5+0.5*position;\n        }',
+      fragmentShader:
+        'precision lowp float;\n        uniform sampler2D samplerVideo;\n        varying vec2 vUV;\n        void main(void){\n          gl_FragColor = texture2D(samplerVideo, vUV);\n        }',
+      uniforms: {
+        samplerVideo: {
+          value: r
+        }
+      }
+    }))
+  );
+  var r, i;
+  (E.renderOrder = 999),
+    (E.frustumCulled = !1),
+    a.scene.add(E),
+    (THREECAMERA = THREE.JeelizHelper.create_camera());
+  const c = new THREE.AmbientLight(16777215, 1);
+  a.scene.add(c);
+  const d = new THREE.DirectionalLight(16777215);
+  d.position.set(100, 1e3, 100), a.scene.add(d);
+}
 
-  // MT216 : create the frame. We reuse the geometry of the video
-  const calqueMesh = new THREE.Mesh(threeStuffs.videoMesh.geometry,  create_mat2d(new THREE.TextureLoader().load('./images/frame.png'), true))
-  calqueMesh.renderOrder = 999; // render last
-  calqueMesh.frustumCulled = false;
-  threeStuffs.scene.add(calqueMesh);
-
-  // CREATE THE CAMERA
-  THREECAMERA = THREE.JeelizHelper.create_camera();
-
-  // CREATE LIGHTS:
-  const ambient = new THREE.AmbientLight(0xffffff, 1);
-  threeStuffs.scene.add(ambient)
-
-  const dirLight = new THREE.DirectionalLight(0xffffff);
-  dirLight.position.set(100, 1000, 100);
-  threeStuffs.scene.add(dirLight)
-} // end init_threeScene()
-
-function animateFlyBees(mesh, theta, sign) {
-  let count = 0;
+function animateFlyBees(e, a, n) {
+  let t = 0;
   setInterval(() => {
-    count += 1;
-    const x = mesh.position.x;
-    const z = mesh.position.z;
-    const y = mesh.position.y;
-
-    mesh.position.set(
-      (x * Math.cos(theta) + z * Math.sin(theta)),
-      (y * Math.cos(theta) + x * Math.sin(theta))*0.96 + 0.05,
-      (z * Math.cos(theta) - x * Math.sin(theta)) //(z * Math.cos(0.03*theta) - x * Math.sin(0.03*theta)*theta)
-    );
-    mesh.rotation.set(-(x * Math.cos(theta) + z * Math.sin(theta))*sign, -(y * Math.cos(theta) + z * Math.sin(theta))*sign, -(z * Math.cos(theta) - x * Math.sin(theta))*sign);
-    // mesh.rotation._y = Math.sin(Math.random()*2*Math.PI*100)
-  }, 16)
+    t += 1;
+    const s = e.position.x,
+      l = e.position.z,
+      o = e.position.y;
+    e.position.set(
+      s * Math.cos(a) + l * Math.sin(a),
+      0.96 * (o * Math.cos(a) + s * Math.sin(a)) + 0.05,
+      l * Math.cos(a) - s * Math.sin(a)
+    ),
+      e.rotation.set(
+        -(s * Math.cos(a) + l * Math.sin(a)) * n,
+        -(o * Math.cos(a) + l * Math.sin(a)) * n,
+        -(l * Math.cos(a) - s * Math.sin(a)) * n
+      );
+  }, 16);
 }
 
-// Entry point, launched by body.onload():
 function main() {
-  GLASSESOBJ3D = new THREE.Object3D();
-
-  JeelizResizer.size_canvas({
-    canvasId: 'jeeFaceFilterCanvas',
-    callback: function(isError, bestVideoSettings){
-      init_faceFilter(bestVideoSettings);
-    }
-  })
+  (GLASSESOBJ3D = new THREE.Object3D()),
+    JeelizResizer.size_canvas({
+      canvasId: 'jeeFaceFilterCanvas',
+      callback: function (e, a) {
+        init_faceFilter(a);
+      }
+    });
 }
 
-function init_faceFilter(videoSettings){
+function init_faceFilter(e) {
   JEEFACEFILTERAPI.init({
     canvasId: 'jeeFaceFilterCanvas',
-    NNCpath: '../../../dist/', // path of NNC.json file
-    videoSettings: videoSettings,
-    callbackReady: function (errCode, spec) {
-      if (errCode) {
-        console.log('AN ERROR HAPPENS. SORRY BRO :( . ERR =', errCode);
-        return;
-      }
-
-      console.log('INFO: JEEFACEFILTERAPI IS READY');
-      init_threeScene(spec);
+    NNCpath: './jeelizFaceFilter/dist/',
+    videoSettings: e,
+    callbackReady: function (e, a) {
+      e
+        ? console.log('AN ERROR HAPPENS. SORRY BRO :( . ERR =', e)
+        : (console.log('INFO: JEEFACEFILTERAPI IS READY'), init_threeScene(a));
     },
-
-    // called at each render iteration (drawing loop):
-    callbackTrack: function (detectState) {
-      THREE.JeelizHelper.render(detectState, THREECAMERA);
-
-      TWEEN.update();
-
-      if (MIXERS.length > 1) {
-        MIXERS.forEach((m) => {
-          m.update(0.16);
-        })
-      }
+    callbackTrack: function (e) {
+      THREE.JeelizHelper.render(e, THREECAMERA),
+        TWEEN.update(),
+        MIXERS.length > 1 &&
+          MIXERS.forEach((e) => {
+            e.update(0.16);
+          });
     }
-  }); // end JEEFACEFILTERAPI.init call
+  });
 }
-

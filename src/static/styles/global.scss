@@ -68,7 +68,7 @@ a {
   overflow: hidden;
 
   .filter-canvas {
-    border: 1px solid red;
+    // border: 1px solid red;
     width: 100%;
     height: 100vh;
     position: absolute;
@@ -77,4 +77,15 @@ a {
     z-index: -1;
     object-fit: cover;
   }
+
+  #open-mouth {
+    z-index: 1000;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    color: $color-white;
+    font-weight: bold;
+  }
 }
+
+////
