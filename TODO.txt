@@ -6,3 +6,15 @@ emmer.js
 
 zoom map in on open
 
+
+
+Filter bundle:
+
+        // // both
+        // './jeelizFaceFilter/dist/jeelizFaceFilter.js',
+        // './jeelizFaceFilter/libs/threejs/v97/three.js',
+        // './jeelizFaceFilter/helpers/JeelizResizer.js',
+        // './jeelizFaceFilter/helpers/JeelizThreejsHelper.js',
+
+
+        
