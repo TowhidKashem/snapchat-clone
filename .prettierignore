@@ -6,3 +6,5 @@ yarn-lock.json
 *.map
 
 node_modules/
+
+public/jeelizFaceFilter/

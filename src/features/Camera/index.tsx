@@ -24,9 +24,9 @@ const Camera = () => {
   useEffect(() => {
     loadScripts(
       [
-        './jeelizFaceFilter/bundle-filters.js'
-        // './jeelizFaceFilter/bundle-dog.js',
-        // './jeelizFaceFilter/bundle-bees.js',
+        './jeelizFaceFilter/bundle-filters.min.js'
+        // './jeelizFaceFilter/bundle-dog.min.js',
+        // './jeelizFaceFilter/bundle-bees.min.js',
 
         // demos
         // './jeelizFaceFilter/demos/threejs/halloween_spider/demo.js'
