@@ -58,3 +58,23 @@ a {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 }
+
+.wrapper {
+  position: relative;
+  border: 1px solid #666;
+  width: $app-width;
+  height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .filter-canvas {
+    border: 1px solid red;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+  }
+}

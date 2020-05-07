@@ -7,8 +7,37 @@ const Camera = () => {
 
   const videoPlayer = useRef<HTMLVideoElement>();
 
+  // Recursive function to load scripts in order then perform callback
+  const loadScripts = (scripts, callback) => {
+    const loadScript = (index) => {
+      const script = document.createElement('script');
+      script.src = scripts[index];
+      script.onload = () => {
+        if (index + 1 !== scripts.length) loadScript(index + 1);
+        else callback();
+      };
+      document.body.appendChild(script);
+    };
+    loadScript(0);
+  };
+
   useEffect(() => {
-    intializeMedia();
+    loadScripts(
+      [
+        './jeelizFaceFilter/dist/jeelizFaceFilter.js',
+        './jeelizFaceFilter/libs/threejs/v97/three.js',
+        './jeelizFaceFilter/helpers/JeelizResizer.js',
+        './jeelizFaceFilter/helpers/JeelizThreejsHelper.js',
+        './jeelizFaceFilter/libs/threejs/customMaterials/FlexMaterial/ThreeFlexMaterial.js',
+        './jeelizFaceFilter/libs/tween/v16_3_5/Tween.min.js',
+        './glfx.js',
+        './jeelizFaceFilter/helpers/addDragEventListener.js',
+        './jeelizFaceFilter/demos/threejs/dog_face/demo.js'
+      ],
+      () => {
+        // main();
+      }
+    );
   }, []);
 
   const intializeMedia = async () => {
@@ -30,24 +59,27 @@ const Camera = () => {
       };
     }
 
-    // // Ask for permission then display stream to canvas
-    // try {
-    //   const stream = await navigator.mediaDevices.getUserMedia({
-    //     video: {
-    //       facingMode: 'user'
-    //     }
-    //     // audio: true
-    //   });
-    //   videoPlayer.current.srcObject = stream;
-    // } catch (err) {
-    //   alert(err);
-    // }
+    // Ask for permission then display stream to canvas
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: 'user'
+          // width: { ideal: 414 },
+          // height: { ideal: 736 }
+        }
+        // audio: true
+      });
+      videoPlayer.current.srcObject = stream;
+    } catch (err) {
+      alert(err);
+    }
   };
-  //test
+
+  // intializeMedia();
 
   return (
     <main className={`static ${styles.camera}`}>
-      <video id="player" ref={videoPlayer} autoPlay></video>
+      {/* <video id="player" ref={videoPlayer} autoPlay></video> */}
     </main>
   );
 };

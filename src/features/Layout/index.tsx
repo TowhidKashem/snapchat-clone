@@ -16,19 +16,19 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ app, getUser, getUsers, children }) => {
   useEffect(() => {
-    // Load some dummy data
-    getUser();
-    getUsers();
+    // // Load some dummy data
+    // getUser();
+    // getUsers();
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <>
       <Toolbar />
       <Header />
       <section className={styles.view}>{children}</section>
       <Drawer />
       <Footer />
-    </div>
+    </>
   );
 };
 
