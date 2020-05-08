@@ -7,14 +7,14 @@ const Camera = () => {
 
   const videoPlayer = useRef<HTMLVideoElement>();
 
-  // Recursive function to load scripts in order then perform callback
-  const loadScripts = (scripts, callback) => {
+  // Recursive function to load scripts in order then perform callback (if any)
+  const loadScripts = (scripts: string[], callback?: () => void) => {
     const loadScript = (index) => {
       const script = document.createElement('script');
       script.src = scripts[index];
       script.onload = () => {
         if (index + 1 !== scripts.length) loadScript(index + 1);
-        else callback();
+        else if (callback) callback();
       };
       document.body.appendChild(script);
     };
@@ -22,22 +22,26 @@ const Camera = () => {
   };
 
   useEffect(() => {
-    loadScripts(
-      [
-        './jeelizFaceFilter/bundle-filters.min.js'
-        // './jeelizFaceFilter/bundle-dog.min.js',
-        // './jeelizFaceFilter/bundle-bees.min.js',
+    const loadFilter = (filter) => {
+      const dependencies = {
+        dog: [
+          './jeelizFaceFilter/filters/dog/dependencies.min.js',
+          './jeelizFaceFilter/filters/dog/index.js'
+        ],
+        bees: [
+          './jeelizFaceFilter/filters/bees/dependencies.min.js',
+          './jeelizFaceFilter/filters/bees/index.js'
+        ],
+        halloween: ['./jeelizFaceFilter/filters/halloween/index.js'],
+        deform: ['./jeelizFaceFilter/filters/deform/index.js']
+      };
+      loadScripts([
+        './jeelizFaceFilter/filters/dependencies.min.js',
+        ...dependencies[filter]
+      ]);
+    };
 
-        // demos
-        // './jeelizFaceFilter/demos/threejs/halloween_spider/demo.js'
-        // './jeelizFaceFilter/demos/threejs/dog_face/demo.js'
-        // './jeelizFaceFilter/demos/threejs/faceDeform/demo.js'
-        // './jeelizFaceFilter/demos/threejs/miel_pops/demo.js'
-      ],
-      () => {
-        // main();
-      }
-    );
+    // loadFilter('deform');
   }, []);
 
   const intializeMedia = async () => {
