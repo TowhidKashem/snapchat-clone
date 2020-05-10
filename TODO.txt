@@ -17,4 +17,17 @@ Filter bundle:
         // './jeelizFaceFilter/helpers/JeelizThreejsHelper.js',
 
 
-        
+
+memory footprint neglagable:
+
+        https://github.com/jeeliz/jeelizGlanceTracker/issues/2#issuecomment-572743886
+
+
+
+
+
+<div class="canvasContainer">
+    <canvas id="jeeFaceFilterCanvas" class="filter-canvas"></canvas>
+    <div id="filter"></div><!-- dog only -->
+    <span id="open-mouth">Open Mouth</span>
+  </div>

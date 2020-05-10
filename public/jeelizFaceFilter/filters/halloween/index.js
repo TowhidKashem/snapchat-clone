@@ -1,73 +1,63 @@
 'use strict';
 
-(function () {
-  const BASE_URL = './jeelizFaceFilter/filters/halloween';
-  const openMouth = document.querySelector('#open-mouth');
+var Filters = window.Filters || {};
 
-  let THREECAMERA = null;
-  let ISDETECTED = false;
-
-  const MIXERS = [];
-  const ACTIONS = [];
-  let MASKOBJ3D = null;
-  let isAnimating = false;
-
-  function init_threeScene(spec) {
+Filters.halloween = {
+  BASE_URL: './jeelizFaceFilter/filters/halloween',
+  THREECAMERA: null,
+  ISDETECTED: false,
+  MIXERS: [],
+  ACTIONS: [],
+  MASKOBJ3D: null,
+  openMouth: document.querySelector('#open-mouth'),
+  isAnimating: false,
+  initThreeScene: (spec) => {
     const threeStuffs = THREE.JeelizHelper.init(spec);
-
     const loadingManager = new THREE.LoadingManager();
-
     let smallSpiderMesh;
     const smallSpiderLoader = new THREE.JSONLoader(loadingManager);
     smallSpiderLoader.load(
-      BASE_URL + '/models/small_spider/small_spider.json',
+      Filters.halloween.BASE_URL + '/models/small_spider/small_spider.json',
       (geometry) => {
         const material = new THREE.MeshBasicMaterial({
           map: new THREE.TextureLoader().load(
-            BASE_URL + '/models/small_spider/diffuse_spider.jpg'
+            Filters.halloween.BASE_URL + '/models/small_spider/diffuse_spider.jpg'
           ),
           morphTargets: true
         });
-
         smallSpiderMesh = new THREE.Mesh(geometry, material);
         smallSpiderMesh.frustumCulled = false;
         smallSpiderMesh.position.y -= 0.2;
-
         const mixer = new THREE.AnimationMixer(smallSpiderMesh);
-
         const clip = smallSpiderMesh.geometry.animations[0];
         const action = mixer.clipAction(clip);
-
-        MIXERS.push(mixer);
-        ACTIONS.push(action);
+        Filters.halloween.MIXERS.push(mixer);
+        Filters.halloween.ACTIONS.push(action);
       }
     );
-
     let bigSpiderMesh;
     const bigSpiderLoader = new THREE.JSONLoader(loadingManager);
-    bigSpiderLoader.load(BASE_URL + '/models/big_spider/big_spider.json', (geometry) => {
-      const material = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load(
-          BASE_URL + '/models/big_spider/diffuse_spider.jpg'
-        ),
-        morphTargets: true
-      });
-
-      bigSpiderMesh = new THREE.Mesh(geometry, material);
-      bigSpiderMesh.frustumCulled = false;
-
-      const mixer = new THREE.AnimationMixer(bigSpiderMesh);
-
-      const clip = bigSpiderMesh.geometry.animations[0];
-      const action = mixer.clipAction(clip);
-
-      MIXERS.push(mixer);
-      ACTIONS.push(action);
-    });
-
+    bigSpiderLoader.load(
+      Filters.halloween.BASE_URL + '/models/big_spider/big_spider.json',
+      (geometry) => {
+        const material = new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load(
+            Filters.halloween.BASE_URL + '/models/big_spider/diffuse_spider.jpg'
+          ),
+          morphTargets: true
+        });
+        bigSpiderMesh = new THREE.Mesh(geometry, material);
+        bigSpiderMesh.frustumCulled = false;
+        const mixer = new THREE.AnimationMixer(bigSpiderMesh);
+        const clip = bigSpiderMesh.geometry.animations[0];
+        const action = mixer.clipAction(clip);
+        Filters.halloween.MIXERS.push(mixer);
+        Filters.halloween.ACTIONS.push(action);
+      }
+    );
     let faceMesh = null;
     const faceLoader = new THREE.BufferGeometryLoader(loadingManager);
-    faceLoader.load(BASE_URL + '/models/face/face.json', (geometry) => {
+    faceLoader.load(Filters.halloween.BASE_URL + '/models/face/face.json', (geometry) => {
       const material = new THREE.MeshBasicMaterial({
         map: new THREE.TextureLoader().load('./models/face/diffuse_makeup.png')
       });
@@ -88,7 +78,6 @@
         vec3 normalView = vec3(modelViewMatrix * vec4(normal,0.));\n\
         vNormalDotZ = pow(abs(normalView.z), 1.5);\n\
       }';
-
       const fragmentShaderSource =
         'precision lowp float;\n\
       uniform sampler2D samplerVideo;\n\
@@ -102,7 +91,6 @@
         // gl_FragColor=vec4(borderCoeff, 0., 0., 1.);\n\
         // gl_FragColor=vec4(darkenCoeff, 0., 0., 1.);\n\
       }';
-
       const materialVideo = new THREE.ShaderMaterial({
         vertexShader: vertexShaderSource,
         fragmentShader: fragmentShaderSource,
@@ -117,21 +105,17 @@
       });
       faceMesh = new THREE.Mesh(geometry, materialVideo);
     });
-
     loadingManager.onLoad = () => {
-      MASKOBJ3D.add(faceMesh);
-      MASKOBJ3D.add(smallSpiderMesh);
-      MASKOBJ3D.add(bigSpiderMesh);
-
-      MASKOBJ3D.scale.multiplyScalar(0.59);
-      MASKOBJ3D.position.z -= 0.5;
-      MASKOBJ3D.position.y += 0.4;
-
-      threeStuffs.faceObject.add(MASKOBJ3D);
+      Filters.halloween.MASKOBJ3D.add(faceMesh);
+      Filters.halloween.MASKOBJ3D.add(smallSpiderMesh);
+      Filters.halloween.MASKOBJ3D.add(bigSpiderMesh);
+      Filters.halloween.MASKOBJ3D.scale.multiplyScalar(0.59);
+      Filters.halloween.MASKOBJ3D.position.z -= 0.5;
+      Filters.halloween.MASKOBJ3D.position.y += 0.4;
+      threeStuffs.faceObject.add(Filters.halloween.MASKOBJ3D);
     };
-
-    function create_mat2d(threeTexture, isTransparent) {
-      return new THREE.RawShaderMaterial({
+    const createMat2d = (threeTexture, isTransparent) =>
+      new THREE.RawShaderMaterial({
         depthWrite: false,
         depthTest: false,
         transparent: isTransparent,
@@ -155,87 +139,72 @@
           }
         }
       });
-    }
-
     const calqueMesh = new THREE.Mesh(
       threeStuffs.videoMesh.geometry,
-      create_mat2d(
-        new THREE.TextureLoader().load(BASE_URL + '/images/cadre_halloween.png'),
+      createMat2d(
+        new THREE.TextureLoader().load(
+          Filters.halloween.BASE_URL + '/images/cadre_halloween.png'
+        ),
         true
       )
     );
     calqueMesh.renderOrder = 999;
     calqueMesh.frustumCulled = false;
     threeStuffs.scene.add(calqueMesh);
-
-    THREECAMERA = THREE.JeelizHelper.create_camera();
-
+    Filters.halloween.THREECAMERA = THREE.JeelizHelper.create_camera();
     const ambient = new THREE.AmbientLight(0xffffff, 0.8);
     threeStuffs.scene.add(ambient);
-
     const spotLight = new THREE.SpotLight(0xffffff);
     spotLight.position.set(100, 1000, 100);
     spotLight.castShadow = true;
     threeStuffs.scene.add(spotLight);
-  }
-
-  function main() {
-    MASKOBJ3D = new THREE.Object3D();
+  },
+  init: () => {
+    Filters.halloween.MASKOBJ3D = new THREE.Object3D();
     JeelizResizer.size_canvas({
       canvasId: 'jeeFaceFilterCanvas',
       callback: function (isError, bestVideoSettings) {
-        init_faceFilter(bestVideoSettings);
+        Filters.halloween.initFaceFilter(bestVideoSettings);
       }
     });
-  }
-
-  function animateSpiders() {
-    openMouth.style.opacity = '0';
-
-    isAnimating = true;
-
-    ACTIONS.forEach((action, index) => {
+  },
+  animateSpiders: () => {
+    Filters.halloween.openMouth.style.opacity = '0';
+    Filters.halloween.isAnimating = true;
+    Filters.halloween.ACTIONS.forEach((action, index) => {
       action.loop = false;
-
-      MIXERS[index].addEventListener('loop', () => {
+      Filters.halloween.MIXERS[index].addEventListener('loop', () => {
         action.stop();
         action.reset();
-        isAnimating = false;
+        Filters.halloween.isAnimating = false;
       });
-
       action.play();
     });
-  }
-
-  function init_faceFilter(videoSettings) {
+  },
+  initFaceFilter: (videoSettings) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
       NNCpath: './jeelizFaceFilter/dist/',
       videoSettings: videoSettings,
       callbackReady: function (errCode, spec) {
         if (errCode) return;
-        init_threeScene(spec);
+        Filters.halloween.initThreeScene(spec);
       },
-
       callbackTrack: function (detectState) {
-        ISDETECTED = THREE.JeelizHelper.get_isDetected();
-
-        if (ISDETECTED) {
-          if (detectState.expressions[0] >= 0.8 && !isAnimating) {
-            animateSpiders();
-            openMouth.style.opacity = 0;
+        Filters.halloween.ISDETECTED = THREE.JeelizHelper.get_isDetected();
+        if (Filters.halloween.ISDETECTED) {
+          if (detectState.expressions[0] >= 0.8 && !Filters.halloween.isAnimating) {
+            Filters.halloween.animateSpiders();
+            Filters.halloween.openMouth.style.opacity = 0;
           }
-          if (MIXERS && MIXERS.length > 0) {
-            MIXERS.forEach((mixer) => {
+          if (Filters.halloween.MIXERS && Filters.halloween.MIXERS.length > 0) {
+            Filters.halloween.MIXERS.forEach((mixer) => {
               mixer.update(0.08);
             });
           }
         }
-
-        THREE.JeelizHelper.render(detectState, THREECAMERA);
+        THREE.JeelizHelper.render(detectState, Filters.halloween.THREECAMERA);
       }
     });
   }
-
-  main();
-})();
+};

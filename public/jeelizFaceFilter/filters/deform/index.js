@@ -1,10 +1,11 @@
 'use strict';
 
-(function () {
-  const BASE_URL = './jeelizFaceFilter/filters/deform';
-  let THREECAMERA = null;
+var Filters = window.Filters || {};
 
-  function build_maskMaterial() {
+Filters.deform = {
+  BASE_URL: './jeelizFaceFilter/filters/deform',
+  THREECAMERA: null,
+  buildMaskMaterial: () => {
     const vertexShaderSource =
       'varying vec2 vUVvideo;\n\
   // deformation 0 parameters:\n\
@@ -39,7 +40,6 @@
     vec4 projectedPosition0 = projectionMatrix * mvPosition0;\n\
     vUVvideo = vec2(0.5,0.5) + 0.5*projectedPosition0.xy/projectedPosition0.w;\n\
   }';
-
     const fragmentShaderSource =
       'precision mediump float;\n\
   uniform sampler2D samplerVideo;\n\
@@ -47,7 +47,6 @@
   void main() {\n\
     gl_FragColor = texture2D(samplerVideo, vUVvideo);\n\
   }';
-
     const mat = new THREE.ShaderMaterial({
       vertexShader: vertexShaderSource,
       fragmentShader: fragmentShaderSource,
@@ -58,49 +57,45 @@
       }
     });
     return mat;
-  }
-
-  function init_threeScene(spec) {
+  },
+  initThreeScene: (spec) => {
     const threeStuffs = THREE.JeelizHelper.init(spec);
-
     const maskLoader = new THREE.BufferGeometryLoader();
-
-    maskLoader.load(BASE_URL + '/models/faceLowPoly.json', function (maskBufferGeometry) {
+    maskLoader.load(Filters.deform.BASE_URL + '/models/faceLowPoly.json', function (
+      maskBufferGeometry
+    ) {
       maskBufferGeometry.computeVertexNormals();
-      const threeMask = new THREE.Mesh(maskBufferGeometry, build_maskMaterial());
+      const threeMask = new THREE.Mesh(
+        maskBufferGeometry,
+        Filters.deform.buildMaskMaterial()
+      );
       threeMask.frustumCulled = false;
       threeMask.scale.multiplyScalar(1.2);
       threeMask.position.set(0, 0.2, -0.5);
       threeStuffs.faceObject.add(threeMask);
     });
-
-    THREECAMERA = THREE.JeelizHelper.create_camera();
-  }
-
-  function main() {
+    Filters.deform.THREECAMERA = THREE.JeelizHelper.create_camera();
+  },
+  init: () => {
     JeelizResizer.size_canvas({
       canvasId: 'jeeFaceFilterCanvas',
-      callback: function (isError, bestVideoSettings) {
-        init_faceFilter(bestVideoSettings);
+      callback: (isError, bestVideoSettings) => {
+        Filters.deform.initFaceFilter(bestVideoSettings);
       }
     });
-  }
-
-  function init_faceFilter(videoSettings) {
+  },
+  initFaceFilter: (videoSettings) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
       NNCpath: './jeelizFaceFilter/dist/',
-      videoSettings: videoSettings,
+      videoSettings,
       callbackReady: function (errCode, spec) {
         if (errCode) return;
-        init_threeScene(spec);
+        Filters.deform.initThreeScene(spec);
       },
-
       callbackTrack: function (detectState) {
-        THREE.JeelizHelper.render(detectState, THREECAMERA);
+        THREE.JeelizHelper.render(detectState, Filters.deform.THREECAMERA);
       }
     });
   }
-
-  main();
-})();
+};

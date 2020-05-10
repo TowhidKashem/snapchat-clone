@@ -71,11 +71,21 @@ a {
     // border: 1px solid red;
     width: 100%;
     height: 100vh;
+    // height: 25vh;
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
     object-fit: cover;
+
+    // &.hide {
+    //   border: 10px solid green;
+    //   display: none;
+    // }
+  }
+
+  #jeeFaceFilterCanvas-bees {
+    top: 25vh;
   }
 
   #open-mouth {
@@ -87,5 +97,3 @@ a {
     font-weight: bold;
   }
 }
-
-////
