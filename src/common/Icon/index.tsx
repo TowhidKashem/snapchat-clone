@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSnapchatSquare } from '@fortawesome/free-brands-svg-icons';
+import { faSnapchatSquare, faForumbee } from '@fortawesome/free-brands-svg-icons';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faCamera,
@@ -25,12 +25,16 @@ import {
   faCog,
   faTimesCircle,
   faAngleLeft,
-  faSearchPlus
+  faSearchPlus,
+  faPaw,
+  faSpider,
+  faWater
 } from '@fortawesome/free-solid-svg-icons';
 
 const iconMap = {
   // free-brands-svg-icons
   faSnapchatSquare,
+  faForumbee,
   // free-regular-svg-icons
   faCircle,
   // free-solid-svg-icons
@@ -56,7 +60,10 @@ const iconMap = {
   faCog,
   faTimesCircle,
   faAngleLeft,
-  faSearchPlus
+  faSearchPlus,
+  faPaw,
+  faSpider,
+  faWater
 };
 
 interface Props {

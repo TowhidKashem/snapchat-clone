@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import classNames from 'classnames';
@@ -20,6 +20,11 @@ interface Props {
 }
 
 const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
+  if (app.drawers.some(({ show }) => show)) {
+    //@ts-ignore
+    JEEFACEFILTERAPI.toggle_pause(true, true);
+  }
+
   const componentMap = {
     account: <Account />,
     settings: <Settings />,
@@ -30,9 +35,9 @@ const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
   return app.drawers
     ? app.drawers.map(({ component, animationIn, animationOut, show, theme }) => (
         <aside
+          key={component}
           className={classNames(styles.drawer, {
             [styles.dark]: theme === 'dark'
-            // [styles.dark]: true
           })}
         >
           <Animated

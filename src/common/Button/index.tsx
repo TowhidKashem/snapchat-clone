@@ -10,17 +10,20 @@ interface Props {
   iconClasses?: Array<string | null>;
   buttonClass?: string;
   label?: string;
+  onclick?: () => void;
 }
 
-const Button: React.FC<Props> = ({
+const Button: React.SFC<Props> = ({
   icon,
   icons,
   iconClass = '',
   iconClasses = [],
   buttonClass = '',
-  label
+  label,
+  onclick
 }) => (
   <button
+    onClick={onclick}
     className={classNames(styles.button, {
       [buttonClass]: buttonClass
     })}

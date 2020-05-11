@@ -1,3 +1,5 @@
+@import '~static/styles/vars';
+
 .camera {
   overflow: hidden;
   position: relative;
@@ -11,5 +13,48 @@
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+  }
+
+  .controls {
+    position: fixed;
+    bottom: 70px;
+    padding-bottom: 20px;
+    width: $app-width;
+    color: $color-white;
+    align-items: center;
+
+    .filters {
+      svg {
+        color: $color-white;
+        font-size: 50px;
+        border: 3px solid $color-white;
+        border-radius: 100%;
+        padding: 5px;
+      }
+    }
+
+    svg {
+      color: $color-white;
+      font-size: 30px;
+    }
+
+    text-align: center;
+    padding: 0 0 10px 40px;
+
+    .capture,
+    .filter {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .capture {
+      font-size: 70px;
+    }
+
+    .filter {
+      font-size: 25px;
+      margin: 20px 0 0 10px;
+      vertical-align: top;
+    }
   }
 }

@@ -208,7 +208,6 @@ Filters.bees = {
       },
       callbackTrack: function (detectState) {
         THREE.JeelizHelper.render(detectState, Filters.bees.THREECAMERA);
-        TWEEN.update();
         if (Filters.bees.MIXERS.length > 1) {
           Filters.bees.MIXERS.forEach((m) => {
             m.update(0.16);

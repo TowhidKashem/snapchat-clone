@@ -6,75 +6,50 @@
   padding-bottom: 20px;
   width: $app-width;
   color: $color-white;
+  align-items: center;
+
+  // border: 1px solid red;
 
   svg {
     color: $color-white;
+    font-size: 25px;
   }
 
   article {
     text-align: center;
   }
 
-  .top {
-    text-align: center;
-    padding: 0 0 10px 40px;
+  .chatBtn {
+    position: relative;
 
-    .capture,
-    .filter {
-      display: inline-block;
-      vertical-align: top;
-    }
-
-    .capture {
-      font-size: 70px;
-    }
-
-    .filter {
-      font-size: 25px;
-      margin: 20px 0 0 10px;
-      vertical-align: top;
+    svg {
+      &:first-child {
+        font-size: 21px;
+      }
+      &.msgNotification {
+        color: $color-blue;
+        font-size: 12px;
+        position: absolute;
+        top: -5px;
+        right: -3px;
+      }
     }
   }
 
-  .bottom {
-    align-items: center;
-
+  .archiveBtn {
     svg {
-      font-size: 25px;
-    }
-
-    .chatBtn {
-      position: relative;
-
-      svg {
-        &:first-child {
-          font-size: 21px;
-        }
-        &.msgNotification {
-          color: $color-blue;
-          font-size: 12px;
-          position: absolute;
-          top: -5px;
-          right: -3px;
-        }
+      &:first-child {
+        transform: rotate(-5deg);
+      }
+      &:last-child {
+        transform: rotate(5deg);
       }
     }
+  }
 
-    .archiveBtn {
-      svg {
-        &:first-child {
-          transform: rotate(-5deg);
-        }
-        &:last-child {
-          transform: rotate(5deg);
-        }
-      }
-    }
-
-    .discoverBtn {
-      svg {
-        //
-      }
+  .discoverBtn {
+    svg {
+      //
     }
   }
 }
