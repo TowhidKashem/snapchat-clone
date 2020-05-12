@@ -1,6 +1,7 @@
 import { SHOW_DRAWER, HIDE_DRAWER } from 'redux/actions/actionTypes';
+import { Drawer } from 'types';
 
-export const showDrawer = (drawer) => (dispatch) => {
+export const showDrawer = (drawer: Drawer) => (dispatch) => {
   const {
     component,
     animationIn = 'slideInUp',

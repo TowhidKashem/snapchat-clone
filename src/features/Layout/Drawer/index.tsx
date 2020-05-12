@@ -10,6 +10,9 @@ import Settings from 'features/Account/Settings';
 import Search from 'features/Search';
 import Map from 'features/Map';
 import Video from 'features/Video';
+import Snaps from 'features/Snaps';
+import Chat from 'features/Chat';
+import Discover from 'features/Discover';
 
 import styles from './index.module.scss';
 
@@ -21,8 +24,8 @@ interface Props {
 
 const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
   if (app.drawers.some(({ show }) => show)) {
-    //@ts-ignore
-    JEEFACEFILTERAPI.toggle_pause(true, true);
+    // //@ts-ignore
+    // JEEFACEFILTERAPI.toggle_pause(true, true);
   }
 
   const componentMap = {
@@ -30,8 +33,12 @@ const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
     settings: <Settings />,
     search: <Search />,
     map: <Map />,
-    video: <Video />
+    video: <Video />,
+    snaps: <Snaps />,
+    chat: <Chat />,
+    discover: <Discover />
   };
+
   return app.drawers
     ? app.drawers.map(({ component, animationIn, animationOut, show, theme }) => (
         <aside
@@ -48,7 +55,7 @@ const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
             isVisible={show}
           >
             <section className={styles.content}>
-              {/* <Icon icon="faAngleDown" onClick={() => hideDrawer(component)} size="2x" /> */}
+              <button onClick={() => hideDrawer(component)}>Close Drawer</button>
               {componentMap[component]}
             </section>
           </Animated>

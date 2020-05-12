@@ -31,3 +31,10 @@ memory footprint neglagable:
     <div id="filter"></div><!-- dog only -->
     <span id="open-mouth">Open Mouth</span>
   </div>
+
+
+  filter.dependency.js:
+
+    jeelizFaceFilter.js
+    JeelizResizer.js
+    jeelizFaceFilter/helpers/JeelizThreejsHelper.js

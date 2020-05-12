@@ -1,4 +1,5 @@
 @import 'vars';
+@import 'extendables';
 //@import 'mixins';
 
 html {
@@ -9,6 +10,14 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+*:active,
+*:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none;
+  outline-style: none;
 }
 
 body {
@@ -24,13 +33,13 @@ a {
   color: $color-white;
   text-decoration: none;
 
-  &:active,
-  &:focus {
-    outline: 0;
-    border: none;
-    -moz-outline-style: none;
-    outline-style: none;
-  }
+  // &:active,
+  // &:focus {
+  //   outline: 0;
+  //   border: none;
+  //   -moz-outline-style: none;
+  //   outline-style: none;
+  // }
 }
 
 .svg-inline--fa {
@@ -68,13 +77,7 @@ a {
   overflow: hidden;
 
   .filter-canvas {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    object-fit: cover;
+    @extend %video-cover;
   }
 
   #open-mouth {
