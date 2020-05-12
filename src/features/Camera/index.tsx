@@ -1,11 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
+import classNames from 'classnames';
 import Button from 'common/Button';
-import useVideo from 'hooks/useVideo';
-import { loadScripts } from 'utils';
+// import useVideo from 'hooks/useVideo';
+import { loadScripts, showVideo } from 'utils';
+import { dependencies, filterButtons } from './data';
 import styles from './index.module.scss';
 
-type Filter = 'dog' | 'bees' | 'halloween' | 'deform' | null;
+type Filter = 'dog' | 'bees' | 'halloween' | 'deform';
+
+interface Props {
+  drawers: any;
+}
 
 declare global {
   interface Window {
@@ -14,30 +21,24 @@ declare global {
   }
 }
 
-const dependencies = {
-  dog: [
-    './jeelizFaceFilter/filters/dog/dependencies.min.js',
-    './jeelizFaceFilter/filters/dog/index.js'
-  ],
-  bees: [
-    './jeelizFaceFilter/filters/bees/dependencies.min.js',
-    './jeelizFaceFilter/filters/bees/index.js'
-  ],
-  halloween: ['./jeelizFaceFilter/filters/halloween/index.js'],
-  deform: ['./jeelizFaceFilter/filters/deform/index.js']
-};
-
-const Camera: React.FC<{}> = () => {
+const Camera: React.FC<Props> = ({ drawers }) => {
   const videoPlayer = useRef<any>();
 
   const [showFilters, setShowFilters] = useState<boolean>(false);
-  const [filter, setFilter] = useState<Filter>(null);
+  const [filter, setFilter] = useState<Filter | null>(null);
   const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
 
-  // useVideo((stream) => {
-  //   videoPlayer.current.srcObject = stream;
-  // });
+  const [videoStream, setVideoStream] = useState<any>();
 
+  // Start/stop video when drawer is opened and closed
+  useEffect(() => {
+    const atleastOneDrawerOpen = drawers.some(({ show }) => show);
+    // if (atleastOneDrawerOpen) stopVideo();
+    // else startVideo();
+    // startVideo();
+  }, [drawers]);
+
+  // If a filter is selected load it's dependencies and call the filter's init method
   useEffect(() => {
     if (!filter) return;
     if (loadedFilters.includes(filter)) {
@@ -61,41 +62,47 @@ const Camera: React.FC<{}> = () => {
     }
   };
 
-  const filterButtons = [
-    {
-      filter: 'dog',
-      icon: 'faPaw'
-    },
-    {
-      filter: 'halloween',
-      icon: 'faSpider'
-    },
-    {
-      filter: 'bees',
-      icon: 'faForumbee',
-      className: styles.main
-    }
-  ];
+  const startVideo = () => {
+    showVideo((stream) => {
+      videoPlayer.current.srcObject = stream;
+      setVideoStream(stream);
+    });
+  };
+
+  const stopVideo = () => videoStream.getTracks()[0].stop();
 
   return (
     <main className={styles.camera}>
-      <video ref={videoPlayer} autoPlay></video>
+      <video
+        ref={videoPlayer}
+        autoPlay
+        className={classNames(styles.videoStream, {
+          [styles.hide]: filter
+        })}
+      ></video>
 
       <section className={styles.controls}>
+        {/* Tmp */}
+        {showFilters && (
+          <Button
+            icon="faTimesCircle"
+            iconClass={styles.close}
+            onclick={() => {
+              window.JEEFACEFILTERAPI.destroy();
+              setShowFilters(false);
+              setFilter(null);
+              startVideo();
+            }}
+          />
+        )}
+
         <Button icon="faCircle" buttonClass={styles.btnCapture} />
+
         {!showFilters && (
           <Button
             icon="faLaugh"
             buttonClass={styles.btnFilters}
             onclick={() => setShowFilters(true)}
-          />
-        )}
-
-        {showFilters && (
-          <Button
-            icon="faTimesCircle"
-            iconClass={styles.close}
-            onclick={() => setShowFilters(false)}
           />
         )}
 
@@ -108,15 +115,13 @@ const Camera: React.FC<{}> = () => {
           animateOnMount={false}
         >
           <div className={styles.filters}>
-            {filterButtons.map(({ icon, filter, className }) => (
+            {filterButtons.map(({ icon, filter }) => (
               <Button
+                key={filter}
                 icon={icon}
                 onclick={() => switchFilter(filter as Filter)}
-                buttonClass={className}
               />
             ))}
-            <Button icon="faForumbee" onclick={() => switchFilter('bees')} />
-            <Button icon="faPaw" onclick={() => switchFilter('dog')} />
           </div>
         </Animated>
       </section>
@@ -124,4 +129,6 @@ const Camera: React.FC<{}> = () => {
   );
 };
 
-export default Camera;
+const mapStateToProps = ({ app }) => ({ drawers: app.drawers });
+
+export default connect(mapStateToProps, null)(Camera);

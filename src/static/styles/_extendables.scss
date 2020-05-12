@@ -1,9 +1,10 @@
+@import 'vars';
+
 %video-cover {
-  width: 100%;
+  width: $app-width;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 0;
   z-index: -1;
   object-fit: cover;
 }

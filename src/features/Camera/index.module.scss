@@ -7,8 +7,12 @@
   height: 100vh;
   overflow: hidden;
 
-  video {
+  .videoStream {
     @extend %video-cover;
+
+    &.hide {
+      display: none;
+    }
   }
 
   .controls {
@@ -87,14 +91,15 @@
           margin: 0;
         }
 
-        &.main {
+        // Center button
+        &:nth-child(3) {
           width: 55px;
           height: 55px;
           margin: 0 15px;
           border: 0;
 
           svg {
-            font-size: 45px;
+            font-size: 40px;
           }
         }
       }

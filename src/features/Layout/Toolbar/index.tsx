@@ -6,10 +6,10 @@ import Icon from 'common/Icon';
 import styles from './index.module.scss';
 
 interface Props {
-  app: any;
+  drawers: any;
 }
 
-const Toolbar: React.SFC<Props> = ({ app }) => {
+const Toolbar: React.SFC<Props> = ({ drawers }) => {
   const { useState, useEffect } = React;
   const [time, setTime] = useState<string>('');
 
@@ -28,10 +28,12 @@ const Toolbar: React.SFC<Props> = ({ app }) => {
     setInterval(updateTime, 1000);
   }, []);
 
+  const atleastOneDrawerOpen = drawers.some(({ show }) => show);
+
   return (
     <div
       className={classNames(styles.toolbar, {
-        [styles.dark]: app.drawers.some(({ show }) => show)
+        [styles.dark]: atleastOneDrawerOpen
       })}
     >
       <Grid fluid>
@@ -54,6 +56,6 @@ const Toolbar: React.SFC<Props> = ({ app }) => {
   );
 };
 
-const mapStateToProps = ({ app }) => ({ app });
+const mapStateToProps = ({ app }) => ({ drawers: app.drawers });
 
 export default connect(mapStateToProps)(Toolbar);
