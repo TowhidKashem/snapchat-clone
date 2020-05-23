@@ -4,21 +4,21 @@ import * as actions from 'redux/actions';
 import { Drawer } from 'types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Button from 'common/Button';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   showDrawer: (component: Drawer) => void;
 }
 
 const Footer: React.SFC<Props> = ({ showDrawer }) => (
-  <footer className={styles.footer}>
+  <footer className="footer">
     <Grid fluid>
       <Row middle="xs" center="xs">
         <Col xs={4}>
           <Button
             icons={['faCommentAlt', 'faDot']}
-            iconClasses={[null, styles.msgNotification]}
-            buttonClass={styles.chatBtn}
+            iconClasses={[null, 'msg-notification']}
+            buttonClass="chat-btn"
             label="Chat"
             onclick={() =>
               showDrawer({
@@ -32,7 +32,7 @@ const Footer: React.SFC<Props> = ({ showDrawer }) => (
         <Col xs={4}>
           <Button
             icons={['faMobile', 'faMobileAlt']}
-            buttonClass={styles.archiveBtn}
+            buttonClass="archive-btn"
             onclick={() =>
               showDrawer({
                 component: 'snaps',
@@ -45,7 +45,7 @@ const Footer: React.SFC<Props> = ({ showDrawer }) => (
         <Col xs={4}>
           <Button
             icons={['faMobile', 'faMobile']}
-            buttonClass={styles.discoverBtn}
+            buttonClass="discover-btn"
             label="Discover"
             onclick={() =>
               showDrawer({

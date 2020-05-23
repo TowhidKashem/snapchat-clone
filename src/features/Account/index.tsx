@@ -6,7 +6,7 @@ import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';
 import Icon from 'common/Icon';
 //import Map from './Map';
-import styles from './index.module.scss';
+import './index.scss';
 
 const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => {
   const [mapComponent, setMapComponent] = useState<JSX.Element>();
@@ -23,7 +23,7 @@ const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => {
   }, []);
 
   return (
-    <main className={styles.account}>
+    <main className="account">
       <Grid fluid>
         <Row middle="xs">
           <Col xs={6}>

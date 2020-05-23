@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState, useRef, useEffect } from 'react';
+import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
 import Button from 'common/Button';
@@ -80,9 +81,13 @@ const Camera: React.FC<Props> = ({ drawers }) => {
 
   return (
     <main className="camera">
-      {!filterReady && (
-        <video ref={videoPlayer} autoPlay className="video-stream"></video>
-      )}
+      <video
+        ref={videoPlayer}
+        autoPlay
+        className={classnames('video-stream', {
+          hide: filterReady
+        })}
+      ></video>
 
       <section className="controls">
         {/* Tmp */}
@@ -94,6 +99,7 @@ const Camera: React.FC<Props> = ({ drawers }) => {
               window.JEEFACEFILTERAPI.destroy();
               setShowFilters(false);
               setFilter(null);
+              setFilterReady(false);
               startVideo();
             }}
           />

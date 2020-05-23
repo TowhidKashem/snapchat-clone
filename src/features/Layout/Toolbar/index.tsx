@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   drawers: any;
@@ -32,8 +32,8 @@ const Toolbar: React.SFC<Props> = ({ drawers }) => {
 
   return (
     <div
-      className={classNames(styles.toolbar, {
-        [styles.dark]: atleastOneDrawerOpen
+      className={classNames('toolbar', {
+        dark: atleastOneDrawerOpen
       })}
     >
       <Grid fluid>

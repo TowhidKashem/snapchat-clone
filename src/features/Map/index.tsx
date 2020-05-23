@@ -5,7 +5,7 @@ import mapboxgl from 'mapbox-gl';
 import { MAP_BOX_API_KEY } from 'config';
 import useGeo from 'hooks/useGeo';
 import Header from './Header';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   user: any;
@@ -33,11 +33,11 @@ const Map: React.SFC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
 
   const setMarker = (lat, lon, map) => {
     const marker = document.createElement('div');
-    marker.className = styles.marker;
+    marker.className = 'marker';
     marker.onclick = (e: any) => {
-      e.target.classList.add(styles.active);
+      e.target.classList.add('active');
       setTimeout(openVideo, 900);
-      setTimeout(() => e.target.classList.remove(styles.active), 1000);
+      setTimeout(() => e.target.classList.remove('active'), 1000);
     };
     new mapboxgl.Marker(marker).setLngLat([lon, lat]).addTo(map);
   };
@@ -64,7 +64,7 @@ const Map: React.SFC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
 
     // Add markers to map
     const el = document.createElement('div');
-    el.className = styles.selfMarker;
+    el.className = 'self-marker';
 
     new mapboxgl.Marker(el)
       .setLngLat([lon, lat])
@@ -110,10 +110,10 @@ const Map: React.SFC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
   });
 
   return (
-    <div className={styles.map}>
-      <div className={styles.inner}>
+    <div className="map">
+      <div className="inner">
         <Header />
-        <div ref={mapRef} className={styles.content}></div>
+        <div ref={mapRef} className="content"></div>
       </div>
     </div>
   );

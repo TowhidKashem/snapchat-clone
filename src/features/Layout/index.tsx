@@ -5,7 +5,7 @@ import Toolbar from './Toolbar';
 import Header from './Header';
 import Footer from './Footer';
 import Drawer from './Drawer';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   app: any;
@@ -25,7 +25,7 @@ const Layout: React.FC<Props> = ({ app, getUser, getUsers, children }) => {
     <>
       <Toolbar />
       <Header />
-      <section className={styles.view}>{children}</section>
+      <section className="view">{children}</section>
       <Drawer />
       <Footer />
     </>

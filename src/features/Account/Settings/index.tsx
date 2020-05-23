@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import Icon from 'common/Icon';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   hideDrawer: (component: string) => void;
@@ -10,7 +10,7 @@ interface Props {
 
 const Settings: React.SFC<Props> = ({ hideDrawer }) => {
   return (
-    <div className={styles.settings}>
+    <div className="settings">
       <Icon icon="faAngleLeft" size="2x" onClick={() => hideDrawer('settings')} />
       // Settings
     </div>

@@ -6,7 +6,7 @@ import Icon from 'common/Icon';
 import { escapeRegex } from 'utils';
 import Input from 'common/Input';
 import UserPod from 'common/Pod/User';
-import styles from './index.module.scss';
+import './index.scss';
 
 const Search = ({ app, users, hideDrawer }) => {
   const [query, setQuery] = useState<string>('');
@@ -18,7 +18,7 @@ const Search = ({ app, users, hideDrawer }) => {
   const results = filteredUsers.map((user) => <UserPod key={user.id} user={user} />);
 
   return (
-    <main className={styles.search}>
+    <main className="search">
       <Grid fluid>
         <Row middle="xs">
           <Col xs={10}>
@@ -33,7 +33,7 @@ const Search = ({ app, users, hideDrawer }) => {
           </Col>
         </Row>
       </Grid>
-      <section className={styles.results}>
+      <section className="results">
         {query.length ? (
           results.length ? (
             results

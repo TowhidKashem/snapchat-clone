@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   user: any;
@@ -14,7 +14,7 @@ const Header: React.SFC<Props> = ({ user, hideDrawer }) => {
   const { city, icon, temperature } = user.weather;
 
   return (
-    <header className={styles.header}>
+    <header className="header">
       <Grid fluid>
         <Row middle="xs">
           <Col xs={3}>
@@ -29,11 +29,11 @@ const Header: React.SFC<Props> = ({ user, hideDrawer }) => {
           <Col xs={6}>
             <Row bottom="xs">
               <Col xs={12}>
-                <article className={styles.weather}>
+                <article className="weather">
                   <h3>{city}</h3>
-                  <div className={styles.iconTemp}>
+                  <div className="icon-temp">
                     <img src={icon} width={30} alt="" />
-                    <span className={styles.temp}>{temperature}&deg;F</span>
+                    <span className="temp">{temperature}&deg;F</span>
                   </div>
                 </article>
               </Col>

@@ -12,7 +12,7 @@ import Snaps from 'features/Snaps';
 import Chat from 'features/Chat';
 import Discover from 'features/Discover';
 
-import styles from './index.module.scss';
+import './index.scss';
 
 // const Account = lazy(() => import('features/Account'));
 const Map = lazy(() => import('features/Map'));
@@ -59,8 +59,8 @@ const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
         }) => (
           <aside
             key={component}
-            className={classNames(styles.drawer, {
-              [styles.dark]: theme === 'dark'
+            className={classNames('drawer', {
+              dark: theme === 'dark'
             })}
           >
             <Animated
@@ -70,7 +70,7 @@ const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
               animationOutDuration={animationOutDuration}
               isVisible={show}
             >
-              <section className={styles.content}>
+              <section className="content">
                 <button onClick={() => hideDrawer(component)}>Close Drawer</button>
                 {componentMap[component]}
               </section>

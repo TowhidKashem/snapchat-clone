@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import YouTube from 'react-youtube';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   media: any;
@@ -19,7 +19,7 @@ const videoOptions: any = {
 };
 
 const Video: React.SFC<Props> = ({ media, hideDrawer }) => (
-  <main className={styles.video}>
+  <main className="video">
     <button onClick={() => hideDrawer('video')} style={{ color: '#fff' }}>
       Close
     </button>
@@ -31,7 +31,7 @@ const Video: React.SFC<Props> = ({ media, hideDrawer }) => (
     <YouTube
       videoId={media.video.videoId}
       opts={videoOptions}
-      className={styles.videoContainer}
+      className="video-container"
       onEnd={() => hideDrawer('video')}
     />
   </main>

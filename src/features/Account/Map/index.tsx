@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import mapboxgl from 'mapbox-gl';
 import { MAP_BOX_API_KEY } from 'config';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   // showModal: (component: string) => void;
@@ -30,7 +30,7 @@ const Map: React.SFC<Props> = ({ showDrawer }) => {
 
   return (
     <div
-      className={styles.map}
+      className="map"
       onClick={() =>
         showDrawer({
           component: 'map',

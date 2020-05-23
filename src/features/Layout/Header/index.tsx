@@ -4,14 +4,14 @@ import * as actions from 'redux/actions';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import Input from 'common/Input';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   showDrawer: any;
 }
 
 const Header: React.FC<Props> = ({ showDrawer }) => (
-  <header className={styles.header}>
+  <header className="header">
     <Grid fluid>
       <Row middle="xs">
         <Col xs={1}>

@@ -19,14 +19,14 @@
     text-align: center;
   }
 
-  .chatBtn {
+  .chat-btn {
     position: relative;
 
     svg {
       &:first-child {
         font-size: 21px;
       }
-      &.msgNotification {
+      &.msg-notification {
         color: $color-blue;
         font-size: 12px;
         position: absolute;
@@ -36,7 +36,7 @@
     }
   }
 
-  .archiveBtn {
+  .archive-btn {
     svg {
       &:first-child {
         transform: rotate(-5deg);
@@ -47,7 +47,7 @@
     }
   }
 
-  .discoverBtn {
+  .discover-btn {
     svg {
       //
     }

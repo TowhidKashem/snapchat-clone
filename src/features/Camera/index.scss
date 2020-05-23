@@ -9,6 +9,10 @@
 
   .video-stream {
     @extend %video-cover;
+
+    &.hide {
+      display: none;
+    }
   }
 
   .controls {
