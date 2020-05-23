@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { showDrawer, hideDrawer } from 'features/Layout/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';
@@ -8,7 +8,7 @@ import Icon from 'common/Icon';
 //import Map from './Map';
 import './index.scss';
 
-const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => {
+const Account: React.FC<any> = ({ app, showDrawer, hideDrawer }) => {
   const [mapComponent, setMapComponent] = useState<JSX.Element>();
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => {
             <Col>
               <Icon icon="faSnapchatSquare" size="7x" />
               <br />
-              {user.currentUser.username}
+              {app.currentUser.username}
             </Col>
           </Row>
         </Col>
@@ -89,11 +89,11 @@ const Account: React.SFC<any> = ({ user, showDrawer, hideDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ app, user }) => ({ app, user });
+const mapStateToProps = ({ app }) => ({ app });
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (drawer) => dispatch(actions.showDrawer(drawer)),
-  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
+  showDrawer: (drawer) => dispatch(showDrawer(drawer)),
+  hideDrawer: (component) => dispatch(hideDrawer(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);

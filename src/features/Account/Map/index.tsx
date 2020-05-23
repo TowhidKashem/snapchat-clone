@@ -1,9 +1,8 @@
 /* eslint-disable */
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { showDrawer } from 'features/Layout/duck';
 import mapboxgl from 'mapbox-gl';
-import { MAP_BOX_API_KEY } from 'config';
 import './index.scss';
 
 interface Props {
@@ -11,7 +10,9 @@ interface Props {
   showDrawer: any;
 }
 
-const Map: React.SFC<Props> = ({ showDrawer }) => {
+const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;
+
+const Map: React.FC<Props> = ({ showDrawer }) => {
   const lat = 40.76122;
   const lng = -73.92318;
 
@@ -49,7 +50,7 @@ const Map: React.SFC<Props> = ({ showDrawer }) => {
 const mapStateToProps = ({ app }) => ({ app });
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (drawer) => dispatch(actions.showDrawer(drawer))
+  showDrawer: (drawer) => dispatch(showDrawer(drawer))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

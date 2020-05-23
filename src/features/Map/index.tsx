@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { showDrawer } from 'features/Layout/duck';
+import { showVideo } from 'features/Video/duck';
+import { getWeather } from './duck';
 import mapboxgl from 'mapbox-gl';
-import { MAP_BOX_API_KEY } from 'config';
 import useGeo from 'hooks/useGeo';
 import Header from './Header';
 import './index.scss';
@@ -14,7 +15,9 @@ interface Props {
   showVideo: any;
 }
 
-const Map: React.SFC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
+const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;
+
+const Map: React.FC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
   const mapRef = useRef<any>();
 
   const openVideo = () => {
@@ -42,8 +45,8 @@ const Map: React.SFC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
     new mapboxgl.Marker(marker).setLngLat([lon, lat]).addTo(map);
   };
 
-  // // Weather
-  // getWeather(40.761219, -73.92318);
+  // Weather
+  getWeather(40.761219, -73.92318);
 
   useGeo((lat, lon) => {
     mapboxgl.accessToken = MAP_BOX_API_KEY;
@@ -122,9 +125,9 @@ const Map: React.SFC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
 const mapStateToProps = ({ user }) => ({ user });
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (drawer) => dispatch(actions.showDrawer(drawer)),
-  showVideo: (video) => dispatch(actions.showVideo(video)),
-  getWeather: (lat, lon) => dispatch(actions.getWeather(lat, lon))
+  showDrawer: (drawer) => dispatch(showDrawer(drawer)),
+  showVideo: (video) => dispatch(showVideo(video)),
+  getWeather: (lat, lon) => dispatch(getWeather(lat, lon))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);

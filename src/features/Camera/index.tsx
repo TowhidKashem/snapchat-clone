@@ -44,15 +44,17 @@ const Camera: React.FC<Props> = ({ drawers }) => {
     // startVideo();
   }, [drawers]);
 
-  const showFilter = () => setFilterReady(true);
+  const initFilter = (filter) => {
+    window.Filters[filter].init(() => setFilterReady(true));
+  };
 
   useEffect(() => {
     if (!filter) return;
     if (loadedFilters.includes(filter)) {
-      window.Filters[filter].init(showFilter);
+      initFilter(filter);
     } else {
       loadScripts(dependencies[filter], () => {
-        window.Filters[filter].init(showFilter);
+        initFilter(filter);
         setLoadedFilters([...loadedFilters, filter]);
       });
     }
@@ -96,7 +98,9 @@ const Camera: React.FC<Props> = ({ drawers }) => {
             icon="faTimesCircle"
             iconClass="close"
             onclick={() => {
-              window.JEEFACEFILTERAPI.destroy();
+              try {
+                window.JEEFACEFILTERAPI.destroy();
+              } catch (err) {}
               setShowFilters(false);
               setFilter(null);
               setFilterReady(false);

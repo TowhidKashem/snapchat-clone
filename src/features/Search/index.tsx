@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { hideDrawer } from 'features/Layout/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import { escapeRegex } from 'utils';
@@ -8,7 +8,7 @@ import Input from 'common/Input';
 import UserPod from 'common/Pod/User';
 import './index.scss';
 
-const Search = ({ app, users, hideDrawer }) => {
+const Search = ({ users, hideDrawer }) => {
   const [query, setQuery] = useState<string>('');
 
   const filteredUsers = query
@@ -51,13 +51,13 @@ const Search = ({ app, users, hideDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ app, user }) => ({
+const mapStateToProps = ({ app }) => ({
   app,
-  users: user.dummyUsers
+  users: app.dummyUsers
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
+  hideDrawer: (component) => dispatch(hideDrawer(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { hideDrawer } from 'features/Layout/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
-  user: any;
+  weather: any;
   hideDrawer: (component: string) => void;
 }
 
-const Header: React.SFC<Props> = ({ user, hideDrawer }) => {
-  const { city, icon, temperature } = user.weather;
+const Header: React.FC<Props> = ({ weather, hideDrawer }) => {
+  const { city, icon, temperature } = weather.weather;
 
   return (
     <header className="header">
@@ -52,10 +52,10 @@ const Header: React.SFC<Props> = ({ user, hideDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ weather }) => ({ weather });
 
 const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
+  hideDrawer: (component) => dispatch(hideDrawer(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

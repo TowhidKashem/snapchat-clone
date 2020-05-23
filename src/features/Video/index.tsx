@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { hideDrawer } from 'features/Layout/duck';
 import YouTube from 'react-youtube';
 import './index.scss';
 
@@ -18,7 +18,7 @@ const videoOptions: any = {
   }
 };
 
-const Video: React.SFC<Props> = ({ media, hideDrawer }) => (
+const Video: React.FC<Props> = ({ media, hideDrawer }) => (
   <main className="video">
     <button onClick={() => hideDrawer('video')} style={{ color: '#fff' }}>
       Close
@@ -40,7 +40,7 @@ const Video: React.SFC<Props> = ({ media, hideDrawer }) => (
 const mapStateToProps = ({ app, media }) => ({ app, media });
 
 const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
+  hideDrawer: (component) => dispatch(hideDrawer(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Video);

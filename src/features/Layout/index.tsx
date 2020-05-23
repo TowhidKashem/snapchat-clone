@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { getUser, getUsers } from './duck';
 import Toolbar from './Toolbar';
 import Header from './Header';
 import Footer from './Footer';
@@ -35,8 +35,8 @@ const Layout: React.FC<Props> = ({ app, getUser, getUsers, children }) => {
 const mapStateToProps = ({ app, session, users }) => ({ app, session, users });
 
 const mapDispatchToProps = (dispatch) => ({
-  getUser: () => dispatch(actions.getUser()),
-  getUsers: () => dispatch(actions.getUsers())
+  getUser: () => dispatch(getUser()),
+  getUsers: () => dispatch(getUsers())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);

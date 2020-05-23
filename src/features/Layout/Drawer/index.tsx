@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { hideDrawer } from 'features/Layout/duck';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
 import Account from 'features/Account';
@@ -24,7 +24,7 @@ interface Props {
   hideDrawer: (component: string) => void;
 }
 
-const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
+const Drawer: React.FC<Props> = ({ app, media, hideDrawer }) => {
   if (app.drawers.some(({ show }) => show)) {
     // //@ts-ignore
     // JEEFACEFILTERAPI.toggle_pause(true, true);
@@ -84,7 +84,7 @@ const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
 const mapStateToProps = ({ app, users, media }) => ({ app, users, media });
 
 const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
+  hideDrawer: (component) => dispatch(hideDrawer(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Drawer);

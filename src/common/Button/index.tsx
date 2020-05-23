@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Icon from 'common/Icon';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   icon?: any;
@@ -13,7 +13,7 @@ interface Props {
   onclick?: () => void;
 }
 
-const Button: React.SFC<Props> = ({
+const Button: React.FC<Props> = ({
   icon,
   icons,
   iconClass = '',
@@ -24,7 +24,7 @@ const Button: React.SFC<Props> = ({
 }) => (
   <button
     onClick={onclick}
-    className={classNames(styles.button, {
+    className={classNames('button', {
       [buttonClass]: buttonClass
     })}
   >

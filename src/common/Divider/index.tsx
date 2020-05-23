@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './index.module.scss';
+import './index.scss';
 
-const Divider: React.FC<{}> = () => <hr className={styles.divider} />;
+const Divider: React.FC<{}> = () => <hr className="divider" />;
 
 export default Divider;

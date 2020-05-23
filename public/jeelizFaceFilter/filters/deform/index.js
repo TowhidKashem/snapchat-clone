@@ -76,15 +76,15 @@ Filters.deform = {
     });
     Filters.deform.THREECAMERA = THREE.JeelizHelper.create_camera();
   },
-  init: () => {
+  init: (callback) => {
     JeelizResizer.size_canvas({
       canvasId: 'jeeFaceFilterCanvas',
       callback: (isError, bestVideoSettings) => {
-        Filters.deform.initFaceFilter(bestVideoSettings);
+        Filters.deform.initFaceFilter(bestVideoSettings, callback);
       }
     });
   },
-  initFaceFilter: (videoSettings) => {
+  initFaceFilter: (videoSettings, callback) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
       NNCpath: './jeelizFaceFilter/dist/',
@@ -92,6 +92,7 @@ Filters.deform = {
       callbackReady: function (errCode, spec) {
         if (errCode) return;
         Filters.deform.initThreeScene(spec);
+        if (callback) callback();
       },
       callbackTrack: function (detectState) {
         THREE.JeelizHelper.render(detectState, Filters.deform.THREECAMERA);

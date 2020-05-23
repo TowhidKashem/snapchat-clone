@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { showDrawer } from 'features/Layout/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import Input from 'common/Input';
@@ -39,7 +39,7 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (drawer) => dispatch(actions.showDrawer(drawer))
+  showDrawer: (drawer) => dispatch(showDrawer(drawer))
 });
 
 export default connect(null, mapDispatchToProps)(Header);

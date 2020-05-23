@@ -3,7 +3,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import { User as UserInterface } from 'types';
 import Avatar from 'common/Avatar';
 import Divider from 'common/Divider';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   user: UserInterface;
@@ -11,7 +11,7 @@ interface Props {
 
 const User: React.FC<Props> = ({ user: { username, fullName, avatar } }) => {
   return (
-    <article className={styles.pod}>
+    <article className="pod-user">
       <Grid fluid>
         <Row middle="xs">
           <Col xs={2}>

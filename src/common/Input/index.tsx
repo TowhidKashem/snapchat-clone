@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from 'common/Icon';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   placeholder: string;
@@ -20,8 +20,8 @@ const Input: React.FC<Props> = ({
   onChange
 }) => {
   return (
-    <div className={styles.input}>
-      {leftIcon && <Icon icon={leftIcon} className={styles.leftIcon} />}
+    <div className="input">
+      {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
         type="text"
         placeholder={placeholder}
@@ -29,7 +29,7 @@ const Input: React.FC<Props> = ({
         onChange={onChange}
       />
       {rightIcon && (
-        <Icon icon={rightIcon} className={styles.rightIcon} onClick={rightIconClick} />
+        <Icon icon={rightIcon} className="right-icon" onClick={rightIconClick} />
       )}
     </div>
   );

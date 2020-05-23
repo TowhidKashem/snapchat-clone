@@ -1,6 +1,8 @@
 
 loadable for all GET requests
 
+use map image for lazy loaded placeholder
+
 filters
 
 emmer.js

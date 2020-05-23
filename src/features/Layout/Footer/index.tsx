@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'redux/actions';
+import { showDrawer, hideDrawer } from 'features/Layout/duck';
 import { Drawer } from 'types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Button from 'common/Button';
@@ -10,7 +10,7 @@ interface Props {
   showDrawer: (component: Drawer) => void;
 }
 
-const Footer: React.SFC<Props> = ({ showDrawer }) => (
+const Footer: React.FC<Props> = ({ showDrawer }) => (
   <footer className="footer">
     <Grid fluid>
       <Row middle="xs" center="xs">
@@ -62,8 +62,8 @@ const Footer: React.SFC<Props> = ({ showDrawer }) => (
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (component) => dispatch(actions.showDrawer(component)),
-  hideDrawer: (component) => dispatch(actions.hideDrawer(component))
+  showDrawer: (component) => dispatch(showDrawer(component)),
+  hideDrawer: (component) => dispatch(hideDrawer(component))
 });
 
 export default connect(null, mapDispatchToProps)(Footer);

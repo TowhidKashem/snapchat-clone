@@ -73,7 +73,7 @@ interface Props {
   className?: string;
 }
 
-const Icon: React.SFC<Props> = ({ icon, size, onClick, className }) =>
+const Icon: React.FC<Props> = ({ icon, size, onClick, className }) =>
   icon ? (
     <FontAwesomeIcon
       icon={iconMap[icon]}

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './index.module.scss';
+import './index.scss';
 
 interface Props {
   header: string;
@@ -8,12 +8,12 @@ interface Props {
   children: any;
 }
 
-const Widget: React.SFC<Props> = ({ header, transparent, children }) => (
-  <section className={styles.widget}>
+const Widget: React.FC<Props> = ({ header, transparent, children }) => (
+  <section className="widget">
     <header>{header}</header>
     <div
-      className={classNames(styles.content, {
-        [styles.transparent]: transparent
+      className={classNames('inner-content', {
+        transparent
       })}
     >
       {children}

@@ -9,7 +9,7 @@ interface Props {
   drawers: any;
 }
 
-const Toolbar: React.SFC<Props> = ({ drawers }) => {
+const Toolbar: React.FC<Props> = ({ drawers }) => {
   const { useState, useEffect } = React;
   const [time, setTime] = useState<string>('');
 

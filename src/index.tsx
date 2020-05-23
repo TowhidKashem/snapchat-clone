@@ -13,9 +13,12 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import app from 'redux/reducers/app';
-import user from 'redux/reducers/user';
-import media from 'redux/reducers/media';
+// import app from 'redux/reducers/app';
+// import user from 'redux/reducers/user';
+// import media from 'redux/reducers/media';
+import app from 'features/Layout/duck';
+import weather from 'features/Map/duck';
+import media from 'features/Video/duck';
 
 import 'normalize.css';
 import 'animate.css';
@@ -27,7 +30,7 @@ declare global {
   }
 }
 
-const rootReducer = combineReducers({ app, user, media });
+const rootReducer = combineReducers({ app, weather, media });
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'
@@ -52,8 +55,3 @@ const App = () => (
 );
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-// serviceWorker.unregister();

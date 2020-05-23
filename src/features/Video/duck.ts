@@ -1,5 +1,12 @@
-import { SET_VIDEO } from 'redux/actions/actionTypes';
+// Action types
+export const SET_VIDEO = 'SET_VIDEO';
 
+// Action creators
+export const showVideo = (video) => async (dispatch) => {
+  dispatch({ type: SET_VIDEO, video });
+};
+
+// Reducer
 const initialState = {
   video: null
 };
@@ -9,13 +16,11 @@ const setVideo = (prevState, action) => ({
   video: action.video
 });
 
-const reducer = (prevState = initialState, action) => {
+export default function reducer(prevState = initialState, action) {
   switch (action.type) {
     case SET_VIDEO:
       return setVideo(prevState, action);
     default:
       return prevState;
   }
-};
-
-export default reducer;
+}
