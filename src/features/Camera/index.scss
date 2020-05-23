@@ -7,12 +7,8 @@
   height: 100vh;
   overflow: hidden;
 
-  .videoStream {
+  .video-stream {
     @extend %video-cover;
-
-    &.hide {
-      display: none;
-    }
   }
 
   .controls {
@@ -27,14 +23,14 @@
       color: $color-white;
     }
 
-    .btnCapture,
-    .btnFilters {
+    .btn-capture,
+    .btn-filters {
       position: absolute;
       top: 50%;
       left: 50%;
     }
 
-    .btnCapture {
+    .btn-capture {
       margin: -35px 0 0 -35px;
 
       svg {
@@ -42,7 +38,7 @@
       }
     }
 
-    .btnFilters {
+    .btn-filters {
       font-size: 25px;
       margin: -12.5px 0 0 50px;
     }

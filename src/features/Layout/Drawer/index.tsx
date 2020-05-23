@@ -1,20 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import Icon from 'common/Icon';
-
 import Account from 'features/Account';
 import Settings from 'features/Account/Settings';
 import Search from 'features/Search';
-import Map from 'features/Map';
+// import Map from 'features/Map';
 import Video from 'features/Video';
 import Snaps from 'features/Snaps';
 import Chat from 'features/Chat';
 import Discover from 'features/Discover';
 
 import styles from './index.module.scss';
+
+// const Account = lazy(() => import('features/Account'));
+const Map = lazy(() => import('features/Map'));
+// const Discover = lazy(() => import('features/Discover'));
 
 interface Props {
   app: any;
@@ -32,7 +34,12 @@ const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
     account: <Account />,
     settings: <Settings />,
     search: <Search />,
-    map: <Map />,
+    map: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <Map />
+      </Suspense>
+    ),
+    // map: <Map />,
     video: <Video />,
     snaps: <Snaps />,
     chat: <Chat />,
@@ -40,27 +47,37 @@ const Drawer: React.SFC<Props> = ({ app, media, hideDrawer }) => {
   };
 
   return app.drawers
-    ? app.drawers.map(({ component, animationIn, animationOut, show, theme }) => (
-        <aside
-          key={component}
-          className={classNames(styles.drawer, {
-            [styles.dark]: theme === 'dark'
-          })}
-        >
-          <Animated
-            animationIn={animationIn}
-            animationOut={animationOut}
-            animationInDuration={300}
-            animationOutDuration={300}
-            isVisible={show}
+    ? app.drawers.map(
+        ({
+          component,
+          animationIn,
+          animationOut,
+          animationInDuration,
+          animationOutDuration,
+          show,
+          theme
+        }) => (
+          <aside
+            key={component}
+            className={classNames(styles.drawer, {
+              [styles.dark]: theme === 'dark'
+            })}
           >
-            <section className={styles.content}>
-              <button onClick={() => hideDrawer(component)}>Close Drawer</button>
-              {componentMap[component]}
-            </section>
-          </Animated>
-        </aside>
-      ))
+            <Animated
+              animationIn={animationIn}
+              animationOut={animationOut}
+              animationInDuration={animationInDuration}
+              animationOutDuration={animationOutDuration}
+              isVisible={show}
+            >
+              <section className={styles.content}>
+                <button onClick={() => hideDrawer(component)}>Close Drawer</button>
+                {componentMap[component]}
+              </section>
+            </Animated>
+          </aside>
+        )
+      )
     : null;
 };
 

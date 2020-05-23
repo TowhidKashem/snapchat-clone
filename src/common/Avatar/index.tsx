@@ -5,6 +5,8 @@ interface Props {
   src: string;
 }
 
-const Avatar: React.FC<Props> = ({ src }) => <img src={src} className={styles.avatar} />;
+const Avatar: React.FC<Props> = ({ src }) => (
+  <img src={src} className={styles.avatar} alt="" />
+);
 
 export default Avatar;

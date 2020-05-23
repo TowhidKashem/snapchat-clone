@@ -32,7 +32,7 @@ const Header: React.SFC<Props> = ({ user, hideDrawer }) => {
                 <article className={styles.weather}>
                   <h3>{city}</h3>
                   <div className={styles.iconTemp}>
-                    <img src={icon} width={30} />
+                    <img src={icon} width={30} alt="" />
                     <span className={styles.temp}>{temperature}&deg;F</span>
                   </div>
                 </article>

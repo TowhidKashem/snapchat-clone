@@ -15,7 +15,6 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "animate.css": "^3.7.2",
     "classnames": "^2.2.6",
-    "clmtrackr": "^1.1.2",
     "mapbox-gl": "^1.10.0",
     "normalize.css": "^8.0.1",
     "qs": "^6.9.4",
@@ -28,6 +27,7 @@
     "react-scripts": "3.4.1",
     "react-youtube": "^7.11.2",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {

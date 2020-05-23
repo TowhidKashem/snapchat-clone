@@ -9,7 +9,17 @@ const initialState = {
   ]
 };
 
-const setShowDrawer = (prevState, { component, animationIn, animationOut, theme }) => {
+const setShowDrawer = (
+  prevState,
+  {
+    component,
+    animationIn,
+    animationOut,
+    animationInDuration,
+    animationOutDuration,
+    theme
+  }
+) => {
   let found = false;
   const drawers = prevState.drawers.map((drawer) => {
     if (drawer.component === component) {
@@ -23,6 +33,8 @@ const setShowDrawer = (prevState, { component, animationIn, animationOut, theme 
       component,
       animationIn,
       animationOut,
+      animationInDuration,
+      animationOutDuration,
       theme,
       show: true
     });

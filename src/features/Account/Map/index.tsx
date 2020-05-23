@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'redux/actions';
@@ -19,14 +20,12 @@ const Map: React.SFC<Props> = ({ showDrawer }) => {
   const mapRef = useRef<any>();
 
   useEffect(() => {
-    setTimeout(() => {
-      new mapboxgl.Map({
-        container: mapRef.current,
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [lng, lat],
-        zoom: 12
-      });
-    }, 500);
+    new mapboxgl.Map({
+      container: mapRef.current,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [lng, lat],
+      zoom: 12
+    });
   }, []);
 
   return (
@@ -36,7 +35,9 @@ const Map: React.SFC<Props> = ({ showDrawer }) => {
         showDrawer({
           component: 'map',
           animationIn: 'fadeIn',
-          animationOut: 'fadeOut'
+          animationOut: 'fadeOut',
+          animationInDuration: 0,
+          animationOutDuration: 0
         })
       }
     >

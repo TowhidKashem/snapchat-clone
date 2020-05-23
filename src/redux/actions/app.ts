@@ -6,6 +6,8 @@ export const showDrawer = (drawer: Drawer) => (dispatch) => {
     component,
     animationIn = 'slideInUp',
     animationOut = 'slideOutDown',
+    animationInDuration = 300,
+    animationOutDuration = 300,
     theme = 'light'
   } = drawer;
   dispatch({
@@ -13,6 +15,8 @@ export const showDrawer = (drawer: Drawer) => (dispatch) => {
     component,
     animationIn,
     animationOut,
+    animationInDuration,
+    animationOutDuration,
     theme
   });
 };

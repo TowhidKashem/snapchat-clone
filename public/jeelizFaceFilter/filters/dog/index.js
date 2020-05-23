@@ -64,18 +64,18 @@ Filters.dog = {
       const ctx = canvasOpacity.getContext('2d');
       ctx.globalAlpha = 0.2;
       ctx.drawImage(canvas, 0, 0, 512, 512);
-      const calqueMesh = new THREE.Mesh(
-        THREESTUFF.videoMesh.geometry,
-        Filters.dog.createMat2d(
-          new THREE.TextureLoader().load(canvasOpacity.toDataURL('image/png')),
-          true
-        )
-      );
-      calqueMesh.material.opacity = 0.2;
-      calqueMesh.material.transparent = true;
-      calqueMesh.renderOrder = 999;
-      calqueMesh.frustumCulled = false;
-      Filters.dog.FRAMEOBJ3D.add(calqueMesh);
+      // const calqueMesh = new THREE.Mesh(
+      //   THREESTUFF.videoMesh.geometry,
+      //   Filters.dog.createMat2d(
+      //     new THREE.TextureLoader().load(canvasOpacity.toDataURL('image/png')),
+      //     true
+      //   )
+      // );
+      // calqueMesh.material.opacity = 0.2;
+      // calqueMesh.material.transparent = true;
+      // calqueMesh.renderOrder = 999;
+      // calqueMesh.frustumCulled = false;
+      // Filters.dog.FRAMEOBJ3D.add(calqueMesh);
     };
   },
   initThreeScene: (spec) => {
@@ -227,17 +227,17 @@ Filters.dog = {
         .start();
     }
   },
-  init: () => {
+  init: (callback) => {
     Filters.dog.DOGOBJ3D = new THREE.Object3D();
     Filters.dog.FRAMEOBJ3D = new THREE.Object3D();
     JeelizResizer.size_canvas({
       canvasId: 'jeeFaceFilterCanvas',
       callback: function (isError, bestVideoSettings) {
-        Filters.dog.initFaceFilter(bestVideoSettings);
+        Filters.dog.initFaceFilter(bestVideoSettings, callback);
       }
     });
   },
-  initFaceFilter: (videoSettings) => {
+  initFaceFilter: (videoSettings, callback) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
       NNCpath: './jeelizFaceFilter/dist/',
@@ -245,6 +245,7 @@ Filters.dog = {
       callbackReady: function (errCode, spec) {
         if (errCode) return;
         Filters.dog.initThreeScene(spec);
+        if (callback) callback();
       },
       callbackTrack: function (detectState) {
         Filters.dog.ISDETECTED = THREE.JeelizHelper.get_isDetected();
