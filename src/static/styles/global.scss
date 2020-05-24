@@ -25,7 +25,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: #333;
+  background-color: #222222;
   position: relative;
 }
 
@@ -52,6 +52,7 @@ a {
 //   border: 1px solid green;
 // }
 
+// .col-xs-1,
 // .col-xs-4,
 // .col-xs-6,
 // .col-xs-12,
@@ -70,7 +71,8 @@ a {
 
 .wrapper {
   position: relative;
-  border: 1px solid #666;
+  // border: 1px solid #666;
+  background-color: #333;
   width: $app-width;
   height: 100vh;
   margin: 0 auto;

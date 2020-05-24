@@ -3,8 +3,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
+import { Drawer } from 'AppShell/Drawer/types';
 import Button from 'common/Button';
-// import useVideo from 'hooks/useVideo';
+// import useCamera from 'hooks/useCamera';
 import { loadScripts, showVideo } from 'utils';
 import { dependencies, filterButtons } from './data';
 import './index.scss';
@@ -12,7 +13,7 @@ import './index.scss';
 type Filter = 'dog' | 'bees' | 'halloween' | 'deform';
 
 interface Props {
-  drawers: any;
+  drawers: Drawer[];
 }
 
 declare global {
@@ -33,7 +34,7 @@ const Camera: React.FC<Props> = ({ drawers }) => {
   const [videoStream, setVideoStream] = useState<any>();
 
   useEffect(() => {
-    startVideo();
+    // startVideo();
   }, []);
 
   // Start/stop video when drawer is opened and closed

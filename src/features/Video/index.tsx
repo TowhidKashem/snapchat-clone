@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { HideDrawer } from 'AppShell/Drawer/types';
 import { hideDrawer } from 'AppShell/duck';
-import YouTube from 'react-youtube';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
@@ -11,34 +12,35 @@ interface Props {
   hideDrawer: HideDrawer;
 }
 
-const videoOptions: any = {
-  playerVars: {
-    autoplay: 1,
-    modestbranding: 1,
-    controls: 0
-  }
+const Video: React.FC<Props> = ({ media, hideDrawer }) => {
+  return (
+    <main className="video">
+      {/* <button onClick={() => hideDrawer('video')} style={{ color: '#fff' }}>
+      Close
+    </button> */}
+      <header>
+        <Grid fluid>
+          <Row middle="xs">
+            <Col xs={11}>
+              {media.video.location}
+              <time>{media.video.time}</time>
+            </Col>
+            <Col xs={1}>
+              <Icon icon="faEllipsisV" />
+            </Col>
+          </Row>
+        </Grid>
+      </header>
+      <div className="video-container">
+        <video autoPlay onEnded={() => hideDrawer('video')}>
+          <source src="./sample-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </main>
+  );
 };
 
-const Video: React.FC<Props> = ({ media, hideDrawer }) => (
-  <main className="video">
-    <button onClick={() => hideDrawer('video')} style={{ color: '#fff' }}>
-      Close
-    </button>
-
-    <header>
-      {media.video.location}
-      <time>{media.video.time}</time>
-    </header>
-    <YouTube
-      videoId={media.video.videoId}
-      opts={videoOptions}
-      className="video-container"
-      onEnd={() => hideDrawer('video')}
-    />
-  </main>
-);
-
-const mapStateToProps = ({ app, media }) => ({ app, media });
+const mapStateToProps = ({ media }) => ({ media });
 
 const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component) => dispatch(hideDrawer(component))

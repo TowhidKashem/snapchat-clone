@@ -67,7 +67,12 @@ const _parseUsers = (users): User[] =>
 const initialState = {
   drawers: [
     // {
-    //   component: 'map',
+    //   animationIn: 'zoomIn',
+    //   animationOut: 'zoomOut',
+    //   animationInDuration: 300,
+    //   animationOutDuration: 300,
+    //   theme: 'dark',
+    //   component: 'video',
     //   show: true
     // }
   ],
@@ -79,23 +84,14 @@ const setShowDrawer = (prevState, drawer) => {
   const withoutCurrentDrawer = prevState.drawers.filter(
     ({ component }) => component !== drawer.component
   );
-  const drawers = [
-    ...withoutCurrentDrawer,
-    {
-      ...drawer,
-      show: true
-    }
-  ];
+  const drawers = [...withoutCurrentDrawer, { ...drawer, show: true }];
   return { ...prevState, drawers };
 };
 
 const setHideDrawer = (prevState, component) => {
-  const drawers = prevState.drawers.map((drawer) => {
-    if (drawer.component === component) {
-      return { ...drawer, show: false };
-    }
-    return drawer;
-  });
+  const drawers = prevState.drawers.map((drawer) =>
+    drawer.component === component ? { ...drawer, show: false } : drawer
+  );
   return { ...prevState, drawers };
 };
 

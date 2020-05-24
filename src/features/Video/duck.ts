@@ -8,7 +8,10 @@ export const showVideo = (video) => async (dispatch) => {
 
 // Reducer
 const initialState = {
-  video: null
+  video: {
+    // location: 'The quick brown fox',
+    // time: '3 hours ago'
+  }
 };
 
 export default function reducer(prevState = initialState, { type, video }) {

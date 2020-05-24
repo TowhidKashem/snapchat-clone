@@ -5,6 +5,7 @@ export interface Drawer {
   animationInDuration?: number;
   animationOutDuration?: number;
   theme?: 'light' | 'dark';
+  show?: boolean;
 }
 
 export type ShowDrawer = (drawer: Drawer) => void;

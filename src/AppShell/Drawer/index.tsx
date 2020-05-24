@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { HideDrawer } from 'AppShell/Drawer/types';
+import { Drawer as DrawerType, HideDrawer } from 'AppShell/Drawer/types';
 import Account from 'features/Account';
 import Settings from 'features/Settings';
 import Search from 'features/Search';
@@ -18,6 +18,7 @@ const Map = lazy(() => import('features/Map'));
 // const Discover = lazy(() => import('features/Discover'));
 
 interface Props {
+  // drawers: DrawerType[];
   drawers: any;
   hideDrawer: HideDrawer;
 }
@@ -68,7 +69,7 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
           isVisible={show}
         >
           <section className="content">
-            <button onClick={() => hideDrawer(component)}>Close Drawer</button>
+            {/* <button onClick={() => hideDrawer(component)}>Close Drawer</button> */}
             {componentMap[component]}
           </section>
         </Animated>

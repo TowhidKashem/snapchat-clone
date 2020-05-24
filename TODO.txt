@@ -3,6 +3,8 @@ loadable for all GET requests
 
 use map image for lazy loaded placeholder
 
+add git repo link!
+
 filters
 
 emmer.js
