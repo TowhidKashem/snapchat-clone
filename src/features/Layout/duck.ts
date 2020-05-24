@@ -10,22 +10,16 @@ const GET_USERS = 'GET_USERS';
 
 // Action creators
 export const showDrawer = (drawer: Drawer) => (dispatch) => {
-  const {
-    component,
-    animationIn = 'slideInUp',
-    animationOut = 'slideOutDown',
-    animationInDuration = 300,
-    animationOutDuration = 300,
-    theme = 'light'
-  } = drawer;
+  const defaults = {
+    animationIn: 'slideInUp',
+    animationOut: 'slideOutDown',
+    animationInDuration: 300,
+    animationOutDuration: 300,
+    theme: 'light'
+  };
   dispatch({
     type: SHOW_DRAWER,
-    component,
-    animationIn,
-    animationOut,
-    animationInDuration,
-    animationOutDuration,
-    theme
+    drawer: { ...defaults, ...drawer }
   });
 };
 
@@ -81,35 +75,17 @@ const initialState = {
   dummyUsers: []
 };
 
-const setShowDrawer = (
-  prevState,
-  {
-    component,
-    animationIn,
-    animationOut,
-    animationInDuration,
-    animationOutDuration,
-    theme
-  }
-) => {
-  let found = false;
-  const drawers = prevState.drawers.map((drawer) => {
-    if (drawer.component === component) {
-      found = true;
-      return { ...drawer, show: true };
-    }
-    return drawer;
-  });
-  if (!found)
-    drawers.push({
-      component,
-      animationIn,
-      animationOut,
-      animationInDuration,
-      animationOutDuration,
-      theme,
+const setShowDrawer = (prevState, action) => {
+  const withoutCurrentDrawer = prevState.drawers.filter(
+    ({ component }) => component !== action.drawer.component
+  );
+  const drawers = [
+    ...withoutCurrentDrawer,
+    {
+      ...action.drawer,
       show: true
-    });
+    }
+  ];
   return { ...prevState, drawers };
 };
 
