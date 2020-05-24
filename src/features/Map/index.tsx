@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import { ShowDrawer, HideDrawer } from 'app/Drawer/types';
-import { showDrawer, hideDrawer } from 'app/duck';
+import { ShowDrawer, HideDrawer } from 'AppShell/Drawer/types';
+import { showDrawer, hideDrawer } from 'AppShell/duck';
 import { showVideo } from 'features/Video/duck';
 import { getWeather } from './duck';
 import { snapCoordinates } from './data';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import { ShowDrawer, HideDrawer } from 'app/Drawer/types';
-import { showDrawer, hideDrawer } from 'app/duck';
+import { ShowDrawer, HideDrawer } from 'AppShell/Drawer/types';
+import { showDrawer, hideDrawer } from 'AppShell/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';

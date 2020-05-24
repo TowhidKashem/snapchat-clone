@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { HideDrawer } from 'app/Drawer/types';
+import { HideDrawer } from 'AppShell/Drawer/types';
 import Account from 'features/Account';
 import Settings from 'features/Settings';
 import Search from 'features/Search';

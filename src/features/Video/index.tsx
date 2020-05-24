@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HideDrawer } from 'app/Drawer/types';
-import { hideDrawer } from 'app/duck';
+import { HideDrawer } from 'AppShell/Drawer/types';
+import { hideDrawer } from 'AppShell/duck';
 import YouTube from 'react-youtube';
 import './index.scss';
 
