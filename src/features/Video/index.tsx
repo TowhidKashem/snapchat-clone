@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hideDrawer } from 'common/Layout/duck';
+import { HideDrawer } from 'app/Drawer/types';
+import { hideDrawer } from 'app/duck';
 import YouTube from 'react-youtube';
 import './index.scss';
 
 interface Props {
   media: any;
   videoId: string;
-  hideDrawer: (component: string) => void;
+  hideDrawer: HideDrawer;
 }
 
 const videoOptions: any = {

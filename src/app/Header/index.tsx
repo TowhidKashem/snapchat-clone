@@ -1,11 +1,12 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import { ShowDrawer } from 'app/Drawer/types';
 import Icon from 'common/Icon';
 import Input from 'common/Input';
 import './index.scss';
 
 interface Props {
-  showDrawer: any;
+  showDrawer: ShowDrawer;
 }
 
 const Header: React.FC<Props> = ({ showDrawer }) => (

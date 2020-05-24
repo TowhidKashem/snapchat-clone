@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import { showDrawer, hideDrawer } from 'common/Layout/duck';
+import { ShowDrawer, HideDrawer } from 'app/Drawer/types';
+import { showDrawer, hideDrawer } from 'app/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';
@@ -8,7 +9,13 @@ import Icon from 'common/Icon';
 //import Map from './Map';
 import './index.scss';
 
-const Account: React.FC<any> = ({ app, showDrawer, hideDrawer }) => {
+interface Props {
+  showDrawer: ShowDrawer;
+  hideDrawer: HideDrawer;
+  currentUser: any;
+}
+
+const Account: React.FC<Props> = ({ showDrawer, hideDrawer, currentUser }) => {
   const [mapComponent, setMapComponent] = useState<JSX.Element>();
 
   useEffect(() => {
@@ -52,7 +59,7 @@ const Account: React.FC<any> = ({ app, showDrawer, hideDrawer }) => {
             <Col>
               <Icon icon="faSnapchatSquare" size="7x" />
               <br />
-              {app.currentUser.username}
+              {currentUser.username}
             </Col>
           </Row>
         </Col>
@@ -89,7 +96,9 @@ const Account: React.FC<any> = ({ app, showDrawer, hideDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ app }) => ({ app });
+const mapStateToProps = ({ app }) => ({
+  currentUser: app.currentUser
+});
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),

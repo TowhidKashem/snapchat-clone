@@ -245,7 +245,7 @@ Filters.dog = {
       callbackReady: function (errCode, spec) {
         if (errCode) return;
         Filters.dog.initThreeScene(spec);
-        if (callback) callback();
+        if (callback) setTimeout(callback, 100);
       },
       callbackTrack: function (detectState) {
         Filters.dog.ISDETECTED = THREE.JeelizHelper.get_isDetected();

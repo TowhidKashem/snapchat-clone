@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hideDrawer } from 'common/Layout/duck';
+import { HideDrawer } from 'app/Drawer/types';
+import { hideDrawer } from 'app/duck';
 import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
-  hideDrawer: (component: string) => void;
+  hideDrawer: HideDrawer;
 }
 
 const Settings: React.FC<Props> = ({ hideDrawer }) => {

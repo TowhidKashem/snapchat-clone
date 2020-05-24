@@ -1,4 +1,5 @@
-import { Drawer, User } from 'types';
+import { User } from 'types';
+import { Drawer } from './Drawer/types';
 import { api } from 'utils';
 
 // Action types

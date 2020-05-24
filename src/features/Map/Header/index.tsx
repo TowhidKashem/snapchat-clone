@@ -1,18 +1,19 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import { HideDrawer } from 'app/Drawer/types';
 import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
   weather: any;
-  hideDrawer: any;
+  hideDrawer: HideDrawer;
 }
 
 const Header: React.FC<Props> = ({ weather, hideDrawer }) => {
   const { city, icon, temperature } = weather;
 
   return (
-    <header className="header">
+    <header className="weather-info">
       <Grid fluid>
         <Row middle="xs">
           <Col xs={3}>

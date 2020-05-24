@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Layout from './common/Layout';
+import AppShell from './app';
 import Camera from './features/Camera';
 import NotFound from './features/404';
 
@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import app from 'common/Layout/duck';
+import app from 'app/duck';
 import weather from 'features/Map/duck';
 import media from 'features/Video/duck';
 
@@ -34,12 +34,12 @@ const App = () => (
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        <Layout>
+        <AppShell>
           <Switch>
             <Route path="/" exact component={Camera} />
             <Route component={NotFound} />
           </Switch>
-        </Layout>
+        </AppShell>
       </Router>
     </Provider>
   </React.StrictMode>

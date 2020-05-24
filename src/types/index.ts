@@ -12,12 +12,3 @@ export interface User {
   age: number;
   fullName: string;
 }
-
-export interface Drawer {
-  component: string;
-  animationIn?: string;
-  animationOut?: string;
-  animationInDuration?: number;
-  animationOutDuration?: number;
-  theme?: 'light' | 'dark';
-}

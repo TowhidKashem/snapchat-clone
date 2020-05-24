@@ -1,10 +1,11 @@
 /* eslint-disable */
 import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
+import { ShowDrawer } from 'app/Drawer/types';
 import './index.scss';
 
 interface Props {
-  showDrawer: any;
+  showDrawer: ShowDrawer;
 }
 
 const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;

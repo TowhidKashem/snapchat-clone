@@ -92,7 +92,7 @@ Filters.deform = {
       callbackReady: function (errCode, spec) {
         if (errCode) return;
         Filters.deform.initThreeScene(spec);
-        if (callback) callback();
+        if (callback) setTimeout(callback, 100);
       },
       callbackTrack: function (detectState) {
         THREE.JeelizHelper.render(detectState, Filters.deform.THREECAMERA);

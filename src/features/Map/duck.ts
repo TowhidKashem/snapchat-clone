@@ -29,11 +29,7 @@ const _parseWeather = ({ current, location }): Weather => ({
 });
 
 // Reducer
-const initialState = {
-  weather: {}
-};
-
-export default function reducer(prevState = initialState, { type, weather }) {
+export default function reducer(prevState = {}, { type, weather }) {
   switch (type) {
     case GET_WEATHER:
       return { ...prevState, weather };

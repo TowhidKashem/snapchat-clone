@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { ShowDrawer, HideDrawer } from 'app/Drawer/types';
 import { showDrawer, hideDrawer, getUser, getUsers } from './duck';
 import Toolbar from './Toolbar';
 import Header from './Header';
@@ -10,8 +11,8 @@ import './index.scss';
 interface Props {
   getUser: () => void;
   getUsers: () => void;
-  showDrawer: any;
-  hideDrawer: any;
+  showDrawer: ShowDrawer;
+  hideDrawer: HideDrawer;
   children: JSX.Element;
   drawers: any;
 }

@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
+import { HideDrawer } from 'app/Drawer/types';
 import Account from 'features/Account';
 import Settings from 'features/Settings';
 import Search from 'features/Search';
@@ -18,7 +19,7 @@ const Map = lazy(() => import('features/Map'));
 
 interface Props {
   drawers: any;
-  hideDrawer: any;
+  hideDrawer: HideDrawer;
 }
 
 const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {

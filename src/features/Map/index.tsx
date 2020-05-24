@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import { showDrawer, hideDrawer } from 'common/Layout/duck';
+import { ShowDrawer, HideDrawer } from 'app/Drawer/types';
+import { showDrawer, hideDrawer } from 'app/duck';
 import { showVideo } from 'features/Video/duck';
 import { getWeather } from './duck';
+import { snapCoordinates } from './data';
 import mapboxgl from 'mapbox-gl';
 import useGeo from 'hooks/useGeo';
 import Header from './Header';
@@ -11,8 +13,8 @@ import './index.scss';
 interface Props {
   weather: any;
   getWeather: any;
-  showDrawer: any;
-  hideDrawer: any;
+  showDrawer: ShowDrawer;
+  hideDrawer: HideDrawer;
   showVideo: any;
 }
 
@@ -52,8 +54,8 @@ const Map: React.FC<Props> = ({
     new mapboxgl.Marker(marker).setLngLat([lon, lat]).addTo(map);
   };
 
-  // Weather
-  getWeather(40.761219, -73.92318);
+  // // Weather
+  // getWeather(40.761219, -73.92318);
 
   useGeo((lat, lon) => {
     mapboxgl.accessToken = MAP_BOX_API_KEY;
@@ -86,37 +88,10 @@ const Map: React.FC<Props> = ({
       .addTo(map);
 
     // Show some dummy snaps nearby
-    const snapCoordinates = [
-      {
-        lat: lat - 0.005,
-        lon: lon + 0.005
-      },
-      {
-        lat: lat - 0.003,
-        lon: lon - 0.005
-      },
-      {
-        lat: lat - 0.01,
-        lon: lon - 0.002
-      },
-      {
-        lat: lat + 0.007,
-        lon: lon + 0.005
-      },
-      {
-        lat: lat + 0.003,
-        lon: lon - 0.0
-      },
-      {
-        lat: lat + 0.007,
-        lon: lon - 0.007
-      }
-    ];
+    snapCoordinates(lat, lon).forEach(({ lat, lon }) => setMarker(lat, lon, map));
 
-    snapCoordinates.forEach(({ lat, lon }) => setMarker(lat, lon, map));
-
-    // Weather
-    getWeather(lat, lon);
+    // // Weather
+    // getWeather(lat, lon);
   });
 
   return (
@@ -129,7 +104,7 @@ const Map: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({ weather }) => ({ weather: weather.weather });
+const mapStateToProps = ({ weather }) => ({ weather });
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),
