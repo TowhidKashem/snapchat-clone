@@ -1,13 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { showDrawer, hideDrawer } from 'features/Layout/duck';
-import { Drawer } from 'types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
-  showDrawer: (component: Drawer) => void;
+  showDrawer: any;
+  hideDrawer: any;
 }
 
 const Footer: React.FC<Props> = ({ showDrawer }) => (
@@ -61,9 +59,4 @@ const Footer: React.FC<Props> = ({ showDrawer }) => (
   </footer>
 );
 
-const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (component) => dispatch(showDrawer(component)),
-  hideDrawer: (component) => dispatch(hideDrawer(component))
-});
-
-export default connect(null, mapDispatchToProps)(Footer);
+export default Footer;

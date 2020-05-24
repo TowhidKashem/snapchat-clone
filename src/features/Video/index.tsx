@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hideDrawer } from 'features/Layout/duck';
+import { hideDrawer } from 'common/Layout/duck';
 import YouTube from 'react-youtube';
 import './index.scss';
 

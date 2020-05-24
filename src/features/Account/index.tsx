@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import { showDrawer, hideDrawer } from 'features/Layout/duck';
+import { showDrawer, hideDrawer } from 'common/Layout/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';
@@ -16,7 +16,7 @@ const Account: React.FC<any> = ({ app, showDrawer, hideDrawer }) => {
       const Map = await lazy(() => import('./Map'));
       setMapComponent(
         <Suspense fallback={<div>Loading...</div>}>
-          <Map />
+          <Map showDrawer={showDrawer} />
         </Suspense>
       );
     }, 300);

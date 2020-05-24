@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
@@ -56,6 +55,4 @@ const Toolbar: React.FC<Props> = ({ drawers }) => {
   );
 };
 
-const mapStateToProps = ({ app }) => ({ drawers: app.drawers });
-
-export default connect(mapStateToProps)(Toolbar);
+export default Toolbar;

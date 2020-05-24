@@ -4,7 +4,6 @@ import { api } from 'utils';
 // Action types
 const SHOW_DRAWER = 'SHOW_DRAWER';
 const HIDE_DRAWER = 'HIDE_DRAWER';
-
 const GET_USER = 'GET_USER';
 const GET_USERS = 'GET_USERS';
 
@@ -75,23 +74,23 @@ const initialState = {
   dummyUsers: []
 };
 
-const setShowDrawer = (prevState, action) => {
+const setShowDrawer = (prevState, drawer) => {
   const withoutCurrentDrawer = prevState.drawers.filter(
-    ({ component }) => component !== action.drawer.component
+    ({ component }) => component !== drawer.component
   );
   const drawers = [
     ...withoutCurrentDrawer,
     {
-      ...action.drawer,
+      ...drawer,
       show: true
     }
   ];
   return { ...prevState, drawers };
 };
 
-const setHideDrawer = (prevState, action) => {
+const setHideDrawer = (prevState, component) => {
   const drawers = prevState.drawers.map((drawer) => {
-    if (drawer.component === action.component) {
+    if (drawer.component === component) {
       return { ...drawer, show: false };
     }
     return drawer;
@@ -99,26 +98,19 @@ const setHideDrawer = (prevState, action) => {
   return { ...prevState, drawers };
 };
 
-const setUser = (prevState, action) => ({
-  ...prevState,
-  currentUser: action.user
-});
-
-const setUsers = (prevState, action) => ({
-  ...prevState,
-  dummyUsers: action.users
-});
-
-export default function reducer(prevState = initialState, action) {
-  switch (action.type) {
+export default function reducer(
+  prevState = initialState,
+  { type, drawer, component, user, users }
+) {
+  switch (type) {
     case SHOW_DRAWER:
-      return setShowDrawer(prevState, action);
+      return setShowDrawer(prevState, drawer);
     case HIDE_DRAWER:
-      return setHideDrawer(prevState, action);
+      return setHideDrawer(prevState, component);
     case GET_USER:
-      return setUser(prevState, action);
+      return { ...prevState, currentUser: user };
     case GET_USERS:
-      return setUsers(prevState, action);
+      return { ...prevState, dummyUsers: users };
     default:
       return prevState;
   }

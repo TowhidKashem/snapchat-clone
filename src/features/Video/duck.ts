@@ -11,15 +11,10 @@ const initialState = {
   video: null
 };
 
-const setVideo = (prevState, action) => ({
-  ...prevState,
-  video: action.video
-});
-
-export default function reducer(prevState = initialState, action) {
-  switch (action.type) {
+export default function reducer(prevState = initialState, { type, video }) {
+  switch (type) {
     case SET_VIDEO:
-      return setVideo(prevState, action);
+      return { ...prevState, video };
     default:
       return prevState;
   }

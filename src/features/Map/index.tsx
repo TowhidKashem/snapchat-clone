@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import { showDrawer } from 'features/Layout/duck';
+import { showDrawer, hideDrawer } from 'common/Layout/duck';
 import { showVideo } from 'features/Video/duck';
 import { getWeather } from './duck';
 import mapboxgl from 'mapbox-gl';
@@ -9,15 +9,22 @@ import Header from './Header';
 import './index.scss';
 
 interface Props {
-  user: any;
+  weather: any;
   getWeather: any;
   showDrawer: any;
+  hideDrawer: any;
   showVideo: any;
 }
 
 const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;
 
-const Map: React.FC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
+const Map: React.FC<Props> = ({
+  showDrawer,
+  hideDrawer,
+  showVideo,
+  getWeather,
+  weather
+}) => {
   const mapRef = useRef<any>();
 
   const openVideo = () => {
@@ -115,17 +122,18 @@ const Map: React.FC<Props> = ({ showDrawer, showVideo, getWeather, user }) => {
   return (
     <div className="map">
       <div className="inner">
-        <Header />
+        <Header weather={weather} hideDrawer={hideDrawer} />
         <div ref={mapRef} className="content"></div>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ user }) => ({ user });
+const mapStateToProps = ({ weather }) => ({ weather: weather.weather });
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),
+  hideDrawer: (component) => dispatch(hideDrawer(component)),
   showVideo: (video) => dispatch(showVideo(video)),
   getWeather: (lat, lon) => dispatch(getWeather(lat, lon))
 });

@@ -2,21 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Layout from './features/Layout';
+import Layout from './common/Layout';
 import Camera from './features/Camera';
 import NotFound from './features/404';
-
-//import * as serviceWorker from './serviceWorker';
 
 // Redux
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-// import app from 'redux/reducers/app';
-// import user from 'redux/reducers/user';
-// import media from 'redux/reducers/media';
-import app from 'features/Layout/duck';
+import app from 'common/Layout/duck';
 import weather from 'features/Map/duck';
 import media from 'features/Video/duck';
 
@@ -24,18 +19,14 @@ import 'normalize.css';
 import 'animate.css';
 import './static/styles/global.scss';
 
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
-  }
-}
-
 const rootReducer = combineReducers({ app, weather, media });
 
+// Redux devtools extension
+// https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
 const composeEnhancers =
-  process.env.NODE_ENV === 'development'
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null || compose;
+  (typeof window !== 'undefined' &&
+    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 

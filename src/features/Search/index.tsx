@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { hideDrawer } from 'features/Layout/duck';
+import { hideDrawer } from 'common/Layout/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import { escapeRegex } from 'utils';

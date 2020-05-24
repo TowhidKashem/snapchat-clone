@@ -33,15 +33,10 @@ const initialState = {
   weather: {}
 };
 
-const setWeather = (prevState, action) => ({
-  ...prevState,
-  weather: action.weather
-});
-
-export default function reducer(prevState = initialState, action) {
-  switch (action.type) {
+export default function reducer(prevState = initialState, { type, weather }) {
+  switch (type) {
     case GET_WEATHER:
-      return setWeather(prevState, action);
+      return { ...prevState, weather };
     default:
       return prevState;
   }

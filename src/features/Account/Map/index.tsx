@@ -1,12 +1,9 @@
 /* eslint-disable */
 import React, { useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
-import { showDrawer } from 'features/Layout/duck';
 import mapboxgl from 'mapbox-gl';
 import './index.scss';
 
 interface Props {
-  // showModal: (component: string) => void;
   showDrawer: any;
 }
 
@@ -47,10 +44,4 @@ const Map: React.FC<Props> = ({ showDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ app }) => ({ app });
-
-const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (drawer) => dispatch(showDrawer(drawer))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default Map;
