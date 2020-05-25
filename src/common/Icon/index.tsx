@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSnapchatSquare, faForumbee } from '@fortawesome/free-brands-svg-icons';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
@@ -22,6 +22,7 @@ import {
   faMobileAlt,
   faCircle as faDot,
   faLaugh,
+  faSmileWink,
   faEllipsisV,
   faCog,
   faTimesCircle,
@@ -29,7 +30,11 @@ import {
   faSearchPlus,
   faPaw,
   faSpider,
-  faWater
+  faWater,
+  faPhoneAlt,
+  faVideo,
+  faRocket,
+  faMicrophone
 } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
@@ -58,6 +63,7 @@ const iconMap = {
   faMobileAlt,
   faDot,
   faLaugh,
+  faSmileWink,
   faEllipsisV,
   faCog,
   faTimesCircle,
@@ -65,7 +71,11 @@ const iconMap = {
   faSearchPlus,
   faPaw,
   faSpider,
-  faWater
+  faWater,
+  faPhoneAlt,
+  faVideo,
+  faRocket,
+  faMicrophone
 };
 
 interface Props {
@@ -81,7 +91,7 @@ const Icon: React.FC<Props> = ({ icon, size, onClick, className = '' }) =>
       icon={iconMap[icon]}
       size={size as any}
       onClick={onClick}
-      className={classnames('icon', {
+      className={classNames('icon', {
         [className]: className
       })}
     />

@@ -1,0 +1,64 @@
+@import '~static/styles/vars';
+
+.chat {
+  position: relative;
+
+  > header {
+    .avatar {
+      width: 60px;
+    }
+  }
+
+  .message {
+    margin-bottom: 10px;
+
+    header {
+      text-transform: uppercase;
+      color: $color-blue;
+      font-weight: bold;
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+
+    blockquote {
+      border-left: 2px solid $color-blue;
+      padding-left: 5px;
+      margin: 0;
+    }
+
+    &:nth-child(even) {
+      header {
+        color: $color-salmon;
+      }
+
+      blockquote {
+        border-left-color: $color-salmon;
+      }
+    }
+  }
+
+  footer {
+    width: $app-width;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid $color-grey;
+    padding: 10px 0 30px;
+
+    .avatar {
+      position: absolute;
+      top: -40px;
+      width: 50px;
+    }
+
+    .input {
+      input[type='text'] {
+        background: rgba($color-black, 0.1);
+
+        &::placeholder {
+          color: $color-dark-grey;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

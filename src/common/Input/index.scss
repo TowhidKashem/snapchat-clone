@@ -1,3 +1,5 @@
+@import '~static/styles/vars';
+
 .input {
   position: relative;
   margin: 0 10px;
@@ -6,11 +8,19 @@
     border: 0;
     outline: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid #333;
+    background: rgba($color-black, 0.2);
     padding: 10px 5px;
-    border-radius: 15px;
-    text-indent: 25px;
+    border-radius: 20px;
+    text-indent: 10px;
+
+    &.has-left-icon {
+      text-indent: 25px;
+    }
+
+    &::placeholder {
+      color: $color-white;
+      font-weight: bold;
+    }
   }
 
   .left-icon,

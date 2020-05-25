@@ -1,36 +1,54 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import classNames from 'classnames';
 import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
   placeholder: string;
-  leftIcon: string;
+  value?: string;
+  leftIcon?: string;
   rightIcon?: string;
-  rightIconClick?: () => void;
+  onClick?: () => void;
   onFocus?: () => void;
   onChange?: (e: React.SyntheticEvent<HTMLInputElement>) => void;
+  onEnter?: () => void;
+  focus?: boolean;
 }
 
 const Input: React.FC<Props> = ({
   placeholder,
+  value,
   leftIcon,
   rightIcon,
-  rightIconClick,
+  onClick,
   onFocus,
-  onChange
+  onChange,
+  onEnter,
+  focus
 }) => {
+  const inputField = useRef<any>();
+
+  useEffect(() => {
+    if (focus) inputField.current.focus();
+  }, []);
+
   return (
-    <div className="input">
+    <div className="input" onClick={onClick}>
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
         type="text"
         placeholder={placeholder}
+        value={value}
         onFocus={onFocus}
         onChange={onChange}
+        onKeyPress={({ key }) => onEnter && key === 'Enter' && onEnter()}
+        disabled={onClick ? true : false}
+        ref={inputField}
+        className={classNames({
+          'has-left-icon': leftIcon
+        })}
       />
-      {rightIcon && (
-        <Icon icon={rightIcon} className="right-icon" onClick={rightIconClick} />
-      )}
+      {rightIcon && <Icon icon={rightIcon} className="right-icon" />}
     </div>
   );
 };

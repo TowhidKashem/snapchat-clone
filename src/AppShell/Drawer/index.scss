@@ -26,6 +26,10 @@
       background: $color-black;
       color: $color-white;
       padding: 0;
+
+      .icon {
+        color: $color-white;
+      }
     }
   }
 }

@@ -25,8 +25,7 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
             placeholder="Search"
             leftIcon="faSearch"
             rightIcon="faUserPlus"
-            rightIconClick={() => showDrawer({ component: 'search' })}
-            onFocus={() => {}}
+            onClick={() => showDrawer({ component: 'search' })}
           />
         </Col>
         <Col xs={1}>

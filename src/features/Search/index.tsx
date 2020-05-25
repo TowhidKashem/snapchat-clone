@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { HideDrawer } from 'AppShell/types';
 import { hideDrawer } from 'AppShell/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
@@ -8,7 +9,12 @@ import Input from 'common/Input';
 import UserPod from 'common/Pod/User';
 import './index.scss';
 
-const Search = ({ users, hideDrawer }) => {
+interface Props {
+  users: any;
+  hideDrawer: HideDrawer;
+}
+
+const Search: React.FC<Props> = ({ users, hideDrawer }) => {
   const [query, setQuery] = useState<string>('');
 
   const filteredUsers = query
@@ -26,6 +32,7 @@ const Search = ({ users, hideDrawer }) => {
               placeholder="Find Friends"
               leftIcon="faSearch"
               onChange={(e) => setQuery(e.currentTarget.value.trim())}
+              focus
             />
           </Col>
           <Col xs={2}>

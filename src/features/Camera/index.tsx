@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
 import { Drawer } from 'AppShell/types';
@@ -32,7 +32,7 @@ const Camera: React.FC<Props> = ({ drawers }) => {
   const [videoStream, setVideoStream] = useState<any>();
 
   useEffect(() => {
-    startVideo();
+    // startVideo();
   }, []);
 
   // Start/stop video when drawer is opened and closed
@@ -85,7 +85,7 @@ const Camera: React.FC<Props> = ({ drawers }) => {
       <video
         ref={videoPlayer}
         autoPlay
-        className={classnames('video-stream', {
+        className={classNames('video-stream', {
           hide: filterReady
         })}
       ></video>
