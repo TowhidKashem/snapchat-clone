@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HideDrawer } from 'AppShell/Drawer/types';
+import { HideDrawer } from 'AppShell/types';
 import { hideDrawer } from 'AppShell/duck';
 import Icon from 'common/Icon';
 import './index.scss';

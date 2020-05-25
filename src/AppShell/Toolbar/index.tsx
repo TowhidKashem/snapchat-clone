@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { Drawer } from 'AppShell/Drawer/types';
+import { Drawer } from 'AppShell/types';
 import Icon from 'common/Icon';
 import './index.scss';
 

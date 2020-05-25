@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { ShowDrawer, HideDrawer } from 'AppShell/Drawer/types';
+import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import Button from 'common/Button';
 import './index.scss';
 

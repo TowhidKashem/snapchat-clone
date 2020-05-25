@@ -9,15 +9,14 @@
   z-index: 15;
   font-weight: bold;
 
-  svg {
-    color: $color-white;
+  .icon {
     margin-left: 8px;
   }
 
   &.dark {
     color: $color-black;
 
-    svg {
+    .icon {
       color: $color-black;
     }
   }

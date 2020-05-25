@@ -1,16 +1,14 @@
-/* eslint-disable */
 import React, { useState, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
-import { Drawer } from 'AppShell/Drawer/types';
+import { Drawer } from 'AppShell/types';
 import Button from 'common/Button';
 // import useCamera from 'hooks/useCamera';
 import { loadScripts, showVideo } from 'utils';
-import { dependencies, filterButtons } from './data';
+import { Filter } from './types';
+import { dependencies, filters } from './data';
 import './index.scss';
-
-type Filter = 'dog' | 'bees' | 'halloween' | 'deform';
 
 interface Props {
   drawers: Drawer[];
@@ -34,7 +32,7 @@ const Camera: React.FC<Props> = ({ drawers }) => {
   const [videoStream, setVideoStream] = useState<any>();
 
   useEffect(() => {
-    // startVideo();
+    startVideo();
   }, []);
 
   // Start/stop video when drawer is opened and closed
@@ -129,10 +127,11 @@ const Camera: React.FC<Props> = ({ drawers }) => {
           animateOnMount={false}
         >
           <div className="filters">
-            {filterButtons.map(({ icon, filter }, index) => (
+            {filters.map((filter, index) => (
               <Button
                 key={filter + index}
-                icon={icon}
+                image={`./filters/${filter}.svg`}
+                buttonClass={`filter-${filter}`}
                 onclick={() => switchFilter(filter as Filter)}
               />
             ))}

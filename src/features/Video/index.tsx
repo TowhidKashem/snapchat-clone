@@ -1,29 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { HideDrawer } from 'AppShell/Drawer/types';
+import { HideDrawer } from 'AppShell/types';
 import { hideDrawer } from 'AppShell/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
-  media: any;
-  videoId: string;
+  video: any;
   hideDrawer: HideDrawer;
 }
 
-const Video: React.FC<Props> = ({ media, hideDrawer }) => {
+const Video: React.FC<Props> = ({ video, hideDrawer }) => {
   return (
     <main className="video">
-      {/* <button onClick={() => hideDrawer('video')} style={{ color: '#fff' }}>
-      Close
-    </button> */}
       <header>
         <Grid fluid>
           <Row middle="xs">
             <Col xs={11}>
-              {media.video.location}
-              <time>{media.video.time}</time>
+              {video.location}
+              <time>{video.time}</time>
             </Col>
             <Col xs={1}>
               <Icon icon="faEllipsisV" />
@@ -33,14 +29,14 @@ const Video: React.FC<Props> = ({ media, hideDrawer }) => {
       </header>
       <div className="video-container">
         <video autoPlay onEnded={() => hideDrawer('video')}>
-          <source src="./sample-video.mp4" type="video/mp4" />
+          <source src={`./videos/${video.file}#t=10,20`} type="video/mp4" />
         </video>
       </div>
     </main>
   );
 };
 
-const mapStateToProps = ({ media }) => ({ media });
+const mapStateToProps = ({ media }) => ({ video: media.video });
 
 const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component) => dispatch(hideDrawer(component))

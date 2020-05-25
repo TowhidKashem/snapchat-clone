@@ -42,8 +42,17 @@ a {
   // }
 }
 
-.svg-inline--fa {
-  color: $color-dark-grey;
+.wrapper {
+  position: relative;
+  background-color: #333;
+  width: $app-width;
+  height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.icon {
+  color: $color-white;
 }
 
 ///////
@@ -59,36 +68,3 @@ a {
 // .col-xs {
 //   box-shadow: 0 0 8px red;
 // }
-
-.mapboxgl-popup {
-  max-width: 200px;
-}
-
-.mapboxgl-popup-content {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.wrapper {
-  position: relative;
-  // border: 1px solid #666;
-  background-color: #333;
-  width: $app-width;
-  height: 100vh;
-  margin: 0 auto;
-  overflow: hidden;
-
-  .filter-canvas {
-    @extend %video-cover;
-  }
-
-  .open-mouth {
-    display: none;
-    z-index: 1000;
-    position: absolute;
-    top: 100px;
-    left: 200px;
-    color: $color-white;
-    font-weight: bold;
-  }
-}

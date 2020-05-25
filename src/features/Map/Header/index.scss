@@ -1,6 +1,6 @@
 @import '~static/styles/vars';
 
-.weather-info {
+.weather-header {
   position: absolute;
   top: $toolbar-height;
   z-index: 1;
@@ -10,10 +10,6 @@
   background: rgba($color-black, 0.3);
   color: $color-white;
   text-shadow: 0 0 1px $color-black;
-
-  svg {
-    color: $color-white;
-  }
 
   .weather {
     text-align: center;

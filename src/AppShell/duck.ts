@@ -1,5 +1,5 @@
 import { User } from 'types';
-import { Drawer } from './Drawer/types';
+import { Drawer } from 'AppShell/types';
 import { api } from 'utils';
 
 // Action types
@@ -71,8 +71,8 @@ const initialState = {
     //   animationOut: 'zoomOut',
     //   animationInDuration: 300,
     //   animationOutDuration: 300,
-    //   theme: 'dark',
-    //   component: 'video',
+    //   // theme: 'dark',
+    //   component: 'map',
     //   show: true
     // }
   ],

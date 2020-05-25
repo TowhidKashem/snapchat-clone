@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { HideDrawer } from 'AppShell/Drawer/types';
+import { HideDrawer } from 'AppShell/types';
 import Icon from 'common/Icon';
 import './index.scss';
 
@@ -13,7 +13,7 @@ const Header: React.FC<Props> = ({ weather, hideDrawer }) => {
   const { city, icon, temperature } = weather;
 
   return (
-    <header className="weather-info">
+    <header className="weather-header">
       <Grid fluid>
         <Row middle="xs">
           <Col xs={3}>

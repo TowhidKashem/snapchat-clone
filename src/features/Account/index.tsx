@@ -1,12 +1,12 @@
-import React, { useEffect, useState, Suspense, lazy } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { ShowDrawer, HideDrawer } from 'AppShell/Drawer/types';
+import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';
 import Icon from 'common/Icon';
-//import Map from './Map';
+import PreviewMap from './PreviewMap';
 import './index.scss';
 
 interface Props {
@@ -16,19 +16,6 @@ interface Props {
 }
 
 const Account: React.FC<Props> = ({ showDrawer, hideDrawer, currentUser }) => {
-  const [mapComponent, setMapComponent] = useState<JSX.Element>();
-
-  useEffect(() => {
-    setTimeout(async () => {
-      const Map = await lazy(() => import('./Map'));
-      setMapComponent(
-        <Suspense fallback={<div>Loading...</div>}>
-          <Map showDrawer={showDrawer} />
-        </Suspense>
-      );
-    }, 300);
-  }, []);
-
   return (
     <main className="account">
       <Grid fluid>
@@ -84,7 +71,7 @@ const Account: React.FC<Props> = ({ showDrawer, hideDrawer, currentUser }) => {
         />
       </Widget>
       <Widget header="Snap Map">
-        {mapComponent}
+        <PreviewMap showDrawer={showDrawer} />
         <ActionItem
           leftIcon="faCompass"
           rightIcon="faAngleRight"

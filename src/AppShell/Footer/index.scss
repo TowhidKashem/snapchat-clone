@@ -5,13 +5,9 @@
   bottom: 0;
   padding-bottom: 20px;
   width: $app-width;
-  color: $color-white;
   align-items: center;
 
-  // border: 1px solid red;
-
-  svg {
-    color: $color-white;
+  .icon {
     font-size: 25px;
   }
 
@@ -22,7 +18,7 @@
   .chat-btn {
     position: relative;
 
-    svg {
+    .icon {
       &:first-child {
         font-size: 21px;
       }
@@ -37,7 +33,7 @@
   }
 
   .archive-btn {
-    svg {
+    .icon {
       &:first-child {
         transform: rotate(-5deg);
       }
@@ -47,9 +43,8 @@
     }
   }
 
-  .discover-btn {
-    svg {
-      //
-    }
-  }
+  // .discover-btn {
+  //   .icon {
+  //   }
+  // }
 }

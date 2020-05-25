@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import { ShowDrawer, HideDrawer } from 'AppShell/Drawer/types';
+import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
 import { showVideo } from 'features/Video/duck';
 import { getWeather } from './duck';
-import { snapCoordinates } from './data';
+import { dummySnaps } from './data';
 import mapboxgl from 'mapbox-gl';
 import useGeo from 'hooks/useGeo';
 import Header from './Header';
@@ -29,12 +29,8 @@ const Map: React.FC<Props> = ({
 }) => {
   const mapRef = useRef<any>();
 
-  const openVideo = () => {
-    showVideo({
-      videoId: 'UBX8MWYel3s',
-      location: 'New York City, New York',
-      time: 'Sat'
-    });
+  const openVideo = ({ location, time, video }) => {
+    showVideo({ video, location, time });
     showDrawer({
       component: 'video',
       animationIn: 'zoomIn',
@@ -43,12 +39,13 @@ const Map: React.FC<Props> = ({
     });
   };
 
-  const setMarker = (lat, lon, map) => {
+  const setMarker = (lat, lon, media, map) => {
     const marker = document.createElement('div');
     marker.className = 'marker';
     marker.onclick = (e: any) => {
       e.target.classList.add('active');
-      setTimeout(openVideo, 900);
+      // The setTimeout's below are to allow time to display the pulsing effect
+      setTimeout(() => openVideo(media), 900);
       setTimeout(() => e.target.classList.remove('active'), 1000);
     };
     new mapboxgl.Marker(marker).setLngLat([lon, lat]).addTo(map);
@@ -88,7 +85,9 @@ const Map: React.FC<Props> = ({
       .addTo(map);
 
     // Show some dummy snaps nearby
-    snapCoordinates(lat, lon).forEach(({ lat, lon }) => setMarker(lat, lon, map));
+    dummySnaps(lat, lon).forEach(({ lat, lon, media }) =>
+      setMarker(lat, lon, media, map)
+    );
 
     // // Weather
     // getWeather(lat, lon);

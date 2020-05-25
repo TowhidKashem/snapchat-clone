@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { Drawer as DrawerType, HideDrawer } from 'AppShell/Drawer/types';
+import { Drawer as DrawerType, HideDrawer } from '../types';
 import Account from 'features/Account';
 import Settings from 'features/Settings';
 import Search from 'features/Search';
@@ -69,7 +69,12 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
           isVisible={show}
         >
           <section className="content">
-            {/* <button onClick={() => hideDrawer(component)}>Close Drawer</button> */}
+            <button
+              onClick={() => hideDrawer(component)}
+              style={{ position: 'fixed', bottom: 0, right: 0, zIndex: 1000 }}
+            >
+              Close Drawer - {animationInDuration}
+            </button>
             {componentMap[component]}
           </section>
         </Animated>

@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSnapchatSquare, faForumbee } from '@fortawesome/free-brands-svg-icons';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
@@ -30,6 +31,7 @@ import {
   faSpider,
   faWater
 } from '@fortawesome/free-solid-svg-icons';
+import './index.scss';
 
 const iconMap = {
   // free-brands-svg-icons
@@ -73,13 +75,15 @@ interface Props {
   className?: string;
 }
 
-const Icon: React.FC<Props> = ({ icon, size, onClick, className }) =>
+const Icon: React.FC<Props> = ({ icon, size, onClick, className = '' }) =>
   icon ? (
     <FontAwesomeIcon
       icon={iconMap[icon]}
       size={size as any}
       onClick={onClick}
-      className={className}
+      className={classnames('icon', {
+        [className]: className
+      })}
     />
   ) : null;
 

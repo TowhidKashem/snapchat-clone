@@ -4,6 +4,7 @@ import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
+  image?: string;
   icon?: any;
   icons?: any[];
   iconClass?: string;
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const Button: React.FC<Props> = ({
+  image,
   icon,
   icons,
   iconClass = '',
@@ -28,7 +30,9 @@ const Button: React.FC<Props> = ({
       [buttonClass]: buttonClass
     })}
   >
-    {icons ? (
+    {image ? (
+      <img src={image} alt="" />
+    ) : icons ? (
       icons.map((icon, index) => (
         <Icon
           key={index}
@@ -38,14 +42,14 @@ const Button: React.FC<Props> = ({
           })}
         />
       ))
-    ) : (
+    ) : icon ? (
       <Icon
         icon={icon}
         className={classNames({
           [iconClass]: iconClass
         })}
       />
-    )}
+    ) : null}
     {label && <strong>{label}</strong>}
   </button>
 );

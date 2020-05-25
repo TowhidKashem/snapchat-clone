@@ -1,3 +1,5 @@
+import { Filter } from './types';
+
 export const dependencies = {
   dog: [
     './jeelizFaceFilter/filters/dog/dependencies.min.js',
@@ -11,25 +13,4 @@ export const dependencies = {
   deform: ['./jeelizFaceFilter/filters/deform/index.js']
 };
 
-export const filterButtons = [
-  {
-    filter: 'dog',
-    icon: 'faPaw'
-  },
-  {
-    filter: 'halloween',
-    icon: 'faSpider'
-  },
-  {
-    filter: 'deform',
-    icon: 'faWater'
-  },
-  {
-    filter: 'bee',
-    icon: 'faForumbee'
-  },
-  {
-    filter: 'dog',
-    icon: 'faPaw'
-  }
-];
+export const filters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'dog'];

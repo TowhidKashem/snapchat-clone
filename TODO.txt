@@ -43,3 +43,17 @@ memory footprint neglagable:
     jeelizFaceFilter.js
     JeelizResizer.js
     jeelizFaceFilter/helpers/JeelizThreejsHelper.js
+
+
+  const [PreviewMapComponent, setPreviewMapComponent] = useState<JSX.Element>();
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const PreviewMap = await lazy(() => import('./PreviewMap'));
+  //     setPreviewMapComponent(
+  //       <Suspense fallback={<div>Loading...</div>}>
+  //         <PreviewMap showDrawer={showDrawer} />
+  //       </Suspense>
+  //     );
+  //   })();
+  // }, []);

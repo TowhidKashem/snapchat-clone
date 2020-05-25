@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Drawer as DrawerType, ShowDrawer, HideDrawer } from 'AppShell/Drawer/types';
+import { Drawer as DrawerType, ShowDrawer, HideDrawer } from './types';
 import { showDrawer, hideDrawer, getUser, getUsers } from './duck';
 import Toolbar from './Toolbar';
 import Header from './Header';

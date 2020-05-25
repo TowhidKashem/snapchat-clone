@@ -2,10 +2,6 @@
 
 .header {
   margin-top: $toolbar-height;
-  // border: 3px solid red;
-  // z-index: 1000;
-
-  svg {
-    color: $color-white;
-  }
+  position: relative;
+  z-index: 1;
 }

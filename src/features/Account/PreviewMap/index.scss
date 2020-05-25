@@ -1,0 +1,10 @@
+.preview-map {
+  background: red;
+  min-height: 160px;
+
+  canvas {
+    outline: 0;
+    box-shadow: none;
+    // float: left;
+  }
+}

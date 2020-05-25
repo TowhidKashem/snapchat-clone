@@ -1,11 +1,13 @@
+@import '~static/styles/vars';
+
 .button {
   cursor: pointer;
-  color: #fff;
+  color: $color-white;
   background: none;
   border: 0;
   padding: 0;
 
-  svg {
+  .icon {
     margin-right: 3px;
   }
 
