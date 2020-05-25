@@ -1,0 +1,29 @@
+{
+  "chats": [
+    {
+      "id": "julia",
+      "messages": [
+        {
+          "author": "Julia",
+          "message": "Hey there2!",
+          "time": ""
+        },
+        {
+          "author": "Julia",
+          "message": "Oh wow",
+          "time": ""
+        }
+      ]
+    },
+    {
+      "id": "tom",
+      "messages": [
+        {
+          "author": "Tom",
+          "message": "fuck u",
+          "time": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,4 @@
 //@ts-nocheck
-import qs from 'qs';
-
 // Escape a user input string for use in a REGEX search
 export const escapeRegex = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -14,10 +12,23 @@ export const promise = (promise) =>
     })
     .catch((err) => [err]);
 
-export const api = async (url, params = {}) => {
-  url += qs.stringify(params, { addQueryPrefix: true });
-  const [error, response] = await promise(fetch(url).then((response) => response.json()));
-  return [error, response];
+export const api = {
+  baseURL: 'http://localhost:3050',
+  get: async (endpoint) => {
+    const [error, response] = await promise(
+      fetch(api.baseURL + endpoint).then((response) => response.json())
+    );
+    return [error, response];
+  },
+  post: async (endpoint, options) => {
+    const [error, response] = await promise(
+      fetch(api.baseURL + endpoint, {
+        method: 'post',
+        body: JSON.stringify(options)
+      }).then((response) => response.json())
+    );
+    return [error, response];
+  }
 };
 
 // Recursive function to load scripts in order then perform callback

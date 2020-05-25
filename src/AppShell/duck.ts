@@ -27,27 +27,25 @@ export const hideDrawer = (component) => (dispatch) =>
   dispatch({ type: HIDE_DRAWER, component });
 
 export const getUser = () => async (dispatch) => {
-  const [error, response] = await api('https://randomuser.me/api');
-
-  if (!error) {
-    dispatch({
-      type: GET_USER,
-      user: _parseUsers(response.results)[0]
-    });
-  }
+  // const [error, response] = await api('https://randomuser.me/api');
+  // if (!error) {
+  //   dispatch({
+  //     type: GET_USER,
+  //     user: _parseUsers(response.results)[0]
+  //   });
+  // }
 };
 
 export const getUsers = () => async (dispatch) => {
-  const [error, response] = await api('https://randomuser.me/api', {
-    results: 100
-  });
-
-  if (!error) {
-    dispatch({
-      type: GET_USERS,
-      users: _parseUsers(response.results)
-    });
-  }
+  // const [error, response] = await api('https://randomuser.me/api', {
+  //   results: 100
+  // });
+  // if (!error) {
+  //   dispatch({
+  //     type: GET_USERS,
+  //     users: _parseUsers(response.results)
+  //   });
+  // }
 };
 
 // Utils

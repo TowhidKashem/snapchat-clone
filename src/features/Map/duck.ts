@@ -8,17 +8,16 @@ export const GET_WEATHER = 'GET_WEATHER';
 
 // Action creators
 export const getWeather = (lat, lon) => async (dispatch) => {
-  const [error, response] = await api('http://api.weatherapi.com/v1/current.json', {
-    key: WEATHER_API_KEY,
-    q: lat + ',' + lon
-  });
-
-  if (!error) {
-    dispatch({
-      type: GET_WEATHER,
-      weather: _parseWeather(response)
-    });
-  }
+  // const [error, response] = await api('http://api.weatherapi.com/v1/current.json', {
+  //   key: WEATHER_API_KEY,
+  //   q: lat + ',' + lon
+  // });
+  // if (!error) {
+  //   dispatch({
+  //     type: GET_WEATHER,
+  //     weather: _parseWeather(response)
+  //   });
+  // }
 };
 
 // Utils

@@ -29,11 +29,12 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently --kill-others \"react-scripts start\" \"npm run dummy-api\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "dummy-api": "node_modules/.bin/json-server --watch api-database.json --routes api-routes.json --port 3050"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -60,7 +61,9 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
+    "concurrently": "^5.2.0",
     "husky": "^4.2.5",
+    "json-server": "^0.16.1",
     "node-sass": "^4.14.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",

@@ -29,7 +29,17 @@ memory footprint neglagable:
 
 
 
+in read me:
 
+        one of the biggest factors in FE scalability is to keep things flat! in both folder strcuture and state tree
+        <pic of redux dev tool and folder strcuture> with big x and check marks comparison
+
+        folder strcuture based around features
+
+
+renew all api keys in commits
+
+use svg cleaner tool
 
 <div class="canvasContainer">
     <canvas id="jeeFaceFilterCanvas" class="filter-canvas"></canvas>

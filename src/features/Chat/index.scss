@@ -9,30 +9,32 @@
     }
   }
 
-  .message {
-    margin-bottom: 10px;
+  .messages {
+    .message {
+      margin-bottom: 10px;
 
-    header {
-      text-transform: uppercase;
-      color: $color-blue;
-      font-weight: bold;
-      font-size: 12px;
-      margin-bottom: 3px;
-    }
-
-    blockquote {
-      border-left: 2px solid $color-blue;
-      padding-left: 5px;
-      margin: 0;
-    }
-
-    &:nth-child(even) {
       header {
-        color: $color-salmon;
+        text-transform: uppercase;
+        color: $color-blue;
+        font-weight: bold;
+        font-size: 12px;
+        margin-bottom: 3px;
       }
 
       blockquote {
-        border-left-color: $color-salmon;
+        border-left: 2px solid $color-blue;
+        padding-left: 5px;
+        margin: 0;
+      }
+
+      &:nth-child(even) {
+        header {
+          color: $color-salmon;
+        }
+
+        blockquote {
+          border-left-color: $color-salmon;
+        }
       }
     }
   }

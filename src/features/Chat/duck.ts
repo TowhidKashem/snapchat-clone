@@ -1,42 +1,52 @@
+import { api } from 'utils';
+
 // Action types
-const SEND_MESSAGE = 'SEND_MESSAGE';
+const SET_MESSAGES = 'SET_MESSAGES';
+const POST_MESSAGE = 'POST_MESSAGE';
 
 // Action creators
-export const sendMessage = (user, message) => (dispatch) =>
-  dispatch({
-    type: SEND_MESSAGE,
-    user,
-    message
-  });
+export const getMessages = (user) => async (dispatch) => {
+  const [error, response] = await api.get(`/chats/${user}`);
 
-// Reducer
-const initialState = {
-  messages: {
-    julia: [
-      {
-        message: 'Hey there!',
-        time: ''
-      }
-    ],
-    tom: []
+  if (!error) {
+    dispatch({
+      type: SET_MESSAGES,
+      user,
+      messages: response.messages
+    });
   }
 };
 
-export default function reducer(prevState = initialState, { type, user, message }) {
+export const postMessage = (user, message) => async (dispatch) => {
+  const [error, response] = await api.post(`/chats/${user}`, {
+    author: '',
+    message,
+    time: Date.now()
+  });
+
+  console.warn(response);
+
+  // if (!error) {
+  //   dispatch({
+  //     type: POST_MESSAGE,
+  //     user,
+  //     messages: response.messages
+  //   });
+  // }
+};
+
+// Reducer
+export default function reducer(prevState = {}, { type, user, messages }) {
   switch (type) {
-    case SEND_MESSAGE:
+    case SET_MESSAGES:
       return {
         ...prevState,
-        messages: {
-          ...prevState.messages,
-          [user]: [
-            ...prevState.messages[user],
-            {
-              message,
-              time: Date.now()
-            }
-          ]
-        }
+        [user]: [...messages]
+      };
+    case POST_MESSAGE:
+      return {
+        ...prevState,
+        [user]: [...messages]
       };
     default:
       return prevState;

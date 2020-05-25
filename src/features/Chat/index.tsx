@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { sendMessage } from './duck';
+import { getMessages, postMessage } from './duck';
+import { dummyMessages } from './data';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Input from 'common/Input';
 import Avatar from 'common/Avatar';
@@ -9,15 +10,25 @@ import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
+  user: string;
   messages: any;
-  sendMessage: any;
+  getMessages: any;
+  postMessage: any;
 }
 
-const Chat: React.FC<Props> = ({ messages, sendMessage }) => {
+const Chat: React.FC<Props> = ({
+  user = 'julia',
+  messages,
+  getMessages,
+  postMessage
+}) => {
   const [message, setMessage] = useState<string>('');
   const [typing, setTyping] = useState<boolean>(true);
 
   useEffect(() => {
+    getMessages(user);
+    getMessages('tom');
+
     setTimeout(() => setTyping(false), 1500);
   }, []);
 
@@ -28,7 +39,7 @@ const Chat: React.FC<Props> = ({ messages, sendMessage }) => {
           <Row middle="xs">
             <Col xs={10}>
               <Avatar src="./bitmoji.png" />
-              <h2>Julia</h2>
+              <h2>{user}</h2>
             </Col>
             <Col xs={2}>
               <PillButtons icons={['faPhoneAlt', 'faVideo']} />
@@ -37,10 +48,10 @@ const Chat: React.FC<Props> = ({ messages, sendMessage }) => {
           </Row>
         </Grid>
       </header>
-      <section>
-        {messages['julia'].map(({ message, time }) => (
+      <section className="messages">
+        {messages[user]?.map(({ author, message, time }) => (
           <article key={time} className="message">
-            <header>Julia</header>
+            <header>{author}</header>
             <blockquote>{message}</blockquote>
           </article>
         ))}
@@ -58,9 +69,12 @@ const Chat: React.FC<Props> = ({ messages, sendMessage }) => {
                 rightIcon="faMicrophone"
                 onChange={(e) => setMessage(e.currentTarget.value.trim())}
                 onEnter={() => {
-                  sendMessage('julia', message);
+                  postMessage(user, message);
                   setMessage('');
-                  setTimeout(() => setTyping(true), 500);
+                  // setTimeout(() => {
+                  //   setTyping(true);
+                  //   postMessage(user, 'Julia', dummyMessages[0]);
+                  // }, 500);
                 }}
                 value={message}
               />
@@ -77,10 +91,11 @@ const Chat: React.FC<Props> = ({ messages, sendMessage }) => {
   );
 };
 
-const mapStateToProps = ({ chat }) => ({ messages: chat.messages });
+const mapStateToProps = ({ chats }) => ({ messages: chats });
 
 const mapDispatchToProps = (dispatch) => ({
-  sendMessage: (user, message) => dispatch(sendMessage(user, message))
+  getMessages: (user) => dispatch(getMessages(user)),
+  postMessage: (user, message) => dispatch(postMessage(user, message))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);
