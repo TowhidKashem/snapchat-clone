@@ -3,7 +3,7 @@
 export const escapeRegex = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 // Helper to remove async/await try/catch litter
-// @Credit: https://gist.github.com/DavidWells/54f9dd1af4a489e5f1358f33ce59e8ad
+// https://gist.github.com/DavidWells/54f9dd1af4a489e5f1358f33ce59e8ad
 export const promise = (promise) =>
   promise
     .then((data) => {
@@ -14,19 +14,17 @@ export const promise = (promise) =>
 
 export const api = {
   baseURL: 'http://localhost:3050',
-  get: async (endpoint) => {
-    const [error, response] = await promise(
-      fetch(api.baseURL + endpoint).then((response) => response.json())
-    );
-    return [error, response];
-  },
-  post: async (endpoint, options) => {
-    const [error, response] = await promise(
+  get: (endpoint) => api.respond(fetch(api.baseURL + endpoint)),
+  post: (endpoint, options) =>
+    api.respond(
       fetch(api.baseURL + endpoint, {
         method: 'post',
+        headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(options)
-      }).then((response) => response.json())
-    );
+      })
+    ),
+  respond: async (request) => {
+    const [error, response] = await promise(request.then((response) => response.json()));
     return [error, response];
   }
 };

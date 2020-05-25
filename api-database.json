@@ -1,29 +1,109 @@
 {
-  "chats": [
+  "messages": [
     {
-      "id": "julia",
-      "messages": [
-        {
-          "author": "Julia",
-          "message": "Hey there2!",
-          "time": ""
-        },
-        {
-          "author": "Julia",
-          "message": "Oh wow",
-          "time": ""
-        }
-      ]
+      "id": 1,
+      "thread": "tk-julia",
+      "author": "julia",
+      "message": "Hey there2!",
+      "time": ""
     },
     {
-      "id": "tom",
-      "messages": [
-        {
-          "author": "Tom",
-          "message": "fuck u",
-          "time": ""
-        }
-      ]
+      "id": 2,
+      "thread": "tk-julia",
+      "author": "julia",
+      "message": "Oh wow",
+      "time": ""
+    },
+    {
+      "id": 3,
+      "thread": "tk-julia",
+      "author": "tk",
+      "message": "Hi",
+      "time": ""
+    },
+    {
+      "id": 4,
+      "thread": "tk-tom",
+      "author": "tom",
+      "message": "fuck u",
+      "time": ""
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "why???",
+      "time": 1590439180091,
+      "id": 5
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "sssss",
+      "time": 1590439307035,
+      "id": 6
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "nooooo",
+      "time": 1590439348219,
+      "id": 7
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "wow",
+      "time": 1590439388835,
+      "id": 8
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "Go to hell",
+      "time": 1590439559511,
+      "id": 9
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "wow",
+      "time": 1590439562377,
+      "id": 10
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "really??",
+      "time": 1590439565948,
+      "id": 11
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "rose",
+      "time": 1590439827676,
+      "id": 12
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "hhh",
+      "time": 1590440049005,
+      "id": 13
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "fooo",
+      "time": 1590440160258,
+      "id": 14
+    },
+    {
+      "thread": "tk-julia",
+      "author": "TK",
+      "message": "lol",
+      "time": 1590440384510,
+      "id": 15
     }
   ]
 }

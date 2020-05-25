@@ -2,51 +2,50 @@ import { api } from 'utils';
 
 // Action types
 const SET_MESSAGES = 'SET_MESSAGES';
-const POST_MESSAGE = 'POST_MESSAGE';
+const SET_MESSAGE = 'SET_MESSAGE';
 
 // Action creators
 export const getMessages = (user) => async (dispatch) => {
-  const [error, response] = await api.get(`/chats/${user}`);
+  const [error, response] = await api.get(`/messages/thread/tk-${user}`);
 
   if (!error) {
     dispatch({
       type: SET_MESSAGES,
       user,
-      messages: response.messages
+      messages: response
     });
   }
 };
 
 export const postMessage = (user, message) => async (dispatch) => {
-  const [error, response] = await api.post(`/chats/${user}`, {
-    author: '',
+  const [error, response] = await api.post(`/messages/thread/tk-${user}`, {
+    thread: `tk-${user}`,
+    author: 'TK',
     message,
     time: Date.now()
   });
 
-  console.warn(response);
-
-  // if (!error) {
-  //   dispatch({
-  //     type: POST_MESSAGE,
-  //     user,
-  //     messages: response.messages
-  //   });
-  // }
+  if (!error) {
+    dispatch({
+      type: SET_MESSAGE,
+      user,
+      message: response
+    });
+  }
 };
 
 // Reducer
-export default function reducer(prevState = {}, { type, user, messages }) {
+export default function reducer(prevState = {}, { type, user, messages, message }) {
   switch (type) {
     case SET_MESSAGES:
       return {
         ...prevState,
         [user]: [...messages]
       };
-    case POST_MESSAGE:
+    case SET_MESSAGE:
       return {
         ...prevState,
-        [user]: [...messages]
+        [user]: [...prevState[user], message]
       };
     default:
       return prevState;

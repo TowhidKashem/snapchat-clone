@@ -67,7 +67,7 @@ const Chat: React.FC<Props> = ({
               <Input
                 placeholder="Send a chat"
                 rightIcon="faMicrophone"
-                onChange={(e) => setMessage(e.currentTarget.value.trim())}
+                onChange={(e) => setMessage(e.currentTarget.value)}
                 onEnter={() => {
                   postMessage(user, message);
                   setMessage('');
