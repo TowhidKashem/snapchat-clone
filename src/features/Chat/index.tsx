@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 import { getMessages, postMessage } from './duck';
 import { dummyMessages } from './data';
+import { randomArrayVal } from 'utils';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Input from 'common/Input';
 import Avatar from 'common/Avatar';
@@ -23,14 +25,30 @@ const Chat: React.FC<Props> = ({
   postMessage
 }) => {
   const [message, setMessage] = useState<string>('');
-  const [typing, setTyping] = useState<boolean>(true);
+  const [typing, setTyping] = useState<boolean>(false);
+  const messageContainer = useRef<any>(null);
 
   useEffect(() => {
     getMessages(user);
-    getMessages('tom');
-
-    setTimeout(() => setTyping(false), 1500);
+    botResponse();
   }, []);
+
+  useLayoutEffect(() => {
+    // Scroll to bottom of container on load and each time a new message is posted
+    messageContainer.current.scrollTop = messageContainer.current.scrollHeight;
+  }, [messages]);
+
+  const botResponse = () => {
+    // Randomize the response and typing times to make the bot seem a little more "realistic"
+    const responseTimes = [500, 700, 900];
+    const typeTimes = [1200, 1400, 1600];
+    setTimeout(() => setTyping(true), randomArrayVal(responseTimes));
+    setTimeout(() => {
+      setTyping(false);
+      postMessage(user, user, randomArrayVal(dummyMessages));
+      new Audio('./audio/alert.mp3').play();
+    }, randomArrayVal(typeTimes));
+  };
 
   return (
     <main className="chat">
@@ -48,7 +66,7 @@ const Chat: React.FC<Props> = ({
           </Row>
         </Grid>
       </header>
-      <section className="messages">
+      <section ref={messageContainer} className="messages">
         {messages[user]?.map(({ author, message, time }) => (
           <article key={time} className="message">
             <header>{author}</header>
@@ -57,8 +75,10 @@ const Chat: React.FC<Props> = ({
         ))}
       </section>
       <footer>
-        {typing && <Avatar src="./bitmoji.png" />}
-        <Grid fluid>
+        <div className={classNames({ typing })}>
+          <Avatar src="./bitmoji.png" />
+        </div>
+        <Grid fluid className="inner-content">
           <Row middle="xs">
             <Col xs={1}>
               <Button icon="faCamera" />
@@ -69,12 +89,9 @@ const Chat: React.FC<Props> = ({
                 rightIcon="faMicrophone"
                 onChange={(e) => setMessage(e.currentTarget.value)}
                 onEnter={() => {
-                  postMessage(user, message);
+                  postMessage(user, 'tk', message);
                   setMessage('');
-                  // setTimeout(() => {
-                  //   setTyping(true);
-                  //   postMessage(user, 'Julia', dummyMessages[0]);
-                  // }, 500);
+                  botResponse();
                 }}
                 value={message}
               />
@@ -95,7 +112,7 @@ const mapStateToProps = ({ chats }) => ({ messages: chats });
 
 const mapDispatchToProps = (dispatch) => ({
   getMessages: (user) => dispatch(getMessages(user)),
-  postMessage: (user, message) => dispatch(postMessage(user, message))
+  postMessage: (user, author, message) => dispatch(postMessage(user, author, message))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

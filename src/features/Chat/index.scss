@@ -1,7 +1,10 @@
 @import '~static/styles/vars';
 
+$footer-height: 90px;
+
 .chat {
   position: relative;
+  height: 100%;
 
   > header {
     .avatar {
@@ -10,6 +13,9 @@
   }
 
   .messages {
+    height: 600px;
+    overflow: auto;
+
     .message {
       margin-bottom: 10px;
 
@@ -40,25 +46,38 @@
   }
 
   footer {
-    width: $app-width;
-    position: fixed;
+    width: 100%;
+    position: absolute;
     bottom: 0;
     border-top: 1px solid $color-grey;
-    padding: 10px 0 30px;
+    padding: 10px 0 20px;
 
     .avatar {
       position: absolute;
-      top: -40px;
+      top: -13px;
       width: 50px;
     }
 
-    .input {
-      input[type='text'] {
-        background: rgba($color-black, 0.1);
+    .typing {
+      .avatar {
+        position: absolute;
+        top: -21px;
+        width: 50px;
+      }
+    }
 
-        &::placeholder {
-          color: $color-dark-grey;
-          font-weight: normal;
+    .inner-content {
+      position: relative;
+      background: $color-light-grey;
+
+      .input {
+        input[type='text'] {
+          background: rgba($color-black, 0.1);
+
+          &::placeholder {
+            color: $color-dark-grey;
+            font-weight: normal;
+          }
         }
       }
     }

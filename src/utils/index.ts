@@ -77,3 +77,5 @@ export const showVideo = async (callback) => {
     alert(err);
   }
 };
+
+export const randomArrayVal = (arr) => arr[Math.floor(Math.random() * arr.length)];

@@ -6,7 +6,7 @@ const SET_MESSAGE = 'SET_MESSAGE';
 
 // Action creators
 export const getMessages = (user) => async (dispatch) => {
-  const [error, response] = await api.get(`/messages/thread/tk-${user}`);
+  const [error, response] = await api.get('/messages/thread/' + user);
 
   if (!error) {
     dispatch({
@@ -17,10 +17,10 @@ export const getMessages = (user) => async (dispatch) => {
   }
 };
 
-export const postMessage = (user, message) => async (dispatch) => {
-  const [error, response] = await api.post(`/messages/thread/tk-${user}`, {
-    thread: `tk-${user}`,
-    author: 'TK',
+export const postMessage = (user, author, message) => async (dispatch) => {
+  const [error, response] = await api.post('/messages/thread/' + user, {
+    thread: user,
+    author,
     message,
     time: Date.now()
   });

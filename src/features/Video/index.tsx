@@ -29,7 +29,7 @@ const Video: React.FC<Props> = ({ video, hideDrawer }) => {
       </header>
       <div className="video-container">
         <video autoPlay onEnded={() => hideDrawer('video')}>
-          <source src={`./videos/${video.file}#t=10,20`} type="video/mp4" />
+          <source src={`./video/${video.file}#t=10,20`} type="video/mp4" />
         </video>
       </div>
     </main>

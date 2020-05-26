@@ -1,109 +1,137 @@
 {
   "messages": [
     {
-      "id": 1,
-      "thread": "tk-julia",
+      "thread": "julia",
       "author": "julia",
       "message": "Hey there2!",
-      "time": ""
+      "time": "",
+      "id": 1
     },
     {
-      "id": 2,
-      "thread": "tk-julia",
+      "thread": "julia",
       "author": "julia",
       "message": "Oh wow",
-      "time": ""
+      "time": "",
+      "id": 2
     },
     {
-      "id": 3,
-      "thread": "tk-julia",
+      "thread": "julia",
       "author": "tk",
       "message": "Hi",
-      "time": ""
+      "time": "",
+      "id": 3
     },
     {
-      "id": 4,
-      "thread": "tk-tom",
+      "thread": "tom",
       "author": "tom",
       "message": "fuck u",
-      "time": ""
+      "time": "",
+      "id": 4
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "why???",
-      "time": 1590439180091,
+      "thread": "julia",
+      "author": "julia",
+      "message": "Hahaha you're so right!!",
+      "time": 1590454172484,
       "id": 5
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "sssss",
-      "time": 1590439307035,
+      "thread": "julia",
+      "author": "tk",
+      "message": "haha",
+      "time": 1590454178733,
       "id": 6
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "nooooo",
-      "time": 1590439348219,
+      "thread": "julia",
+      "author": "julia",
+      "message": "Oh wow I can't believe it!",
+      "time": 1590454180142,
       "id": 7
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "wow",
-      "time": 1590439388835,
+      "thread": "julia",
+      "author": "tk",
+      "message": "asdasd",
+      "time": 1590454181725,
       "id": 8
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "Go to hell",
-      "time": 1590439559511,
+      "thread": "julia",
+      "author": "julia",
+      "message": "Oh wow I can't believe it!",
+      "time": 1590454183332,
       "id": 9
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "wow",
-      "time": 1590439562377,
+      "thread": "julia",
+      "author": "tk",
+      "message": "sadasdasd",
+      "time": 1590454185437,
       "id": 10
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "really??",
-      "time": 1590439565948,
+      "thread": "julia",
+      "author": "julia",
+      "message": "Hahaha you're so right!!",
+      "time": 1590454186845,
       "id": 11
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "rose",
-      "time": 1590439827676,
+      "thread": "julia",
+      "author": "tk",
+      "message": "asdd",
+      "time": 1590454188524,
       "id": 12
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "hhh",
-      "time": 1590440049005,
+      "thread": "julia",
+      "author": "julia",
+      "message": "No way, when?!",
+      "time": 1590454189734,
       "id": 13
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "fooo",
-      "time": 1590440160258,
+      "thread": "julia",
+      "author": "tk",
+      "message": "asdasdasd",
+      "time": 1590454191195,
       "id": 14
     },
     {
-      "thread": "tk-julia",
-      "author": "TK",
-      "message": "lol",
-      "time": 1590440384510,
+      "thread": "julia",
+      "author": "julia",
+      "message": "No way, when?!",
+      "time": 1590454192803,
       "id": 15
+    },
+    {
+      "thread": "julia",
+      "author": "tk",
+      "message": "asdasd",
+      "time": 1590454193986,
+      "id": 16
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Oh wow I can't believe it!",
+      "time": 1590454195196,
+      "id": 17
+    },
+    {
+      "thread": "julia",
+      "author": "tk",
+      "message": "asdasdasd",
+      "time": 1590454196525,
+      "id": 18
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Wait, you are actually being serious rn?",
+      "time": 1590454197733,
+      "id": 19
     }
   ]
 }
