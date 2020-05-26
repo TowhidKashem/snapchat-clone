@@ -21,12 +21,28 @@
   height: 100vh;
   overflow: hidden;
 
-  .video-stream,
-  .photo-capture {
+  .video-stream {
     @extend %video-cover;
 
     &.hide {
       display: none;
+    }
+  }
+
+  .photo-capture {
+    position: relative;
+    z-index: 100;
+
+    &.hide {
+      display: none;
+    }
+
+    canvas {
+      @extend %video-cover;
+    }
+
+    footer {
+      position: relative;
     }
   }
 

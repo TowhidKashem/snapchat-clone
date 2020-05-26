@@ -46,7 +46,7 @@ const Chat: React.FC<Props> = ({
     setTimeout(() => {
       setTyping(false);
       postMessage(user, user, randomArrayVal(dummyMessages));
-      new Audio('./audio/alert.mp3').play();
+      new Audio('./audio/notification.mp3').play();
     }, randomArrayVal(typeTimes));
   };
 

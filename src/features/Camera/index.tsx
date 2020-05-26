@@ -21,19 +21,6 @@ declare global {
   }
 }
 
-// Helper function used to save canvas image to file server
-function _dataURItoBlob(dataURI) {
-  const byteString = atob(dataURI.split(',')[1]);
-  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-  const ab = new ArrayBuffer(byteString.length);
-  const ia = new Uint8Array(ab);
-  for (let i = 0; i < byteString.length; i++) {
-    ia[i] = byteString.charCodeAt(i);
-  }
-  const blob = new Blob([ab], { type: mimeString });
-  return blob;
-}
-
 const Camera: React.FC<Props> = ({ drawers }) => {
   const videoElem = useRef<any>();
   const canvasElem = useRef<any>();
@@ -96,22 +83,20 @@ const Camera: React.FC<Props> = ({ drawers }) => {
   const stopVideo = () => videoStream.getTracks()[0].stop();
 
   const takePhoto = () => {
-    setPhotoTaken(true);
-
+    const { innerWidth, innerHeight } = window;
     const context = canvasElem.current.getContext('2d');
-    context.drawImage(
-      videoElem.current,
-      0,
-      0,
-      canvasElem.current.width,
-      videoElem.current.videoHeight /
-        (videoElem.current.videoWidth / canvasElem.current.width)
-    );
+    context.canvas.width = innerWidth;
+    context.canvas.height = innerHeight;
+    context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
+    new Audio('./audio/shutter.mp3').play();
+    setPhotoTaken(true);
+  };
 
-    // // Stop the webcam after the pic is taken, just hiding it won't get rid of the light on the webcam indicating it's stil running
-    // videoElem.current.srcObject.getVideoTracks().forEach((track) => track.stop());
-
-    // const myPicture = _dataURItoBlob(canvasElem.current.toDataURL());
+  const downloadPhoto = () => {
+    const dataURL = canvasElem.current
+      .toDataURL('image/png')
+      .replace('image/png', 'image/octet-stream');
+    window.location.href = dataURL;
   };
 
   return (
@@ -124,12 +109,16 @@ const Camera: React.FC<Props> = ({ drawers }) => {
         })}
       ></video>
 
-      <canvas
-        ref={canvasElem}
+      <div
         className={classNames('photo-capture', {
           hide: !photoTaken
         })}
-      ></canvas>
+      >
+        <canvas ref={canvasElem}></canvas>
+        <footer>
+          <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
+        </footer>
+      </div>
 
       <section className="controls">
         {/* Tmp */}

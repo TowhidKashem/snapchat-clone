@@ -34,7 +34,8 @@ import {
   faPhoneAlt,
   faVideo,
   faRocket,
-  faMicrophone
+  faMicrophone,
+  faDownload
 } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
@@ -75,7 +76,8 @@ const iconMap = {
   faPhoneAlt,
   faVideo,
   faRocket,
-  faMicrophone
+  faMicrophone,
+  faDownload
 };
 
 interface Props {
