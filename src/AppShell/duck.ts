@@ -64,15 +64,15 @@ const _parseUsers = (users): User[] =>
 // Reducer
 const initialState = {
   drawers: [
-    {
-      animationIn: 'zoomIn',
-      animationOut: 'zoomOut',
-      animationInDuration: 300,
-      animationOutDuration: 300,
-      // theme: 'dark',
-      component: 'chat',
-      show: true
-    }
+    // {
+    //   animationIn: 'zoomIn',
+    //   animationOut: 'zoomOut',
+    //   animationInDuration: 300,
+    //   animationOutDuration: 300,
+    //   theme: 'dark',
+    //   component: 'chat',
+    //   show: true
+    // }
   ],
   currentUser: {},
   dummyUsers: []

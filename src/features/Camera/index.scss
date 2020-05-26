@@ -21,7 +21,8 @@
   height: 100vh;
   overflow: hidden;
 
-  .video-stream {
+  .video-stream,
+  .photo-capture {
     @extend %video-cover;
 
     &.hide {

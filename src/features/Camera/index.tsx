@@ -21,18 +21,33 @@ declare global {
   }
 }
 
+// Helper function used to save canvas image to file server
+function _dataURItoBlob(dataURI) {
+  const byteString = atob(dataURI.split(',')[1]);
+  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  const blob = new Blob([ab], { type: mimeString });
+  return blob;
+}
+
 const Camera: React.FC<Props> = ({ drawers }) => {
-  const videoPlayer = useRef<any>();
+  const videoElem = useRef<any>();
+  const canvasElem = useRef<any>();
 
   const [showFilters, setShowFilters] = useState<boolean>(false);
   const [filter, setFilter] = useState<Filter | null>(null);
   const [filterReady, setFilterReady] = useState<boolean>(false);
+  const [photoTaken, setPhotoTaken] = useState<boolean>(false);
   const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
 
   const [videoStream, setVideoStream] = useState<any>();
 
   useEffect(() => {
-    // startVideo();
+    startVideo();
   }, []);
 
   // Start/stop video when drawer is opened and closed
@@ -73,22 +88,48 @@ const Camera: React.FC<Props> = ({ drawers }) => {
 
   const startVideo = () => {
     showVideo((stream) => {
-      videoPlayer.current.srcObject = stream;
+      videoElem.current.srcObject = stream;
       setVideoStream(stream);
     });
   };
 
   const stopVideo = () => videoStream.getTracks()[0].stop();
 
+  const takePhoto = () => {
+    setPhotoTaken(true);
+
+    const context = canvasElem.current.getContext('2d');
+    context.drawImage(
+      videoElem.current,
+      0,
+      0,
+      canvasElem.current.width,
+      videoElem.current.videoHeight /
+        (videoElem.current.videoWidth / canvasElem.current.width)
+    );
+
+    // // Stop the webcam after the pic is taken, just hiding it won't get rid of the light on the webcam indicating it's stil running
+    // videoElem.current.srcObject.getVideoTracks().forEach((track) => track.stop());
+
+    // const myPicture = _dataURItoBlob(canvasElem.current.toDataURL());
+  };
+
   return (
     <main className="camera">
       <video
-        ref={videoPlayer}
+        ref={videoElem}
         autoPlay
         className={classNames('video-stream', {
-          hide: filterReady
+          hide: filterReady || photoTaken
         })}
       ></video>
+
+      <canvas
+        ref={canvasElem}
+        className={classNames('photo-capture', {
+          hide: !photoTaken
+        })}
+      ></canvas>
 
       <section className="controls">
         {/* Tmp */}
@@ -108,7 +149,7 @@ const Camera: React.FC<Props> = ({ drawers }) => {
           />
         )}
 
-        <Button icon="faCircle" buttonClass="btn-capture" />
+        <Button icon="faCircle" buttonClass="btn-capture" onclick={takePhoto} />
 
         {!showFilters && (
           <Button
