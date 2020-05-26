@@ -29,8 +29,8 @@ const Map: React.FC<Props> = ({
 }) => {
   const mapRef = useRef<any>();
 
-  const openVideo = ({ location, time, video }) => {
-    showVideo({ video, location, time });
+  const openVideo = ({ location, time, file }) => {
+    showVideo({ file, location, time });
     showDrawer({
       component: 'video',
       animationIn: 'zoomIn',

@@ -26,6 +26,7 @@ import {
   faEllipsisV,
   faCog,
   faTimesCircle,
+  faTimes,
   faAngleLeft,
   faSearchPlus,
   faPaw,
@@ -35,7 +36,16 @@ import {
   faVideo,
   faRocket,
   faMicrophone,
-  faDownload
+  faDownload,
+  faTextHeight,
+  faPen,
+  faStickyNote,
+  faCut,
+  faPaperclip,
+  faCropAlt,
+  faStopwatch,
+  faExternalLinkAlt,
+  faPlayCircle
 } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
@@ -68,6 +78,7 @@ const iconMap = {
   faEllipsisV,
   faCog,
   faTimesCircle,
+  faTimes,
   faAngleLeft,
   faSearchPlus,
   faPaw,
@@ -77,7 +88,16 @@ const iconMap = {
   faVideo,
   faRocket,
   faMicrophone,
-  faDownload
+  faDownload,
+  faTextHeight,
+  faPen,
+  faStickyNote,
+  faCut,
+  faPaperclip,
+  faCropAlt,
+  faStopwatch,
+  faExternalLinkAlt,
+  faPlayCircle
 };
 
 interface Props {

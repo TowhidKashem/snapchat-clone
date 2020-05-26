@@ -6,7 +6,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';
 import Icon from 'common/Icon';
-import PreviewMap from './PreviewMap';
+import Map from './Map';
 import './index.scss';
 
 interface Props {
@@ -71,7 +71,7 @@ const Account: React.FC<Props> = ({ showDrawer, hideDrawer, currentUser }) => {
         />
       </Widget>
       <Widget header="Snap Map">
-        <PreviewMap showDrawer={showDrawer} />
+        <Map showDrawer={showDrawer} />
         <ActionItem
           leftIcon="faCompass"
           rightIcon="faAngleRight"

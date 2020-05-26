@@ -10,7 +10,7 @@ interface Props {
 
 const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;
 
-const PreviewMap: React.FC<Props> = ({ showDrawer }) => {
+const Map: React.FC<Props> = ({ showDrawer }) => {
   const lat = 40.76122;
   const lng = -73.92318;
 
@@ -49,4 +49,4 @@ const PreviewMap: React.FC<Props> = ({ showDrawer }) => {
   );
 };
 
-export default PreviewMap;
+export default Map;

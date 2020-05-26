@@ -34,7 +34,7 @@ const Camera: React.FC<Props> = ({ drawers }) => {
   const [videoStream, setVideoStream] = useState<any>();
 
   useEffect(() => {
-    startVideo();
+    // startVideo();
   }, []);
 
   // Start/stop video when drawer is opened and closed
@@ -114,9 +114,23 @@ const Camera: React.FC<Props> = ({ drawers }) => {
           hide: !photoTaken
         })}
       >
+        <header>
+          <Button icon="faTimes" onclick={() => {}} />
+        </header>
         <canvas ref={canvasElem}></canvas>
+        <aside>
+          <Button icon="faTextHeight" />
+          <Button icon="faPen" />
+          <Button icon="faStickyNote" />
+          <Button icon="faCut" />
+          <Button icon="faPaperclip" />
+          <Button icon="faCropAlt" />
+          <Button icon="faStopwatch" />
+        </aside>
         <footer>
           <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
+          <Button icon="faExternalLinkAlt" label="Story" />
+          <Button icon="faPlayCircle" label="Send To" />
         </footer>
       </div>
 
