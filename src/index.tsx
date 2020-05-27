@@ -1,26 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import app from 'AppShell/duck';
+import user from 'features/User/duck';
+import weather from 'features/Map/duck';
+import media from 'features/Video/duck';
+import chats from 'features/Chat/duck';
 
 import AppShell from './AppShell';
 import Camera from './features/Camera';
 import NotFound from './features/404';
 
-// Redux
-import { Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-
-import app from 'AppShell/duck';
-import weather from 'features/Map/duck';
-import media from 'features/Video/duck';
-import chats from 'features/Chat/duck';
-
 import 'normalize.css';
 import 'animate.css';
 import './static/styles/global.scss';
 
-const rootReducer = combineReducers({ app, weather, media, chats });
+const rootReducer = combineReducers({ app, user, weather, media, chats });
 
 // Redux devtools extension
 // https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd

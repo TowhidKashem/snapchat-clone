@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
+import useDrawerEnter from 'hooks/useDrawerEnter';
 import Icon from 'common/Icon';
 import './index.scss';
 
@@ -26,24 +27,22 @@ const Input: React.FC<Props> = ({
   onEnter,
   focus
 }) => {
-  const inputField = useRef<any>();
+  const inputElem = useRef<any>();
 
-  useEffect(() => {
-    if (focus) inputField.current.focus();
-  }, []);
+  useDrawerEnter(() => focus && inputElem.current.focus());
 
   return (
     <div className="input" onClick={onClick}>
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
         type="text"
+        ref={inputElem}
         placeholder={placeholder}
         value={value}
         onFocus={onFocus}
         onChange={onChange}
         onKeyPress={({ key }) => onEnter && key === 'Enter' && onEnter()}
         disabled={onClick ? true : false}
-        ref={inputField}
         className={classNames({
           'has-left-icon': leftIcon
         })}

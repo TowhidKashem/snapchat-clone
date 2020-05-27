@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { User as UserInterface } from 'types';
+import { User as UserInterface } from 'features/User/types';
 import Avatar from 'common/Avatar';
 import Divider from 'common/Divider';
 import './index.scss';

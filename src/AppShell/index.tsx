@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Drawer as DrawerType, ShowDrawer, HideDrawer } from './types';
-import { showDrawer, hideDrawer, getUser, getUsers } from './duck';
+import { showDrawer, hideDrawer } from './duck';
+import { getUser } from 'features/User/duck';
 import Toolbar from './Toolbar';
 import Header from './Header';
 import Footer from './Footer';
@@ -9,26 +10,23 @@ import Drawer from './Drawer';
 import './index.scss';
 
 interface Props {
-  getUser: () => void;
-  getUsers: () => void;
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
   drawers: DrawerType[];
+  getUser: () => void;
   children: JSX.Element;
 }
 
 const AppShell: React.FC<Props> = ({
-  // getUser,
-  // getUsers,
-  children,
   showDrawer,
   hideDrawer,
-  drawers
+  drawers,
+  getUser,
+  children
 }) => {
+  // Init the app
   useEffect(() => {
-    // // Load some dummy data
-    // getUser();
-    // getUsers();
+    getUser();
   }, []);
 
   return (
@@ -42,8 +40,7 @@ const AppShell: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({ app, session, users, media }) => ({
-  session,
+const mapStateToProps = ({ app, users, media }) => ({
   users,
   media,
   drawers: app.drawers
@@ -52,8 +49,7 @@ const mapStateToProps = ({ app, session, users, media }) => ({
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (component) => dispatch(showDrawer(component)),
   hideDrawer: (component) => dispatch(hideDrawer(component)),
-  getUser: () => dispatch(getUser()),
-  getUsers: () => dispatch(getUsers())
+  getUser: () => dispatch(getUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppShell);

@@ -8,6 +8,8 @@
   height: 0;
   z-index: 10;
 
+  max-height: 100vh;
+
   .content {
     height: 100vh;
     padding: $toolbar-height 10px 10px;

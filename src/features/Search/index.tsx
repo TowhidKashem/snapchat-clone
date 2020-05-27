@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { HideDrawer } from 'AppShell/types';
 import { hideDrawer } from 'AppShell/duck';
+import { User } from 'features/User/types';
+import { getUsers } from 'features/User/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import { escapeRegex } from 'utils';
@@ -10,16 +12,23 @@ import UserPod from 'common/Pod/User';
 import './index.scss';
 
 interface Props {
-  users: any;
+  friends: User[];
+  getUsers: () => void;
   hideDrawer: HideDrawer;
 }
 
-const Search: React.FC<Props> = ({ users, hideDrawer }) => {
+const Search: React.FC<Props> = ({ friends = [], getUsers, hideDrawer }) => {
   const [query, setQuery] = useState<string>('');
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   const filteredUsers = query
-    ? users.filter(({ username }) => username.match(new RegExp(escapeRegex(query), 'gi')))
-    : users;
+    ? friends.filter(({ username }) =>
+        username.match(new RegExp(escapeRegex(query), 'gi'))
+      )
+    : friends;
 
   const results = filteredUsers.map((user) => <UserPod key={user.id} user={user} />);
 
@@ -58,13 +67,13 @@ const Search: React.FC<Props> = ({ users, hideDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ app }) => ({
-  app,
-  users: app.dummyUsers
+const mapStateToProps = ({ user }) => ({
+  friends: user.friends
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: (component) => dispatch(hideDrawer(component))
+  hideDrawer: (component) => dispatch(hideDrawer(component)),
+  getUsers: () => dispatch(getUsers())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { User } from 'features/User/types';
 import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -12,10 +13,10 @@ import './index.scss';
 interface Props {
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
-  currentUser: any;
+  session: User;
 }
 
-const Account: React.FC<Props> = ({ showDrawer, hideDrawer, currentUser }) => {
+const Account: React.FC<Props> = ({ showDrawer, hideDrawer, session }) => {
   return (
     <main className="account">
       <Grid fluid>
@@ -46,7 +47,7 @@ const Account: React.FC<Props> = ({ showDrawer, hideDrawer, currentUser }) => {
             <Col>
               <Icon icon="faSnapchatSquare" size="7x" />
               <br />
-              {currentUser.username}
+              {session.username}
             </Col>
           </Row>
         </Col>
@@ -83,8 +84,8 @@ const Account: React.FC<Props> = ({ showDrawer, hideDrawer, currentUser }) => {
   );
 };
 
-const mapStateToProps = ({ app }) => ({
-  currentUser: app.currentUser
+const mapStateToProps = ({ user }) => ({
+  session: user.session
 });
 
 const mapDispatchToProps = (dispatch) => ({

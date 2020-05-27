@@ -14,7 +14,11 @@ export const promise = (promise) =>
 
 export const api = {
   baseURL: 'http://localhost:3050',
-  get: (endpoint) => api.respond(fetch(api.baseURL + endpoint)),
+  get: (endpoint, external?, options?) => {
+    let url = external ? endpoint : api.baseURL + endpoint;
+    if (options) url += '?' + new URLSearchParams(options).toString();
+    return api.respond(fetch(url));
+  },
   post: (endpoint, options) =>
     api.respond(
       fetch(api.baseURL + endpoint, {

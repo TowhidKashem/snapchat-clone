@@ -23,15 +23,12 @@ interface Props {
 }
 
 const Camera: React.FC<Props> = ({ drawers }) => {
-  // const videoElem = useRef<HTMLVideoElement>();
   const videoElem = useRef<any>();
 
   const [showFilters, setShowFilters] = useState<boolean>(false);
   const [filter, setFilter] = useState<Filter | null>();
   const [filterReady, setFilterReady] = useState<boolean>(false);
   const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
-  const [videoStream, setVideoStream] = useState<MediaStream>();
-
   const [takePic, setTakePic] = useState<boolean>(false);
 
   useEffect(() => {
@@ -62,19 +59,17 @@ const Camera: React.FC<Props> = ({ drawers }) => {
       } catch (err) {}
     } else {
       // stopVideo();
+      // JEEFACEFILTERAPI.toggle_pause(true, true);
       setFilter(filter);
     }
   };
 
   const startVideo = () =>
     showVideo((stream) => {
-      if (videoElem.current) {
-        videoElem.current.srcObject = stream;
-        setVideoStream(stream);
-      }
+      videoElem.current.srcObject = stream;
     });
 
-  const stopVideo = () => videoStream?.getTracks()[0].stop();
+  // const stopVideo = () => videoStream?.getTracks()[0].stop();
 
   return (
     <main className="camera">

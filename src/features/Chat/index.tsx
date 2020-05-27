@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { getMessages, postMessage } from './duck';

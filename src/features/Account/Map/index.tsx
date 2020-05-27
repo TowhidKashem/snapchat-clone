@@ -1,7 +1,8 @@
 /* eslint-disable */
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { ShowDrawer } from 'AppShell/types';
+import useDrawerEnter from 'hooks/useDrawerEnter';
 import './index.scss';
 
 interface Props {
@@ -18,18 +19,14 @@ const Map: React.FC<Props> = ({ showDrawer }) => {
 
   const mapRef = useRef<any>();
 
-  useEffect(() => {
-    // 300ms is the `animationInDuration` of the `account` drawer
-    // delaying the init of the map until after the drawer fully opens prevents animation choppiness
-    setTimeout(() => {
-      new mapboxgl.Map({
-        container: mapRef.current,
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [lng, lat],
-        zoom: 12
-      });
-    }, 300);
-  }, []);
+  useDrawerEnter(() => {
+    new mapboxgl.Map({
+      container: mapRef.current,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [lng, lat],
+      zoom: 12
+    });
+  });
 
   return (
     <div

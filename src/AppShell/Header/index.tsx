@@ -25,7 +25,15 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
             placeholder="Search"
             leftIcon="faSearch"
             rightIcon="faUserPlus"
-            onClick={() => showDrawer({ component: 'search' })}
+            onClick={() =>
+              showDrawer({
+                component: 'search',
+                animationIn: 'fadeIn',
+                animationOut: 'fadeOut',
+                animationInDuration: 200,
+                animationOutDuration: 200
+              })
+            }
           />
         </Col>
         <Col xs={1}>
