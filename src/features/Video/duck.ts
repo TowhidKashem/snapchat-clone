@@ -10,7 +10,8 @@ export const showVideo = (video) => async (dispatch) => {
 const initialState = {
   video: {
     // location: 'The quick brown fox',
-    // time: '3 hours ago'
+    // time: '3 hours ago',
+    // file: 'sample-1.mp4'
   }
 };
 

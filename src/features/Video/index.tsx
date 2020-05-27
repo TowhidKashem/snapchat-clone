@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { HideDrawer } from 'AppShell/types';
 import { hideDrawer } from 'AppShell/duck';
@@ -12,6 +12,13 @@ interface Props {
 }
 
 const Video: React.FC<Props> = ({ video, hideDrawer }) => {
+  const videoElem = useRef<any>();
+
+  useEffect(() => {
+    videoElem.current.currentTime = 0;
+    videoElem.current.play();
+  }, [video]);
+
   return (
     <main className="video">
       <header>
@@ -28,8 +35,16 @@ const Video: React.FC<Props> = ({ video, hideDrawer }) => {
         </Grid>
       </header>
       <div className="video-container">
-        <video autoPlay onEnded={() => hideDrawer('video')}>
-          <source src={`./video/${video.file}#t=10,20`} type="video/mp4" />
+        <video
+          ref={videoElem}
+          autoPlay
+          controls
+          onEnded={() => {
+            alert('hey');
+            // hideDrawer('video');
+          }}
+        >
+          <source src={'./video/' + video.file + '#t=0,3'} type="video/mp4" />
         </video>
       </div>
     </main>

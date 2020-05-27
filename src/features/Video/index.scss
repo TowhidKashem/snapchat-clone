@@ -18,14 +18,14 @@
   .video-container {
     position: relative;
     border-radius: 25px;
+    height: 100vh;
     overflow: hidden;
 
     video {
-      height: 100%;
-      width: 177.77777778vh; // 100 * 16 / 9
-      min-width: 100%;
-      min-height: 56.25vw; // 100 * 9 / 16
-      min-height: 100vh;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }

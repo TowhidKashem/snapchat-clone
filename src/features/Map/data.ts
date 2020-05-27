@@ -23,7 +23,7 @@ export const dummySnaps = (lat, lon) => [
     media: {
       location: 'New York City, New York',
       time: 'Sat',
-      file: 'sample-2.mp4'
+      file: 'sample-1.mp4'
     }
   },
   {
@@ -41,7 +41,7 @@ export const dummySnaps = (lat, lon) => [
     media: {
       location: 'New York City, New York',
       time: 'Sat',
-      file: 'sample-2.mp4'
+      file: 'sample-1.mp4'
     }
   },
   {

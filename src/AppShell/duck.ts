@@ -25,15 +25,15 @@ export const hideDrawer = (component) => (dispatch) =>
 // Reducer
 const initialState = {
   drawers: [
-    // {
-    //   animationIn: 'zoomIn',
-    //   animationOut: 'zoomOut',
-    //   animationInDuration: 300,
-    //   animationOutDuration: 300,
-    //   theme: 'dark',
-    //   component: 'chat',
-    //   show: true
-    // }
+    {
+      // animationIn: 'zoomIn',
+      // animationOut: 'zoomOut',
+      // animationInDuration: 300,
+      // animationOutDuration: 300,
+      // theme: 'dark',
+      component: 'map'
+      // show: true
+    }
   ]
 };
 
