@@ -29,46 +29,6 @@
     }
   }
 
-  .photo-capture {
-    position: relative;
-    z-index: 100;
-
-    &.hide {
-      display: none;
-    }
-
-    .button {
-      margin-bottom: 15px;
-
-      .icon {
-        font-size: 25px;
-      }
-    }
-
-    header {
-    }
-
-    canvas {
-      @extend %video-cover;
-    }
-
-    aside {
-      position: absolute;
-      right: 0;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-
-      .button {
-        margin-bottom: 15px;
-      }
-    }
-
-    footer {
-      position: relative;
-    }
-  }
-
   .controls {
     position: fixed;
     bottom: 70px;

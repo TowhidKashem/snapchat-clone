@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { Drawer } from 'AppShell/types';
+import { Drawer } from '../types';
+import { drawerIsOpen } from '../utils';
 import Icon from 'common/Icon';
 import './index.scss';
 
@@ -28,12 +29,10 @@ const Toolbar: React.FC<Props> = ({ drawers }) => {
     setInterval(updateTime, 1000);
   }, []);
 
-  const atleastOneDrawerOpen = drawers.some(({ show }) => show);
-
   return (
     <div
       className={classNames('toolbar', {
-        dark: atleastOneDrawerOpen
+        dark: drawerIsOpen(drawers)
       })}
     >
       <Grid fluid>

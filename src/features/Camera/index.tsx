@@ -2,17 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
-import { Drawer } from 'AppShell/types';
-import Button from 'common/Button';
-// import useCamera from 'hooks/useCamera';
 import { loadScripts, showVideo } from 'utils';
+import { Drawer } from 'AppShell/types';
 import { Filter } from './types';
 import { dependencies, filters } from './data';
+import PhotoCapture from './PhotoCapture';
+import Button from 'common/Button';
+// import useCamera from 'hooks/useCamera';
 import './index.scss';
-
-interface Props {
-  drawers: Drawer[];
-}
 
 declare global {
   interface Window {
@@ -21,29 +18,25 @@ declare global {
   }
 }
 
+interface Props {
+  drawers: Drawer[];
+}
+
 const Camera: React.FC<Props> = ({ drawers }) => {
+  // const videoElem = useRef<HTMLVideoElement>();
   const videoElem = useRef<any>();
-  const canvasElem = useRef<any>();
 
   const [showFilters, setShowFilters] = useState<boolean>(false);
-  const [filter, setFilter] = useState<Filter | null>(null);
+  const [filter, setFilter] = useState<Filter | null>();
   const [filterReady, setFilterReady] = useState<boolean>(false);
-  const [photoTaken, setPhotoTaken] = useState<boolean>(false);
   const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
+  const [videoStream, setVideoStream] = useState<MediaStream>();
 
-  const [videoStream, setVideoStream] = useState<any>();
+  const [takePic, setTakePic] = useState<boolean>(false);
 
   useEffect(() => {
-    // startVideo();
+    startVideo();
   }, []);
-
-  // Start/stop video when drawer is opened and closed
-  useEffect(() => {
-    // const atleastOneDrawerOpen = drawers.some(({ show }) => show);
-    // if (atleastOneDrawerOpen) stopVideo();
-    // else startVideo();
-    // startVideo();
-  }, [drawers]);
 
   const initFilter = (filter) => {
     window.Filters[filter].init(() => setFilterReady(true));
@@ -73,31 +66,15 @@ const Camera: React.FC<Props> = ({ drawers }) => {
     }
   };
 
-  const startVideo = () => {
+  const startVideo = () =>
     showVideo((stream) => {
-      videoElem.current.srcObject = stream;
-      setVideoStream(stream);
+      if (videoElem.current) {
+        videoElem.current.srcObject = stream;
+        setVideoStream(stream);
+      }
     });
-  };
 
-  const stopVideo = () => videoStream.getTracks()[0].stop();
-
-  const takePhoto = () => {
-    const { innerWidth, innerHeight } = window;
-    const context = canvasElem.current.getContext('2d');
-    context.canvas.width = innerWidth;
-    context.canvas.height = innerHeight;
-    context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
-    new Audio('./audio/shutter.mp3').play();
-    setPhotoTaken(true);
-  };
-
-  const downloadPhoto = () => {
-    const dataURL = canvasElem.current
-      .toDataURL('image/png')
-      .replace('image/png', 'image/octet-stream');
-    window.location.href = dataURL;
-  };
+  const stopVideo = () => videoStream?.getTracks()[0].stop();
 
   return (
     <main className="camera">
@@ -105,34 +82,15 @@ const Camera: React.FC<Props> = ({ drawers }) => {
         ref={videoElem}
         autoPlay
         className={classNames('video-stream', {
-          hide: filterReady || photoTaken
+          hide: filterReady || takePic
         })}
       ></video>
 
-      <div
-        className={classNames('photo-capture', {
-          hide: !photoTaken
-        })}
-      >
-        <header>
-          <Button icon="faTimes" onclick={() => {}} />
-        </header>
-        <canvas ref={canvasElem}></canvas>
-        <aside>
-          <Button icon="faTextHeight" />
-          <Button icon="faPen" />
-          <Button icon="faStickyNote" />
-          <Button icon="faCut" />
-          <Button icon="faPaperclip" />
-          <Button icon="faCropAlt" />
-          <Button icon="faStopwatch" />
-        </aside>
-        <footer>
-          <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
-          <Button icon="faExternalLinkAlt" label="Story" />
-          <Button icon="faPlayCircle" label="Send To" />
-        </footer>
-      </div>
+      <PhotoCapture
+        takePic={takePic}
+        closePic={() => setTakePic(false)}
+        videoElem={videoElem}
+      />
 
       <section className="controls">
         {/* Tmp */}
@@ -152,7 +110,11 @@ const Camera: React.FC<Props> = ({ drawers }) => {
           />
         )}
 
-        <Button icon="faCircle" buttonClass="btn-capture" onclick={takePhoto} />
+        <Button
+          icon="faCircle"
+          buttonClass="btn-capture"
+          onclick={() => setTakePic(true)}
+        />
 
         {!showFilters && (
           <Button
@@ -174,9 +136,9 @@ const Camera: React.FC<Props> = ({ drawers }) => {
             {filters.map((filter, index) => (
               <Button
                 key={filter + index}
-                image={`./filters/${filter}.svg`}
-                buttonClass={`filter-${filter}`}
-                onclick={() => switchFilter(filter as Filter)}
+                image={'./filters/' + filter + '.svg'}
+                buttonClass={'filter-' + filter}
+                onclick={() => switchFilter(filter)}
               />
             ))}
           </div>

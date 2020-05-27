@@ -1,0 +1,46 @@
+@import '~static/styles/vars';
+@import '~static/styles/extendables';
+
+.photo-capture {
+  position: relative;
+  z-index: 100;
+
+  &.hide {
+    display: none;
+  }
+
+  .button {
+    margin-bottom: 15px;
+
+    .icon {
+      font-size: 25px;
+    }
+  }
+
+  header {
+    position: absolute;
+    top: 0;
+    right: 100px;
+    z-index: 1;
+  }
+
+  canvas {
+    @extend %video-cover;
+  }
+
+  aside {
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .button {
+      margin-bottom: 15px;
+    }
+  }
+
+  footer {
+    position: relative;
+  }
+}
