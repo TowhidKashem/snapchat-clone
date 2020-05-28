@@ -2,7 +2,8 @@ import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
-import { showVideo } from 'features/Video/duck';
+import { Media, ShowMedia } from 'features/Media/types';
+import { showMedia } from 'features/Media/duck';
 import { getWeather } from './duck';
 import { dummySnaps } from './data';
 import mapboxgl from 'mapbox-gl';
@@ -15,7 +16,7 @@ interface Props {
   getWeather: any;
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
-  showVideo: any;
+  showMedia: ShowMedia;
 }
 
 const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;
@@ -23,16 +24,16 @@ const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;
 const Map: React.FC<Props> = ({
   showDrawer,
   hideDrawer,
-  showVideo,
+  showMedia,
   getWeather,
   weather
 }) => {
   const mapRef = useRef<any>();
 
-  const openVideo = ({ location, time, file }) => {
-    showVideo({ file, location, time });
+  const openMedia = (media: Media[]) => {
+    showMedia(media);
     showDrawer({
-      component: 'video',
+      component: 'media',
       animationIn: 'zoomIn',
       animationOut: 'zoomOut',
       theme: 'dark'
@@ -45,7 +46,7 @@ const Map: React.FC<Props> = ({
     marker.onclick = (e: any) => {
       e.target.classList.add('active');
       // The setTimeout's below are to allow time to display the pulsing effect
-      setTimeout(() => openVideo(media), 900);
+      setTimeout(() => openMedia(media), 900);
       setTimeout(() => e.target.classList.remove('active'), 1000);
     };
     new mapboxgl.Marker(marker).setLngLat([lon, lat]).addTo(map);
@@ -108,7 +109,7 @@ const mapStateToProps = ({ weather }) => ({ weather });
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),
   hideDrawer: (component) => dispatch(hideDrawer(component)),
-  showVideo: (video) => dispatch(showVideo(video)),
+  showMedia: (media) => dispatch(showMedia(media)),
   getWeather: (lat, lon) => dispatch(getWeather(lat, lon))
 });
 

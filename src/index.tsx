@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import app from 'AppShell/duck';
 import user from 'features/User/duck';
 import weather from 'features/Map/duck';
-import media from 'features/Video/duck';
+import snaps from 'features/Snaps/duck';
 import chats from 'features/Chat/duck';
 
 import AppShell from './AppShell';
@@ -19,7 +19,7 @@ import 'normalize.css';
 import 'animate.css';
 import './static/styles/global.scss';
 
-const rootReducer = combineReducers({ app, user, weather, media, chats });
+const rootReducer = combineReducers({ app, user, weather, snaps, chats });
 
 // Redux devtools extension
 // https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd

@@ -6,8 +6,8 @@ import Account from 'features/Account';
 import Settings from 'features/Settings';
 import Search from 'features/Search';
 import Map from 'features/Map';
-import Video from 'features/Video';
-import Snaps from 'features/Snaps';
+import Media from 'features/Media';
+import Archive from 'features/Archive';
 import Chat from 'features/Chat';
 import Discover from 'features/Discover';
 import './index.scss';
@@ -24,8 +24,8 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
     settings: <Settings />,
     search: <Search />,
     map: <Map />,
-    video: <Video />,
-    snaps: <Snaps />,
+    media: <Media />,
+    archive: <Archive />,
     chat: <Chat />,
     discover: <Discover />
   };

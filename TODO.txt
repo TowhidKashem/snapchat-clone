@@ -1,4 +1,6 @@
 
+cut videos to small seconds, for fairuse and performance
+
 useScript hook
 
 loadable for all GET requests

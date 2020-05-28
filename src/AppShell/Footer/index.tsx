@@ -34,7 +34,7 @@ const Footer: React.FC<Props> = ({ showDrawer }) => (
             buttonClass="archive-btn"
             onclick={() =>
               showDrawer({
-                component: 'snaps',
+                component: 'archive',
                 animationIn: 'slideInUp',
                 animationOut: 'slideOutDown'
               })
