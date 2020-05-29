@@ -9,9 +9,11 @@ export const GET_WEATHER = 'GET_WEATHER';
 
 // Action creators
 export const getSnaps = (lat, lon) => async (dispatch) => {
-  const [error, response] = await api.get('/snaps');
+  const [error, response] = await api.get(`/snaps/${lat}/${lon}`);
 
   if (!error) {
+    // Set some dummy coordinates to make snaps seem close to user
+    // If this was a real app these would be coming back from the server instead of `null` as is the case now..
     const coords = [
       {
         lat: lat - 0.01,
@@ -20,21 +22,21 @@ export const getSnaps = (lat, lon) => async (dispatch) => {
       {
         lat: lat + 0.007,
         lon: lon + 0.005
+      },
+      {
+        lat: lat + 0.003,
+        lon: lon - 0.0
+      },
+      {
+        lat: lat + 0.007,
+        lon: lon - 0.007
       }
-      // {
-      //   lat: lat + 0.003,
-      //   lon: lon - 0.0
-      // },
-      // {
-      //   lat: lat + 0.007,
-      //   lon: lon - 0.007
-      // }
     ];
 
     const snaps = response.snaps.map((snap, index) => ({
+      ...snap,
       lat: coords[index].lat,
-      lon: coords[index].lon,
-      ...snap
+      lon: coords[index].lon
     }));
 
     dispatch({ type: GET_SNAPS, snaps });

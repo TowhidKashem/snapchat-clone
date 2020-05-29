@@ -1,8 +1,11 @@
 export interface Snap {
   location: string;
+  lat: number;
+  lon: number;
   time: number;
   type: 'video' | 'photo';
-  file: string;
+  url: string;
+  userId: string;
 }
 
-export type OpenSnaps = (snaps: Snap[]) => void;
+export type OpenSnap = (snap: Snap) => void;

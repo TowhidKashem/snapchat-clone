@@ -1,108 +1,103 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { ShowDrawer, HideDrawer } from 'AppShell/types';
-import { showDrawer, hideDrawer } from 'AppShell/duck';
-import { Snap, OpenSnaps } from 'features/Snap/types';
-import { openSnaps } from 'features/Snap/duck';
-import {
-  // getWeather,
-  getSnaps
-} from './duck';
 import mapboxgl from 'mapbox-gl';
+
+import { ShowDrawer, HideDrawer } from 'AppShell/types';
+import { Snap, OpenSnap } from 'features/Snap/types';
+import { GetSnaps } from './types';
+
+import { showDrawer, hideDrawer } from 'AppShell/duck';
+import { openSnap } from 'features/Snap/duck';
+import { getSnaps } from './duck';
+
 import useGeo from 'hooks/useGeo';
 // import Header from './Header';
 import './index.scss';
 
+mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
+
 interface Props {
-  // weather: any;
-  // getWeather: any;
+  snaps: Snap[];
+  getSnaps: GetSnaps;
+  openSnap: OpenSnap;
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
-  openSnaps: OpenSnaps;
-
-  snaps: any;
-  getSnaps: any;
 }
 
-const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;
-
 const SnapMap: React.FC<Props> = ({
-  showDrawer,
-  hideDrawer,
-  openSnaps,
-
   snaps,
-  getSnaps
-  // getWeather,
-  // weather
+  getSnaps,
+  openSnap,
+  showDrawer,
+  hideDrawer
 }) => {
-  const [map, setMap] = useState<any>();
+  const [map, setMap] = useState(null);
+  const [lat, setLat] = useState<number>();
+  const [lon, setLon] = useState<number>();
   const mapElem = useRef<any>();
 
-  const setMarker = ({ lat, lon, snaps }, map) => {
-    const marker = document.createElement('div');
-    marker.className = 'marker';
-    marker.onclick = (e: any) => {
-      e.target.classList.add('active');
-      // The setTimeout's below are to allow time to display the pulsing effect
-      setTimeout(() => {
-        openSnaps(snaps);
-        showDrawer({
-          component: 'media',
-          animationIn: 'zoomIn',
-          animationOut: 'zoomOut',
-          theme: 'dark'
-        });
-      }, 900);
-      setTimeout(() => e.target.classList.remove('active'), 1000);
-    };
-    new mapboxgl.Marker(marker).setLngLat([lon, lat]).addTo(map);
-  };
-
-  // Show some dummy snaps nearby
-  if (map) snaps.map((snap) => setMarker(snap, map));
-
+  // Add self marker on map
   useEffect(() => {
-    getSnaps(40.761219, -73.92318);
-  }, []);
+    if (map) addSelfMarker();
+  }, [map]);
 
-  useGeo((lat, lon) => {
-    // getSnaps(lat, lon);
+  // Add snaps on map after they've been retrieved from the API
+  useEffect(() => {
+    if (map) snaps.map((snap) => addSnapToMap(snap));
+  }, [snaps]);
 
-    mapboxgl.accessToken = MAP_BOX_API_KEY;
-
-    const localMap = new mapboxgl.Map({
-      container: mapElem.current,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [lon, lat],
-      zoom: 14
-    });
-
-    setMap(localMap);
-
-    // setTimeout(() => {
-    //   map.flyTo({
-    //     center: [lon, lat],
-    //     essential: true
-    //   });
-    // }, 2000);
-
-    // Add markers to map
-    const el = document.createElement('div');
-    el.className = 'self-marker';
-
-    new mapboxgl.Marker(el)
+  const addSelfMarker = () => {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'self-marker';
+    new mapboxgl.Marker(tooltip)
       .setLngLat([lon, lat])
       .setPopup(
         new mapboxgl.Popup({ offset: 25 }).setHTML(
           '<h3>Me</h3><p>Not Sharing Location</p>'
         )
       )
-      .addTo(localMap);
+      .addTo(map);
+  };
 
-    // Weather
-    // getWeather(lat, lon);
-    // getWeather(40.761219, -73.92318);
+  const addSnapToMap = (snap: Snap) => {
+    const marker = document.createElement('div');
+    marker.className = 'marker';
+    marker.onclick = (e: any) => {
+      e.target.classList.add('active');
+      // Delay opening the drawer so we can see the pulse animation
+      setTimeout(() => {
+        openSnap(snap);
+        showDrawer({
+          component: 'snap',
+          animationIn: 'zoomIn',
+          animationOut: 'zoomOut',
+          theme: 'dark'
+        });
+      }, 900);
+      // Remove pulse animation
+      setTimeout(() => e.target.classList.remove('active'), 1000);
+    };
+    new mapboxgl.Marker(marker).setLngLat([snap.lon, snap.lat]).addTo(map);
+  };
+
+  useGeo((lat, lon) => {
+    getSnaps(40.761219, -73.92318);
+    setLat(lat);
+    setLon(lon);
+    setMap(
+      new mapboxgl.Map({
+        container: mapElem.current,
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [lon, lat],
+        zoom: 14
+      })
+    );
+    // setTimeout(() => {
+    //   map.flyTo({
+    //     center: [lon, lat],
+    //     essential: true
+    //   });
+    // }, 2000);
   });
 
   return (
@@ -120,11 +115,10 @@ const mapStateToProps = ({ snapMap }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  getSnaps: (lat, lon) => dispatch(getSnaps(lat, lon)),
+  openSnap: (snap) => dispatch(openSnap(snap)),
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),
-  hideDrawer: (component) => dispatch(hideDrawer(component)),
-  openSnaps: (snaps) => dispatch(openSnaps(snaps)),
-  getSnaps: (lat, lon) => dispatch(getSnaps(lat, lon))
-  // getWeather: (lat, lon) => dispatch(getWeather(lat, lon))
+  hideDrawer: (component) => dispatch(hideDrawer(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SnapMap);

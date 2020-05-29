@@ -2,6 +2,7 @@
   "/api/*": "/$1",
   "/:resource/:id/show": "/:resource/:id",
 
+  "/snaps/:lat/:lon": "/snaps",
   "/messages/thread/:user": "/messages?thread=:user",
 
   "/articles\\?id=:id": "/posts/:id"

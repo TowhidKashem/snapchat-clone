@@ -1,21 +1,27 @@
 import { Snap } from './types';
 
 // Action types
-export const SET_SNAPS = 'SET_SNAPS';
+export const SET_SNAP = 'SET_SNAP';
 
 // Action creators
-export const openSnaps = (snaps: Snap[]) => async (dispatch) =>
-  dispatch({ type: SET_SNAPS, snaps });
+export const openSnap = (snap: Snap) => async (dispatch) =>
+  dispatch({ type: SET_SNAP, snap });
 
 // Reducer
 const initialState = {
-  snaps: []
+  location: null,
+  lat: null,
+  lon: null,
+  time: null,
+  type: null,
+  file: null,
+  userId: null
 };
 
-export default function reducer(prevState = initialState, { type, snaps }) {
+export default function reducer(prevState = initialState, { type, snap }) {
   switch (type) {
-    case SET_SNAPS:
-      return { ...prevState, snaps };
+    case SET_SNAP:
+      return { ...prevState, ...snap };
     default:
       return prevState;
   }

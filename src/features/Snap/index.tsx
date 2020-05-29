@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { Snap as SnapType } from './types';
 import { HideDrawer } from 'AppShell/types';
@@ -8,49 +8,52 @@ import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
-  media: any;
+  snap: SnapType;
   hideDrawer: HideDrawer;
 }
 
-const Snap: React.FC<Props> = ({ media, hideDrawer }) => {
+const Snap: React.FC<Props> = ({ snap, hideDrawer }) => {
   const videoElem = useRef<any>();
-  const currentIndex = useState<number>(0);
+  const { location, time, type, url } = snap;
 
   useEffect(() => {
-    videoElem.current.load();
-    videoElem.current.play();
-  }, [media]);
+    if (type === 'video') {
+      videoElem.current.load();
+      videoElem.current.play();
+    }
+  }, [snap]);
 
   return (
     <main className="snaps">
-      Hello
-      {/* {snaps.map((snap) => (
-        <main className="media">
-          <header>
-            <Grid fluid>
-              <Row middle="xs">
-                <Col xs={11}>
-                  {media[currentIndex].location}
-                  <time>{media[currentIndex].time}</time>
-                </Col>
-                <Col xs={1}>
-                  <Icon icon="faEllipsisV" />
-                </Col>
-              </Row>
-            </Grid>
-          </header>
-          <div className="video-container" onClick={() => {}}>
-            <video ref={videoElem} onEnded={() => hideDrawer('media')}>
-              <source src={'./video/' + media[currentIndex].file} type="video/mp4" />
+      <main className="media">
+        <header>
+          <Grid fluid>
+            <Row middle="xs">
+              <Col xs={11}>
+                {location}
+                <time>{time}</time>
+              </Col>
+              <Col xs={1}>
+                <Icon icon="faEllipsisV" />
+              </Col>
+            </Row>
+          </Grid>
+        </header>
+        {type === 'video' ? (
+          <div className="video-container">
+            <video ref={videoElem} onEnded={() => hideDrawer('snap')}>
+              <source src={url} type="video/mp4" />
             </video>
           </div>
-        </main>
-      ))} */}
+        ) : (
+          <img src={url} alt="" />
+        )}
+      </main>
     </main>
   );
 };
 
-const mapStateToProps = ({ media }) => ({ media });
+const mapStateToProps = ({ snap }) => ({ snap });
 
 const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component) => dispatch(hideDrawer(component))

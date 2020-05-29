@@ -10,38 +10,40 @@
   "snaps": {
     "snaps": [
       {
-        "id": 123,
-        "snaps": [
-          {
-            "location": "Corona, Queens",
-            "time": 0,
-            "type": "video",
-            "file": "sample-1.mp4"
-          },
-          {
-            "location": "Maspeth, Queens",
-            "time": 0,
-            "type": "photo",
-            "file": "https://i.picsum.photos/id/987/400/600.jpg"
-          }
-        ]
+        "location": "Corona, Queens",
+        "lat": null,
+        "lon": null,
+        "time": 0,
+        "type": "video",
+        "url": "./video/sample-1.mp4",
+        "userId": "00975694-7b26-4cdc-83d7-a6bdd783c987"
       },
       {
-        "id": 456,
-        "snaps": [
-          {
-            "location": "New York City, New York",
-            "time": 0,
-            "type": "video",
-            "file": "sample-2.mp4"
-          },
-          {
-            "location": "Maspeth, Queens",
-            "time": 0,
-            "type": "photo",
-            "file": "https://i.picsum.photos/id/987/500/600.jpg"
-          }
-        ]
+        "location": "Maspeth, Queens",
+        "lat": null,
+        "lon": null,
+        "time": 0,
+        "type": "photo",
+        "url": "https://i.picsum.photos/id/987/400/600.jpg",
+        "userId": "0a08aeaa-5d5c-4367-bbd4-078cf9cb8f5f"
+      },
+      {
+        "location": "New York City, New York",
+        "lat": null,
+        "lon": null,
+        "time": 0,
+        "type": "video",
+        "url": "./video/sample-2.mp4",
+        "userId": "329798fe-82f5-4ff2-a71e-113e2262de30"
+      },
+      {
+        "location": "Maspeth, Queens",
+        "lat": null,
+        "lon": null,
+        "time": 0,
+        "type": "photo",
+        "url": "https://i.picsum.photos/id/987/300/300.jpg",
+        "userId": "7fcdd6e7-d987-48a9-91c0-86f63958e5df"
       }
     ]
   },
