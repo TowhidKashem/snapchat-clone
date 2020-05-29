@@ -15,6 +15,7 @@ const initialState = {
   time: null,
   type: null,
   file: null,
+  caption: null,
   userId: null
 };
 

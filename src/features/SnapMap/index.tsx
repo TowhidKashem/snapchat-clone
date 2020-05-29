@@ -32,8 +32,7 @@ const SnapMap: React.FC<Props> = ({
   hideDrawer
 }) => {
   const [map, setMap] = useState(null);
-  const [lat, setLat] = useState<number>();
-  const [lon, setLon] = useState<number>();
+  const [geo, setGeo] = useState<{ lat: number; lon: number }>();
   const mapElem = useRef<any>();
 
   // Add self marker on map
@@ -50,7 +49,7 @@ const SnapMap: React.FC<Props> = ({
     const tooltip = document.createElement('div');
     tooltip.className = 'self-marker';
     new mapboxgl.Marker(tooltip)
-      .setLngLat([lon, lat])
+      .setLngLat([geo?.lon, geo?.lat])
       .setPopup(
         new mapboxgl.Popup({ offset: 25 }).setHTML(
           '<h3>Me</h3><p>Not Sharing Location</p>'
@@ -81,9 +80,8 @@ const SnapMap: React.FC<Props> = ({
   };
 
   useGeo((lat, lon) => {
-    getSnaps(40.761219, -73.92318);
-    setLat(lat);
-    setLon(lon);
+    getSnaps(lat, lon);
+    setGeo({ lat, lon });
     setMap(
       new mapboxgl.Map({
         container: mapElem.current,
@@ -101,7 +99,7 @@ const SnapMap: React.FC<Props> = ({
   });
 
   return (
-    <div className="map">
+    <div className="snap-map">
       <div className="inner">
         {/* <Header weather={weather} hideDrawer={hideDrawer} /> */}
         <div ref={mapElem} className="content"></div>

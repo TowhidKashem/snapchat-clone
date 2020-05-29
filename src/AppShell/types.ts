@@ -4,7 +4,7 @@ export interface Drawer {
   animationOut?: string;
   animationInDuration?: number;
   animationOutDuration?: number;
-  theme?: 'light' | 'dark';
+  theme?: 'light' | 'dark' | 'stripped';
   show?: boolean;
 }
 

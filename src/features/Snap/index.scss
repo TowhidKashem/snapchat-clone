@@ -1,6 +1,7 @@
 @import '~static/styles/vars';
+@import '~static/styles/extendables';
 
-.media {
+.snap {
   header {
     padding: 12px 18px;
     font-weight: bold;
@@ -11,6 +12,24 @@
 
     time {
       display: block;
+    }
+  }
+
+  .image-container {
+    @extend %image-cover;
+
+    .caption {
+      font-size: 18px;
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: 100;
+      width: 100%;
+      text-align: center;
+      height: 50px;
+      line-height: 50px;
+      margin-top: -25px;
     }
   }
 

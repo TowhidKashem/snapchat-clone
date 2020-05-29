@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 const useGeo = (callback) => {
   useEffect(() => {
-    callback(40.7568384, -73.92460799999999);
+    callback(40.761219, -73.92318);
     // if ('geolocation' in navigator) {
     //   navigator.geolocation.getCurrentPosition(
     //     ({ coords }) => {

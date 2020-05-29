@@ -43,7 +43,8 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
       <aside
         key={component}
         className={classNames('drawer', {
-          dark: theme === 'dark'
+          dark: theme === 'dark',
+          stripped: theme === 'stripped'
         })}
       >
         <Animated

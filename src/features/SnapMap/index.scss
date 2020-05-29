@@ -1,6 +1,6 @@
 @import '~static/styles/vars';
 
-.map {
+.snap-map {
   .inner {
     width: 100%;
     height: 100vh;
@@ -15,7 +15,7 @@
 }
 
 .self-marker {
-  background-image: url('http://localhost:3000/self-marker.png');
+  background-image: url('/self-marker.png');
   background-size: cover;
   width: 100px;
   height: 100px;
@@ -24,7 +24,7 @@
 }
 
 .marker {
-  background-image: url('http://localhost:3000/heat-map.png');
+  background-image: url('/heat-map.png');
   background-size: cover;
   width: 70px;
   height: 70px;

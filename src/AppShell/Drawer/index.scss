@@ -19,13 +19,19 @@
     }
   }
 
+  &.stripped,
+  &.dark {
+    .content {
+      padding: 0;
+    }
+  }
+
   &.dark {
     z-index: 20;
 
     .content {
       background: $color-black;
       color: $color-white;
-      padding: 0;
 
       .icon {
         color: $color-white;

@@ -37,7 +37,8 @@ const Map: React.FC<Props> = ({ showDrawer }) => {
           animationIn: 'fadeIn',
           animationOut: 'fadeOut',
           animationInDuration: 0,
-          animationOutDuration: 0
+          animationOutDuration: 0,
+          theme: 'stripped'
         })
       }
     >

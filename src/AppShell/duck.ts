@@ -25,30 +25,41 @@ export const hideDrawer = (component) => (dispatch) =>
 // Reducer
 const initialState = {
   drawers: [
-    {
-      // animationIn: 'zoomIn',
-      // animationOut: 'zoomOut',
-      // animationInDuration: 300,
-      // animationOutDuration: 300,
-      // theme: 'dark',
-      component: 'snapMap'
-      // show: true
-    }
+    // {
+    //   animationIn: 'zoomIn',
+    //   animationOut: 'zoomOut',
+    //   animationInDuration: 300,
+    //   animationOutDuration: 300,
+    //   theme: 'dark',
+    //   component: 'snapMap',
+    //   show: true
+    // }
   ]
 };
 
 const setShowDrawer = (prevState, drawer) => {
-  const withoutCurrentDrawer = prevState.drawers.filter(
+  const currentDrawerRemoved = prevState.drawers.filter(
     ({ component }) => component !== drawer.component
   );
-  const drawers = [...withoutCurrentDrawer, { ...drawer, show: true }];
+  const drawers = [
+    ...currentDrawerRemoved,
+    {
+      ...drawer,
+      show: true
+    }
+  ];
   return { ...prevState, drawers };
 };
 
 const setHideDrawer = (prevState, component) => {
-  const drawers = prevState.drawers.map((drawer) =>
-    drawer.component === component ? { ...drawer, show: false } : drawer
-  );
+  const drawers = prevState.drawers.map((drawer) => {
+    if (drawer.component === component)
+      return {
+        ...drawer,
+        show: false
+      };
+    return drawer;
+  });
   return { ...prevState, drawers };
 };
 

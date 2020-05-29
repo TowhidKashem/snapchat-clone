@@ -5,6 +5,7 @@ export interface Snap {
   time: number;
   type: 'video' | 'photo';
   url: string;
+  caption: string;
   userId: string;
 }
 

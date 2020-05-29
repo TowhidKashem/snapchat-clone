@@ -9,23 +9,21 @@ interface Props {
   user: UserInterface;
 }
 
-const User: React.FC<Props> = ({ user: { username, fullName, avatar } }) => {
-  return (
-    <article className="pod-user">
-      <Grid fluid>
-        <Row middle="xs">
-          <Col xs={2}>
-            <Avatar src={avatar} />
-          </Col>
-          <Col xs={10}>
-            <h3>{username}</h3>
-            <span>{fullName}</span>
-          </Col>
-        </Row>
-      </Grid>
-      <Divider />
-    </article>
-  );
-};
+const User: React.FC<Props> = ({ user: { username, fullName, avatar } }) => (
+  <article className="pod-user">
+    <Grid fluid>
+      <Row middle="xs">
+        <Col xs={2}>
+          <Avatar src={avatar} size="sm" />
+        </Col>
+        <Col xs={10}>
+          <h3>{username}</h3>
+          <span>{fullName}</span>
+        </Col>
+      </Row>
+    </Grid>
+    <Divider />
+  </article>
+);
 
 export default User;
