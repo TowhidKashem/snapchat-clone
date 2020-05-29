@@ -19,7 +19,7 @@ const Header: React.FC<Props> = ({ weather, hideDrawer }) => {
           <Col xs={3}>
             <Icon
               icon="faTimesCircle"
-              onClick={() => hideDrawer('map')}
+              onClick={() => hideDrawer('snapMap')}
               size="2x"
               className="close"
             />

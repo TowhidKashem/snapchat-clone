@@ -33,7 +33,7 @@ const Map: React.FC<Props> = ({ showDrawer }) => {
       className="preview-map"
       onClick={() =>
         showDrawer({
-          component: 'map',
+          component: 'snapMap',
           animationIn: 'fadeIn',
           animationOut: 'fadeOut',
           animationInDuration: 0,

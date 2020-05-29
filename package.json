@@ -17,7 +17,6 @@
     "classnames": "^2.2.6",
     "mapbox-gl": "^1.10.0",
     "normalize.css": "^8.0.1",
-    "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-animated-css": "^1.2.1",
     "react-dom": "^16.13.1",
@@ -34,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged",
-    "dummy-api": "node_modules/.bin/json-server --watch api-database.json --routes api-routes.json --port 3050"
+    "dummy-api": "node_modules/.bin/json-server --watch ./mock-api/database.json --routes ./mock-api/routes.json --port 3050"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -62,6 +61,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
     "concurrently": "^5.2.0",
+    "faker": "^4.1.0",
     "husky": "^4.2.5",
     "json-server": "^0.16.1",
     "node-sass": "^4.14.0",

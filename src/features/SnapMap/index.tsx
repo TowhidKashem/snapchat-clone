@@ -1,69 +1,84 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
-import { Media, ShowMedia } from 'features/Media/types';
-import { showMedia } from 'features/Media/duck';
-import { getWeather } from './duck';
-import { dummySnaps } from './data';
+import { Snap, OpenSnaps } from 'features/Snap/types';
+import { openSnaps } from 'features/Snap/duck';
+import {
+  // getWeather,
+  getSnaps
+} from './duck';
 import mapboxgl from 'mapbox-gl';
 import useGeo from 'hooks/useGeo';
-import Header from './Header';
+// import Header from './Header';
 import './index.scss';
 
 interface Props {
-  weather: any;
-  getWeather: any;
+  // weather: any;
+  // getWeather: any;
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
-  showMedia: ShowMedia;
+  openSnaps: OpenSnaps;
+
+  snaps: any;
+  getSnaps: any;
 }
 
 const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;
 
-const Map: React.FC<Props> = ({
+const SnapMap: React.FC<Props> = ({
   showDrawer,
   hideDrawer,
-  showMedia,
-  getWeather,
-  weather
+  openSnaps,
+
+  snaps,
+  getSnaps
+  // getWeather,
+  // weather
 }) => {
-  const mapRef = useRef<any>();
+  const [map, setMap] = useState<any>();
+  const mapElem = useRef<any>();
 
-  const openMedia = (media: Media[]) => {
-    showMedia(media);
-    showDrawer({
-      component: 'media',
-      animationIn: 'zoomIn',
-      animationOut: 'zoomOut',
-      theme: 'dark'
-    });
-  };
-
-  const setMarker = (lat, lon, media, map) => {
+  const setMarker = ({ lat, lon, snaps }, map) => {
     const marker = document.createElement('div');
     marker.className = 'marker';
     marker.onclick = (e: any) => {
       e.target.classList.add('active');
       // The setTimeout's below are to allow time to display the pulsing effect
-      setTimeout(() => openMedia(media), 900);
+      setTimeout(() => {
+        openSnaps(snaps);
+        showDrawer({
+          component: 'media',
+          animationIn: 'zoomIn',
+          animationOut: 'zoomOut',
+          theme: 'dark'
+        });
+      }, 900);
       setTimeout(() => e.target.classList.remove('active'), 1000);
     };
     new mapboxgl.Marker(marker).setLngLat([lon, lat]).addTo(map);
   };
 
-  // // Weather
-  // getWeather(40.761219, -73.92318);
+  // Show some dummy snaps nearby
+  if (map) snaps.map((snap) => setMarker(snap, map));
+
+  useEffect(() => {
+    getSnaps(40.761219, -73.92318);
+  }, []);
 
   useGeo((lat, lon) => {
+    // getSnaps(lat, lon);
+
     mapboxgl.accessToken = MAP_BOX_API_KEY;
 
-    const map = new mapboxgl.Map({
-      container: mapRef.current,
+    const localMap = new mapboxgl.Map({
+      container: mapElem.current,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [lon, lat],
       zoom: 14
     });
+
+    setMap(localMap);
 
     // setTimeout(() => {
     //   map.flyTo({
@@ -83,34 +98,33 @@ const Map: React.FC<Props> = ({
           '<h3>Me</h3><p>Not Sharing Location</p>'
         )
       )
-      .addTo(map);
+      .addTo(localMap);
 
-    // Show some dummy snaps nearby
-    dummySnaps(lat, lon).forEach(({ lat, lon, media }) =>
-      setMarker(lat, lon, media, map)
-    );
-
-    // // Weather
+    // Weather
     // getWeather(lat, lon);
+    // getWeather(40.761219, -73.92318);
   });
 
   return (
     <div className="map">
       <div className="inner">
-        <Header weather={weather} hideDrawer={hideDrawer} />
-        <div ref={mapRef} className="content"></div>
+        {/* <Header weather={weather} hideDrawer={hideDrawer} /> */}
+        <div ref={mapElem} className="content"></div>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ weather }) => ({ weather });
+const mapStateToProps = ({ snapMap }) => ({
+  snaps: snapMap.snaps
+});
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),
   hideDrawer: (component) => dispatch(hideDrawer(component)),
-  showMedia: (media) => dispatch(showMedia(media)),
-  getWeather: (lat, lon) => dispatch(getWeather(lat, lon))
+  openSnaps: (snaps) => dispatch(openSnaps(snaps)),
+  getSnaps: (lat, lon) => dispatch(getSnaps(lat, lon))
+  // getWeather: (lat, lon) => dispatch(getWeather(lat, lon))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default connect(mapStateToProps, mapDispatchToProps)(SnapMap);

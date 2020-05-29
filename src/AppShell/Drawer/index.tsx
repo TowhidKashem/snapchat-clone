@@ -5,8 +5,8 @@ import { Drawer as DrawerType, HideDrawer } from '../types';
 import Account from 'features/Account';
 import Settings from 'features/Settings';
 import Search from 'features/Search';
-import Map from 'features/Map';
-import Media from 'features/Media';
+import SnapMap from 'features/SnapMap';
+import Snap from 'features/Snap';
 import Archive from 'features/Archive';
 import Chat from 'features/Chat';
 import Discover from 'features/Discover';
@@ -23,8 +23,8 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
     account: <Account />,
     settings: <Settings />,
     search: <Search />,
-    map: <Map />,
-    media: <Media />,
+    snapMap: <SnapMap />,
+    snap: <Snap />,
     archive: <Archive />,
     chat: <Chat />,
     discover: <Discover />

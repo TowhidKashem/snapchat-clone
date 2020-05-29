@@ -1,4 +1,3 @@
-import { User } from './types';
 import { api } from 'utils';
 
 // Action types
@@ -8,7 +7,6 @@ const SET_USERS = 'SET_USERS';
 // Action creators
 export const getUser = () => async (dispatch) => {
   const [error, response] = await api.get('/session');
-
   if (!error)
     dispatch({
       type: SET_USER,
@@ -17,29 +15,13 @@ export const getUser = () => async (dispatch) => {
 };
 
 export const getUsers = () => async (dispatch) => {
-  const [error, response] = await api.get('https://randomuser.me/api', true, {
-    results: 100
-  });
-
+  const [error, response] = await api.get('/users');
   if (!error)
     dispatch({
       type: SET_USERS,
-      users: _parseUsers(response.results)
+      users: response
     });
 };
-
-// Utils
-const _parseUsers = (users): User[] =>
-  users.map(
-    ({ gender, dob, login, picture, name }): User => ({
-      id: login.uuid,
-      username: login.username,
-      avatar: picture.thumbnail,
-      gender,
-      age: dob.age,
-      fullName: name.first + ' ' + name.last
-    })
-  );
 
 // Reducer
 const initialState = {

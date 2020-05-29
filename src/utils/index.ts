@@ -13,7 +13,7 @@ export const promise = (promise) =>
     .catch((err) => [err]);
 
 export const api = {
-  baseURL: 'http://localhost:3050',
+  baseURL: 'http://localhost:3050/api',
   get: (endpoint, external?, options?) => {
     let url = external ? endpoint : api.baseURL + endpoint;
     if (options) url += '?' + new URLSearchParams(options).toString();
