@@ -7,6 +7,19 @@
   border: 0;
   padding: 0;
 
+  &.round {
+    background: rgba($color-black, 0.3);
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+
+    .icon {
+      margin-right: 0;
+      font-size: 17px;
+      color: $color-white;
+    }
+  }
+
   .icon {
     margin-right: 3px;
   }

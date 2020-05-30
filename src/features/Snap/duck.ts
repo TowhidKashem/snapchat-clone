@@ -14,7 +14,6 @@ const initialState = {
   lon: null,
   time: null,
   type: null,
-  file: null,
   caption: null,
   userId: null
 };

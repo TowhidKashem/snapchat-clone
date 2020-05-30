@@ -15,8 +15,9 @@ const Toolbar: React.FC<Props> = ({ drawers }) => {
   const [time, setTime] = useState<string>('');
 
   const updateTime = (): void => {
+    const { language = 'en-US' } = navigator;
     const time = new Date()
-      .toLocaleTimeString('en-us', {
+      .toLocaleTimeString(language, {
         hour: 'numeric',
         minute: '2-digit'
       })

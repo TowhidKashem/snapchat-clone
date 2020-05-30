@@ -85,14 +85,14 @@ export const showVideo = async (callback) => {
 export const randomArrayVal = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 // https://gist.github.com/liamnewmarch/a345fbf0c4fdf938d9844b82a4f127ab
-export const relativeTime = (when: number) => {
+export const relativeTime = (timestamp: number) => {
   const { language = 'en-US' } = navigator;
   //@ts-ignore
   const formatter = new Intl.RelativeTimeFormat(language, {
     numeric: 'auto',
     style: 'long'
   });
-  const ms = when - Date.now();
+  const ms = timestamp - Date.now();
   const years = Math.ceil(ms / 31536e6);
   if (years) return formatter.format(years, 'year');
   const months = Math.ceil(ms / 168e6);

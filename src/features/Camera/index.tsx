@@ -32,7 +32,7 @@ const Camera: React.FC<Props> = ({ drawers }) => {
   const [takePic, setTakePic] = useState<boolean>(false);
 
   useEffect(() => {
-    startVideo();
+    // startVideo();
   }, []);
 
   const initFilter = (filter) => {

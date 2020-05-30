@@ -31,8 +31,8 @@ const initialState = {
     //   animationInDuration: 300,
     //   animationOutDuration: 300,
     //   theme: 'dark',
-    //   component: 'snapMap',
-    //   show: true
+    //   component: 'snapMap'
+    //   // show: true
     // }
   ]
 };
