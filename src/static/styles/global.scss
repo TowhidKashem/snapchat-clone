@@ -25,8 +25,8 @@ body {
   font: normal 14px 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $color-dark-grey;
-  color: $color-dark-grey;
+  background: #222;
+  color: #222;
 }
 
 a {
@@ -44,7 +44,7 @@ a {
 
 .wrapper {
   position: relative;
-  background-color: #333;
+  background-color: $color-dark-grey;
   width: $app-width;
   height: 100vh;
   margin: 0 auto;

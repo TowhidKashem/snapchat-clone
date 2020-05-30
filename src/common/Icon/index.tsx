@@ -45,7 +45,8 @@ import {
   faCropAlt,
   faStopwatch,
   faExternalLinkAlt,
-  faPlayCircle
+  faPlayCircle,
+  faEdit
 } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
@@ -97,7 +98,8 @@ const iconMap = {
   faCropAlt,
   faStopwatch,
   faExternalLinkAlt,
-  faPlayCircle
+  faPlayCircle,
+  faEdit
 };
 
 interface Props {

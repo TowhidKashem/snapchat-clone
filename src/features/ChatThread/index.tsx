@@ -1,10 +1,10 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import classNames from 'classnames';
 import { getMessages, postMessage } from './duck';
 import { dummyMessages } from './data';
 import { randomArrayVal } from 'utils';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import Input from 'common/Input';
 import Avatar from 'common/Avatar';
 import PillButtons from 'common/PillButtons';
@@ -18,7 +18,7 @@ interface Props {
   postMessage: any;
 }
 
-const Chat: React.FC<Props> = ({
+const ChatThread: React.FC<Props> = ({
   user = 'julia',
   messages,
   getMessages,
@@ -115,4 +115,4 @@ const mapDispatchToProps = (dispatch) => ({
   postMessage: (user, author, message) => dispatch(postMessage(user, author, message))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+export default connect(mapStateToProps, mapDispatchToProps)(ChatThread);

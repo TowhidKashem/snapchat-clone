@@ -6,5 +6,3 @@ export interface User {
   age: number;
   fullName: string;
 }
-
-export type GetUsers = () => void;

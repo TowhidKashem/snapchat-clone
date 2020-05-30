@@ -72,6 +72,8 @@ const SnapMap: React.FC<Props> = ({
     new mapboxgl.Marker(tooltip).setLngLat([geo?.lon, geo?.lat]).addTo(map);
 
     setTimeout(() => {
+      tooltip.classList.add('zoomedIn');
+
       new mapboxgl.Popup({ closeOnClick: false })
         .setLngLat([geo?.lon, geo?.lat])
         .setHTML(

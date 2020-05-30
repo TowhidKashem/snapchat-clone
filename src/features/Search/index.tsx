@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { HideDrawer } from 'AppShell/types';
-import { User, GetUsers } from 'features/User/types';
+import { User } from 'features/User/types';
 import { hideDrawer } from 'AppShell/duck';
 import { getUsers } from 'features/User/duck';
 import { escapeRegex } from 'utils';
@@ -14,7 +14,7 @@ import './index.scss';
 
 interface Props {
   friends: User[];
-  getUsers: GetUsers;
+  getUsers: () => void;
   hideDrawer: HideDrawer;
 }
 

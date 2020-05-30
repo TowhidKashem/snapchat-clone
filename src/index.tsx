@@ -9,7 +9,7 @@ import app from 'AppShell/duck';
 import user from 'features/User/duck';
 import snapMap from 'features/SnapMap/duck';
 import snap from 'features/Snap/duck';
-import chats from 'features/Chat/duck';
+import chats from 'features/Chats/duck';
 
 import AppShell from './AppShell';
 import Camera from './features/Camera';

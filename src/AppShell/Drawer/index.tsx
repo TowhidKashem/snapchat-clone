@@ -8,8 +8,9 @@ import Search from 'features/Search';
 import SnapMap from 'features/SnapMap';
 import Snap from 'features/Snap';
 import Archive from 'features/Archive';
-import Chat from 'features/Chat';
+import Chats from 'features/Chats';
 import Discover from 'features/Discover';
+import ChatThread from 'features/ChatThread';
 import './index.scss';
 
 interface Props {
@@ -26,8 +27,9 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
     snapMap: <SnapMap />,
     snap: <Snap />,
     archive: <Archive />,
-    chat: <Chat />,
-    discover: <Discover />
+    chats: <Chats />,
+    discover: <Discover />,
+    chatThread: <ChatThread />
   };
 
   return drawers.map(
@@ -59,7 +61,7 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
               onClick={() => hideDrawer(component)}
               style={{ position: 'fixed', bottom: 0, right: 0, zIndex: 1000 }}
             >
-              Close Drawer - {animationInDuration}
+              Close Drawer
             </button>
             {componentMap[component]}
           </section>

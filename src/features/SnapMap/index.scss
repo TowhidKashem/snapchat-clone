@@ -14,10 +14,14 @@
       .self-marker {
         background-image: url('/images/self-marker.png');
         background-size: cover;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        cursor: pointer;
+        width: 65px;
+        height: 65px;
+        transition: all 80ms ease-in;
+
+        &.zoomedIn {
+          width: 100px;
+          height: 100px;
+        }
       }
 
       .marker {
