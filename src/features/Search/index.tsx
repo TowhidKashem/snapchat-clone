@@ -1,65 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { HideDrawer } from 'AppShell/types';
-import { hideDrawer } from 'AppShell/duck';
-import { User } from 'features/User/types';
-import { getUsers } from 'features/User/duck';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import Icon from 'common/Icon';
+import { HideDrawer } from 'AppShell/types';
+import { User, GetUsers } from 'features/User/types';
+import { hideDrawer } from 'AppShell/duck';
+import { getUsers } from 'features/User/duck';
 import { escapeRegex } from 'utils';
 import Input from 'common/Input';
+import Button from 'common/Button';
+import Widget from 'common/Widget';
 import UserPod from 'common/Pod/User';
 import './index.scss';
 
 interface Props {
   friends: User[];
-  getUsers: () => void;
+  getUsers: GetUsers;
   hideDrawer: HideDrawer;
 }
 
 const Search: React.FC<Props> = ({ friends = [], getUsers, hideDrawer }) => {
-  const [query, setQuery] = useState<string>('');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     getUsers();
   }, []);
 
-  const filteredUsers = query
-    ? friends.filter(({ username }) =>
-        username.match(new RegExp(escapeRegex(query), 'gi'))
+  const pattern = new RegExp(escapeRegex(query), 'gi');
+  const users = query
+    ? friends.filter(
+        ({ fullName, username }) => fullName.match(pattern) || username.match(pattern)
       )
     : friends;
 
-  const results = filteredUsers.map((user) => <UserPod key={user.id} user={user} />);
-
   return (
     <main className="search">
-      <Grid fluid>
-        <Row middle="xs">
-          <Col xs={10}>
-            <Input
-              placeholder="Find Friends"
-              leftIcon="faSearch"
-              onChange={(e) => setQuery(e.currentTarget.value.trim())}
-              focus
-            />
-          </Col>
-          <Col xs={2}>
-            <button onClick={() => hideDrawer('search')}>Cancel</button>
-          </Col>
-        </Row>
-      </Grid>
+      <header>
+        <Grid fluid>
+          <Row middle="xs">
+            <Col xs={10}>
+              <Input
+                placeholder="Search"
+                leftIcon="faSearch"
+                onChange={(e) => setQuery(e.currentTarget.value.trim())}
+                focus
+              />
+            </Col>
+            <Col xs={2}>
+              <Button label="Cancel" plain onclick={() => hideDrawer('search')} />
+            </Col>
+          </Row>
+        </Grid>
+      </header>
       <section className="results">
-        {query.length ? (
-          results.length ? (
-            results
-          ) : (
-            '💩 No results'
-          )
+        {users.length ? (
+          <Widget header="Quick Add" transparent>
+            {users.map((user) => (
+              <UserPod key={user.id} user={user} />
+            ))}
+          </Widget>
         ) : (
-          <p>
-            <Icon icon="faSearch" />
-            Search for people, stories, games and more
+          <p className="no-results">
+            <span>💩</span> No results
           </p>
         )}
       </section>
@@ -72,8 +73,8 @@ const mapStateToProps = ({ user }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: (component) => dispatch(hideDrawer(component)),
-  getUsers: () => dispatch(getUsers())
+  getUsers: () => dispatch(getUsers()),
+  hideDrawer: (component) => dispatch(hideDrawer(component))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -21,12 +21,12 @@ html {
 }
 
 body {
+  position: relative;
   font: normal 14px 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  background: #222222;
-  position: relative;
+  background: $color-dark-grey;
+  color: $color-dark-grey;
 }
 
 a {

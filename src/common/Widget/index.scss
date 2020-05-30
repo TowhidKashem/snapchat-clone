@@ -1,11 +1,12 @@
 @import '~static/styles/vars';
 
 .widget {
-  header {
+  > header {
     color: $color-dark-grey;
     font-weight: bold;
     font-size: 15px;
-    margin-bottom: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 8px;
   }
 
   .inner-content {
@@ -14,7 +15,7 @@
 
     &:not(.transparent) {
       background: $color-white;
-      box-shadow: 0 0 8px $color-light-grey;
+      box-shadow: 0 0 6px $color-grey;
       border-radius: 7px;
     }
   }

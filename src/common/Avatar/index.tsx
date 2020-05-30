@@ -7,7 +7,7 @@ interface Props {
 }
 
 const sizeMap = {
-  sm: 50,
+  sm: 45,
   md: 100,
   lg: 150
 };

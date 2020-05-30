@@ -14,6 +14,7 @@ interface Props {
   onChange?: (e: React.SyntheticEvent<HTMLInputElement>) => void;
   onEnter?: () => void;
   focus?: boolean;
+  spellCheck?: boolean;
 }
 
 const Input: React.FC<Props> = ({
@@ -25,7 +26,8 @@ const Input: React.FC<Props> = ({
   onFocus,
   onChange,
   onEnter,
-  focus
+  focus,
+  spellCheck
 }) => {
   const inputElem = useRef<any>();
 
@@ -43,6 +45,7 @@ const Input: React.FC<Props> = ({
         onChange={onChange}
         onKeyPress={({ key }) => onEnter && key === 'Enter' && onEnter()}
         disabled={onClick ? true : false}
+        spellCheck={spellCheck || false}
         className={classNames({
           'has-left-icon': leftIcon
         })}

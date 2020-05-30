@@ -1,4 +1,35 @@
+@import '~static/styles/vars';
+
 .search {
+  > header {
+    background: $color-light-grey;
+    padding: 3px 0 10px;
+
+    .input {
+      input[type='text'] {
+        background: rgba($color-black, 0.1);
+
+        &::placeholder {
+          color: $color-darker-grey;
+        }
+      }
+    }
+  }
+
   .results {
+    max-height: 90vh;
+    overflow: scroll;
+
+    .no-results {
+      font-weight: bold;
+      text-align: center;
+      padding: 100px 0;
+
+      span {
+        font-size: 25px;
+        display: block;
+        margin-bottom: 3px;
+      }
+    }
   }
 }

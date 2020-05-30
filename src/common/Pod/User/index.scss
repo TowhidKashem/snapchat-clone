@@ -1,7 +1,17 @@
 @import '~static/styles/vars';
 
 .pod-user {
-  margin-bottom: 10px;
   background: $color-white;
-  padding: 1px 1px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid $color-light-grey;
+
+  header {
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+
+  span {
+    color: $color-darker-grey;
+    text-transform: lowercase;
+  }
 }
