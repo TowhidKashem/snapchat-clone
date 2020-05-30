@@ -18,6 +18,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     text-align: center;
+    min-height: 65px;
 
     header {
       font-size: 20px;
@@ -41,9 +42,5 @@
         padding-bottom: 7px;
       }
     }
-  }
-
-  .gear-col {
-    text-align: right;
   }
 }

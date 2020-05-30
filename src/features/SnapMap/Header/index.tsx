@@ -18,12 +18,8 @@ const Header: React.FC<Props> = ({ weather, hideDrawer }) => {
       <Grid fluid>
         <Row middle="xs">
           <Col xs={3}>
-            <Button
-              icon="faTimes"
-              buttonClass="round"
-              onclick={() => hideDrawer('snapMap')}
-            />
-            <Button icon="faSearch" buttonClass="round" />
+            <Button icon="faTimes" round onclick={() => hideDrawer('snapMap')} />
+            <Button icon="faSearch" round />
           </Col>
           <Col xs={6}>
             <article className="weather">
@@ -34,8 +30,10 @@ const Header: React.FC<Props> = ({ weather, hideDrawer }) => {
               </div>
             </article>
           </Col>
-          <Col xs={3} className="gear-col">
-            <Button icon="faCog" buttonClass="round" />
+          <Col xs={3}>
+            <Row end="xs">
+              <Button icon="faCog" round />
+            </Row>
           </Col>
         </Row>
       </Grid>

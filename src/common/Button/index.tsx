@@ -10,6 +10,7 @@ interface Props {
   iconClass?: string;
   iconClasses?: Array<string | null>;
   buttonClass?: string;
+  round?: boolean;
   label?: string;
   onclick?: () => void;
 }
@@ -21,13 +22,15 @@ const Button: React.FC<Props> = ({
   iconClass = '',
   iconClasses = [],
   buttonClass = '',
+  round,
   label,
   onclick
 }) => (
   <button
     onClick={onclick}
     className={classNames('button', {
-      [buttonClass]: buttonClass
+      [buttonClass]: buttonClass,
+      round
     })}
   >
     {image ? (
