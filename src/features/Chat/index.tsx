@@ -1,10 +1,14 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Animated } from 'react-animated-css';
 import classNames from 'classnames';
 import { getMessages, postMessage } from './duck';
 import { dummyMessages } from './data';
-import { randomArrayVal } from 'utils';
+import { hideDrawer } from 'AppShell/duck';
+import { HideDrawer } from 'AppShell/types';
+import { randomArrayVal, playSound } from 'utils';
+import Icon from 'common/Icon';
 import Input from 'common/Input';
 import Avatar from 'common/Avatar';
 import PillButtons from 'common/PillButtons';
@@ -14,23 +18,30 @@ import './index.scss';
 interface Props {
   user: string;
   messages: any;
+  hideDrawer: HideDrawer;
   getMessages: any;
   postMessage: any;
 }
 
-const ChatThread: React.FC<Props> = ({
+const Chat: React.FC<Props> = ({
   user = 'julia',
   messages,
+  hideDrawer,
   getMessages,
   postMessage
 }) => {
   const [message, setMessage] = useState<string>('');
   const [typing, setTyping] = useState<boolean>(false);
+  const [messageReceived, setMessageReceived] = useState<boolean>(false);
   const messageContainer = useRef<any>(null);
 
   useEffect(() => {
     getMessages(user);
-    botResponse();
+    // botResponse();
+
+    // New message
+    setTimeout(() => setMessageReceived(true), 3000);
+    setTimeout(() => setMessageReceived(false), 6000);
   }, []);
 
   useLayoutEffect(() => {
@@ -46,22 +57,52 @@ const ChatThread: React.FC<Props> = ({
     setTimeout(() => {
       setTyping(false);
       postMessage(user, user, randomArrayVal(dummyMessages));
-      new Audio('./audio/notification.mp3').play();
+      playSound('newMessage');
     }, randomArrayVal(typeTimes));
   };
 
   return (
     <main className="chat">
+      <Animated
+        animationIn="slideInDown"
+        animationOut="slideOutUp"
+        animationInDuration={100}
+        animationOutDuration={100}
+        isVisible={messageReceived}
+        animateOnMount={false}
+      >
+        <div className="notification">
+          <header>
+            <Grid fluid>
+              <Row middle="xs">
+                <Col xs={10}>
+                  <Icon icon="faSnapchatSquare" size="7x" />
+                  <span>SnapChat</span>
+                </Col>
+                <Col xs={2}>
+                  <time>now</time>
+                </Col>
+              </Row>
+            </Grid>
+          </header>
+          <p>from Tom</p>
+        </div>
+      </Animated>
+
       <header>
         <Grid fluid>
           <Row middle="xs">
-            <Col xs={10}>
+            <Col xs={2}>
               <Avatar src="./bitmoji.png" />
+            </Col>
+            <Col xs={7}>
               <h2>{user}</h2>
             </Col>
             <Col xs={2}>
               <PillButtons icons={['faPhoneAlt', 'faVideo']} />
-              <Button icon="faAngleRight" />
+            </Col>
+            <Col xs={1}>
+              <Button icon="faAngleRight" onclick={() => hideDrawer('chat')} />
             </Col>
           </Row>
         </Grid>
@@ -108,11 +149,12 @@ const ChatThread: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({ chats }) => ({ messages: chats });
+const mapStateToProps = ({ chat }) => ({ messages: chat });
 
 const mapDispatchToProps = (dispatch) => ({
+  hideDrawer: (component) => dispatch(hideDrawer(component)),
   getMessages: (user) => dispatch(getMessages(user)),
   postMessage: (user, author, message) => dispatch(postMessage(user, author, message))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatThread);
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

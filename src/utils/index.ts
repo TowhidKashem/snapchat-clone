@@ -106,3 +106,11 @@ export const relativeTime = (timestamp: number) => {
   const seconds = Math.ceil(ms / 1e3);
   return formatter.format(seconds, 'second');
 };
+
+export const playSound = (sound) => {
+  const soundMap = {
+    newMessage: './audio/notification.mp3',
+    cameraShutter: './audio/shutter.mp3'
+  };
+  new Audio(soundMap[sound]).play();
+};

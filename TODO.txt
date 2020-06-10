@@ -1,6 +1,10 @@
 
 tap to close message on image snaps
 
+is there a way to include imports globally e.g. the flexbox grid lib?
+
+turn off scaling on map?
+
 cut videos to small seconds, for fairuse and performance
 
 useScript hook

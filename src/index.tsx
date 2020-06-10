@@ -9,7 +9,7 @@ import app from 'AppShell/duck';
 import user from 'features/User/duck';
 import snapMap from 'features/SnapMap/duck';
 import snap from 'features/Snap/duck';
-import chats from 'features/Chats/duck';
+import chat from 'features/Chat/duck';
 
 import AppShell from './AppShell';
 import Camera from './features/Camera';
@@ -19,7 +19,7 @@ import 'normalize.css';
 import 'animate.css';
 import './static/styles/global.scss';
 
-const rootReducer = combineReducers({ app, user, snapMap, snap, chats });
+const rootReducer = combineReducers({ app, user, snapMap, snap, chat });
 
 // Redux devtools extension
 // https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd

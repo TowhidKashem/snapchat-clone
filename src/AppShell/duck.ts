@@ -31,7 +31,7 @@ const initialState = {
       animationInDuration: 300,
       animationOutDuration: 300,
       // theme: 'dark',
-      component: 'chats',
+      component: 'chat',
       show: true
     }
   ]

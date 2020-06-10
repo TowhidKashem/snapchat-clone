@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Button from 'common/Button';
+import { playSound } from 'utils';
 import './index.scss';
 
 interface Props {
@@ -26,7 +27,7 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
       context.canvas.height = innerHeight;
       context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
     }
-    new Audio('./audio/shutter.mp3').play();
+    playSound('cameraShutter');
     setPhotoTaken(true);
   };
 
