@@ -109,7 +109,8 @@ export const relativeTime = (timestamp: number) => {
 
 export const playSound = (sound) => {
   const soundMap = {
-    newMessage: './audio/notification.mp3',
+    newAppMessage: './audio/notification.mp3',
+    newSystemMessage: './audio/ding.mp3',
     cameraShutter: './audio/shutter.mp3'
   };
   new Audio(soundMap[sound]).play();

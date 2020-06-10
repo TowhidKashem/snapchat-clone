@@ -21,7 +21,7 @@ const Footer: React.FC<Props> = ({ showDrawer }) => (
             label="Chat"
             onclick={() =>
               showDrawer({
-                component: 'chats',
+                component: 'chat',
                 animationIn: 'slideInLeft',
                 animationOut: 'slideOutLeft'
               })

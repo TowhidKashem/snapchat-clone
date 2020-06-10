@@ -1,0 +1,27 @@
+@import '~static/styles/vars';
+
+.notification {
+  height: 0;
+
+  .message {
+    background: rgba($color-black, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 0 4px $color-darker-grey;
+    padding: 5px;
+    color: $color-light-grey;
+
+    header {
+      color: $color-grey;
+
+      .icon {
+        color: $color-yellow;
+        font-size: 23px;
+        margin-right: 10px;
+      }
+
+      span {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

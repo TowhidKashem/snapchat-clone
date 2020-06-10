@@ -1,14 +1,13 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import { Animated } from 'react-animated-css';
 import classNames from 'classnames';
-import { getMessages, postMessage } from './duck';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { getMessages, postMessage, switchThread } from './duck';
 import { dummyMessages } from './data';
 import { hideDrawer } from 'AppShell/duck';
 import { HideDrawer } from 'AppShell/types';
 import { randomArrayVal, playSound } from 'utils';
-import Icon from 'common/Icon';
+import Notification from 'common/Notification';
 import Input from 'common/Input';
 import Avatar from 'common/Avatar';
 import PillButtons from 'common/PillButtons';
@@ -16,33 +15,42 @@ import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
+  session: any;
   user: string;
   messages: any;
   hideDrawer: HideDrawer;
   getMessages: any;
   postMessage: any;
+  switchThread: any;
 }
 
 const Chat: React.FC<Props> = ({
-  user = 'julia',
+  session,
+  user,
   messages,
   hideDrawer,
   getMessages,
-  postMessage
+  postMessage,
+  switchThread
 }) => {
   const [message, setMessage] = useState<string>('');
   const [typing, setTyping] = useState<boolean>(false);
   const [messageReceived, setMessageReceived] = useState<boolean>(false);
   const messageContainer = useRef<any>(null);
 
+  // New message from other user
+  useEffect(() => {
+    setTimeout(() => {
+      setMessageReceived(true);
+      playSound('newSystemMessage');
+      setTimeout(() => setMessageReceived(false), 3000);
+    }, 3000);
+  }, []);
+
   useEffect(() => {
     getMessages(user);
-    // botResponse();
-
-    // New message
-    setTimeout(() => setMessageReceived(true), 3000);
-    setTimeout(() => setMessageReceived(false), 6000);
-  }, []);
+    botResponse(); // New message from current user
+  }, [user]);
 
   useLayoutEffect(() => {
     // Scroll to bottom of container on load and each time a new message is posted
@@ -57,38 +65,21 @@ const Chat: React.FC<Props> = ({
     setTimeout(() => {
       setTyping(false);
       postMessage(user, user, randomArrayVal(dummyMessages));
-      playSound('newMessage');
+      playSound('newAppMessage');
     }, randomArrayVal(typeTimes));
   };
 
   return (
     <main className="chat">
-      <Animated
-        animationIn="slideInDown"
-        animationOut="slideOutUp"
-        animationInDuration={100}
-        animationOutDuration={100}
-        isVisible={messageReceived}
-        animateOnMount={false}
-      >
-        <div className="notification">
-          <header>
-            <Grid fluid>
-              <Row middle="xs">
-                <Col xs={10}>
-                  <Icon icon="faSnapchatSquare" size="7x" />
-                  <span>SnapChat</span>
-                </Col>
-                <Col xs={2}>
-                  <time>now</time>
-                </Col>
-              </Row>
-            </Grid>
-          </header>
-          <p>from Tom</p>
-        </div>
-      </Animated>
-
+      <Notification
+        sender="Tom"
+        time="now"
+        show={messageReceived}
+        onClick={() => {
+          setMessageReceived(false);
+          switchThread('tom');
+        }}
+      />
       <header>
         <Grid fluid>
           <Row middle="xs">
@@ -130,7 +121,7 @@ const Chat: React.FC<Props> = ({
                 rightIcon="faMicrophone"
                 onChange={(e) => setMessage(e.currentTarget.value)}
                 onEnter={() => {
-                  postMessage(user, 'tk', message);
+                  postMessage(user, session.username, message);
                   setMessage('');
                   botResponse();
                 }}
@@ -149,12 +140,17 @@ const Chat: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({ chat }) => ({ messages: chat });
+const mapStateToProps = ({ user, chat }) => ({
+  session: user.session,
+  user: chat.activeThread,
+  messages: chat
+});
 
 const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component) => dispatch(hideDrawer(component)),
   getMessages: (user) => dispatch(getMessages(user)),
-  postMessage: (user, author, message) => dispatch(postMessage(user, author, message))
+  postMessage: (user, author, message) => dispatch(postMessage(user, author, message)),
+  switchThread: (user) => dispatch(switchThread(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

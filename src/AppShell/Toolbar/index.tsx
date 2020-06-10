@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Drawer } from '../types';
-import { drawerIsOpen } from '../utils';
+import { atleastOneDrawerOpen } from '../utils';
 import Icon from 'common/Icon';
 import './index.scss';
 
@@ -33,7 +33,7 @@ const Toolbar: React.FC<Props> = ({ drawers }) => {
   return (
     <div
       className={classNames('toolbar', {
-        dark: drawerIsOpen(drawers)
+        dark: atleastOneDrawerOpen(drawers)
       })}
     >
       <Grid fluid>
