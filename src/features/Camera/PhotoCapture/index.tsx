@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
-import Button from 'common/Button';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import { playSound } from 'utils';
+import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
   takePic: boolean;
   closePic: () => void;
   videoElem: any;
-  // videoElem: React.RefObject<HTMLVideoElement>;
 }
 
 const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
@@ -58,9 +58,21 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
         <Button icon="faStopwatch" />
       </aside>
       <footer>
-        <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
-        <Button icon="faExternalLinkAlt" label="Story" />
-        <Button icon="faPlayCircle" label="Send To" />
+        <Grid fluid>
+          <Row middle="xs">
+            <Col xs={2}>
+              <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
+            </Col>
+            <Col xs={2}>
+              <Button icon="faExternalLinkAlt" label="Story" />
+            </Col>
+            <Col xs={8}>
+              <Row end="xs" middle="xs">
+                <Button icon="faPlayCircle" label="Send To" />
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
       </footer>
     </section>
   );

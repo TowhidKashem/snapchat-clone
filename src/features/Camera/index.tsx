@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
-import { loadScripts, showVideo } from 'utils';
+import { loadScripts } from 'utils';
 import { Drawer } from 'AppShell/types';
 import { Filter } from './types';
 import { dependencies, filters } from './data';
+import useCamera from 'hooks/useCamera';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
-// import useCamera from 'hooks/useCamera';
 import './index.scss';
 
 declare global {
@@ -25,19 +25,19 @@ interface Props {
 const Camera: React.FC<Props> = ({ drawers }) => {
   const videoElem = useRef<any>();
 
-  const [showFilters, setShowFilters] = useState<boolean>(false);
+  const [showFilters, setShowFilters] = useState(false);
   const [filter, setFilter] = useState<Filter | null>();
-  const [filterReady, setFilterReady] = useState<boolean>(false);
+  const [filterReady, setFilterReady] = useState(false);
   const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
-  const [takePic, setTakePic] = useState<boolean>(false);
+  const [takePic, setTakePic] = useState(false);
 
-  useEffect(() => {
-    // startVideo();
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setTakePic(true);
+  //   }, 1000);
+  // }, []);
 
-  const initFilter = (filter) => {
-    window.Filters[filter].init(() => setFilterReady(true));
-  };
+  const initFilter = (filter) => window.Filters[filter].init(() => setFilterReady(true));
 
   useEffect(() => {
     if (!filter) return;
@@ -58,18 +58,11 @@ const Camera: React.FC<Props> = ({ drawers }) => {
         setFilter(filter);
       } catch (err) {}
     } else {
-      // stopVideo();
-      // JEEFACEFILTERAPI.toggle_pause(true, true);
       setFilter(filter);
     }
   };
 
-  const startVideo = () =>
-    showVideo((stream) => {
-      videoElem.current.srcObject = stream;
-    });
-
-  // const stopVideo = () => videoStream?.getTracks()[0].stop();
+  useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
 
   return (
     <main className="camera">
@@ -100,7 +93,6 @@ const Camera: React.FC<Props> = ({ drawers }) => {
               setShowFilters(false);
               setFilter(null);
               setFilterReady(false);
-              startVideo();
             }}
           />
         )}
@@ -131,8 +123,8 @@ const Camera: React.FC<Props> = ({ drawers }) => {
             {filters.map((filter, index) => (
               <Button
                 key={filter + index}
-                image={'./filters/' + filter + '.svg'}
-                buttonClass={'filter-' + filter}
+                image={`./filters/${filter}.svg`}
+                buttonClass={`filter-${filter}`}
                 onclick={() => switchFilter(filter)}
               />
             ))}
@@ -145,4 +137,4 @@ const Camera: React.FC<Props> = ({ drawers }) => {
 
 const mapStateToProps = ({ app }) => ({ drawers: app.drawers });
 
-export default connect(mapStateToProps, null)(Camera);
+export default connect(mapStateToProps)(Camera);

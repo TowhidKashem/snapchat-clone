@@ -1,1 +1,2 @@
-export const atleastOneDrawerOpen = (drawers) => drawers.some(({ show }) => show);
+export const atleastOneDrawerOpen = (drawers): boolean =>
+  drawers.some(({ show }) => show);

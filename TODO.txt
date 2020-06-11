@@ -1,3 +1,7 @@
+some type of walk through tool to show what's working
+add git repo link!
+
+when picking new filter it needs to animate to the center capture button
 
 tap to close message on image snaps
 
@@ -7,17 +11,11 @@ turn off scaling on map?
 
 cut videos to small seconds, for fairuse and performance
 
-useScript hook
-
 loadable for all GET requests
 
 use map image for lazy loaded placeholder
 
-add git repo link!
-
-filters
-
-zoom map in on open
+immer.js
 
 include storybook
 
@@ -75,3 +73,12 @@ use svg cleaner tool
   //     );
   //   })();
   // }, []);
+
+
+==============================================
+
+DONE:
+
+zoom map in on open
+filters
+
