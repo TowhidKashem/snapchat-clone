@@ -1,18 +1,23 @@
 @import '~static/styles/vars';
 
 .discover {
-  .widget {
-    &.friends {
-      .inner-content {
-        text-align: center;
-        p {
-          font-weight: bold;
+  .view {
+    overflow: scroll;
+    height: 90vh;
+
+    .widget {
+      &.friends {
+        .inner-content {
+          text-align: center;
+          p {
+            font-weight: bold;
+          }
         }
       }
-    }
-    .inner {
-      display: flex;
-      flex-flow: row wrap;
+      .inner {
+        display: flex;
+        flex-flow: row wrap;
+      }
     }
   }
 }

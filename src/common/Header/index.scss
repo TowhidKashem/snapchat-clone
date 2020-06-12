@@ -1,0 +1,15 @@
+@import '~static/styles/vars';
+@import '~static/styles/extendables';
+
+.header {
+  @extend %center-x-y;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  padding: 0 15px;
+  margin-top: $toolbar-height;
+
+  .input {
+    margin: 0 10px;
+  }
+}

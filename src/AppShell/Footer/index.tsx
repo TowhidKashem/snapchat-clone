@@ -1,12 +1,11 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { ShowDrawer, HideDrawer } from 'AppShell/types';
+import { ShowDrawer } from 'AppShell/types';
 import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
   showDrawer: ShowDrawer;
-  hideDrawer: HideDrawer;
 }
 
 const Footer: React.FC<Props> = ({ showDrawer }) => (

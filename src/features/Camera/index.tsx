@@ -25,13 +25,7 @@ const Camera: React.FC<{}> = () => {
   const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
   const [takePic, setTakePic] = useState(false);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setTakePic(true);
-  //   }, 1000);
-  // }, []);
-
-  useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
+  // useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
 
   useEffect(() => {
     if (!filter) return;

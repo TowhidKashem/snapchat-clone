@@ -40,14 +40,14 @@ const Search: React.FC<Props> = ({ friends = [], hideDrawer }) => {
           <Button label="Cancel" plain onclick={() => hideDrawer('search')} />
         </form>
       </header>
-      <Animated
-        animationIn="slideInUp"
-        animationOut="slideOutDown"
-        animationInDuration={250}
-        animationOutDuration={0}
-        isVisible
-      >
-        <section className="results">
+      <section className="view">
+        <Animated
+          animationIn="slideInUp"
+          animationOut="slideOutDown"
+          animationInDuration={250}
+          animationOutDuration={0}
+          isVisible
+        >
           {users.length ? (
             <Widget header="Quick Add" transparent>
               {users.map((user) => (
@@ -59,8 +59,8 @@ const Search: React.FC<Props> = ({ friends = [], hideDrawer }) => {
               <span>💩</span> No results
             </p>
           )}
-        </section>
-      </Animated>
+        </Animated>
+      </section>
     </main>
   );
 };

@@ -4,9 +4,9 @@ import { Drawer as DrawerType, ShowDrawer, HideDrawer } from './types';
 import { showDrawer, hideDrawer } from './duck';
 import { getUser, getUsers } from 'features/User/duck';
 import Toolbar from './Toolbar';
-import Header from './Header';
 import Footer from './Footer';
 import Drawer from './Drawer';
+import Header from 'common/Header';
 import './index.scss';
 
 interface Props {
@@ -38,7 +38,7 @@ const AppShell: React.FC<Props> = ({
       <Header showDrawer={showDrawer} />
       <section className="view">{children}</section>
       {drawers && <Drawer drawers={drawers} hideDrawer={hideDrawer} />}
-      <Footer showDrawer={showDrawer} hideDrawer={hideDrawer} />
+      <Footer showDrawer={showDrawer} />
     </>
   );
 };

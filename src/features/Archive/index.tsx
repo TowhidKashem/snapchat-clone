@@ -1,9 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { showDrawer } from 'AppShell/duck';
+import Header from 'common/Header';
 
 const Archive = () => (
-  <main className="static" style={{ background: '#fff' }}>
+  <main className="archive">
+    <Header showDrawer={showDrawer} />
     Archive
   </main>
 );
 
-export default Archive;
+const mapDispatchToProps = (dispatch) => ({
+  showDrawer: (drawer) => dispatch(showDrawer(drawer))
+});
+
+export default connect(null, mapDispatchToProps)(Archive);
