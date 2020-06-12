@@ -30,6 +30,8 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
                 component: 'search',
                 animationIn: 'fadeIn',
                 animationOut: 'fadeOut',
+                // animationIn: 'slideInUp',
+                // animationOut: 'slideOutDown',
                 animationInDuration: 200,
                 animationOutDuration: 200
               })

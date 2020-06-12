@@ -2,7 +2,16 @@
 
 .input {
   position: relative;
-  margin: 0 10px;
+  width: 100%;
+  transition: width 300ms ease-in-out;
+
+  &.animate {
+    width: 80%;
+
+    &.full {
+      width: 100%;
+    }
+  }
 
   input[type='text'] {
     border: 0;

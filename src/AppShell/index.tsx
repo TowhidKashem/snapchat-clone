@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Drawer as DrawerType, ShowDrawer, HideDrawer } from './types';
 import { showDrawer, hideDrawer } from './duck';
-import { getUser } from 'features/User/duck';
+import { getUser, getUsers } from 'features/User/duck';
 import Toolbar from './Toolbar';
 import Header from './Header';
 import Footer from './Footer';
@@ -14,6 +14,7 @@ interface Props {
   hideDrawer: HideDrawer;
   drawers: DrawerType[];
   getUser: () => void;
+  getUsers: () => void;
   children: JSX.Element;
 }
 
@@ -22,11 +23,13 @@ const AppShell: React.FC<Props> = ({
   hideDrawer,
   drawers,
   getUser,
+  getUsers,
   children
 }) => {
   // Init the app
   useEffect(() => {
     getUser();
+    getUsers();
   }, []);
 
   return (
@@ -49,7 +52,8 @@ const mapStateToProps = ({ app, users, media }) => ({
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (component) => dispatch(showDrawer(component)),
   hideDrawer: (component) => dispatch(hideDrawer(component)),
-  getUser: () => dispatch(getUser())
+  getUser: () => dispatch(getUser()),
+  getUsers: () => dispatch(getUsers())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppShell);

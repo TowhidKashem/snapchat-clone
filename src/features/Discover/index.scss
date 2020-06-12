@@ -1,0 +1,18 @@
+@import '~static/styles/vars';
+
+.discover {
+  .widget {
+    &.friends {
+      .inner-content {
+        text-align: center;
+        p {
+          font-weight: bold;
+        }
+      }
+    }
+    .inner {
+      display: flex;
+      flex-flow: row wrap;
+    }
+  }
+}

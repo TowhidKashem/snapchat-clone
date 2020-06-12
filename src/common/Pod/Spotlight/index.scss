@@ -1,0 +1,25 @@
+@import '~static/styles/vars';
+
+.pod-spotlight {
+  position: relative;
+  width: 50%;
+  padding: 5px;
+
+  img {
+    max-width: 100%;
+    border-radius: 7px;
+  }
+
+  .meta {
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: $color-white;
+    text-shadow: 0 0 1px $color-black;
+
+    header {
+      font-weight: bold;
+    }
+  }
+}

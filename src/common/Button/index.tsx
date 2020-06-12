@@ -12,6 +12,7 @@ interface Props {
   buttonClass?: string;
   round?: boolean;
   plain?: boolean;
+  purple?: boolean;
   label?: string;
   onclick?: () => void;
 }
@@ -25,15 +26,18 @@ const Button: React.FC<Props> = ({
   buttonClass = '',
   round,
   plain,
+  purple,
   label,
   onclick
 }) => (
   <button
+    type="button"
     onClick={onclick}
     className={classNames('button', {
       [buttonClass]: buttonClass,
       round,
-      plain
+      plain,
+      purple
     })}
   >
     {image ? (

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Animated } from 'react-animated-css';
 import { HideDrawer } from 'AppShell/types';
 import { User } from 'features/User/types';
 import { hideDrawer } from 'AppShell/duck';
-import { getUsers } from 'features/User/duck';
 import { escapeRegex } from 'utils';
 import Input from 'common/Input';
 import Button from 'common/Button';
@@ -14,16 +13,11 @@ import './index.scss';
 
 interface Props {
   friends: User[];
-  getUsers: () => void;
   hideDrawer: HideDrawer;
 }
 
-const Search: React.FC<Props> = ({ friends = [], getUsers, hideDrawer }) => {
+const Search: React.FC<Props> = ({ friends = [], hideDrawer }) => {
   const [query, setQuery] = useState('');
-
-  useEffect(() => {
-    getUsers();
-  }, []);
 
   const pattern = new RegExp(escapeRegex(query), 'gi');
   const users = query
@@ -35,35 +29,38 @@ const Search: React.FC<Props> = ({ friends = [], getUsers, hideDrawer }) => {
   return (
     <main className="search">
       <header>
-        <Grid fluid>
-          <Row middle="xs">
-            <Col xs={10}>
-              <Input
-                placeholder="Search"
-                leftIcon="faSearch"
-                onChange={(e) => setQuery(e.currentTarget.value.trim())}
-                focus
-              />
-            </Col>
-            <Col xs={2}>
-              <Button label="Cancel" plain onclick={() => hideDrawer('search')} />
-            </Col>
-          </Row>
-        </Grid>
+        <form>
+          <Input
+            placeholder="Search"
+            leftIcon="faSearch"
+            onChange={(e) => setQuery(e.currentTarget.value.trim())}
+            focus
+            animate
+          />
+          <Button label="Cancel" plain onclick={() => hideDrawer('search')} />
+        </form>
       </header>
-      <section className="results">
-        {users.length ? (
-          <Widget header="Quick Add" transparent>
-            {users.map((user) => (
-              <UserPod key={user.id} user={user} />
-            ))}
-          </Widget>
-        ) : (
-          <p className="no-results">
-            <span>💩</span> No results
-          </p>
-        )}
-      </section>
+      <Animated
+        animationIn="slideInUp"
+        animationOut="slideOutDown"
+        animationInDuration={250}
+        animationOutDuration={0}
+        isVisible
+      >
+        <section className="results">
+          {users.length ? (
+            <Widget header="Quick Add" transparent>
+              {users.map((user) => (
+                <UserPod key={user.id} user={user} />
+              ))}
+            </Widget>
+          ) : (
+            <p className="no-results">
+              <span>💩</span> No results
+            </p>
+          )}
+        </section>
+      </Animated>
     </main>
   );
 };
@@ -73,7 +70,6 @@ const mapStateToProps = ({ user }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getUsers: () => dispatch(getUsers()),
   hideDrawer: (component) => dispatch(hideDrawer(component))
 });
 

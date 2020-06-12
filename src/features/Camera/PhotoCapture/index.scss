@@ -1,11 +1,6 @@
 @import '~static/styles/vars';
 @import '~static/styles/extendables';
 
-// hack
-.header {
-  display: none;
-}
-
 .photo-capture {
   position: relative;
   z-index: 100;
@@ -21,9 +16,9 @@
   }
 
   header {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+    position: fixed;
+    top: 0;
+    padding: 15px;
     z-index: 1;
   }
 
@@ -32,9 +27,9 @@
   }
 
   aside {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: fixed;
+    top: 15px;
+    margin-left: $app-width - 45px;
     display: flex;
     flex-direction: column;
 
@@ -45,7 +40,7 @@
 
   footer {
     position: fixed;
-    bottom: 10px;
+    bottom: 15px;
     width: $app-width;
   }
 }

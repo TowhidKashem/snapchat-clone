@@ -2,15 +2,23 @@
 
 .search {
   > header {
+    padding: 0 0 7px;
+
     background: $color-light-grey;
-    padding: 3px 0 10px;
 
-    .input {
-      input[type='text'] {
-        background: rgba($color-black, 0.1);
+    form {
+      display: flex;
+      justify-content: flex-end;
 
-        &::placeholder {
-          color: $color-darker-grey;
+      .input {
+        margin-right: 5px;
+
+        input[type='text'] {
+          background: rgba($color-black, 0.1);
+
+          &::placeholder {
+            color: $color-darker-grey;
+          }
         }
       }
     }

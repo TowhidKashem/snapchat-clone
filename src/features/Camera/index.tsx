@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
-import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
 import { loadScripts } from 'utils';
-import { Drawer } from 'AppShell/types';
 import { Filter } from './types';
 import { dependencies, filters } from './data';
 import useCamera from 'hooks/useCamera';
@@ -18,11 +16,7 @@ declare global {
   }
 }
 
-interface Props {
-  drawers: Drawer[];
-}
-
-const Camera: React.FC<Props> = ({ drawers }) => {
+const Camera: React.FC<{}> = () => {
   const videoElem = useRef<any>();
 
   const [showFilters, setShowFilters] = useState(false);
@@ -37,7 +31,7 @@ const Camera: React.FC<Props> = ({ drawers }) => {
   //   }, 1000);
   // }, []);
 
-  const initFilter = (filter) => window.Filters[filter].init(() => setFilterReady(true));
+  useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
 
   useEffect(() => {
     if (!filter) return;
@@ -51,6 +45,8 @@ const Camera: React.FC<Props> = ({ drawers }) => {
     }
   }, [filter]);
 
+  const initFilter = (filter) => window.Filters[filter].init(() => setFilterReady(true));
+
   const switchFilter = async (filter: Filter) => {
     if (loadedFilters.length) {
       try {
@@ -61,8 +57,6 @@ const Camera: React.FC<Props> = ({ drawers }) => {
       setFilter(filter);
     }
   };
-
-  useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
 
   return (
     <main className="camera">
@@ -135,6 +129,4 @@ const Camera: React.FC<Props> = ({ drawers }) => {
   );
 };
 
-const mapStateToProps = ({ app }) => ({ drawers: app.drawers });
-
-export default connect(mapStateToProps)(Camera);
+export default Camera;

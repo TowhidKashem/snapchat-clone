@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import useDrawerEnter from 'hooks/useDrawerEnter';
 import Icon from 'common/Icon';
@@ -15,6 +15,7 @@ interface Props {
   onEnter?: () => void;
   focus?: boolean;
   spellCheck?: boolean;
+  animate?: boolean;
 }
 
 const Input: React.FC<Props> = ({
@@ -27,14 +28,26 @@ const Input: React.FC<Props> = ({
   onChange,
   onEnter,
   focus,
-  spellCheck
+  spellCheck,
+  animate
 }) => {
   const inputElem = useRef<any>();
+  const [full, setFull] = useState(false);
 
   useDrawerEnter(() => focus && inputElem.current.focus());
 
+  useEffect(() => {
+    if (animate) setFull(true);
+  }, []);
+
   return (
-    <div className="input" onClick={onClick}>
+    <div
+      className={classNames('input', {
+        animate,
+        full
+      })}
+      onClick={onClick}
+    >
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
         type="text"
