@@ -1,6 +1,9 @@
+@import '~static/styles/extendables';
 @import '~static/styles/vars';
 
 .pod-action-item {
+  display: flex;
+  // align-items: center;
   background: $color-white;
   padding: 15px 10px;
   font-weight: bold;
@@ -10,5 +13,13 @@
     box-shadow: 0 0 8px $color-light-grey;
     border-radius: 7px;
     margin-bottom: 10px;
+  }
+
+  .icon {
+    margin-right: 10px;
+  }
+
+  .right-icon {
+    margin-left: auto;
   }
 }

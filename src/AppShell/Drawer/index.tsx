@@ -57,7 +57,12 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
           <section className="content">
             <button
               onClick={() => hideDrawer(component)}
-              style={{ position: 'fixed', bottom: 0, right: 0, zIndex: 1000 }}
+              style={{
+                position: 'fixed',
+                bottom: 0,
+                right: 0,
+                zIndex: 100000
+              }}
             >
               Close Drawer
             </button>

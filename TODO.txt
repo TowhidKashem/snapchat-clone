@@ -17,6 +17,8 @@ use map image for lazy loaded placeholder
 
 immer.js
 
+fonts
+
 include storybook
 
 Filter bundle:

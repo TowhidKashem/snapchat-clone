@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Drawer as DrawerType, ShowDrawer, HideDrawer } from './types';
-import { showDrawer, hideDrawer } from './duck';
+import { Drawer as DrawerType, ShowDrawer, HideDrawer, CollapseNav } from './types';
+import { showDrawer, hideDrawer, collapseNav } from './duck';
 import { getUser, getUsers } from 'features/User/duck';
 import Toolbar from './Toolbar';
 import Footer from './Footer';
@@ -13,6 +13,8 @@ interface Props {
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
   drawers: DrawerType[];
+  collapseNav: CollapseNav;
+  collapsedNav: boolean;
   getUser: () => void;
   getUsers: () => void;
   children: JSX.Element;
@@ -22,6 +24,8 @@ const AppShell: React.FC<Props> = ({
   showDrawer,
   hideDrawer,
   drawers,
+  collapseNav,
+  collapsedNav,
   getUser,
   getUsers,
   children
@@ -38,7 +42,12 @@ const AppShell: React.FC<Props> = ({
       <Header showDrawer={showDrawer} />
       <section className="view">{children}</section>
       {drawers && <Drawer drawers={drawers} hideDrawer={hideDrawer} />}
-      <Footer showDrawer={showDrawer} />
+      <Footer
+        collapsedNav={collapsedNav}
+        collapseNav={collapseNav}
+        showDrawer={showDrawer}
+        hideDrawer={hideDrawer}
+      />
     </>
   );
 };
@@ -46,12 +55,14 @@ const AppShell: React.FC<Props> = ({
 const mapStateToProps = ({ app, users, media }) => ({
   users,
   media,
-  drawers: app.drawers
+  drawers: app.drawers,
+  collapsedNav: app.collapsedNav
 });
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (component) => dispatch(showDrawer(component)),
   hideDrawer: (component) => dispatch(hideDrawer(component)),
+  collapseNav: (collapse) => dispatch(collapseNav(collapse)),
   getUser: () => dispatch(getUser()),
   getUsers: () => dispatch(getUsers())
 });

@@ -1,3 +1,4 @@
+@import '~static/styles/extendables';
 @import '~static/styles/vars';
 
 .notification {
@@ -7,20 +8,32 @@
     background: rgba($color-black, 0.5);
     border-radius: 15px;
     box-shadow: 0 0 4px $color-darker-grey;
-    padding: 5px;
+    padding: 10px;
     color: $color-light-grey;
 
     header {
+      @extend %center-x-y;
       color: $color-grey;
 
-      .icon {
-        color: $color-yellow;
-        font-size: 23px;
-        margin-right: 10px;
+      .left,
+      time {
+        width: 50%;
       }
 
-      span {
-        text-transform: uppercase;
+      .left {
+        .icon {
+          color: $color-yellow;
+          font-size: 23px;
+          margin-right: 10px;
+        }
+
+        span {
+          text-transform: uppercase;
+        }
+      }
+
+      time {
+        text-align: right;
       }
     }
   }

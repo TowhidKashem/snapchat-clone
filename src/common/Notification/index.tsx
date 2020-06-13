@@ -1,6 +1,5 @@
 import React from 'react';
 import { Animated } from 'react-animated-css';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import Icon from 'common/Icon';
 import './index.scss';
 
@@ -23,17 +22,11 @@ const Notification: React.FC<Props> = ({ sender, time, show, onClick }) => (
     >
       <div className="message">
         <header>
-          <Grid fluid>
-            <Row middle="xs">
-              <Col xs={10}>
-                <Icon icon="faSnapchatSquare" size="7x" />
-                <span>SnapChat</span>
-              </Col>
-              <Col xs={2}>
-                <time>{time}</time>
-              </Col>
-            </Row>
-          </Grid>
+          <div className="left">
+            <Icon icon="faSnapchatSquare" size="7x" />
+            <span>SnapChat</span>
+          </div>
+          <time>{time}</time>
         </header>
         <p>from {sender}</p>
       </div>

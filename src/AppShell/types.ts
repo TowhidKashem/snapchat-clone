@@ -10,4 +10,6 @@ export interface Drawer {
 
 export type ShowDrawer = (drawer: Drawer) => void;
 
-export type HideDrawer = (component: string) => void;
+export type HideDrawer = (component?: string) => void;
+
+export type CollapseNav = (collapse: boolean) => void;

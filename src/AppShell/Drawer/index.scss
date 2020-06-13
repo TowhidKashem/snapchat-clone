@@ -13,6 +13,11 @@
     padding: $toolbar-height 10px 10px;
     overflow: scroll;
     background: $color-light-grey;
+    // background-color: #333;
+
+    .header {
+      margin-top: 0;
+    }
   }
 
   .icon {

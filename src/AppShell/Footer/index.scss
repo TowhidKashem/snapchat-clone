@@ -1,50 +1,79 @@
+@import '~static/styles/extendables';
 @import '~static/styles/vars';
 
 .footer {
+  @extend %center-x-y;
   position: fixed;
   bottom: 0;
   padding-bottom: 20px;
   width: $app-width;
-  align-items: center;
+  z-index: 10;
 
   .icon {
     font-size: 25px;
+    box-shadow: 0 0 8px $color-black;
   }
 
-  article {
+  .left,
+  .center,
+  .right {
+    width: 33.3%;
     text-align: center;
+    // border: 1px solid red;
   }
 
-  .chat-btn {
+  .left {
+    .chat-btn {
+      position: relative;
+
+      .icon {
+        &:first-child {
+          font-size: 21px;
+        }
+
+        &.new-msg {
+          color: $color-blue;
+          font-size: 12px;
+          position: absolute;
+          top: -5px;
+          right: -3px;
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+
+  .center {
     position: relative;
 
-    .icon {
-      &:first-child {
-        font-size: 21px;
-      }
-      &.msg-notification {
-        color: $color-blue;
-        font-size: 12px;
-        position: absolute;
-        top: -5px;
-        right: -3px;
-      }
-    }
-  }
+    .animated {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -25px 0 0 -25px;
 
-  .archive-btn {
-    .icon {
-      &:first-child {
-        transform: rotate(-5deg);
-      }
       &:last-child {
-        transform: rotate(5deg);
+        margin: -12.5px 0 0 -20px;
+      }
+
+      .btn-capture {
+        .icon {
+          font-size: 50px;
+          border-radius: 100%;
+        }
+      }
+
+      .archive-btn {
+        .icon {
+          &:first-child {
+            transform: rotate(-5deg);
+          }
+
+          &:last-child {
+            transform: rotate(5deg);
+          }
+        }
       }
     }
   }
-
-  // .discover-btn {
-  //   .icon {
-  //   }
-  // }
 }

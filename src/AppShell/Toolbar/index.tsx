@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Drawer } from '../types';
 import { atleastOneDrawerOpen } from '../utils';
 import Icon from 'common/Icon';
@@ -36,22 +35,14 @@ const Toolbar: React.FC<Props> = ({ drawers }) => {
         dark: atleastOneDrawerOpen(drawers)
       })}
     >
-      <Grid fluid>
-        <Row middle="xs">
-          <Col xs={6}>
-            <time>{time}</time>
-            <Icon icon="faLocationArrow" />
-          </Col>
-          <Col xs={6}>
-            <Row middle="xs" end="xs">
-              <Col xs={12}>
-                <Icon icon="faSignal" />
-                <Icon icon="faBatteryHalf" />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Grid>
+      <div className="left">
+        <time>{time}</time>
+        <Icon icon="faLocationArrow" />
+      </div>
+      <div className="right">
+        <Icon icon="faSignal" />
+        <Icon icon="faBatteryHalf" />
+      </div>
     </div>
   );
 };

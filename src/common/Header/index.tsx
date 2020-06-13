@@ -13,21 +13,24 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
     <Icon
       icon="faUserCircle"
       size="2x"
-      onClick={() => showDrawer({ component: 'account' })}
+      onClick={() => {
+        alert('click');
+        showDrawer({ component: 'account' });
+      }}
     />
     <Input
       placeholder="Search"
       leftIcon="faSearch"
       rightIcon="faUserPlus"
-      onClick={() => {
+      onClick={() =>
         showDrawer({
           component: 'search',
           animationIn: 'fadeIn',
           animationOut: 'fadeOut',
           animationInDuration: 200,
           animationOutDuration: 200
-        });
-      }}
+        })
+      }
     />
     <Icon icon="faRetweet" />
   </header>

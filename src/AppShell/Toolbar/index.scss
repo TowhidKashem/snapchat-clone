@@ -1,13 +1,24 @@
+@import '~static/styles/extendables';
 @import '~static/styles/vars';
 
 .toolbar {
+  @extend %center-x-y;
   position: fixed;
   width: $app-width;
   top: 0;
   color: $color-white;
-  padding: 5px 0;
+  padding: 5px 10px;
   z-index: 15;
   font-weight: bold;
+
+  .left,
+  .right {
+    width: 50%;
+  }
+
+  .right {
+    text-align: right;
+  }
 
   .icon {
     margin-left: 8px;
