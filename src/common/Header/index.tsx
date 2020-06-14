@@ -13,10 +13,7 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
     <Icon
       icon="faUserCircle"
       size="2x"
-      onClick={() => {
-        alert('click');
-        showDrawer({ component: 'account' });
-      }}
+      onClick={() => showDrawer({ component: 'account' })}
     />
     <Input
       placeholder="Search"

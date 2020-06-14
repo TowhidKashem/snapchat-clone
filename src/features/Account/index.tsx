@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { User } from 'features/User/types';
 import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import Button from 'common/Button';
 import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';
 import Icon from 'common/Icon';
@@ -19,39 +19,14 @@ interface Props {
 const Account: React.FC<Props> = ({ showDrawer, hideDrawer, session }) => {
   return (
     <main className="account">
-      <Grid fluid>
-        <Row middle="xs">
-          <Col xs={6}>
-            <Icon icon="faAngleDown" onClick={() => hideDrawer('account')} size="2x" />
-          </Col>
-          <Col xs={6}>
-            <Row end="xs">
-              <Col>
-                <Icon
-                  icon="faCog"
-                  size="2x"
-                  onClick={() =>
-                    showDrawer({
-                      component: 'settings',
-                      animationIn: 'slideInRight',
-                      animationOut: 'slideOutRight'
-                    })
-                  }
-                />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        <Col xs={12}>
-          <Row center="xs">
-            <Col>
-              <Icon icon="faSnapchatSquare" size="7x" />
-              <br />
-              {session.username}
-            </Col>
-          </Row>
-        </Col>
-      </Grid>
+      <header>
+        <Button icon="faAngleDown" onclick={() => hideDrawer('account')} />
+        <Icon icon="faCog" className="gear-icon" />
+      </header>
+      <div className="profile">
+        <Icon icon="faSnapchatSquare" size="7x" />
+        <strong>{session.username}</strong>
+      </div>
       <Widget header="Stories" transparent>
         <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to My Story" />
         <ActionItem

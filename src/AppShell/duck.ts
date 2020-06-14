@@ -12,7 +12,8 @@ export const showDrawer = (drawer: Drawer) => (dispatch) => {
     animationOut: 'slideOutDown',
     animationInDuration: 300,
     animationOutDuration: 300,
-    theme: 'light'
+    theme: 'light',
+    position: 'front'
   };
   dispatch({
     type: SHOW_DRAWER,

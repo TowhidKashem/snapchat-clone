@@ -13,18 +13,19 @@ import './index.scss';
 
 interface Props {
   friends: User[];
+  show: boolean;
   hideDrawer: HideDrawer;
 }
 
-const Search: React.FC<Props> = ({ friends = [], hideDrawer }) => {
+const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
   const [query, setQuery] = useState('');
-
   const pattern = new RegExp(escapeRegex(query), 'gi');
   const users = query
     ? friends.filter(
         ({ fullName, username }) => fullName.match(pattern) || username.match(pattern)
       )
     : friends;
+  const hasResults = users.length > 0;
 
   return (
     <main className="search">
@@ -46,15 +47,16 @@ const Search: React.FC<Props> = ({ friends = [], hideDrawer }) => {
           animationOut="slideOutDown"
           animationInDuration={250}
           animationOutDuration={0}
-          isVisible
+          isVisible={show}
         >
-          {users.length ? (
+          {hasResults && (
             <Widget header="Quick Add" transparent>
               {users.map((user) => (
                 <UserPod key={user.id} user={user} />
               ))}
             </Widget>
-          ) : (
+          )}
+          {query && !hasResults && (
             <p className="no-results">
               <span>💩</span> No results
             </p>

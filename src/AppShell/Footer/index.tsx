@@ -62,13 +62,15 @@ const Footer: React.FC<Props> = ({
         <Button
           icons={['faMobile', 'faMobileAlt']}
           buttonClass="archive-btn"
-          onclick={() =>
+          onclick={() => {
+            collapseNav(true);
             showDrawer({
               component: 'archive',
               animationIn: 'slideInUp',
-              animationOut: 'slideOutDown'
-            })
-          }
+              animationOut: 'slideOutDown',
+              position: 'back'
+            });
+          }}
         />
       </Animated>
     </div>
@@ -82,7 +84,8 @@ const Footer: React.FC<Props> = ({
           showDrawer({
             component: 'discover',
             animationIn: 'slideInRight',
-            animationOut: 'slideOutRight'
+            animationOut: 'slideOutRight',
+            position: 'back'
           });
         }}
       />

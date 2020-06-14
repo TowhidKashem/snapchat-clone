@@ -5,6 +5,7 @@ export interface Drawer {
   animationInDuration?: number;
   animationOutDuration?: number;
   theme?: 'light' | 'dark' | 'stripped';
+  position?: 'front' | 'back';
   show?: boolean;
 }
 

@@ -1,7 +1,21 @@
 .account {
-  article {
-    header {
-      font-weight: bold;
+  > header {
+    display: flex;
+
+    .icon {
+      font-size: 20px;
+    }
+
+    .gear-icon {
+      margin-left: auto;
+    }
+  }
+
+  .profile {
+    text-align: center;
+
+    strong {
+      display: block;
     }
   }
 }

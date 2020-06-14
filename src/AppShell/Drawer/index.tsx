@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
 import { Drawer as DrawerType, HideDrawer } from '../types';
 import Account from 'features/Account';
-import Settings from 'features/Settings';
 import Search from 'features/Search';
 import SnapMap from 'features/SnapMap';
 import Snap from 'features/Snap';
@@ -19,15 +18,17 @@ interface Props {
 }
 
 const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
-  const componentMap = {
-    account: <Account />,
-    settings: <Settings />,
-    search: <Search />,
-    snapMap: <SnapMap />,
-    snap: <Snap />,
-    archive: <Archive />,
-    chat: <Chat />,
-    discover: <Discover />
+  const getComponent = (component, show) => {
+    const componentMap = {
+      account: <Account />,
+      search: <Search show={show} />,
+      snapMap: <SnapMap />,
+      snap: <Snap />,
+      archive: <Archive />,
+      chat: <Chat />,
+      discover: <Discover />
+    };
+    return componentMap[component];
   };
 
   return drawers.map(
@@ -38,13 +39,15 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
       animationInDuration,
       animationOutDuration,
       show,
-      theme
+      theme,
+      position
     }) => (
       <aside
         key={component}
         className={classNames('drawer', {
           dark: theme === 'dark',
-          stripped: theme === 'stripped'
+          stripped: theme === 'stripped',
+          back: position === 'back'
         })}
       >
         <Animated
@@ -66,7 +69,7 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
             >
               Close Drawer
             </button>
-            {componentMap[component]}
+            {getComponent(component, show)}
           </section>
         </Animated>
       </aside>

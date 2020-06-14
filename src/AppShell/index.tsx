@@ -61,7 +61,7 @@ const mapStateToProps = ({ app, users, media }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (component) => dispatch(showDrawer(component)),
-  hideDrawer: (component) => dispatch(hideDrawer(component)),
+  hideDrawer: (component?) => dispatch(hideDrawer(component)),
   collapseNav: (collapse) => dispatch(collapseNav(collapse)),
   getUser: () => dispatch(getUser()),
   getUsers: () => dispatch(getUsers())

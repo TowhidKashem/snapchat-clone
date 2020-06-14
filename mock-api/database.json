@@ -51,825 +51,46 @@
       }
     ]
   },
-  "messages": [
+  "discover": [
     {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hey there2!",
-      "time": "",
-      "id": 1
+      "image": "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+      "title": "No One Can Keep Up With Her",
+      "time": "20h ago"
     },
     {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Oh wow",
-      "time": "",
-      "id": 2
+      "image": "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+      "title": "No One Can Keep Up With Her",
+      "time": "20h ago"
     },
     {
-      "thread": "julia",
-      "author": "tk",
-      "message": "Hi",
-      "time": "",
-      "id": 3
+      "image": "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+      "title": "No One Can Keep Up With Her",
+      "time": "20h ago"
     },
     {
-      "thread": "tom",
-      "author": "tom",
-      "message": "fuck u",
-      "time": "",
-      "id": 4
+      "image": "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+      "title": "No One Can Keep Up With Her",
+      "time": "20h ago"
     },
     {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1590860986577,
-      "id": 5
+      "image": "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+      "title": "No One Can Keep Up With Her",
+      "time": "20h ago"
     },
     {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Oh wow I can't believe it!",
-      "time": 1590861179038,
-      "id": 6
+      "image": "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+      "title": "No One Can Keep Up With Her",
+      "time": "20h ago"
     },
     {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1590861189128,
-      "id": 7
+      "image": "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+      "title": "No One Can Keep Up With Her",
+      "time": "20h ago"
     },
     {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1590861305774,
-      "id": 8
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "asdasd",
-      "time": 1590861308393,
-      "id": 9
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Oh wow I can't believe it!",
-      "time": 1590861309603,
-      "id": 10
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "adaadad",
-      "time": 1590861311333,
-      "id": 11
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1590861312542,
-      "id": 12
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591641717496,
-      "id": 13
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591641722332,
-      "id": 14
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "sdad",
-      "time": 1591641725750,
-      "id": 15
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591641726958,
-      "id": 16
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591641750773,
-      "id": 17
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "sadasd",
-      "time": 1591641752993,
-      "id": 18
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591641754203,
-      "id": 19
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591641826864,
-      "id": 20
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1591642809262,
-      "id": 21
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "kkk",
-      "time": 1591642811286,
-      "id": 22
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591642812498,
-      "id": 23
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1591747624894,
-      "id": 24
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1591747997251,
-      "id": 25
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1591748350471,
-      "id": 26
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591748366438,
-      "id": 27
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1591748425574,
-      "id": 28
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591748428747,
-      "id": 29
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591748449591,
-      "id": 30
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591748459478,
-      "id": 31
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "asdasd",
-      "time": 1591749086853,
-      "id": 32
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591749088073,
-      "id": 33
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "asdads",
-      "time": 1591751078076,
-      "id": 34
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1591751079691,
-      "id": 35
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "asdasd",
-      "time": 1591751080955,
-      "id": 36
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591751082168,
-      "id": 37
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "asdas",
-      "time": 1591820152227,
-      "id": 38
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Oh wow I can't believe it!",
-      "time": 1591820153838,
-      "id": 39
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "asdasdas",
-      "time": 1591820156282,
-      "id": 40
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591820157489,
-      "id": 41
-    },
-    {
-      "thread": "julia",
-      "author": "tk",
-      "message": "SsaSa",
-      "time": 1591820271599,
-      "id": 42
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591820273011,
-      "id": 43
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591823313788,
-      "id": 44
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Oh wow I can't believe it!",
-      "time": 1591823345306,
-      "id": 45
-    },
-    {
-      "thread": "tom",
-      "author": "tk",
-      "message": "no fuck you",
-      "time": 1591823355906,
-      "id": 46
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591823357318,
-      "id": 47
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591823362347,
-      "id": 48
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591823588786,
-      "id": 49
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1591823617836,
-      "id": 50
-    },
-    {
-      "thread": "tom",
-      "author": "tk",
-      "message": "aSsa",
-      "time": 1591823624749,
-      "id": 51
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591823626366,
-      "id": 52
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591823716625,
-      "id": 53
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591823725818,
-      "id": 54
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591823784482,
-      "id": 55
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Hahaha you're so right!!",
-      "time": 1591823788342,
-      "id": 56
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591824045427,
-      "id": 57
-    },
-    {
-      "thread": "julia",
-      "author": "Towhid",
-      "message": "hey",
-      "time": 1591824048358,
-      "id": 58
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591824049767,
-      "id": 59
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591824050905,
-      "id": 60
-    },
-    {
-      "thread": "tom",
-      "author": "Towhid",
-      "message": "why",
-      "time": 1591824053509,
-      "id": 61
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Oh wow I can't believe it!",
-      "time": 1591824055122,
-      "id": 62
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591824096537,
-      "id": 63
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "No way, when?!",
-      "time": 1591824100430,
-      "id": 64
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591824107248,
-      "id": 65
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "OMG I totally agree!",
-      "time": 1591824111365,
-      "id": 66
-    },
-    {
-      "thread": "tom",
-      "author": "Towhid",
-      "message": "sss",
-      "time": 1591824118228,
-      "id": 67
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "No way, when?!",
-      "time": 1591824119438,
-      "id": 68
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Oh wow I can't believe it!",
-      "time": 1591824240960,
-      "id": 69
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Hahaha you're so right!!",
-      "time": 1591824246430,
-      "id": 70
-    },
-    {
-      "thread": "tom",
-      "author": "Towhid",
-      "message": "asaSasSas",
-      "time": 1591824248509,
-      "id": 71
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591824249720,
-      "id": 72
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591824286910,
-      "id": 73
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Hahaha you're so right!!",
-      "time": 1591824290724,
-      "id": 74
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Oh wow I can't believe it!",
-      "time": 1591834939439,
-      "id": 75
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "No way, when?!",
-      "time": 1591834944639,
-      "id": 76
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591834952522,
-      "id": 77
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591834957619,
-      "id": 78
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591835067380,
-      "id": 79
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "No way, when?!",
-      "time": 1591835071324,
-      "id": 80
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1591850027786,
-      "id": 81
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591850032788,
-      "id": 82
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591850601581,
-      "id": 83
-    },
-    {
-      "thread": "julia",
-      "author": "Towhid",
-      "message": "sss",
-      "time": 1591850604416,
-      "id": 84
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591850605829,
-      "id": 85
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Oh wow I can't believe it!",
-      "time": 1591850620871,
-      "id": 86
-    },
-    {
-      "thread": "julia",
-      "author": "Towhid",
-      "message": "asda",
-      "time": 1591850623184,
-      "id": 87
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1591850624800,
-      "id": 88
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591850644171,
-      "id": 89
-    },
-    {
-      "thread": "julia",
-      "author": "Towhid",
-      "message": "asdasd",
-      "time": 1591850645743,
-      "id": 90
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591850646956,
-      "id": 91
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591851019805,
-      "id": 92
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591852646722,
-      "id": 93
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Hahaha you're so right!!",
-      "time": 1591852650220,
-      "id": 94
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591854824166,
-      "id": 95
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "No way, when?!",
-      "time": 1591854828341,
-      "id": 96
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591883286486,
-      "id": 97
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591918561127,
-      "id": 98
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "OMG I totally agree!",
-      "time": 1591921877804,
-      "id": 99
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591921881272,
-      "id": 100
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591927828136,
-      "id": 101
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "No way, when?!",
-      "time": 1591927832609,
-      "id": 102
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591927902315,
-      "id": 103
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "Oh wow I can't believe it!",
-      "time": 1591927906293,
-      "id": 104
-    },
-    {
-      "thread": "tom",
-      "author": "Towhid",
-      "message": "asdasd",
-      "time": 1591927909070,
-      "id": 105
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "No way, when?!",
-      "time": 1591927910279,
-      "id": 106
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1591929428908,
-      "id": 107
-    },
-    {
-      "thread": "tom",
-      "author": "tom",
-      "message": "No way, when?!",
-      "time": 1591929434225,
-      "id": 108
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1591996959470,
-      "id": 109
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1591996993199,
-      "id": 110
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Oh wow I can't believe it!",
-      "time": 1591997392759,
-      "id": 111
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Hahaha you're so right!!",
-      "time": 1592001469775,
-      "id": 112
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1592003631808,
-      "id": 113
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Wait, you are actually being serious rn?",
-      "time": 1592009923362,
-      "id": 114
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1592009951086,
-      "id": 115
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "Umm I'm not so sure about that one",
-      "time": 1592010012062,
-      "id": 116
-    },
-    {
-      "thread": "julia",
-      "author": "julia",
-      "message": "No way, when?!",
-      "time": 1592010784066,
-      "id": 117
+      "image": "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+      "title": "No One Can Keep Up With Her",
+      "time": "20h ago"
     }
   ],
   "users": [
@@ -1672,6 +893,155 @@
       "gender": "male",
       "age": 22,
       "fullName": "Michael McKenzie"
+    }
+  ],
+  "messages": [
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Hey there2!",
+      "time": "",
+      "id": 1
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Oh wow",
+      "time": "",
+      "id": 2
+    },
+    {
+      "thread": "julia",
+      "author": "tk",
+      "message": "Hi",
+      "time": "",
+      "id": 3
+    },
+    {
+      "thread": "tom",
+      "author": "tom",
+      "message": "fuck u",
+      "time": "",
+      "id": 4
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Hahaha you're so right!!",
+      "time": 1591747624894,
+      "id": 24
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "No way, when?!",
+      "time": 1591748428747,
+      "id": 29
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Oh wow I can't believe it!",
+      "time": 1591820153838,
+      "id": 39
+    },
+    {
+      "thread": "julia",
+      "author": "tk",
+      "message": "asdasdas",
+      "time": 1591820156282,
+      "id": 40
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "No way, when?!",
+      "time": 1591820157489,
+      "id": 41
+    },
+    {
+      "thread": "julia",
+      "author": "tk",
+      "message": "SsaSa",
+      "time": 1591820271599,
+      "id": 42
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Hahaha you're so right!!",
+      "time": 1592015706463,
+      "id": 43
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Oh wow I can't believe it!",
+      "time": 1592018342032,
+      "id": 44
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Umm I'm not so sure about that one",
+      "time": 1592092513763,
+      "id": 45
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Umm I'm not so sure about that one",
+      "time": 1592092603748,
+      "id": 46
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "No way, when?!",
+      "time": 1592093906223,
+      "id": 47
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Hahaha you're so right!!",
+      "time": 1592094108853,
+      "id": 48
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "No way, when?!",
+      "time": 1592094941775,
+      "id": 49
+    },
+    {
+      "thread": "tom",
+      "author": "tom",
+      "message": "Umm I'm not so sure about that one",
+      "time": 1592094945813,
+      "id": 50
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Hahaha you're so right!!",
+      "time": 1592097285760,
+      "id": 51
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Wait, you are actually being serious rn?",
+      "time": 1592097776846,
+      "id": 52
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Umm I'm not so sure about that one",
+      "time": 1592102295568,
+      "id": 53
     }
   ]
 }

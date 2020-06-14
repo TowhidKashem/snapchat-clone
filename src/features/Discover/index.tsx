@@ -1,55 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { api } from 'utils';
 import { showDrawer } from 'AppShell/duck';
+import { ShowDrawer } from 'AppShell/types';
 import Header from 'common/Header';
 import Widget from 'common/Widget';
 import Button from 'common/Button';
 import SpotlightPod from 'common/Pod/Spotlight';
 import './index.scss';
 
-const Discover = () => {
-  const profiles = [
-    {
-      image: 'https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg',
-      title: 'No One Can Keep Up With Her',
-      time: '20h ago'
-    },
-    {
-      image: 'https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg',
-      title: 'No One Can Keep Up With Her',
-      time: '20h ago'
-    },
-    {
-      image: 'https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg',
-      title: 'No One Can Keep Up With Her',
-      time: '20h ago'
-    },
-    {
-      image: 'https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg',
-      title: 'No One Can Keep Up With Her',
-      time: '20h ago'
-    },
-    {
-      image: 'https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg',
-      title: 'No One Can Keep Up With Her',
-      time: '20h ago'
-    },
-    {
-      image: 'https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg',
-      title: 'No One Can Keep Up With Her',
-      time: '20h ago'
-    },
-    {
-      image: 'https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg',
-      title: 'No One Can Keep Up With Her',
-      time: '20h ago'
-    },
-    {
-      image: 'https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg',
-      title: 'No One Can Keep Up With Her',
-      time: '20h ago'
-    }
-  ];
+interface Props {
+  showDrawer: ShowDrawer;
+}
+
+const Discover: React.FC<Props> = ({ showDrawer }) => {
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const [error, response] = await api.get('/discover');
+      if (!error) setProfiles(response);
+    })();
+  }, []);
 
   return (
     <main className="discover">
@@ -72,7 +44,7 @@ const Discover = () => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (drawer) => dispatch(showDrawer(drawer))
+  showDrawer: (component) => dispatch(showDrawer(component))
 });
 
 export default connect(null, mapDispatchToProps)(Discover);
