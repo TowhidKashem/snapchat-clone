@@ -7,20 +7,11 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Web site created using create-react-app" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
+    />
     <title>React App</title>
     <style>
       body {
@@ -31,26 +22,69 @@
         display: none;
       }
     </style>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-
-    <script src="./jeelizFaceFilter/filters/dog/dependencies.min.js"></script>
-    <script src="./jeelizFaceFilter/filters/dog/index.js"></script>
   </head>
 
   <body>
     <div class="wrapper">
-      <div class="canvasContainer">
-        <canvas id="jeeFaceFilterCanvas" class="filter-canvas"></canvas>
-        <div id="filter"></div
-        ><!-- dog only -->
-        <span id="open-mouth" class="open-mouth">Open Mouth</span>
+      <div
+        id="content"
+        style="border: 5px solid red; position: fixed; z-index: 100000000000;"
+      >
+        <div id="container">
+          <video
+            id="videoel"
+            width="400"
+            height="300"
+            preload="auto"
+            playsinline
+            autoplay
+          ></video>
+          <canvas id="overlay" width="400" height="300"></canvas>
+          <canvas id="webgl" width="400" height="300"></canvas>
+        </div>
+        <br />
+        <div id="controls">
+          <input
+            class="btn"
+            type="button"
+            value="wait, loading video & images"
+            disabled="disabled"
+            id="startbutton"
+          />
+          <select name="mask" id="selectmask">
+            <option value="0">Average face</option>
+            <option value="1">Terminator</option>
+            <option value="2">Walter</option>
+            <option value="3">Clooney</option>
+            <option value="4">Bieber</option>
+            <option value="5">Kim</option>
+            <option value="6">Rihanna</option>
+            <option value="7">Audrey Hepburn</option>
+            <option value="8">Bill Murray</option>
+            <option value="9">Sean Connery</option>
+            <option value="10">Cage</option>
+            <option value="11">The Queen</option>
+            <option value="12">Obama</option>
+            <option value="13">Chuck Norris</option>
+            <option value="14">Mona Lisa</option>
+            <option value="15">Picasso</option>
+            <option value="16">Abstract (Scream)</option>
+          </select>
+        </div>
+
+        <canvas id="webgl2" width="400" height="300"></canvas>
       </div>
+
       <noscript>You need to enable JavaScript to run this app.</noscript>
       <div id="root"></div>
     </div>
-    <script src="./jeelizFaceFilter/filters/dependencies.min.js" async></script>
+
+    <script src="./clmtrackr/examples/js/libs/dat.gui.min.js"></script>
+    <script src="./clmtrackr/examples/js/libs/utils.js"></script>
+    <script src="./clmtrackr/examples/js/libs/webgl-utils.js"></script>
+    <script src="./clmtrackr/build/clmtrackr.js"></script>
+    <script src="./clmtrackr/models/model_pca_20_svm.js"></script>
+    <script src="./clmtrackr/examples/js/face_deformer.js"></script>
+    <script src="./clmtrackr/examples/js/libs/poisson_new.js"></script>
   </body>
 </html>

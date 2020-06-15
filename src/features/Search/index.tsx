@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
 import { HideDrawer } from 'AppShell/types';
@@ -19,6 +19,11 @@ interface Props {
 
 const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
   const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    if (!show) setQuery('');
+  }, [show]);
+
   const pattern = new RegExp(escapeRegex(query), 'gi');
   const users = query
     ? friends.filter(
