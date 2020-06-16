@@ -3,7 +3,7 @@
 var Filters = window.Filters || {};
 
 Filters.dog = {
-  BASE_URL: './jeelizFaceFilter/filters/dog',
+  BASE_URL: './jeelizFaceFilter/dog',
   THREECAMERA: null,
   ISDETECTED: false,
   TONGUEMESH: null,
@@ -240,7 +240,7 @@ Filters.dog = {
   initFaceFilter: (videoSettings, callback) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
-      NNCpath: './jeelizFaceFilter/dist/',
+      NNCpath: './jeelizFaceFilter/',
       videoSettings: videoSettings,
       callbackReady: function (errCode, spec) {
         if (errCode) return;

@@ -3,7 +3,7 @@
 var Filters = window.Filters || {};
 
 Filters.halloween = {
-  BASE_URL: './jeelizFaceFilter/filters/halloween',
+  BASE_URL: './jeelizFaceFilter/halloween',
   THREECAMERA: null,
   ISDETECTED: false,
   MIXERS: [],
@@ -184,7 +184,7 @@ Filters.halloween = {
   initFaceFilter: (videoSettings) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
-      NNCpath: './jeelizFaceFilter/dist/',
+      NNCpath: './jeelizFaceFilter/',
       videoSettings: videoSettings,
       callbackReady: function (errCode, spec) {
         if (errCode) return;

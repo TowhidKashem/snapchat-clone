@@ -3,7 +3,7 @@
 var Filters = window.Filters || {};
 
 Filters.bees = {
-  BASE_URL: './jeelizFaceFilter/filters/bees',
+  BASE_URL: './jeelizFaceFilter/bees',
   SETTINGS: {
     numberBees: 8
   },
@@ -200,7 +200,7 @@ Filters.bees = {
   initFaceFilter: (videoSettings) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
-      NNCpath: './jeelizFaceFilter/dist/',
+      NNCpath: './jeelizFaceFilter/',
       videoSettings,
       callbackReady: function (errCode, spec) {
         if (errCode) return;

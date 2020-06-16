@@ -3,7 +3,7 @@
 var Filters = window.Filters || {};
 
 Filters.deform = {
-  BASE_URL: './jeelizFaceFilter/filters/deform',
+  BASE_URL: './jeelizFaceFilter/deform',
   THREECAMERA: null,
   buildMaskMaterial: () => {
     const vertexShaderSource =
@@ -87,7 +87,7 @@ Filters.deform = {
   initFaceFilter: (videoSettings, callback) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
-      NNCpath: './jeelizFaceFilter/dist/',
+      NNCpath: './jeelizFaceFilter/',
       videoSettings,
       callbackReady: function (errCode, spec) {
         if (errCode) return;
