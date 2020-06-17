@@ -8,6 +8,7 @@ import { dependencies, filters } from './data';
 import useCamera from 'hooks/useCamera';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
+import Loader from 'common/Loader';
 import './index.scss';
 
 declare global {
@@ -20,6 +21,7 @@ declare global {
 const Camera: React.FC<{}> = () => {
   const videoElem = useRef<any>();
 
+  const [loadingFilter, setLoadingFilter] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [filter, setFilter] = useState<Filter | null>();
   const [filterReady, setFilterReady] = useState(false);
@@ -40,9 +42,14 @@ const Camera: React.FC<{}> = () => {
     }
   }, [filter]);
 
-  const initFilter = (filter) => window.Filters[filter].init(() => setFilterReady(true));
+  const initFilter = (filter) =>
+    window.Filters[filter].init(() => {
+      setFilterReady(true);
+      setLoadingFilter(false);
+    });
 
   const switchFilter = async (filter: Filter) => {
+    setLoadingFilter(true);
     if (loadedFilters.length) {
       try {
         await window.JEEFACEFILTERAPI.destroy();
@@ -55,6 +62,15 @@ const Camera: React.FC<{}> = () => {
 
   return (
     <main className="camera">
+      {loadingFilter && <Loader message="Applying Filter.." />}
+
+      {(filter === 'dog' || filter === 'halloween') && !loadingFilter && (
+        <span id="open-mouth" class="open-mouth">
+          <strong>Open Mouth</strong>
+          👅
+        </span>
+      )}
+
       <video
         ref={videoElem}
         autoPlay

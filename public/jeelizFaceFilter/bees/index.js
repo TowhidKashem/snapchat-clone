@@ -188,16 +188,16 @@ Filters.bees = {
       );
     }, 16);
   },
-  init: () => {
+  init: (callback) => {
     Filters.bees.GLASSESOBJ3D = new THREE.Object3D();
     JeelizResizer.size_canvas({
       canvasId: 'jeeFaceFilterCanvas',
       callback: function (isError, bestVideoSettings) {
-        Filters.bees.initFaceFilter(bestVideoSettings);
+        Filters.bees.initFaceFilter(bestVideoSettings, callback);
       }
     });
   },
-  initFaceFilter: (videoSettings) => {
+  initFaceFilter: (videoSettings, callback) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
       NNCpath: './jeelizFaceFilter/',
@@ -205,6 +205,7 @@ Filters.bees = {
       callbackReady: function (errCode, spec) {
         if (errCode) return;
         Filters.bees.initThreeScene(spec);
+        if (callback) setTimeout(callback, 100);
       },
       callbackTrack: function (detectState) {
         THREE.JeelizHelper.render(detectState, Filters.bees.THREECAMERA);

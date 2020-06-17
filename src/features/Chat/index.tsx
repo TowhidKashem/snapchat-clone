@@ -84,7 +84,7 @@ const Chat: React.FC<Props> = ({
         <Grid fluid>
           <Row middle="xs">
             <Col xs={2}>
-              <Avatar src="./bitmoji.png" />
+              <Avatar src="./images/bitmoji.png" />
             </Col>
             <Col xs={7}>
               <h2>{user}</h2>
@@ -108,7 +108,7 @@ const Chat: React.FC<Props> = ({
       </section>
       <footer>
         <div className={classNames({ typing })}>
-          <Avatar src="./bitmoji.png" />
+          <Avatar src="./images/bitmoji.png" />
         </div>
         <Grid fluid className="inner-content">
           <Row middle="xs">

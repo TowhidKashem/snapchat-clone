@@ -74,9 +74,9 @@ export const relativeTime = (timestamp: number) => {
 
 export const playSound = (sound) => {
   const soundMap = {
-    newAppMessage: './audio/blip.mp3',
-    newSystemMessage: './audio/ding.mp3',
-    cameraShutter: './audio/shutter.mp3'
+    newAppMessage: './audios/blip.mp3',
+    newSystemMessage: './audios/ding.mp3',
+    cameraShutter: './audios/shutter.mp3'
   };
   new Audio(soundMap[sound]).play();
 };

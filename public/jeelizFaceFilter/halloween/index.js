@@ -9,7 +9,6 @@ Filters.halloween = {
   MIXERS: [],
   ACTIONS: [],
   MASKOBJ3D: null,
-  openMouth: document.querySelector('#open-mouth'),
   isAnimating: false,
   initThreeScene: (spec) => {
     const threeStuffs = THREE.JeelizHelper.init(spec);
@@ -159,17 +158,16 @@ Filters.halloween = {
     spotLight.castShadow = true;
     threeStuffs.scene.add(spotLight);
   },
-  init: () => {
+  init: (callback) => {
     Filters.halloween.MASKOBJ3D = new THREE.Object3D();
     JeelizResizer.size_canvas({
       canvasId: 'jeeFaceFilterCanvas',
       callback: function (isError, bestVideoSettings) {
-        Filters.halloween.initFaceFilter(bestVideoSettings);
+        Filters.halloween.initFaceFilter(bestVideoSettings, callback);
       }
     });
   },
   animateSpiders: () => {
-    Filters.halloween.openMouth.style.opacity = '0';
     Filters.halloween.isAnimating = true;
     Filters.halloween.ACTIONS.forEach((action, index) => {
       action.loop = false;
@@ -181,7 +179,7 @@ Filters.halloween = {
       action.play();
     });
   },
-  initFaceFilter: (videoSettings) => {
+  initFaceFilter: (videoSettings, callback) => {
     JEEFACEFILTERAPI.init({
       canvasId: 'jeeFaceFilterCanvas',
       NNCpath: './jeelizFaceFilter/',
@@ -189,13 +187,13 @@ Filters.halloween = {
       callbackReady: function (errCode, spec) {
         if (errCode) return;
         Filters.halloween.initThreeScene(spec);
+        if (callback) setTimeout(callback, 100);
       },
       callbackTrack: function (detectState) {
         Filters.halloween.ISDETECTED = THREE.JeelizHelper.get_isDetected();
         if (Filters.halloween.ISDETECTED) {
           if (detectState.expressions[0] >= 0.8 && !Filters.halloween.isAnimating) {
             Filters.halloween.animateSpiders();
-            Filters.halloween.openMouth.style.opacity = 0;
           }
           if (Filters.halloween.MIXERS && Filters.halloween.MIXERS.length > 0) {
             Filters.halloween.MIXERS.forEach((mixer) => {

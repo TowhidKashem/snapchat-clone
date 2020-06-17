@@ -7,4 +7,4 @@ yarn-lock.json
 
 node_modules/
 
-public/jeelizFaceFilter/bundles/
+*.html

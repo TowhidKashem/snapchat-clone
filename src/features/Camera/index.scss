@@ -5,16 +5,6 @@
   @extend %video-cover;
 }
 
-.open-mouth {
-  display: none;
-  z-index: 1000;
-  position: absolute;
-  top: 100px;
-  left: 200px;
-  color: $color-white;
-  font-weight: bold;
-}
-
 .camera {
   position: relative;
   width: 100%;
@@ -26,6 +16,23 @@
 
     &.hide {
       display: none;
+    }
+  }
+
+  .open-mouth {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    color: $color-white;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    transform: rotate(10deg);
+    z-index: 1;
+
+    strong {
+      display: block;
+      text-shadow: 0 0 1px $color-black;
     }
   }
 
