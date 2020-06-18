@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { loadScripts, promise } from 'utils';
+import { promise, loadScripts } from 'utils';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
 import { Filter } from './types';
@@ -42,6 +42,9 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
     if (!activeFilter) return;
     if (loadedScripts.includes(activeFilter)) {
       initFilter(activeFilter);
+      // tmp
+      setFilterInitialized(true);
+      setLoading(false);
     } else {
       loadScripts(dependencies[activeFilter], () => {
         initFilter(activeFilter);
@@ -52,6 +55,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
 
   const initFilter = (selectFilter: Filter) =>
     window.Filters[selectFilter].init(() => {
+      // alert('fires once');
       setFilterInitialized(true);
       setLoading(false);
     });

@@ -4,6 +4,8 @@
 
 ------
 
+can we import just the parts of animate.css that we need?
+
 bring back CSS modules?
 
 `var` in filter index files

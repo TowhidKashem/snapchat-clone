@@ -52,7 +52,11 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      box-shadow: 0 0 8px $color-black;
+
+      .icon {
+        box-shadow: 0 0 8px $color-black;
+        border-radius: 100%;
+      }
     }
 
     .btn-capture {
