@@ -5,7 +5,7 @@
   @extend %center-x-y;
   position: fixed;
   bottom: 0;
-  padding-bottom: 20px;
+  padding-bottom: 25px;
   width: $app-width;
   z-index: 10;
 
@@ -19,7 +19,6 @@
   .right {
     width: 33.3%;
     text-align: center;
-    // border: 1px solid red;
   }
 
   .left {

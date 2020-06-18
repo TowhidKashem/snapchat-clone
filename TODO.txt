@@ -79,6 +79,10 @@ use svg cleaner tool
   // }, []);
 
 
+              // try {
+              //   window.JEEFACEFILTERAPI.destroy();
+              // } catch (err) {}
+
 ==============================================
 
 DONE:

@@ -21,16 +21,20 @@
 
   .open-mouth {
     position: absolute;
-    top: 20%;
-    right: 10%;
+    top: 10%;
+    right: 5%;
     color: $color-white;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     transform: rotate(10deg);
     z-index: 1;
+    background: rgba($color-black, 0.2);
+    padding: 10px 35px 5px;
+    border-radius: 50px;
+    box-shadow: 0 0 1px $color-black;
 
-    strong {
+    span {
       display: block;
       text-shadow: 0 0 1px $color-black;
     }
@@ -38,9 +42,9 @@
 
   .controls {
     position: fixed;
-    bottom: 70px;
+    bottom: 0;
     width: $app-width;
-    height: 85px;
+    height: 240px;
     overflow: hidden;
 
     .btn-capture,
@@ -66,14 +70,9 @@
       border-radius: 100%;
     }
 
-    .close {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
     .filters {
       @extend %center-x-y;
+      margin: 93px 0 20px;
 
       button {
         @extend %center-x-y;
@@ -99,11 +98,14 @@
         &.filter-bees {
           background: $color-pastel-yellow;
         }
+        &.filter-tmp {
+          background: lightcyan;
+        }
 
         // Center button
         &:nth-child(3) {
-          width: 55px;
-          height: 55px;
+          width: 54px;
+          height: 54px;
           margin: 0 15px;
           border: 0;
           border: 1px solid $color-black;
@@ -111,6 +113,24 @@
           img {
             width: 40px;
           }
+        }
+      }
+    }
+
+    .filter-actions {
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+
+      .icon {
+        font-size: 22px;
+      }
+
+      button {
+        margin: 0 13px;
+
+        &.close {
+          margin: 0 25px;
         }
       }
     }

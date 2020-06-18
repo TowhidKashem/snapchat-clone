@@ -13,4 +13,6 @@ export type ShowDrawer = (drawer: Drawer) => void;
 
 export type HideDrawer = (component?: string) => void;
 
-export type CollapseNav = (collapse: boolean) => void;
+export type FooterType = 'full' | 'collapsed' | 'none';
+
+export type SetFooterType = (footerType: FooterType) => void;

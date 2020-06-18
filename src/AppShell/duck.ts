@@ -1,9 +1,9 @@
-import { Drawer } from 'AppShell/types';
+import { Drawer, FooterType } from 'AppShell/types';
 
 // Action types
 const SHOW_DRAWER = 'SHOW_DRAWER';
 const HIDE_DRAWER = 'HIDE_DRAWER';
-const SET_NAV = 'SET_NAV';
+const SET_FOOTER_TYPE = 'SET_FOOTER_TYPE';
 
 // Action creators
 export const showDrawer = (drawer: Drawer) => (dispatch) => {
@@ -24,12 +24,12 @@ export const showDrawer = (drawer: Drawer) => (dispatch) => {
 export const hideDrawer = (component) => (dispatch) =>
   dispatch({ type: HIDE_DRAWER, component });
 
-export const collapseNav = (collapse) => (dispatch) =>
-  dispatch({ type: SET_NAV, collapse });
+export const setFooterType = (footerType: FooterType) => (dispatch) =>
+  dispatch({ type: SET_FOOTER_TYPE, footerType });
 
 // Reducer
 const initialState = {
-  collapsedNav: false,
+  footerType: 'full',
   drawers: [
     // {
     //   animationIn: 'zoomIn',
@@ -78,15 +78,15 @@ const setHideDrawer = (prevState, component) => {
 
 export default function reducer(
   prevState = initialState,
-  { type, drawer, component, collapse }
+  { type, drawer, component, footerType }
 ) {
   switch (type) {
     case SHOW_DRAWER:
       return setShowDrawer(prevState, drawer);
     case HIDE_DRAWER:
       return setHideDrawer(prevState, component);
-    case SET_NAV:
-      return { ...prevState, collapsedNav: collapse };
+    case SET_FOOTER_TYPE:
+      return { ...prevState, footerType };
     default:
       return prevState;
   }

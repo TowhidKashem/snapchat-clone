@@ -10,4 +10,4 @@ export const dependencies = {
   deform: ['./jeelizFaceFilter/deform/index.js']
 };
 
-export const filters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'dog'];
+export const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'tmp'];
