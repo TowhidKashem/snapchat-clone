@@ -47,7 +47,7 @@ const AppShell: React.FC<Props> = ({
       <Toolbar drawers={drawers} />
       <Header showDrawer={showDrawer} />
       <section className="view">{children}</section>
-      {drawers && <Drawer drawers={drawers} hideDrawer={hideDrawer} />}
+      {drawers && <Drawer drawers={drawers} />}
       <Footer
         footerType={footerType}
         setFooterType={setFooterType}

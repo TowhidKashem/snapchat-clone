@@ -1,7 +1,6 @@
 package-lock.json
 yarn-lock.json
 
-.*
 *.min.*
 *.map
 

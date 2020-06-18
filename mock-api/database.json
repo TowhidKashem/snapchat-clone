@@ -15,7 +15,7 @@
         "lon": null,
         "time": 1590788444596,
         "type": "video",
-        "url": "./videos/sample-1.mp4",
+        "url": "./video/sample-1.mp4",
         "caption": null,
         "userId": "00975694-7b26-4cdc-83d7-a6bdd783c987"
       },
@@ -35,7 +35,7 @@
         "lon": null,
         "time": 1590788444596,
         "type": "video",
-        "url": "./videos/sample-2.mp4",
+        "url": "./video/sample-2.mp4",
         "caption": null,
         "userId": "329798fe-82f5-4ff2-a71e-113e2262de30"
       },
@@ -1231,6 +1231,13 @@
       "message": "No way, when?!",
       "time": 1592492299036,
       "id": 80
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "No way, when?!",
+      "time": 1592506078055,
+      "id": 81
     }
   ]
 }

@@ -9,6 +9,7 @@ import { openSnap } from 'features/Snap/duck';
 import { getSnaps, getWeather } from './duck';
 import useGeo from 'hooks/useGeo';
 import Header from './Header';
+import Loader from 'common/Loader';
 import './index.scss';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
@@ -32,9 +33,11 @@ const SnapMap: React.FC<Props> = ({
   showDrawer,
   hideDrawer
 }) => {
+  const mapElem = useRef<any>();
+
+  const [loading, setLoading] = useState(true);
   const [map, setMap] = useState(null);
   const [geo, setGeo] = useState<{ lat: number; lon: number }>();
-  const mapElem = useRef<any>();
 
   useGeo((lat, lon) => {
     getSnaps(lat, lon);
@@ -46,7 +49,7 @@ const SnapMap: React.FC<Props> = ({
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [lon, lat],
         zoom: 13
-      })
+      }).on('load', () => setLoading(false))
     );
   });
 
@@ -110,6 +113,7 @@ const SnapMap: React.FC<Props> = ({
   return (
     <div className="snap-map">
       <div className="inner">
+        {loading && <Loader />}
         <Header weather={weather} hideDrawer={hideDrawer} />
         <div ref={mapElem} className="content"></div>
       </div>

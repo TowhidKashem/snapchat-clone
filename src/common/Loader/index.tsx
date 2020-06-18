@@ -1,14 +1,20 @@
 import React from 'react';
+import classNames from 'classnames';
 import './index.scss';
 
 interface Props {
+  fixed?: boolean;
   message?: string;
 }
 
-const Loader: React.FC<Props> = ({ message }) => {
+const Loader: React.FC<Props> = ({ fixed, message }) => {
   const pieces = new Array(9).fill(null);
   return (
-    <div className="loading">
+    <div
+      className={classNames('loading', {
+        fixed
+      })}
+    >
       <div className="center">
         <div className="sk-cube-grid">
           {pieces.map((val, index) => (

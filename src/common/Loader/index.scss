@@ -1,13 +1,19 @@
 @import '~static/styles/vars';
 
 .loading {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
   background: rgba($color-black, 0.5);
   color: $color-white;
-  position: fixed;
-  top: 0;
-  width: $app-width;
-  height: 100vh;
-  z-index: 100;
+
+  &.fixed {
+    position: fixed;
+    width: $app-width;
+    height: 100vh;
+  }
 
   .center {
     position: absolute;
@@ -16,6 +22,8 @@
     width: 200px;
     margin: -50px 0 0 -100px;
     text-align: center;
+
+    margin: -25px 0 0 -100px;
 
     span {
       display: block;

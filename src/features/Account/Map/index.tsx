@@ -1,32 +1,29 @@
 /* eslint-disable */
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { ShowDrawer } from 'AppShell/types';
-import useDrawerEnter from 'hooks/useDrawerEnter';
+import useGeo from 'hooks/useGeo';
+import Loader from 'common/Loader';
 import './index.scss';
 
 interface Props {
   showDrawer: ShowDrawer;
 }
 
-const MAP_BOX_API_KEY = process.env.REACT_APP_MAP_BOX_API_KEY;
+mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
 
 const Map: React.FC<Props> = ({ showDrawer }) => {
-  const lat = 40.76122;
-  const lng = -73.92318;
-
-  mapboxgl.accessToken = MAP_BOX_API_KEY;
-
   const mapRef = useRef<any>();
+  const [loading, setLoading] = useState(true);
 
-  useDrawerEnter(() => {
+  useGeo((lat, lon) => {
     new mapboxgl.Map({
       container: mapRef.current,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [lng, lat],
+      center: [lon, lat],
       zoom: 12
-    });
-  });
+    }).on('load', () => setLoading(false));
+  }, 300);
 
   return (
     <div
@@ -42,7 +39,8 @@ const Map: React.FC<Props> = ({ showDrawer }) => {
         })
       }
     >
-      <div ref={mapRef}></div>
+      {loading && <Loader />}
+      <div className="map" ref={mapRef}></div>
     </div>
   );
 };

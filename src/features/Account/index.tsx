@@ -16,48 +16,38 @@ interface Props {
   session: User;
 }
 
-const Account: React.FC<Props> = ({ showDrawer, hideDrawer, session }) => {
-  return (
-    <main className="account">
-      <header>
-        <Button icon="faAngleDown" onclick={() => hideDrawer('account')} />
-        <Icon icon="faCog" className="gear-icon" />
-      </header>
-      <div className="profile">
-        <Icon icon="faSnapchatSquare" size="7x" />
-        <strong>{session.username}</strong>
-      </div>
-      <Widget header="Stories" transparent>
-        <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to My Story" />
-        <ActionItem
-          leftIcon="faCamera"
-          rightIcon="faEllipsisV"
-          label="Add to Our Story"
-        />
-      </Widget>
-      <Widget header="Friends" transparent>
-        <ActionItem leftIcon="faUserPlus" rightIcon="faAngleRight" label="Add Friends" />
-        <ActionItem leftIcon="faListAlt" rightIcon="faAngleRight" label="My Friends" />
-      </Widget>
-      <Widget header="Bitmoji" transparent>
-        <ActionItem
-          leftIcon="faGrinBeam"
-          rightIcon="faAngleRight"
-          label="Create Bitmoji"
-        />
-      </Widget>
-      <Widget header="Snap Map">
-        <Map showDrawer={showDrawer} />
-        <ActionItem
-          leftIcon="faCompass"
-          rightIcon="faAngleRight"
-          label="Set a Status"
-          transparent
-        />
-      </Widget>
-    </main>
-  );
-};
+const Account: React.FC<Props> = ({ showDrawer, hideDrawer, session }) => (
+  <main className="account">
+    <header>
+      <Button icon="faAngleDown" onclick={() => hideDrawer('account')} />
+      <Icon icon="faCog" className="gear-icon" />
+    </header>
+    <div className="profile">
+      <Icon icon="faSnapchatSquare" size="7x" />
+      <strong>{session.username}</strong>
+    </div>
+    <Widget header="Stories" transparent>
+      <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to My Story" />
+      <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to Our Story" />
+    </Widget>
+    <Widget header="Friends" transparent>
+      <ActionItem leftIcon="faUserPlus" rightIcon="faAngleRight" label="Add Friends" />
+      <ActionItem leftIcon="faListAlt" rightIcon="faAngleRight" label="My Friends" />
+    </Widget>
+    <Widget header="Bitmoji" transparent>
+      <ActionItem leftIcon="faGrinBeam" rightIcon="faAngleRight" label="Create Bitmoji" />
+    </Widget>
+    <Widget header="Snap Map">
+      <Map showDrawer={showDrawer} />
+      <ActionItem
+        leftIcon="faCompass"
+        rightIcon="faAngleRight"
+        label="Set a Status"
+        transparent
+      />
+    </Widget>
+  </main>
+);
 
 const mapStateToProps = ({ user }) => ({
   session: user.session

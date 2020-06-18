@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { Drawer as DrawerType, HideDrawer } from '../types';
 import Account from 'features/Account';
 import Search from 'features/Search';
 import SnapMap from 'features/SnapMap';
@@ -14,10 +13,9 @@ import './index.scss';
 interface Props {
   // drawers: DrawerType[];
   drawers: any;
-  hideDrawer: HideDrawer;
 }
 
-const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
+const Drawer: React.FC<Props> = ({ drawers }) => {
   const getComponent = (component, show) => {
     const componentMap = {
       account: <Account />,
@@ -57,20 +55,7 @@ const Drawer: React.FC<Props> = ({ drawers, hideDrawer }) => {
           animationOutDuration={animationOutDuration}
           isVisible={show}
         >
-          <section className="content">
-            <button
-              onClick={() => hideDrawer(component)}
-              style={{
-                position: 'fixed',
-                bottom: 0,
-                right: 0,
-                zIndex: 100000
-              }}
-            >
-              Close Drawer
-            </button>
-            {getComponent(component, show)}
-          </section>
+          <section className="content">{getComponent(component, show)}</section>
         </Animated>
       </aside>
     )

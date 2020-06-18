@@ -1,26 +1,29 @@
-/* eslint-disable */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
-const useGeo = (callback) => {
+const useGeo = (callback, delay = 0) => {
   useEffect(() => {
-    callback(40.761219, -73.92318);
-    // if ('geolocation' in navigator) {
-    //   navigator.geolocation.getCurrentPosition(
-    //     ({ coords }) => {
-    //       callback(coords.latitude, coords.longitude);
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //       alert("Couldn't fetch location, please enter manually!");
-    //     },
-    //     {
-    //       timeout: 7000
-    //     }
-    //   );
-    // } else {
-    //   alert('get location not supported');
-    //   return;
-    // }
+    const respond = (lat, lon) => setTimeout(() => callback(lat, lon), delay);
+
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        ({ coords }) => {
+          respond(coords.latitude, coords.longitude);
+        },
+        (err) => {
+          // If we failed to get the geo just send dummy location (Times Sq, NY) for purposes of the demo
+          respond(40.75491, -73.994102);
+        },
+        {
+          maximumAge: Infinity,
+          timeout: 7000,
+          enableHighAccuracy: true
+        }
+      );
+    }
+    // Send dummy location if the browser doesn't support geolocation API
+    else {
+      respond(40.75491, -73.994102);
+    }
   }, []);
 };
 

@@ -36,7 +36,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
 
   const [takePic, setTakePic] = useState(false);
 
-  useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
+  // useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
 
   useEffect(() => {
     if (!activeFilter) return;
@@ -86,7 +86,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
 
   return (
     <main className="camera">
-      {loading && <Loader message="Applying Filter" />}
+      {loading && <Loader message="Applying Filter" fixed />}
 
       <Animated
         animationIn="tada"
