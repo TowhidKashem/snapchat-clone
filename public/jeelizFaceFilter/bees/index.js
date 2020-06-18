@@ -152,16 +152,16 @@ Filters.bees = {
         }
       });
     }
-    const calqueMesh = new THREE.Mesh(
-      threeStuffs.videoMesh.geometry,
-      createMat2d(
-        new THREE.TextureLoader().load(Filters.bees.BASE_URL + '/images/frame.png'),
-        true
-      )
-    );
-    calqueMesh.renderOrder = 999;
-    calqueMesh.frustumCulled = false;
-    threeStuffs.scene.add(calqueMesh);
+    // const calqueMesh = new THREE.Mesh(
+    //   threeStuffs.videoMesh.geometry,
+    //   createMat2d(
+    //     new THREE.TextureLoader().load(Filters.bees.BASE_URL + '/images/frame.png'),
+    //     true
+    //   )
+    // );
+    // calqueMesh.renderOrder = 999;
+    // calqueMesh.frustumCulled = false;
+    // threeStuffs.scene.add(calqueMesh);
     Filters.bees.THREECAMERA = THREE.JeelizHelper.create_camera();
     const ambient = new THREE.AmbientLight(0xffffff, 1);
     threeStuffs.scene.add(ambient);

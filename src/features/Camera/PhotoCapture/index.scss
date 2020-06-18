@@ -29,12 +29,16 @@
   aside {
     position: fixed;
     top: 15px;
-    margin-left: $app-width - 45px;
+    margin-left: $app-width - 40px;
     display: flex;
     flex-direction: column;
 
     .button {
       margin-bottom: 15px;
+
+      .icon {
+        font-size: 22px;
+      }
     }
   }
 
@@ -42,5 +46,23 @@
     position: fixed;
     bottom: 15px;
     width: $app-width;
+
+    .left,
+    .right {
+      position: absolute;
+      bottom: 0;
+    }
+
+    .left {
+      left: 15px;
+
+      .button {
+        margin-right: 15px;
+      }
+    }
+
+    .right {
+      right: 15px;
+    }
   }
 }

@@ -72,7 +72,7 @@ export const relativeTime = (timestamp: number) => {
   return formatter.format(seconds, 'second');
 };
 
-export const playSound = (sound) => {
+export const playSound = (sound: string) => {
   const soundMap = {
     newAppMessage: './audios/blip.mp3',
     newSystemMessage: './audios/ding.mp3',

@@ -1,13 +1,12 @@
-//@ts-nocheck
 import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { loadScripts } from 'utils';
+import { loadScripts, promise } from 'utils';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
 import { Filter } from './types';
-import { dependencies, defaultFilters } from './data';
+import { dependencies, filters as defaultFilters } from './data';
 import useCamera from 'hooks/useCamera';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
@@ -26,74 +25,83 @@ interface Props {
 }
 
 const Camera: React.FC<Props> = ({ setFooterType }) => {
-  const videoElem = useRef();
+  const videoElem = useRef<any>();
 
   const [loading, setLoading] = useState(false);
-  const [showFilters, setShowFilters] = useState(false);
+  const [loadedScripts, setLoadedScripts] = useState<Filter[]>([]);
+  const [showFilterButtons, setShowFilterButtons] = useState(false);
   const [filters, setFilters] = useState<Filter[]>(defaultFilters);
-  const [filter, setFilter] = useState<Filter>();
-  const [filterReady, setFilterReady] = useState(false);
-  const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
+  const [activeFilter, setActiveFilter] = useState<Filter | ''>('');
+  const [filterInitialized, setFilterInitialized] = useState(false);
+
   const [takePic, setTakePic] = useState(false);
 
   useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
 
   useEffect(() => {
-    if (!filter) return;
-    if (loadedFilters.includes(filter)) {
-      initFilter(filter);
+    if (!activeFilter) return;
+    if (loadedScripts.includes(activeFilter)) {
+      initFilter(activeFilter);
     } else {
-      loadScripts(dependencies[filter], () => {
-        initFilter(filter);
-        setLoadedFilters([...loadedFilters, filter]);
+      loadScripts(dependencies[activeFilter], () => {
+        initFilter(activeFilter);
+        setLoadedScripts([...loadedScripts, activeFilter]);
       });
     }
-  }, [filter]);
+  }, [activeFilter]);
 
-  const initFilter = (filter) =>
-    window.Filters[filter].init(() => {
-      setFilterReady(true);
+  const initFilter = (selectFilter: Filter) =>
+    window.Filters[selectFilter].init(() => {
+      setFilterInitialized(true);
       setLoading(false);
     });
 
-  const switchFilter = async (selectFilter: Filter) => {
-    setLoading(true);
-
-    // Set the current filter in the center of the filter nav
+  // Set the chosen filter at the center of the nav
+  const setActiveFilterButton = (selectFilter: Filter) => {
     const newFilters = filters.filter((filter) => filter !== selectFilter);
     newFilters.splice(2, 0, selectFilter);
     setFilters(newFilters);
+  };
 
-    if (loadedFilters.length) {
-      try {
-        await window.JEEFACEFILTERAPI.destroy();
-        setFilter(selectFilter);
-      } catch (err) {}
+  const switchFilter = async (selectFilter: Filter) => {
+    if (selectFilter === activeFilter) return;
+    setLoading(true);
+    setActiveFilterButton(selectFilter);
+    if (loadedScripts.length) {
+      const [error] = await promise(window.JEEFACEFILTERAPI.destroy());
+      if (!error) setActiveFilter(selectFilter);
     } else {
-      setFilter(selectFilter);
+      setActiveFilter(selectFilter);
     }
   };
 
-  const showOpenMouth = () => !loading && ['dog', 'halloween'].includes(filter);
+  const showOpenMouth = () => !loading && ['dog', 'halloween'].includes(activeFilter);
 
-  const animationDuration = 100;
+  const animationInDuration = 100;
 
   return (
     <main className="camera">
-      {loading && <Loader message="Applying Filter.." />}
+      {loading && <Loader message="Applying Filter" />}
 
-      {showOpenMouth() && (
-        <div class="open-mouth">
+      <Animated
+        animationIn="tada"
+        animationOut="fadeOut"
+        animationInDuration={1000}
+        animationOutDuration={0}
+        isVisible={showOpenMouth()}
+        animateOnMount={false}
+      >
+        <div className="open-mouth">
           <span>Open Mouth</span>
           👅
         </div>
-      )}
+      </Animated>
 
       <video
         ref={videoElem}
         autoPlay
         className={classNames('video-stream', {
-          hide: filterReady || takePic
+          hide: filterInitialized || takePic
         })}
       ></video>
 
@@ -110,17 +118,18 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
           onclick={() => setTakePic(true)}
         />
 
-        {!showFilters && (
+        {!showFilterButtons && (
           <Button
             icon="faLaugh"
             buttonClass="btn-filters"
             onclick={() => {
-              // setTimeout(() => {
-              //   setLoading(true);
-              //   setFilter(filters[2]);
-              // }, animationDuration);
-              setShowFilters(true);
+              setShowFilterButtons(true);
               setFooterType('none');
+              setTimeout(() => {
+                const defaultFilter = filters[2];
+                setActiveFilter(defaultFilter);
+                setLoading(true);
+              }, animationInDuration);
             }}
           />
         )}
@@ -128,15 +137,15 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
         <Animated
           animationIn="slideInRight"
           animationOut="fadeOut"
-          animationInDuration={animationDuration}
+          animationInDuration={animationInDuration}
           animationOutDuration={0}
-          isVisible={showFilters}
+          isVisible={showFilterButtons}
           animateOnMount={false}
         >
           <div className="filters">
-            {filters.map((filter, index) => (
+            {filters.map((filter) => (
               <Button
-                key={filter + index}
+                key={filter}
                 image={`./images/filters/${filter}.svg`}
                 buttonClass={`filter-${filter}`}
                 onclick={() => switchFilter(filter)}
@@ -146,30 +155,28 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
         </Animated>
 
         <Animated
-          // animationIn="slideInRight"
-          // animationOut="fadeOut"
           animationIn="zoomIn"
           animationOut="zoomOut"
-          animationInDuration={animationDuration}
+          animationInDuration={animationInDuration}
           animationOutDuration={0}
-          isVisible={showFilters}
+          isVisible={showFilterButtons}
           animateOnMount={false}
         >
           <div className="filter-actions">
-            <Button icon="faMagic" />
-            <Button icon="faQrcode" />
+            <Button icon="faMagic" round />
+            <Button icon="faQrcode" round />
             <Button
               icon="faTimesCircle"
               buttonClass="close"
               onclick={() => {
-                setShowFilters(false);
-                setFilter(null);
-                setFilterReady(false);
+                setActiveFilter('');
+                setShowFilterButtons(false);
+                setFilterInitialized(false);
                 setFooterType('full');
               }}
             />
-            <Button icon="faLaugh" />
-            <Button icon="faSearch" />
+            <Button icon="faLaugh" round />
+            <Button icon="faSearch" round />
           </div>
         </Animated>
       </section>

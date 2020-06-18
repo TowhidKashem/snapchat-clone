@@ -21,7 +21,7 @@
 
   .open-mouth {
     position: absolute;
-    top: 10%;
+    top: 50px;
     right: 5%;
     color: $color-white;
     font-size: 20px;
@@ -127,7 +127,7 @@
       }
 
       button {
-        margin: 0 13px;
+        margin: 0 10px;
 
         &.close {
           margin: 0 25px;

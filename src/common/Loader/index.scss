@@ -1,7 +1,8 @@
 @import '~static/styles/vars';
 
 .loading {
-  background: rgba($color-black, 0.2);
+  background: rgba($color-black, 0.5);
+  color: $color-white;
   position: fixed;
   top: 0;
   width: $app-width;
@@ -26,14 +27,15 @@
       display: inline-block;
       width: 40px;
       height: 40px;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
 
       .sk-cube {
-        width: 33%;
+        width: calc(33% - 2px);
         height: 33%;
-        background-color: #333;
+        background-color: $color-yellow;
         float: left;
         animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+        margin: 1px;
       }
 
       .sk-cube1 {

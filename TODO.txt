@@ -17,8 +17,6 @@ use map image for lazy loaded placeholder
 
 immer.js
 
-fonts
-
 open discover drawer, then open search drawer, them click discover drawer button and watch the flash, it shouldn't do anything when its already open
 
 include storybook
@@ -89,4 +87,5 @@ DONE:
 
 zoom map in on open
 filters
+fonts
 

@@ -12,7 +12,7 @@ const Loader: React.FC<Props> = ({ message }) => {
       <div className="center">
         <div className="sk-cube-grid">
           {pieces.map((val, index) => (
-            <div className={'sk-cube sk-cube' + index}></div>
+            <div key={index} className={'sk-cube sk-cube' + index}></div>
           ))}
         </div>
         {message && <span>{message}</span>}

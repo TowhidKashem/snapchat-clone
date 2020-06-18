@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import { playSound } from 'utils';
 import Button from 'common/Button';
 import './index.scss';
@@ -13,7 +12,6 @@ interface Props {
 
 const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
   const canvasElem = useRef<HTMLCanvasElement>(null);
-  const [photoTaken, setPhotoTaken] = useState<boolean>(false);
 
   useEffect(() => {
     if (takePic) takePhoto();
@@ -28,7 +26,6 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
       context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
     }
     playSound('cameraShutter');
-    setPhotoTaken(true);
   };
 
   const downloadPhoto = () => {
@@ -58,21 +55,13 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
         <Button icon="faStopwatch" />
       </aside>
       <footer>
-        <Grid fluid>
-          <Row middle="xs">
-            <Col xs={2}>
-              <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
-            </Col>
-            <Col xs={2}>
-              <Button icon="faExternalLinkAlt" label="Story" />
-            </Col>
-            <Col xs={8}>
-              <Row end="xs" middle="xs">
-                <Button icon="faPlayCircle" label="Send To" />
-              </Row>
-            </Col>
-          </Row>
-        </Grid>
+        <div className="left">
+          <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
+          <Button icon="faExternalLinkAlt" label="Story" />
+        </div>
+        <div className="right">
+          <Button icon="faPlayCircle" label="Send To" />
+        </div>
       </footer>
     </section>
   );
