@@ -4,6 +4,12 @@
 
 ------
 
+hit BE api to hide api keys
+
+cross browser compatability / mobile
+
+read and apply redux style guide rules
+
 can we import just the parts of animate.css that we need?
 
 bring back CSS modules?
