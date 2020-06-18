@@ -35,6 +35,8 @@
   }
 
   &.dark {
+    z-index: 100;
+
     .content {
       background: $color-black;
       color: $color-white;

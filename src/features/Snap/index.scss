@@ -3,6 +3,7 @@
 
 .snap {
   header {
+    display: flex;
     padding: 12px 18px;
     font-weight: bold;
     position: absolute;
@@ -10,8 +11,19 @@
     z-index: 1;
     text-shadow: 0 0 1.5px $color-black;
 
-    time {
-      display: block;
+    .left,
+    .right {
+      width: 50%;
+    }
+
+    .left {
+      time {
+        display: block;
+      }
+    }
+
+    .right {
+      text-align: right;
     }
   }
 

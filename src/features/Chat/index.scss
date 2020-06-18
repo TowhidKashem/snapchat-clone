@@ -1,3 +1,4 @@
+@import '~static/styles/extendables';
 @import '~static/styles/vars';
 
 .chat {
@@ -5,12 +6,20 @@
   height: 100%;
 
   > header {
-    > .container-fluid {
-      padding: 0;
-    }
+    display: flex;
 
     .avatar {
       width: 60px;
+      margin-right: 10px;
+    }
+
+    .right {
+      @extend %center-x-y;
+      margin-left: auto;
+
+      .pill {
+        margin-right: 10px;
+      }
     }
   }
 
@@ -69,10 +78,18 @@
     }
 
     .inner-content {
+      display: flex;
       position: relative;
       background: $color-light-grey;
 
+      > .button {
+        margin-right: 10px;
+      }
+
       .input {
+        width: 320px;
+        margin-right: 10px;
+
         input[type='text'] {
           background: rgba($color-black, 0.1);
 
@@ -81,6 +98,10 @@
             font-weight: normal;
           }
         }
+      }
+
+      .right {
+        @extend %center-x-y;
       }
     }
   }

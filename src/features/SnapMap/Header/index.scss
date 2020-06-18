@@ -2,6 +2,8 @@
 @import '~static/styles/extendables';
 
 .weather-header {
+  @extend %center-x-y;
+  display: flex;
   position: absolute;
   top: $toolbar-height;
   z-index: 1;
@@ -9,38 +11,51 @@
   font-weight: bold;
   color: $color-white;
   text-shadow: 0 0 10px $color-dark-grey;
+  padding: 0 10px;
 
   .button {
     margin-right: 3px;
   }
 
-  .weather {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    text-align: center;
-    min-height: 65px;
+  .left,
+  .center,
+  .right {
+    width: 33.3%;
+  }
 
-    header {
-      font-size: 20px;
-      margin-bottom: 2px;
+  .center {
+    .weather {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: bold;
+      text-align: center;
+      min-height: 65px;
+
+      header {
+        font-size: 20px;
+        margin-bottom: 2px;
+      }
+
+      .icon-temp {
+        @extend %center-x-y;
+
+        img {
+          margin-right: 3px;
+        }
+
+        img,
+        .temp {
+          display: inline-block;
+          align-self: flex-end;
+        }
+
+        .temp {
+          padding-bottom: 7px;
+        }
+      }
     }
+  }
 
-    .icon-temp {
-      @extend %center-x-y;
-
-      img {
-        margin-right: 3px;
-      }
-
-      img,
-      .temp {
-        display: inline-block;
-        align-self: flex-end;
-      }
-
-      .temp {
-        padding-bottom: 7px;
-      }
-    }
+  .right {
+    text-align: right;
   }
 }

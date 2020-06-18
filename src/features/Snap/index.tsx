@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import { relativeTime } from 'utils';
 import { Snap as SnapType } from './types';
 import { HideDrawer } from 'AppShell/types';
@@ -27,17 +26,13 @@ const Snap: React.FC<Props> = ({ snap, hideDrawer }) => {
   return (
     <main className="snap" onClick={() => hideDrawer('snap')}>
       <header>
-        <Grid fluid>
-          <Row middle="xs">
-            <Col xs={11}>
-              {location}
-              <time>{relativeTime(time)}</time>
-            </Col>
-            <Col xs={1}>
-              <Icon icon="faEllipsisV" />
-            </Col>
-          </Row>
-        </Grid>
+        <div className="left">
+          {location}
+          <time>{relativeTime(time)}</time>
+        </div>
+        <div className="right">
+          <Icon icon="faEllipsisV" />
+        </div>
       </header>
       {type === 'video' ? (
         <div className="video-container">

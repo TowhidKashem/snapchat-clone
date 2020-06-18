@@ -75,7 +75,8 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
     }
   };
 
-  const showOpenMouth = () => !loading && ['dog', 'halloween'].includes(activeFilter);
+  const showOpenMouth = (): boolean =>
+    !loading && ['dog', 'halloween'].includes(activeFilter);
 
   const animationInDuration = 100;
 

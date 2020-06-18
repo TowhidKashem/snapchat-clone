@@ -1,7 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import { getMessages, postMessage, switchThread } from './duck';
 import { dummyMessages } from './data';
 import { hideDrawer } from 'AppShell/duck';
@@ -80,24 +79,16 @@ const Chat: React.FC<Props> = ({
           switchThread('tom');
         }}
       />
+
       <header>
-        <Grid fluid>
-          <Row middle="xs">
-            <Col xs={2}>
-              <Avatar src="./images/bitmoji.png" />
-            </Col>
-            <Col xs={7}>
-              <h2>{user}</h2>
-            </Col>
-            <Col xs={2}>
-              <PillButtons icons={['faPhoneAlt', 'faVideo']} />
-            </Col>
-            <Col xs={1}>
-              <Button icon="faAngleRight" onclick={() => hideDrawer('chat')} />
-            </Col>
-          </Row>
-        </Grid>
+        <Avatar src="./images/bitmoji.png" />
+        <h2>{user}</h2>
+        <div className="right">
+          <PillButtons icons={['faPhoneAlt', 'faVideo']} />
+          <Button icon="faAngleRight" onclick={() => hideDrawer('chat')} />
+        </div>
       </header>
+
       <section ref={messageContainer} className="messages">
         {messages[user]?.map(({ author, message, time }) => (
           <article key={time} className="message">
@@ -110,31 +101,25 @@ const Chat: React.FC<Props> = ({
         <div className={classNames({ typing })}>
           <Avatar src="./images/bitmoji.png" />
         </div>
-        <Grid fluid className="inner-content">
-          <Row middle="xs">
-            <Col xs={1}>
-              <Button icon="faCamera" />
-            </Col>
-            <Col xs={8}>
-              <Input
-                placeholder="Send a chat"
-                rightIcon="faMicrophone"
-                onChange={(e) => setMessage(e.currentTarget.value)}
-                onEnter={() => {
-                  postMessage(user, session.username, message);
-                  setMessage('');
-                  botResponse();
-                }}
-                value={message}
-              />
-            </Col>
-            <Col xs={3}>
-              <Button icon="faSmileWink" />
-              <Button icon="faSmileWink" />
-              <Button icon="faRocket" />
-            </Col>
-          </Row>
-        </Grid>
+        <div className="inner-content">
+          <Button icon="faCamera" />
+          <Input
+            placeholder="Send a chat"
+            rightIcon="faMicrophone"
+            onChange={(e) => setMessage(e.currentTarget.value)}
+            onEnter={() => {
+              postMessage(user, session.username, message);
+              setMessage('');
+              botResponse();
+            }}
+            value={message}
+          />
+          <div className="right">
+            <Button icon="faSmileWink" />
+            <Button icon="faSmileWink" />
+            <Button icon="faRocket" />
+          </div>
+        </div>
       </footer>
     </main>
   );

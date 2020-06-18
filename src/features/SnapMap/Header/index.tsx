@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import { HideDrawer } from 'AppShell/types';
 import { Weather } from '../types';
 import Button from 'common/Button';
@@ -15,28 +14,22 @@ const Header: React.FC<Props> = ({ weather, hideDrawer }) => {
 
   return (
     <header className="weather-header">
-      <Grid fluid>
-        <Row middle="xs">
-          <Col xs={3}>
-            <Button icon="faTimes" round onclick={() => hideDrawer('snapMap')} />
-            <Button icon="faSearch" round />
-          </Col>
-          <Col xs={6}>
-            <article className="weather">
-              <header>{city}</header>
-              <div className="icon-temp">
-                <img src={icon} width={30} alt="" />
-                <span className="temp">{temperature}&deg;F</span>
-              </div>
-            </article>
-          </Col>
-          <Col xs={3}>
-            <Row end="xs">
-              <Button icon="faCog" round />
-            </Row>
-          </Col>
-        </Row>
-      </Grid>
+      <div className="left">
+        <Button icon="faTimes" round onclick={() => hideDrawer('snapMap')} />
+        <Button icon="faSearch" round />
+      </div>
+      <div className="center">
+        <article className="weather">
+          <header>{city}</header>
+          <div className="icon-temp">
+            <img src={icon} width={30} alt="" />
+            <span className="temp">{temperature}&deg;F</span>
+          </div>
+        </article>
+      </div>
+      <div className="right">
+        <Button icon="faCog" round />
+      </div>
     </header>
   );
 };

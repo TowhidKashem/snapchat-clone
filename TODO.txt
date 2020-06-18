@@ -1,13 +1,20 @@
-some type of walk through tool to show what's working
-add git repo link!
 
-when picking new filter it needs to animate to the center capture button
+*** Fix wonkiness with filters
+*** Add new filter
+
+------
+
+bring back CSS modules?
+
+`var` in filter index files
+
+some type of walk through tool to show what's working (pulsing effect?)
+
+add git repo link!
 
 tap to close message on image snaps
 
 is there a way to include imports globally e.g. the flexbox grid lib?
-
-turn off scaling on map?
 
 cut videos to small seconds, for fairuse and performance
 
@@ -21,21 +28,11 @@ open discover drawer, then open search drawer, them click discover drawer button
 
 include storybook
 
-Filter bundle:
-
-        // // both
-        // './jeelizFaceFilter/dist/jeelizFaceFilter.js',
-        // './jeelizFaceFilter/libs/threejs/v97/three.js',
-        // './jeelizFaceFilter/helpers/JeelizResizer.js',
-        // './jeelizFaceFilter/helpers/JeelizThreejsHelper.js',
-
-
+pwa things like manifect, shortcuts, etc
 
 memory footprint neglagable:
 
         https://github.com/jeeliz/jeelizGlanceTracker/issues/2#issuecomment-572743886
-
-
 
 in read me:
 
@@ -49,37 +46,20 @@ renew all api keys in commits
 
 use svg cleaner tool
 
-<div class="canvasContainer">
-    <canvas id="jeeFaceFilterCanvas" class="filter-canvas"></canvas>
-    <div id="filter"></div><!-- dog only -->
-    <span id="open-mouth">Open Mouth</span>
-  </div>
 
+const [PreviewMapComponent, setPreviewMapComponent] = useState<JSX.Element>();
 
-  filter.dependency.js:
+// useEffect(() => {
+//   (async () => {
+//     const PreviewMap = await lazy(() => import('./PreviewMap'));
+//     setPreviewMapComponent(
+//       <Suspense fallback={<div>Loading...</div>}>
+//         <PreviewMap showDrawer={showDrawer} />
+//       </Suspense>
+//     );
+//   })();
+// }, []);
 
-    jeelizFaceFilter.js
-    JeelizResizer.js
-    jeelizFaceFilter/helpers/JeelizThreejsHelper.js
-
-
-  const [PreviewMapComponent, setPreviewMapComponent] = useState<JSX.Element>();
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const PreviewMap = await lazy(() => import('./PreviewMap'));
-  //     setPreviewMapComponent(
-  //       <Suspense fallback={<div>Loading...</div>}>
-  //         <PreviewMap showDrawer={showDrawer} />
-  //       </Suspense>
-  //     );
-  //   })();
-  // }, []);
-
-
-              // try {
-              //   window.JEEFACEFILTERAPI.destroy();
-              // } catch (err) {}
 
 ==============================================
 
@@ -88,4 +68,5 @@ DONE:
 zoom map in on open
 filters
 fonts
+when picking new filter it needs to animate to the center capture button
 
