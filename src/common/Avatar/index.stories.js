@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import Avatar from 'common/Avatar';
+import Avatar from './index';
 
 export default {
   title: 'Avatar',

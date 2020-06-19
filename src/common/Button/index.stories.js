@@ -1,6 +1,6 @@
 import React from 'react';
-import { withKnobs, select } from '@storybook/addon-knobs';
-import Button from 'common/Button';
+import { withKnobs } from '@storybook/addon-knobs';
+import Button from './index';
 
 export default {
   title: 'Button',

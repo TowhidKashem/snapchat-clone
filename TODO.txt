@@ -38,9 +38,11 @@ include storybook
 
 pwa things like manifect, shortcuts, etc
 
-memory footprint neglagable:
+remove tmp rules from tsconfig
 
-        https://github.com/jeeliz/jeelizGlanceTracker/issues/2#issuecomment-572743886
+once u get the lat/lon, u can save it in redux to avoid the call in snapmap
+
+have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
 
 in read me:
 
