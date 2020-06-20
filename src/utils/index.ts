@@ -1,4 +1,3 @@
-//@ts-nocheck
 // Escape a user input string for use in a REGEX search
 export const escapeRegex = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -14,21 +13,25 @@ export const promise = (promise) =>
 
 export const api = {
   baseURL: 'http://localhost:3050/api',
-  get: (endpoint, external?, options?) => {
-    let url = external ? endpoint : api.baseURL + endpoint;
-    if (options) url += '?' + new URLSearchParams(options).toString();
-    return api.respond(fetch(url));
-  },
-  post: (endpoint, options) =>
-    api.respond(
-      fetch(api.baseURL + endpoint, {
-        method: 'post',
-        headers: new Headers({ 'Content-Type': 'application/json' }),
-        body: JSON.stringify(options)
-      })
-    ),
-  respond: async (request) => {
-    const [error, response] = await promise(request.then((response) => response.json()));
+  get: (endpoint, external = false) => api.respond('get', endpoint, null, external),
+  post: (endpoint, options) => api.respond('post', endpoint, options),
+  put: (endpoint, options) => api.respond('put', endpoint, options),
+  patch: (endpoint, options) => api.respond('patch', endpoint, options),
+  delete: (endpoint) => api.respond('delete', endpoint),
+  respond: async (method, endpoint, data?, external?) => {
+    const url = external ? endpoint : api.baseURL + endpoint;
+    const options = data
+      ? {
+          headers: new Headers({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify(data)
+        }
+      : {};
+    const [error, response] = await promise(
+      fetch(url, {
+        method,
+        ...options
+      }).then((response) => response.json())
+    );
     return [error, response];
   }
 };

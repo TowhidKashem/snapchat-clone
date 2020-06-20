@@ -2,12 +2,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import mapboxgl from 'mapbox-gl';
 import { ShowDrawer, HideDrawer } from 'AppShell/types';
+import { Geolocation } from 'features/User/types';
 import { Snap, OpenSnap } from 'features/Snap/types';
 import { GetSnaps, GetWeather, Weather } from './types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
 import { openSnap } from 'features/Snap/duck';
 import { getSnaps, getWeather } from './duck';
-import useGeo from 'hooks/useGeo';
 import Header from './Header';
 import Loader from 'common/Loader';
 import './index.scss';
@@ -22,6 +22,7 @@ interface Props {
   getWeather: GetWeather;
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
+  geolocation: Geolocation;
 }
 
 const SnapMap: React.FC<Props> = ({
@@ -31,27 +32,28 @@ const SnapMap: React.FC<Props> = ({
   openSnap,
   getWeather,
   showDrawer,
-  hideDrawer
+  hideDrawer,
+  geolocation
 }) => {
+  const { latitude, longitude } = geolocation;
+
   const mapElem = useRef<any>();
 
   const [loading, setLoading] = useState(true);
   const [map, setMap] = useState(null);
-  const [geo, setGeo] = useState<{ lat: number; lon: number }>();
 
-  useGeo((lat, lon) => {
-    getSnaps(lat, lon);
-    getWeather(lat, lon);
-    setGeo({ lat, lon });
+  useEffect(() => {
+    getSnaps(latitude, longitude);
+    getWeather(latitude, longitude);
     setMap(
       new mapboxgl.Map({
         container: mapElem.current,
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [lon, lat],
+        center: [longitude, latitude],
         zoom: 13
       }).on('load', () => setLoading(false))
     );
-  });
+  }, []);
 
   // Add self marker on map
   useEffect(() => {
@@ -72,13 +74,13 @@ const SnapMap: React.FC<Props> = ({
     const tooltip = document.createElement('div');
     tooltip.className = 'self-marker';
 
-    new mapboxgl.Marker(tooltip).setLngLat([geo?.lon, geo?.lat]).addTo(map);
+    new mapboxgl.Marker(tooltip).setLngLat([longitude, latitude]).addTo(map);
 
     setTimeout(() => {
       tooltip.classList.add('zoomedIn');
 
       new mapboxgl.Popup({ closeOnClick: false })
-        .setLngLat([geo?.lon, geo?.lat])
+        .setLngLat([longitude, latitude])
         .setHTML(
           `<header>Me</header>
           <p>Not Sharing Location</p>`
@@ -114,16 +116,17 @@ const SnapMap: React.FC<Props> = ({
     <div className="snap-map">
       <div className="inner">
         {loading && <Loader />}
-        <Header weather={weather} hideDrawer={hideDrawer} />
+        <Header weather={weather} city={geolocation.city} hideDrawer={hideDrawer} />
         <div ref={mapElem} className="content"></div>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ snapMap }) => ({
+const mapStateToProps = ({ snapMap, user }) => ({
   snaps: snapMap.snaps,
-  weather: snapMap.weather
+  weather: snapMap.weather,
+  geolocation: user.geolocation
 });
 
 const mapDispatchToProps = (dispatch) => ({

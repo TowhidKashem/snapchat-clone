@@ -2,6 +2,8 @@
   "/api/*": "/$1",
   "/:resource/:id/show": "/:resource/:id",
 
+  "/weather/:lat/:lon": "/weather",
+
   "/snaps/:lat/:lon": "/snaps",
   "/messages/thread/:user": "/messages?thread=:user",
 

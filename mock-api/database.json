@@ -7,6 +7,10 @@
     "age": 31,
     "fullName": "Towhid Kashem"
   },
+  "weather": {
+    "temperature": 75,
+    "condition": "sunny"
+  },
   "snaps": {
     "snaps": [
       {
@@ -15,7 +19,7 @@
         "lon": null,
         "time": 1590788444596,
         "type": "video",
-        "url": "./video/sample-1.mp4",
+        "url": "./video/street-tour.mp4",
         "caption": null,
         "userId": "00975694-7b26-4cdc-83d7-a6bdd783c987"
       },
@@ -35,7 +39,7 @@
         "lon": null,
         "time": 1590788444596,
         "type": "video",
-        "url": "./video/sample-2.mp4",
+        "url": "./video/girl-dancing.mp4",
         "caption": null,
         "userId": "329798fe-82f5-4ff2-a71e-113e2262de30"
       },
@@ -1294,6 +1298,111 @@
       "message": "Wait, you are actually being serious rn?",
       "time": 1592537472081,
       "id": 89
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "OMG I totally agree!",
+      "time": 1592612425997,
+      "id": 90
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Umm I'm not so sure about that one",
+      "time": 1592614118900,
+      "id": 91
+    },
+    {
+      "thread": "tom",
+      "author": "tom",
+      "message": "Umm I'm not so sure about that one",
+      "time": 1592614122253,
+      "id": 92
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Umm I'm not so sure about that one",
+      "time": 1592614464293,
+      "id": 93
+    },
+    {
+      "thread": "tom",
+      "author": "tom",
+      "message": "No way, when?!",
+      "time": 1592614467576,
+      "id": 94
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "OMG I totally agree!",
+      "time": 1592614525607,
+      "id": 95
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Wait, you are actually being serious rn?",
+      "time": 1592616399219,
+      "id": 96
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "No way, when?!",
+      "time": 1592617085177,
+      "id": 97
+    },
+    {
+      "thread": "julia",
+      "author": "Towhid",
+      "message": "kkk",
+      "time": 1592617093578,
+      "id": 98
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Hahaha you're so right!!",
+      "time": 1592617094998,
+      "id": 99
+    },
+    {
+      "thread": "julia",
+      "author": "Towhid",
+      "message": "jhjh",
+      "time": 1592617098529,
+      "id": 100
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "OMG I totally agree!",
+      "time": 1592617099753,
+      "id": 101
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "Oh wow I can't believe it!",
+      "time": 1592623476323,
+      "id": 102
+    },
+    {
+      "thread": "julia",
+      "author": "Towhid",
+      "message": "did i sace",
+      "time": 1592623480299,
+      "id": 103
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "OMG I totally agree!",
+      "time": 1592623485428,
+      "id": 104
     }
   ]
 }

@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 
-const useGeo = (callback, delay = 0) => {
+const useGeo = (callback, delay = 0, exit = false) => {
   useEffect(() => {
+    if (exit) return;
+
     const respond = (lat, lon) => setTimeout(() => callback(lat, lon), delay);
 
     // If the browser doesn't support geolocation or the call failed for some reason

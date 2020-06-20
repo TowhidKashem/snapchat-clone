@@ -6,12 +6,12 @@ import './index.scss';
 
 interface Props {
   weather: Weather;
+  city: string;
   hideDrawer: HideDrawer;
 }
 
-const Header: React.FC<Props> = ({ weather, hideDrawer }) => {
-  const { city, icon, temperature } = weather;
-
+const Header: React.FC<Props> = ({ weather, city, hideDrawer }) => {
+  const { temperature, condition } = weather;
   return (
     <header className="weather-header">
       <div className="left">
@@ -22,7 +22,7 @@ const Header: React.FC<Props> = ({ weather, hideDrawer }) => {
         <article className="weather">
           <header>{city}</header>
           <div className="icon-temp">
-            <img src={icon} width={30} alt="" />
+            {/* <img src={icon} width={30} alt="" /> */}
             <span className="temp">{temperature}&deg;F</span>
           </div>
         </article>

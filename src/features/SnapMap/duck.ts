@@ -41,27 +41,14 @@ export const getSnaps = (lat, lon) => async (dispatch) => {
 };
 
 export const getWeather = (lat, lon) => async (dispatch) => {
-  const [error, response] = await api.get(
-    'http://api.weatherapi.com/v1/current.json',
-    true,
-    {
-      key: process.env.REACT_APP_WEATHER_API_KEY,
-      q: `${lat},${lon}`
-    }
-  );
-
-  const {
-    location: { name },
-    current: { temp_f, condition }
-  } = response;
-
+  const [error, response] = await api.get(`/weather/${lat}/${lon}`);
+  const { temperature, condition } = response;
   if (!error)
     dispatch({
       type: SET_WEATHER,
       weather: {
-        city: name,
-        temperature: temp_f.toFixed(0),
-        icon: condition.icon
+        temperature,
+        condition
       }
     });
 };

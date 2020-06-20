@@ -26,13 +26,7 @@ is there a way to include imports globally e.g. the flexbox grid lib?
 
 cut videos to small seconds, for fairuse and performance
 
-loadable for all GET requests
-
 use map image for lazy loaded placeholder
-
-immer.js
-
-open discover drawer, then open search drawer, them click discover drawer button and watch the flash, it shouldn't do anything when its already open
 
 include storybook
 
@@ -79,4 +73,14 @@ zoom map in on open
 filters
 fonts
 when picking new filter it needs to animate to the center capture button
+open discover drawer, then open search drawer, them click discover drawer button and watch the flash, it shouldn't do anything when its already open
+
+
+
+NOT DOING:
+
+loadable for all GET requests
+immer.js
+
+
 

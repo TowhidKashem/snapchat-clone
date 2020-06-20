@@ -1,12 +1,51 @@
+@import '~static/styles/extendables';
+@import '~static/styles/mixins';
+@import '~static/styles/vars';
+
 .preview-map {
   position: relative;
   min-height: 170px;
 
-  .map {
+  .map,
+  .api-key-msg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .api-key-msg {
+    @extend %center-x-y;
+    background: url(/images/map-bg-sm.png) no-repeat;
+    background-size: cover;
+    z-index: 1000;
+
+    &:after {
+      @include overlay-bg(0.3);
+      content: '';
+      left: 0;
+    }
+
+    p {
+      z-index: 1000;
+      position: relative;
+      width: 90%;
+      padding: 10px 10px 15px;
+      background: $color-white;
+      box-shadow: 0 0 4px $color-dark-grey;
+      border-radius: 3px;
+
+      a {
+        color: $color-blue;
+        font-weight: bold;
+      }
+
+      code {
+        padding: 0 3px;
+        font-weight: bold;
+        background: $color-light-grey;
+      }
+    }
   }
 }

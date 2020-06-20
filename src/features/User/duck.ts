@@ -3,6 +3,8 @@ import { api } from 'utils';
 // Action types
 const SET_USER = 'SET_USER';
 const SET_USERS = 'SET_USERS';
+const SET_GEO = 'SET_GEO';
+const SET_LAT_LON = 'SET_LAT_LON';
 
 // Action creators
 export const getUser = () => async (dispatch) => {
@@ -23,18 +25,51 @@ export const getUsers = () => async (dispatch) => {
     });
 };
 
+export const getGeoLocation = () => async (dispatch) => {
+  const [error, response] = await api.get('https://geolocation-db.com/json/', true);
+  const { country_name, state, city, postal, latitude, longitude } = response;
+  if (!error)
+    dispatch({
+      type: SET_GEO,
+      geolocation: {
+        country: country_name,
+        state,
+        city,
+        zip: postal,
+        latitude,
+        longitude
+      }
+    });
+};
+
+export const setLatLon = (latitude, longitude) => (dispatch) =>
+  dispatch({
+    type: SET_LAT_LON,
+    geolocation: {
+      latitude,
+      longitude
+    }
+  });
+
 // Reducer
 const initialState = {
   session: {},
-  friends: []
+  friends: [],
+  geolocation: {}
 };
 
-export default function reducer(prevState = initialState, { type, user, users }) {
+export default function reducer(
+  prevState = initialState,
+  { type, user, users, geolocation }
+) {
   switch (type) {
     case SET_USER:
       return { ...prevState, session: user };
     case SET_USERS:
       return { ...prevState, friends: users };
+    case SET_GEO:
+    case SET_LAT_LON:
+      return { ...prevState, geolocation };
     default:
       return prevState;
   }

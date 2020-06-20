@@ -6,3 +6,14 @@ export interface User {
   age: number;
   fullName: string;
 }
+
+export interface Geolocation {
+  country: string;
+  state: string;
+  city: string;
+  zip: string;
+  latitude: number;
+  longitude: number;
+}
+
+export type SetLatLon = (lat: number, lon: number) => void;

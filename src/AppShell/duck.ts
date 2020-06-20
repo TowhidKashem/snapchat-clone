@@ -8,6 +8,7 @@ const SET_FOOTER_TYPE = 'SET_FOOTER_TYPE';
 // Action creators
 export const showDrawer = (drawer: Drawer) => (dispatch) => {
   const defaults = {
+    show: true,
     animationIn: 'slideInUp',
     animationOut: 'slideOutDown',
     animationInDuration: 300,
@@ -44,16 +45,19 @@ export const initialState = {
 };
 
 const setShowDrawer = (prevState, drawer) => {
-  const currentDrawerRemoved = prevState.drawers.filter(
-    ({ component }) => component !== drawer.component
+  const drawerFound = prevState.drawers.find(
+    ({ component }) => component === drawer.component
   );
-  const drawers = [
-    ...currentDrawerRemoved,
-    {
-      ...drawer,
-      show: true
-    }
-  ];
+  const drawers = drawerFound
+    ? prevState.drawers.map((curDrawer) => {
+        if (curDrawer.component === drawer.component)
+          return {
+            ...curDrawer,
+            show: true
+          };
+        return curDrawer;
+      })
+    : [...prevState.drawers, drawer];
   return { ...prevState, drawers };
 };
 
