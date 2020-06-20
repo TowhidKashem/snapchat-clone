@@ -4,11 +4,11 @@
 
 ------
 
+write end to end cypress tests
+
 cross browser compatability / mobile
 
 read and apply redux style guide rules
-
-can we import just the parts of animate.css that we need?
 
 bring back CSS modules?
 
@@ -21,16 +21,12 @@ add git repo link!
 tap to close message on image snaps
 
 is there a way to include imports globally e.g. the flexbox grid lib?
-
-cut videos to small seconds, for fairuse and performance
-
-use map image for lazy loaded placeholder
+remove tmp rules from tsconfig
+can we import just the parts of animate.css that we need?
 
 include storybook
 
 pwa things like manifect, shortcuts, etc
-
-remove tmp rules from tsconfig
 
 have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
 
@@ -78,12 +74,13 @@ when picking new filter it needs to animate to the center capture button
 open discover drawer, then open search drawer, them click discover drawer button and watch the flash, it shouldn't do anything when its already open
 hit BE api to hide api keys
 once u get the lat/lon, u can save it in redux to avoid the call in snapmap
+cut videos to small seconds, for fairuse and performance
 
 
 NOT DOING:
 
 loadable for all GET requests
 immer.js
-
+use map image for lazy loaded placeholder
 
 

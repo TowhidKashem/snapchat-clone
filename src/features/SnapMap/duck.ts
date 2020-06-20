@@ -1,5 +1,5 @@
-import { Weather } from './types';
-import { api } from 'utils';
+import { api, celsiusToFahrenheit } from 'utils';
+import { abbrConditionMap } from './data';
 
 // Action types
 export const SET_SNAPS = 'SET_SNAPS';
@@ -41,36 +41,36 @@ export const getSnaps = (lat, lon) => async (dispatch) => {
 };
 
 export const getWeather = (lat, lon) => async (dispatch) => {
+  const baseURL =
+    'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location';
+
+  // If fetching the user's actual weather fails below for some reason
+  // store this dummy data for purposes of the demo
+  let weather = {
+    temperature: 75,
+    condition: 'c'
+  };
+
   let [error, response] = await api.get(
-    `https://www.metaweather.com/api/location/search/?lattlong=${lat},${lon}`,
+    `${baseURL}/search/?lattlong=${lat},${lon}`,
     true
   );
+
   if (!error) {
     const whereOnEarthID = response[0]?.woeid;
-    [error, response] = await api.get(
-      `https://www.metaweather.com/api/location/${whereOnEarthID}/`,
-      true
-    );
+    [error, response] = await api.get(`${baseURL}/${whereOnEarthID}/`, true);
+
     if (!error) {
-      const { temperature, condition } = response;
-      dispatch({
-        type: SET_WEATHER,
-        weather: {
-          temperature,
-          condition
-        }
-      });
+      const { the_temp, weather_state_abbr } = response?.consolidated_weather[0];
+
+      weather = {
+        temperature: celsiusToFahrenheit(the_temp),
+        condition: abbrConditionMap[weather_state_abbr]
+      };
     }
   }
-  // const { temperature, condition } = response;
-  // if (!error)
-  //   dispatch({
-  //     type: SET_WEATHER,
-  //     weather: {
-  //       temperature,
-  //       condition
-  //     }
-  //   });
+
+  dispatch({ type: SET_WEATHER, weather });
 };
 
 // Reducer

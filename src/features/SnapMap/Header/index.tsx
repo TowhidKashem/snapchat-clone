@@ -1,7 +1,9 @@
 import React from 'react';
 import { HideDrawer } from 'AppShell/types';
 import { Weather } from '../types';
+import { conditionIconMap } from '../data';
 import Button from 'common/Button';
+import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
@@ -21,9 +23,9 @@ const Header: React.FC<Props> = ({ weather, city, hideDrawer }) => {
       <div className="center">
         <article className="weather">
           <header>{city}</header>
-          <div className="icon-temp">
-            {/* <img src={icon} width={30} alt="" /> */}
-            <span className="temp">{temperature}&deg;F</span>
+          <div className="condition">
+            <Icon icon={conditionIconMap[condition]} />
+            <span className="temperature">{temperature}&deg;F</span>
           </div>
         </article>
       </div>

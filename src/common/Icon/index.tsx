@@ -49,7 +49,17 @@ import {
   faPlayCircle,
   faEdit,
   faMagic,
-  faQrcode
+  faQrcode,
+  faSnowflake,
+  faIcicles,
+  faCloudMeatball,
+  faPooStorm,
+  faCloudShowersHeavy,
+  faCloudRain,
+  faCloud,
+  faCloudSun,
+  faSun,
+  faShower
 } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
@@ -105,7 +115,17 @@ const iconMap = {
   faPlayCircle,
   faEdit,
   faMagic,
-  faQrcode
+  faQrcode,
+  faSnowflake,
+  faIcicles,
+  faCloudMeatball,
+  faPooStorm,
+  faCloudShowersHeavy,
+  faCloudRain,
+  faCloud,
+  faCloudSun,
+  faSun,
+  faShower
 };
 
 interface Props {

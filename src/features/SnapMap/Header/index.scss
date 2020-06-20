@@ -35,21 +35,19 @@
         margin-bottom: 2px;
       }
 
-      .icon-temp {
+      .condition {
         @extend %center-x-y;
 
-        img {
-          margin-right: 3px;
+        .icon {
+          margin-right: 5px;
+          color: $color-white;
+          font-size: 14px;
+          filter: drop-shadow(1px 1px 8px $color-dark-grey);
         }
 
-        img,
-        .temp {
-          display: inline-block;
-          align-self: flex-end;
-        }
-
-        .temp {
+        .temperature {
           padding-bottom: 7px;
+          font-size: 14px;
         }
       }
     }
