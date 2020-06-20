@@ -24,7 +24,7 @@ interface Props {
   setFooterType: SetFooterType;
 }
 
-export const Camera: React.FC<Props> = ({ setFooterType }) => {
+const Camera: React.FC<Props> = ({ setFooterType }) => {
   const videoElem = useRef<any>();
 
   const [loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ export const Camera: React.FC<Props> = ({ setFooterType }) => {
 
   const [takePic, setTakePic] = useState(false);
 
-  //useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
+  useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
 
   useEffect(() => {
     if (!activeFilter) return;

@@ -6,7 +6,7 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
 }
 
-const sizeMap = {
+export const sizeMap = {
   sm: 45,
   md: 100,
   lg: 150

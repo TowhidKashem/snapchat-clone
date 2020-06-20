@@ -15,7 +15,6 @@ interface Props {
   purple?: boolean;
   label?: string;
   onclick?: () => void;
-  testId?: string;
 }
 
 const Button: React.FC<Props> = ({
@@ -29,8 +28,7 @@ const Button: React.FC<Props> = ({
   plain,
   purple,
   label,
-  onclick,
-  testId
+  onclick
 }) => (
   <button
     type="button"
@@ -41,7 +39,6 @@ const Button: React.FC<Props> = ({
       plain,
       purple
     })}
-    data-testid={testId}
   >
     {image ? (
       <img src={image} alt="" />
