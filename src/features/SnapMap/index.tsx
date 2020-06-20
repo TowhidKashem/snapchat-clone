@@ -44,7 +44,7 @@ const SnapMap: React.FC<Props> = ({
 
   useEffect(() => {
     getSnaps(latitude, longitude);
-    getWeather(latitude, longitude);
+    // getWeather(latitude, longitude);
     setMap(
       new mapboxgl.Map({
         container: mapElem.current,

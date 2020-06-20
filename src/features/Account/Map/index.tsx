@@ -1,14 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { ShowDrawer } from 'AppShell/types';
-import { Geolocation, SetLatLon } from 'features/User/types';
-import useGeo from 'hooks/useGeo';
+import { SetLatLon } from 'features/User/types';
 import Loader from 'common/Loader';
 import './index.scss';
 
 interface Props {
   showDrawer: ShowDrawer;
-  geolocation: Geolocation;
+  getGeoLocation: () => any;
   setLatLon: SetLatLon;
 }
 
@@ -16,15 +15,50 @@ const apiKey = process.env.REACT_APP_MAP_BOX_API_KEY;
 const hasApiKey = apiKey?.length ? true : false;
 if (hasApiKey) mapboxgl.accessToken = apiKey;
 
-const Map: React.FC<Props> = ({ showDrawer, geolocation, setLatLon }) => {
+const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
   const mapRef = useRef<any>();
   const [loading, setLoading] = useState(true);
 
-  // If the API call to `https://geolocation-db.com/json/` fired earlier on in the app's lifecycle was successful
-  // then we use that for the lat/lon, otherwise we ask the user for their location via the browser's `geolocation` API
-  // the reason why we don't use that as the first choice is because it's often very slow!
-  const { latitude, longitude } = geolocation;
-  const exitGeoPrompt = !hasApiKey || (hasApiKey && latitude && longitude);
+  useEffect(() => {
+    if (!hasApiKey) return;
+
+    (async () => {
+      // Attempt to get the user's geo location via this endpoint `https://geolocation-db.com/json/` (IP based)
+      // if it fails ask the user for their location via the `navigator.geolocation` API (much slower)
+      const [error, response] = await getGeoLocation();
+
+      if (!error) {
+        loadMap(response.latitude, response.longitude);
+      } else {
+        const respond = (lat, lon) => {
+          loadMap(lat, lon);
+          setLatLon(lat, lon);
+        };
+
+        // If the browser doesn't support geolocation or the call failed
+        // set a dummy location for purposes of the demo (Times Sq, NYC)
+        const dummyResponse = () => respond(40.75491, -73.994102);
+
+        if ('geolocation' in navigator) {
+          navigator.geolocation.getCurrentPosition(
+            ({ coords }) => {
+              respond(coords.latitude, coords.longitude);
+            },
+            (err) => {
+              dummyResponse();
+            },
+            {
+              maximumAge: Infinity,
+              timeout: 5000,
+              enableHighAccuracy: true
+            }
+          );
+        } else {
+          dummyResponse();
+        }
+      }
+    })();
+  }, []);
 
   const loadMap = (lat, lon) =>
     new mapboxgl.Map({
@@ -33,20 +67,6 @@ const Map: React.FC<Props> = ({ showDrawer, geolocation, setLatLon }) => {
       center: [lon, lat],
       zoom: 13
     }).on('load', () => setLoading(false));
-
-  useEffect(() => {
-    if (hasApiKey && latitude && longitude) loadMap(latitude, longitude);
-  }, []);
-
-  useGeo(
-    (lat, lon) => {
-      loadMap(lat, lon);
-      setLatLon(lat, lon);
-    },
-    300,
-    //@ts-ignore
-    exitGeoPrompt
-  );
 
   return (
     <div

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { User } from 'features/User/types';
 import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
-import { Geolocation, SetLatLon } from 'features/User/types';
-import { setLatLon } from 'features/User/duck';
+import { SetLatLon } from 'features/User/types';
+import { getGeoLocation, setLatLon } from 'features/User/duck';
 import Button from 'common/Button';
 import Widget from 'common/Widget';
 import ActionItem from 'common/Pod/ActionItem';
@@ -16,7 +16,7 @@ interface Props {
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
   session: User;
-  geolocation: Geolocation;
+  getGeoLocation: () => void;
   setLatLon: SetLatLon;
 }
 
@@ -24,7 +24,7 @@ const Account: React.FC<Props> = ({
   showDrawer,
   hideDrawer,
   session,
-  geolocation,
+  getGeoLocation,
   setLatLon
 }) => (
   <main className="account">
@@ -48,7 +48,11 @@ const Account: React.FC<Props> = ({
       <ActionItem leftIcon="faGrinBeam" rightIcon="faAngleRight" label="Create Bitmoji" />
     </Widget>
     <Widget header="Snap Map">
-      <Map geolocation={geolocation} setLatLon={setLatLon} showDrawer={showDrawer} />
+      <Map
+        getGeoLocation={getGeoLocation}
+        setLatLon={setLatLon}
+        showDrawer={showDrawer}
+      />
       <ActionItem
         leftIcon="faCompass"
         rightIcon="faAngleRight"
@@ -60,13 +64,13 @@ const Account: React.FC<Props> = ({
 );
 
 const mapStateToProps = ({ user }) => ({
-  session: user.session,
-  geolocation: user.geolocation
+  session: user.session
 });
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),
   hideDrawer: (component) => dispatch(hideDrawer(component)),
+  getGeoLocation: () => dispatch(getGeoLocation()),
   setLatLon: (lat, lon) => dispatch(setLatLon(lat, lon))
 });
 

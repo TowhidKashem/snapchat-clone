@@ -7,10 +7,6 @@
     "age": 31,
     "fullName": "Towhid Kashem"
   },
-  "weather": {
-    "temperature": 75,
-    "condition": "sunny"
-  },
   "snaps": {
     "snaps": [
       {
@@ -1403,6 +1399,13 @@
       "message": "OMG I totally agree!",
       "time": 1592623485428,
       "id": 104
+    },
+    {
+      "thread": "julia",
+      "author": "julia",
+      "message": "No way, when?!",
+      "time": 1592677349210,
+      "id": 105
     }
   ]
 }

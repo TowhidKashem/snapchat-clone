@@ -29,7 +29,7 @@ export const setFooterType = (footerType: FooterType) => (dispatch) =>
   dispatch({ type: SET_FOOTER_TYPE, footerType });
 
 // Reducer
-export const initialState = {
+const initialState = {
   footerType: 'full',
   drawers: [
     // {

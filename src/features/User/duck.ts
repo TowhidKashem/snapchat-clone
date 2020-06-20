@@ -27,19 +27,20 @@ export const getUsers = () => async (dispatch) => {
 
 export const getGeoLocation = () => async (dispatch) => {
   const [error, response] = await api.get('https://geolocation-db.com/json/', true);
+  if (error) return [true, null];
   const { country_name, state, city, postal, latitude, longitude } = response;
-  if (!error)
-    dispatch({
-      type: SET_GEO,
-      geolocation: {
-        country: country_name,
-        state,
-        city,
-        zip: postal,
-        latitude,
-        longitude
-      }
-    });
+  dispatch({
+    type: SET_GEO,
+    geolocation: {
+      country: country_name,
+      state,
+      city,
+      zip: postal,
+      latitude,
+      longitude
+    }
+  });
+  return [false, { latitude, longitude }];
 };
 
 export const setLatLon = (latitude, longitude) => (dispatch) =>

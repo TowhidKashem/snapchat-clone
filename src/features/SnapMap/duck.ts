@@ -41,16 +41,36 @@ export const getSnaps = (lat, lon) => async (dispatch) => {
 };
 
 export const getWeather = (lat, lon) => async (dispatch) => {
-  const [error, response] = await api.get(`/weather/${lat}/${lon}`);
-  const { temperature, condition } = response;
-  if (!error)
-    dispatch({
-      type: SET_WEATHER,
-      weather: {
-        temperature,
-        condition
-      }
-    });
+  let [error, response] = await api.get(
+    `https://www.metaweather.com/api/location/search/?lattlong=${lat},${lon}`,
+    true
+  );
+  if (!error) {
+    const whereOnEarthID = response[0]?.woeid;
+    [error, response] = await api.get(
+      `https://www.metaweather.com/api/location/${whereOnEarthID}/`,
+      true
+    );
+    if (!error) {
+      const { temperature, condition } = response;
+      dispatch({
+        type: SET_WEATHER,
+        weather: {
+          temperature,
+          condition
+        }
+      });
+    }
+  }
+  // const { temperature, condition } = response;
+  // if (!error)
+  //   dispatch({
+  //     type: SET_WEATHER,
+  //     weather: {
+  //       temperature,
+  //       condition
+  //     }
+  //   });
 };
 
 // Reducer

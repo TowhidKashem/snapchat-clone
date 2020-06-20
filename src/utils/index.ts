@@ -1,5 +1,6 @@
 // Escape a user input string for use in a REGEX search
-export const escapeRegex = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+export const escapeRegex = (string: string) =>
+  string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 // Helper to remove async/await try/catch litter
 // https://gist.github.com/DavidWells/54f9dd1af4a489e5f1358f33ce59e8ad
