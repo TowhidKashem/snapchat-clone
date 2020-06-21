@@ -28,7 +28,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
   const videoElem = useRef<any>();
 
   const [loading, setLoading] = useState(false);
-  const [loadedScripts, setLoadedScripts] = useState<Filter[]>([]);
+  const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
   const [showFilterButtons, setShowFilterButtons] = useState(false);
   const [filters, setFilters] = useState<Filter[]>(defaultFilters);
   const [activeFilter, setActiveFilter] = useState<Filter | ''>('');
@@ -40,16 +40,18 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
 
   useEffect(() => {
     if (!activeFilter) return;
-    if (loadedScripts.includes(activeFilter)) {
+    if (loadedFilters.includes(activeFilter)) {
       initFilter(activeFilter);
       // tmp
       setFilterInitialized(true);
       setLoading(false);
     } else {
-      loadScripts(dependencies[activeFilter], () => {
-        initFilter(activeFilter);
-        setLoadedScripts([...loadedScripts, activeFilter]);
-      });
+      initFilter(activeFilter);
+      setLoadedFilters([...loadedFilters, activeFilter]);
+      // loadScripts(dependencies[activeFilter], () => {
+      //   initFilter(activeFilter);
+      //   setLoadedFilters([...loadedFilters, activeFilter]);
+      // });
     }
   }, [activeFilter]);
 
@@ -71,7 +73,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
     if (selectFilter === activeFilter) return;
     setLoading(true);
     setActiveFilterButton(selectFilter);
-    if (loadedScripts.length) {
+    if (loadedFilters.length) {
       const [error] = await promise(window.JEEFACEFILTERAPI.destroy());
       if (!error) setActiveFilter(selectFilter);
     } else {

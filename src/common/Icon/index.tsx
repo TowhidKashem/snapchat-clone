@@ -58,8 +58,7 @@ import {
   faCloudRain,
   faCloud,
   faCloudSun,
-  faSun,
-  faShower
+  faSun
 } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
@@ -124,8 +123,7 @@ const iconMap = {
   faCloudRain,
   faCloud,
   faCloudSun,
-  faSun,
-  faShower
+  faSun
 };
 
 interface Props {

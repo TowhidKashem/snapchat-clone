@@ -1,8 +1,9 @@
 
-*** Fix wonkiness with filters
 *** Add new filter
 
 ------
+
+get rid of all the warnings in dev tools
 
 write end to end cypress tests
 
@@ -75,7 +76,7 @@ open discover drawer, then open search drawer, them click discover drawer button
 hit BE api to hide api keys
 once u get the lat/lon, u can save it in redux to avoid the call in snapmap
 cut videos to small seconds, for fairuse and performance
-
+*** Fix wonkiness with filters
 
 NOT DOING:
 

@@ -16,7 +16,7 @@ export const conditionIconMap = {
   sleet: 'faIcicles',
   hail: 'faCloudMeatball',
   thunderstorm: 'faPooStorm',
-  showers: 'faShower',
+  showers: 'faCloudShowersHeavy',
   clear: 'faSun',
   'heavy-rain': 'faCloudShowersHeavy',
   'light-rain': 'faCloudRain',
