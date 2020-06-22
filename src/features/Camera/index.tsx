@@ -2,11 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { promise } from 'utils';
+import { promise, playSound } from 'utils';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
 import { Filter } from './types';
-import { dependencies, filters as defaultFilters } from './data';
 import useCamera from 'hooks/useCamera';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
@@ -24,8 +23,11 @@ interface Props {
   setFooterType: SetFooterType;
 }
 
+export const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'tmp'];
+
 const Camera: React.FC<Props> = ({ setFooterType }) => {
   const videoElem = useRef<any>();
+  const audioElem = useRef<any>(null);
 
   const [loading, setLoading] = useState(false);
   const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
@@ -120,7 +122,10 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
         <Button
           icon="faCircle"
           buttonClass="btn-capture"
-          onclick={() => setTakePic(true)}
+          onclick={() => {
+            setTakePic(true);
+            playSound('cameraShutter', audioElem.current);
+          }}
         />
 
         {!showFilterButtons && (
@@ -185,6 +190,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
           </div>
         </Animated>
       </section>
+      <audio ref={audioElem} className="app-sound"></audio>
     </main>
   );
 };

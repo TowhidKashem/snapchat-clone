@@ -29,7 +29,7 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
     ? friends.filter(
         ({ fullName, username }) => fullName.match(pattern) || username.match(pattern)
       )
-    : friends;
+    : friends.slice(0, 10);
   const hasResults = users.length > 0;
 
   return (

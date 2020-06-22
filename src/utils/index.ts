@@ -63,13 +63,17 @@ export const relativeTime = (timestamp: number) => {
   return formatter.format(seconds, 'second');
 };
 
-export const playSound = (sound: string) => {
+export const playSound = (sound: string, audioElem: HTMLAudioElement) => {
   const soundMap = {
     newAppMessage: './audio/blip.mp3',
     newSystemMessage: './audio/ding.mp3',
     cameraShutter: './audio/shutter.mp3'
   };
-  new Audio(soundMap[sound]).play();
+  // IOS no longer allows sounds to be played without a user action
+  // passing an audio tag from the component and setting it's `src` attribute
+  // and then paying it seems to bypass this restriction for now..
+  audioElem.src = soundMap[sound];
+  audioElem.play();
 };
 
 export const celsiusToFahrenheit = (celsius: number): number =>

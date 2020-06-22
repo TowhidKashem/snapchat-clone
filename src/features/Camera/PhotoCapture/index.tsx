@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
-import { playSound } from 'utils';
 import Button from 'common/Button';
 import './index.scss';
 
@@ -25,7 +24,6 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
       context.canvas.height = innerHeight;
       context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
     }
-    playSound('cameraShutter');
   };
 
   const downloadPhoto = () => {

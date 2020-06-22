@@ -6,6 +6,11 @@ html {
   box-sizing: border-box;
 }
 
+html,
+body {
+  touch-action: none; // Disable pinch zoom on ios
+}
+
 *,
 *:before,
 *:after {
@@ -18,6 +23,10 @@ html {
   border: none;
   -moz-outline-style: none;
   outline-style: none;
+}
+
+img {
+  align-self: center;
 }
 
 body {
@@ -54,6 +63,10 @@ a {
 
 .icon {
   color: $color-white;
+}
+
+.app-sound {
+  display: none;
 }
 
 ///////

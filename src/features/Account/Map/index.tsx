@@ -60,13 +60,20 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
     })();
   }, []);
 
-  const loadMap = (lat, lon) =>
-    new mapboxgl.Map({
+  const loadMap = (lat, lon) => {
+    const map = new mapboxgl.Map({
       container: mapRef.current,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [lon, lat],
       zoom: 13
-    }).on('load', () => setLoading(false));
+    }).on('load', () => {
+      setLoading(false);
+      // Add self marker
+      const tooltip = document.createElement('div');
+      tooltip.className = 'self-marker';
+      new mapboxgl.Marker(tooltip).setLngLat([lon, lat]).addTo(map);
+    });
+  };
 
   return (
     <div

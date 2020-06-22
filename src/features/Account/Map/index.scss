@@ -6,6 +6,23 @@
   position: relative;
   min-height: 170px;
 
+  // Overlay on top prevents zoom/pinch on map
+  &:after {
+    @include overlay-bg(0);
+    content: '';
+    left: 0;
+  }
+
+  .map {
+    .self-marker {
+      background-image: url('/images/self-marker.png');
+      background-size: cover;
+      width: 55px;
+      height: 55px;
+      transition: all 80ms ease-in;
+    }
+  }
+
   .map,
   .api-key-msg {
     position: absolute;

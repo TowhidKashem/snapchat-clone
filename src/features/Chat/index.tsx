@@ -32,16 +32,18 @@ const Chat: React.FC<Props> = ({
   postMessage,
   switchThread
 }) => {
+  const messageContainer = useRef<any>(null);
+  const audioElem = useRef<any>(null);
+
   const [message, setMessage] = useState<string>('');
   const [typing, setTyping] = useState<boolean>(false);
   const [messageReceived, setMessageReceived] = useState<boolean>(false);
-  const messageContainer = useRef<any>(null);
 
   // New message from other user
   useEffect(() => {
     setTimeout(() => {
       setMessageReceived(true);
-      playSound('newSystemMessage');
+      playSound('newSystemMessage', audioElem.current);
       setTimeout(() => setMessageReceived(false), 3000);
     }, 3000);
   }, []);
@@ -64,7 +66,7 @@ const Chat: React.FC<Props> = ({
     setTimeout(() => {
       setTyping(false);
       postMessage(user, user, randomArrayVal(dummyMessages));
-      playSound('newAppMessage');
+      playSound('newAppMessage', audioElem.current);
     }, randomArrayVal(typeTimes));
   };
 
@@ -121,6 +123,7 @@ const Chat: React.FC<Props> = ({
           </div>
         </div>
       </footer>
+      <audio ref={audioElem} className="app-sound"></audio>
     </main>
   );
 };
