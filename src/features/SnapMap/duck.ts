@@ -7,7 +7,7 @@ export const SET_WEATHER = 'SET_WEATHER';
 
 // Action creators
 export const getSnaps = (lat, lon) => async (dispatch) => {
-  const [error, response] = await api.get(`/snaps/${lat}/${lon}`);
+  const [error, response] = await api.get(`/snaps.json?geo=${lat},${lon}`);
 
   if (!error) {
     // Set some dummy coordinates to make snaps seem close to user

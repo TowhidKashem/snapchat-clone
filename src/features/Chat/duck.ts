@@ -7,33 +7,28 @@ const SET_THREAD = 'SET_THREAD';
 
 // Action creators
 export const getMessages = (user) => async (dispatch) => {
-  const [error, response] = await api.get('/messages/thread/' + user);
+  const [error, response] = await api.get(`/messages.json?thread=${user}`);
 
   if (!error) {
     dispatch({
       type: SET_MESSAGES,
       user,
-      messages: response
+      messages: response.messages
     });
   }
 };
 
-export const postMessage = (user, author, message) => async (dispatch) => {
-  const [error, response] = await api.post('/messages/thread/' + user, {
-    thread: user,
-    author,
-    message,
-    time: Date.now()
+export const postMessage = (user, author, message) => (dispatch) =>
+  dispatch({
+    type: SET_MESSAGE,
+    user,
+    message: {
+      thread: user,
+      author,
+      message,
+      time: Date.now()
+    }
   });
-
-  if (!error) {
-    dispatch({
-      type: SET_MESSAGE,
-      user,
-      message: response
-    });
-  }
-};
 
 export const switchThread = (user) => async (dispatch) =>
   dispatch({ type: SET_THREAD, user });

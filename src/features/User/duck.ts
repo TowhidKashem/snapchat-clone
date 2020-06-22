@@ -8,7 +8,8 @@ const SET_LAT_LON = 'SET_LAT_LON';
 
 // Action creators
 export const getUser = () => async (dispatch) => {
-  const [error, response] = await api.get('/session');
+  const [error, response] = await api.get('/session.json');
+
   if (!error)
     dispatch({
       type: SET_USER,
@@ -17,18 +18,22 @@ export const getUser = () => async (dispatch) => {
 };
 
 export const getUsers = () => async (dispatch) => {
-  const [error, response] = await api.get('/users');
+  const [error, response] = await api.get('/users.json');
+
   if (!error)
     dispatch({
       type: SET_USERS,
-      users: response
+      users: response.users
     });
 };
 
 export const getGeoLocation = () => async (dispatch) => {
   const [error, response] = await api.get('https://geolocation-db.com/json/', true);
-  if (error) return [true, null];
+
+  if (error) return [true];
+
   const { country_name, state, city, postal, latitude, longitude } = response;
+
   dispatch({
     type: SET_GEO,
     geolocation: {
@@ -40,6 +45,7 @@ export const getGeoLocation = () => async (dispatch) => {
       longitude
     }
   });
+
   return [false, { latitude, longitude }];
 };
 

@@ -18,8 +18,8 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
 
   useEffect(() => {
     (async () => {
-      const [error, response] = await api.get('/discover');
-      if (!error) setProfiles(response);
+      const [error, response] = await api.get('/discover.json');
+      if (!error) setProfiles(response.discover);
     })();
   }, []);
 

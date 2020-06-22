@@ -4,7 +4,7 @@ export const escapeRegex = (string: string) =>
 
 // Helper to remove async/await try/catch litter
 // https://gist.github.com/DavidWells/54f9dd1af4a489e5f1358f33ce59e8ad
-export const promise = (promise) =>
+export const promise = (promise: Promise<any>) =>
   promise
     .then((data) => {
       if (data instanceof Error) return [data];
@@ -13,7 +13,8 @@ export const promise = (promise) =>
     .catch((err) => [err]);
 
 export const api = {
-  baseURL: 'http://localhost:3050/api',
+  baseURL:
+    'https://cors-anywhere.herokuapp.com/https://inspiring-easley-e7d034.netlify.app',
   get: (endpoint, external = false) => api.respond('get', endpoint, null, external),
   post: (endpoint, options) => api.respond('post', endpoint, options),
   put: (endpoint, options) => api.respond('put', endpoint, options),
@@ -27,28 +28,14 @@ export const api = {
           body: JSON.stringify(data)
         }
       : {};
-    const [error, response] = await promise(
-      fetch(url, {
-        method,
-        ...options
-      }).then((response) => response.json())
-    );
-    return [error, response];
+    try {
+      const response = await fetch(url, { method, ...options });
+      const data = await response.json();
+      return [null, data];
+    } catch (error) {
+      return [error];
+    }
   }
-};
-
-// Recursive function to load scripts in order then perform callback
-export const loadScripts = (scripts, callback?) => {
-  const loadScript = (index) => {
-    const script = document.createElement('script');
-    script.src = scripts[index];
-    script.onload = () => {
-      if (index + 1 !== scripts.length) loadScript(index + 1);
-      else if (callback) callback();
-    };
-    document.body.appendChild(script);
-  };
-  loadScript(0);
 };
 
 export const randomArrayVal = (arr) => arr[Math.floor(Math.random() * arr.length)];

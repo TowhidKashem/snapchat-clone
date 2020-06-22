@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { promise, loadScripts } from 'utils';
+import { promise } from 'utils';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
 import { Filter } from './types';
@@ -48,10 +48,6 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
     } else {
       initFilter(activeFilter);
       setLoadedFilters([...loadedFilters, activeFilter]);
-      // loadScripts(dependencies[activeFilter], () => {
-      //   initFilter(activeFilter);
-      //   setLoadedFilters([...loadedFilters, activeFilter]);
-      // });
     }
   }, [activeFilter]);
 
@@ -106,6 +102,8 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
 
       <video
         ref={videoElem}
+        muted
+        playsInline
         autoPlay
         className={classNames('video-stream', {
           hide: filterInitialized || takePic
@@ -136,7 +134,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
                 const defaultFilter = filters[2];
                 setActiveFilter(defaultFilter);
                 setLoading(true);
-              }, animationInDuration);
+              }, animationInDuration); // usedrawerenter should be a util function
             }}
           />
         )}
@@ -153,7 +151,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
             {filters.map((filter) => (
               <Button
                 key={filter}
-                image={`./images/filters/${filter}.svg`}
+                image={`./images/filter-${filter}.svg`}
                 buttonClass={`filter-${filter}`}
                 onclick={() => switchFilter(filter)}
               />

@@ -27,6 +27,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #222;
   color: #222;
+  overflow: hidden; // Prevents ios background scrolling
 }
 
 a {

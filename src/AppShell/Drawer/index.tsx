@@ -55,7 +55,9 @@ const Drawer: React.FC<Props> = ({ drawers }) => {
           animationOutDuration={animationOutDuration}
           isVisible={show}
         >
-          <section className="content">{getComponent(component, show)}</section>
+          <section className="content" style={{ height: window.innerHeight + 'px' }}>
+            {getComponent(component, show)}
+          </section>
         </Animated>
       </aside>
     )

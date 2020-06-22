@@ -3,11 +3,21 @@
 
 ------
 
+in chat the username color alternates on odd/even, it should be based on username, in snapchat writing mulitplee messages are touching lines
+
+add finger swipe navigation?
+
+rename jeeFaceFilterCanvas
+
+when u run npm i at the root, can it also cd into filters dir and install all the deps there too? 
+   add the jeeliz repo as a dep and have it installed via the npm i command in there too instead of committing the contents of that repo (yuck)
+
 get rid of all the warnings in dev tools
 
 write end to end cypress tests
 
 cross browser compatability / mobile
+        check browser stack
 
 read and apply redux style guide rules
 
@@ -63,6 +73,7 @@ GRUNT WORK:
 
 add more dummy snaps
 
+You can use openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 120 -nodes to generate self-signed certificate and private key.
 
 ==============================================
 
