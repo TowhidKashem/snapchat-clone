@@ -17,7 +17,7 @@ import NotFound from './features/404';
 
 import 'normalize.css';
 import 'animate.css';
-import './static/styles/global.scss';
+import './styles/global.scss';
 
 const rootReducer = combineReducers({ app, user, snapMap, snap, chat });
 
