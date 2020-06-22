@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import useDrawerEnter from 'hooks/useDrawerEnter';
+import { onAnimationComplete } from 'utils';
 import Icon from 'common/Icon';
 import './index.scss';
 
@@ -34,10 +34,9 @@ const Input: React.FC<Props> = ({
   const inputElem = useRef<any>();
   const [full, setFull] = useState(false);
 
-  useDrawerEnter(() => focus && inputElem.current.focus());
-
   useEffect(() => {
     if (animate) setFull(true);
+    onAnimationComplete(() => focus && inputElem.current.focus());
   }, []);
 
   return (

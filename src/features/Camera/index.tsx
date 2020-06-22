@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { promise, playSound } from 'utils';
+import { promise, playSound, onAnimationComplete } from 'utils';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
 import { Filter } from './types';
@@ -30,7 +30,6 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
   const audioElem = useRef<any>(null);
 
   const [loading, setLoading] = useState(false);
-  const [loadedFilters, setLoadedFilters] = useState<Filter[]>([]);
   const [showFilterButtons, setShowFilterButtons] = useState(false);
   const [filters, setFilters] = useState<Filter[]>(defaultFilters);
   const [activeFilter, setActiveFilter] = useState<Filter | ''>('');
@@ -38,27 +37,15 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
 
   const [takePic, setTakePic] = useState(false);
 
-  // useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
+  useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
 
   useEffect(() => {
     if (!activeFilter) return;
-    if (loadedFilters.includes(activeFilter)) {
-      initFilter(activeFilter);
-      // tmp
-      setFilterInitialized(true);
-      setLoading(false);
-    } else {
-      initFilter(activeFilter);
-      setLoadedFilters([...loadedFilters, activeFilter]);
-    }
-  }, [activeFilter]);
-
-  const initFilter = (selectFilter: Filter) =>
-    window.Filters[selectFilter].init(() => {
-      // alert('fires once');
+    window.Filters[activeFilter].init(() => {
       setFilterInitialized(true);
       setLoading(false);
     });
+  }, [activeFilter]);
 
   // Set the chosen filter at the center of the nav
   const setActiveFilterButton = (selectFilter: Filter) => {
@@ -71,7 +58,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
     if (selectFilter === activeFilter) return;
     setLoading(true);
     setActiveFilterButton(selectFilter);
-    if (loadedFilters.length) {
+    if (filterInitialized) {
       const [error] = await promise(window.JEEFACEFILTERAPI.destroy());
       if (!error) setActiveFilter(selectFilter);
     } else {
@@ -81,8 +68,6 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
 
   const showOpenMouth = (): boolean =>
     !loading && ['dog', 'halloween'].includes(activeFilter);
-
-  const animationInDuration = 100;
 
   return (
     <main className="camera">
@@ -135,11 +120,11 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
             onclick={() => {
               setShowFilterButtons(true);
               setFooterType('none');
-              setTimeout(() => {
+              onAnimationComplete(() => {
+                // Load the center filter on the button list by default
                 const defaultFilter = filters[2];
-                setActiveFilter(defaultFilter);
-                setLoading(true);
-              }, animationInDuration); // usedrawerenter should be a util function
+                switchFilter(defaultFilter);
+              }, 100); // 100ms is the animation duration of the filters container below
             }}
           />
         )}
@@ -147,7 +132,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
         <Animated
           animationIn="slideInRight"
           animationOut="fadeOut"
-          animationInDuration={animationInDuration}
+          animationInDuration={100}
           animationOutDuration={0}
           isVisible={showFilterButtons}
           animateOnMount={false}
@@ -167,7 +152,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
         <Animated
           animationIn="zoomIn"
           animationOut="zoomOut"
-          animationInDuration={animationInDuration}
+          animationInDuration={100}
           animationOutDuration={0}
           isVisible={showFilterButtons}
           animateOnMount={false}
@@ -178,11 +163,12 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
             <Button
               icon="faTimesCircle"
               buttonClass="close"
-              onclick={() => {
+              onclick={async () => {
                 setActiveFilter('');
                 setShowFilterButtons(false);
                 setFilterInitialized(false);
                 setFooterType('full');
+                await promise(window.JEEFACEFILTERAPI.destroy());
               }}
             />
             <Button icon="faLaugh" round />
@@ -190,6 +176,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
           </div>
         </Animated>
       </section>
+
       <audio ref={audioElem} className="app-sound"></audio>
     </main>
   );

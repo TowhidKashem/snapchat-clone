@@ -1,3 +1,7 @@
+// Pollyfill for `Intl.RelativeTimeFormat()`
+import '@formatjs/intl-relativetimeformat/polyfill';
+import '@formatjs/intl-relativetimeformat/polyfill-locales';
+
 // Escape a user input string for use in a REGEX search
 export const escapeRegex = (string: string) =>
   string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -78,3 +82,10 @@ export const playSound = (sound: string, audioElem: HTMLAudioElement) => {
 
 export const celsiusToFahrenheit = (celsius: number): number =>
   Math.round(celsius * 1.8 + 32);
+
+// Runs a callback function after an animation transition is complete
+// This is to prevent animation choppiness which happens if running too many things (API requests, etc)
+// at once while the animation is still running
+// 300ms is the default value of `animationInDuration` for drawers so it's also the default here
+export const onAnimationComplete = (callback, animationInDuration = 300) =>
+  setTimeout(callback, animationInDuration);
