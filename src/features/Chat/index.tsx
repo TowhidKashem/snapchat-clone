@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { getMessages, postMessage, switchThread } from './duck';
@@ -48,17 +48,12 @@ const Chat: React.FC<Props> = ({
     }, 3000);
   }, []);
 
-  useEffect(() => {
-    getMessages(user);
-    botResponse(); // New message from current user
-  }, [user]);
-
   useLayoutEffect(() => {
     // Scroll to bottom of container on load and each time a new message is posted
     messageContainer.current.scrollTop = messageContainer.current.scrollHeight;
   }, [messages]);
 
-  const botResponse = () => {
+  const botResponse = useCallback(() => {
     // Randomize the response and typing times to make the bot seem a little more "realistic"
     const responseTimes = [500, 700, 900];
     const typeTimes = [1200, 1400, 1600];
@@ -68,7 +63,12 @@ const Chat: React.FC<Props> = ({
       postMessage(user, user, randomArrayVal(dummyMessages));
       playSound('newAppMessage', audioElem.current);
     }, randomArrayVal(typeTimes));
-  };
+  }, [postMessage, user]);
+
+  useEffect(() => {
+    getMessages(user);
+    botResponse(); // New message from current user
+  }, [user, getMessages, botResponse]);
 
   return (
     <main className="chat">
@@ -92,8 +92,8 @@ const Chat: React.FC<Props> = ({
       </header>
 
       <section ref={messageContainer} className="messages">
-        {messages[user]?.map(({ author, message, time }) => (
-          <article key={time} className="message">
+        {messages[user]?.map(({ author, message, time }, index) => (
+          <article key={time + index} className="message">
             <header>{author}</header>
             <blockquote>{message}</blockquote>
           </article>

@@ -13,18 +13,18 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
   const canvasElem = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    const takePhoto = () => {
+      const { innerWidth, innerHeight } = window;
+      const context = canvasElem?.current?.getContext('2d');
+      if (context) {
+        context.canvas.width = innerWidth;
+        context.canvas.height = innerHeight;
+        // ctx.scale(2, 2)
+        context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
+      }
+    };
     if (takePic) takePhoto();
-  }, [takePic]);
-
-  const takePhoto = () => {
-    const { innerWidth, innerHeight } = window;
-    const context = canvasElem?.current?.getContext('2d');
-    if (context) {
-      context.canvas.width = innerWidth;
-      context.canvas.height = innerHeight;
-      context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
-    }
-  };
+  }, [takePic, videoElem]);
 
   const downloadPhoto = () => {
     const dataURL = canvasElem?.current

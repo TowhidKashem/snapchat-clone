@@ -37,7 +37,7 @@ const Input: React.FC<Props> = ({
   useEffect(() => {
     if (animate) setFull(true);
     onAnimationComplete(() => focus && inputElem.current.focus());
-  }, []);
+  }, [animate, focus]);
 
   return (
     <div

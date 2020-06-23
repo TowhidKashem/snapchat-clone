@@ -63,7 +63,10 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
           )}
           {query && !hasResults && (
             <p className="no-results">
-              <span>💩</span> No results
+              <span role="img" aria-label="poop emoji">
+                💩
+              </span>{' '}
+              No results
             </p>
           )}
         </Animated>

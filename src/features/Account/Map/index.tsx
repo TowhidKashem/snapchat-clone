@@ -58,7 +58,7 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
         }
       }
     })();
-  }, []);
+  }, [getGeoLocation, setLatLon]);
 
   const loadMap = (lat, lon) => {
     const map = new mapboxgl.Map({
@@ -93,10 +93,14 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
       {!hasApiKey ? (
         <div className="api-key-msg">
           <p>
-            🌎 Get a free mapboxgl{' '}
+            <span role="img" aria-label="earth emoji">
+              🌎
+            </span>{' '}
+            Get a free mapboxgl{' '}
             <a
               href="https://docs.mapbox.com/help/how-mapbox-works/access-tokens/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               API key here
             </a>

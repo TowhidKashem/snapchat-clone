@@ -40,7 +40,7 @@ const AppShell: React.FC<Props> = ({
   useEffect(() => {
     getUser();
     getUsers();
-  }, []);
+  }, [getUser, getUsers]);
 
   return (
     <>

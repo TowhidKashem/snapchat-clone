@@ -80,7 +80,13 @@ Filters.deform = {
     JeelizResizer.size_canvas({
       canvasId: 'jeeFaceFilterCanvas',
       callback: (isError, bestVideoSettings) => {
-        Filters.deform.initFaceFilter(bestVideoSettings, callback);
+        const foo = {
+          ...bestVideoSettings,
+          maxWidth: 414
+        };
+        console.warn('mma 1', bestVideoSettings);
+        console.warn('mma 2', foo);
+        Filters.deform.initFaceFilter(foo, callback);
       }
     });
   },

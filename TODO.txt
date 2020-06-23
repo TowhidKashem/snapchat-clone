@@ -3,6 +3,8 @@
 
 ------
 
+see if these (Optionnal init arguments) on https://github.com/jeeliz/jeelizFaceFilter help with the red transition state
+
 in chat the username color alternates on odd/even, it should be based on username, in snapchat writing mulitplee messages are touching lines
 
 add finger swipe navigation?

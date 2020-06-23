@@ -21,7 +21,7 @@ const Snap: React.FC<Props> = ({ snap, hideDrawer }) => {
       videoElem.current.load();
       videoElem.current.play();
     }
-  }, [snap]);
+  }, [snap, type]);
 
   return (
     <main className="snap" onClick={() => hideDrawer('snap')}>

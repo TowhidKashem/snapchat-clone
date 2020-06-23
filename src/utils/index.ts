@@ -17,8 +17,7 @@ export const promise = (promise: Promise<any>) =>
     .catch((err) => [err]);
 
 export const api = {
-  baseURL:
-    'https://cors-anywhere.herokuapp.com/https://inspiring-easley-e7d034.netlify.app',
+  baseURL: 'https://inspiring-easley-e7d034.netlify.app',
   get: (endpoint, external = false) => api.respond('get', endpoint, null, external),
   post: (endpoint, options) => api.respond('post', endpoint, options),
   put: (endpoint, options) => api.respond('put', endpoint, options),

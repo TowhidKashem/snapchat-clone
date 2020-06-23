@@ -8,6 +8,7 @@ html {
 
 html,
 body {
+  // touch-action: manipulation;
   touch-action: none; // Disable pinch zoom on ios
 }
 
@@ -56,6 +57,8 @@ a {
   position: relative;
   background-color: $color-dark-grey;
   width: $app-width;
+  // min-width: 320px;
+  // max-width: 414px;
   height: 100vh;
   margin: 0 auto;
   overflow: hidden;

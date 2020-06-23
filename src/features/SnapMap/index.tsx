@@ -53,64 +53,65 @@ const SnapMap: React.FC<Props> = ({
         zoom: 13
       }).on('load', () => setLoading(false))
     );
-  }, []);
+  }, [getSnaps, getWeather, latitude, longitude]);
 
   // Add self marker on map
   useEffect(() => {
     if (map) {
+      const addSelfMarker = () => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'self-marker';
+
+        new mapboxgl.Marker(tooltip).setLngLat([longitude, latitude]).addTo(map);
+
+        setTimeout(() => {
+          tooltip.classList.add('zoomedIn');
+
+          new mapboxgl.Popup({ closeOnClick: false })
+            .setLngLat([longitude, latitude])
+            .setHTML(
+              `<header>Me</header>
+              <p>Not Sharing Location</p>`
+            )
+            .addTo(map);
+        }, 2300);
+      };
+
       addSelfMarker();
+
       // Zoom in effect on load
       //@ts-ignore
       setTimeout(() => map.flyTo({ zoom: 14 }), 2000);
     }
-  }, [map]);
+  }, [map, latitude, longitude]);
 
   // Add snaps on map after they've loaded
   useEffect(() => {
-    if (map) snaps.map((snap) => addSnapToMap(snap));
-  }, [snaps]);
+    const addSnapToMap = (snap: Snap) => {
+      const marker = document.createElement('div');
+      marker.className = 'marker';
+      marker.onclick = (e: any) => {
+        e.target.classList.add('active');
 
-  const addSelfMarker = () => {
-    const tooltip = document.createElement('div');
-    tooltip.className = 'self-marker';
+        // Delay opening the drawer so we can see the pulse animation
+        setTimeout(() => {
+          openSnap(snap);
+          showDrawer({
+            component: 'snap',
+            animationIn: 'zoomIn',
+            animationOut: 'zoomOut',
+            theme: 'dark'
+          });
+        }, 900);
 
-    new mapboxgl.Marker(tooltip).setLngLat([longitude, latitude]).addTo(map);
-
-    setTimeout(() => {
-      tooltip.classList.add('zoomedIn');
-
-      new mapboxgl.Popup({ closeOnClick: false })
-        .setLngLat([longitude, latitude])
-        .setHTML(
-          `<header>Me</header>
-          <p>Not Sharing Location</p>`
-        )
-        .addTo(map);
-    }, 2300);
-  };
-
-  const addSnapToMap = (snap: Snap) => {
-    const marker = document.createElement('div');
-    marker.className = 'marker';
-    marker.onclick = (e: any) => {
-      e.target.classList.add('active');
-
-      // Delay opening the drawer so we can see the pulse animation
-      setTimeout(() => {
-        openSnap(snap);
-        showDrawer({
-          component: 'snap',
-          animationIn: 'zoomIn',
-          animationOut: 'zoomOut',
-          theme: 'dark'
-        });
-      }, 900);
-
-      // Remove pulse animation
-      setTimeout(() => e.target.classList.remove('active'), 1000);
+        // Remove pulse animation
+        setTimeout(() => e.target.classList.remove('active'), 1000);
+      };
+      new mapboxgl.Marker(marker).setLngLat([snap.lon, snap.lat]).addTo(map);
     };
-    new mapboxgl.Marker(marker).setLngLat([snap.lon, snap.lat]).addTo(map);
-  };
+
+    if (map) snaps.map((snap) => addSnapToMap(snap));
+  }, [snaps, map, openSnap, showDrawer]);
 
   return (
     <div className="snap-map">
