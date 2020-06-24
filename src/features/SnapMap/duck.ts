@@ -1,4 +1,5 @@
-import { api, celsiusToFahrenheit } from 'utils';
+import { api } from 'utils/api';
+import { celsiusToFahrenheit } from './utils';
 import { abbrConditionMap } from './data';
 
 // Action types

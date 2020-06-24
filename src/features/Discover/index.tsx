@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { api } from 'utils';
+import { api } from 'utils/api';
 import { showDrawer } from 'AppShell/duck';
 import { ShowDrawer } from 'AppShell/types';
 import Header from 'common/Header';

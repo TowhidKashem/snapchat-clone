@@ -54,7 +54,8 @@
       left: 50%;
 
       .icon {
-        box-shadow: 0 0 8px $color-black;
+        // box-shadow: 0 0 8px $color-black;
+        filter: drop-shadow(1px 1px 8px $color-black);
         border-radius: 100%;
       }
     }

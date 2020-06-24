@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { onAnimationComplete } from 'utils';
+import { onAnimationComplete } from 'utils/animation';
 import Icon from 'common/Icon';
 import './index.scss';
 

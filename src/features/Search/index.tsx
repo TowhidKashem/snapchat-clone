@@ -4,7 +4,7 @@ import { Animated } from 'react-animated-css';
 import { HideDrawer } from 'AppShell/types';
 import { User } from 'features/User/types';
 import { hideDrawer } from 'AppShell/duck';
-import { escapeRegex } from 'utils';
+import { escapeRegex } from 'utils/strings';
 import Input from 'common/Input';
 import Button from 'common/Button';
 import Widget from 'common/Widget';
