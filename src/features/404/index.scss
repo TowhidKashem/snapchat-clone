@@ -1,3 +1,39 @@
-body {
-  background: green;
+@import '~styles/vars';
+@import '~styles/extendables';
+
+.not-found {
+  @extend %center-x-y;
+  background: $color-yellow;
+  width: $app-width;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+
+  .message {
+    margin-top: -150px;
+    text-align: center;
+
+    h1 {
+      font-weight: normal;
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    a {
+      .icon {
+        @extend %icon-shadow-light;
+        margin-bottom: 5px;
+      }
+
+      span {
+        display: block;
+        color: $color-black;
+      }
+    }
+  }
 }

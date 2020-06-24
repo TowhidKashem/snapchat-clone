@@ -1,1 +1,1 @@
-export type Filter = 'dog' | 'bees' | 'halloween' | 'deform' | 'tmp';
+export type Filter = 'dog' | 'bees' | 'halloween' | 'deform' | 'tmp' | '';

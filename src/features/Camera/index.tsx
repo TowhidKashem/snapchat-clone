@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
@@ -27,67 +28,56 @@ interface Props {
 const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'tmp'];
 
 const Camera: React.FC<Props> = ({ setFooterType }) => {
-  const videoElem = useRef<any>();
-  const audioElem = useRef<any>(null);
-
-  const [stream, setStream] = useState();
+  const videoElem = useRef<HTMLVideoElement>(null);
+  const audioElem = useRef<HTMLAudioElement>(null);
 
   const [loading, setLoading] = useState(false);
   const [showFilterButtons, setShowFilterButtons] = useState(false);
   const [filters, setFilters] = useState<Filter[]>(defaultFilters);
-  const [activeFilter, setActiveFilter] = useState<Filter | ''>('');
+  const [activeFilter, setActiveFilter] = useState<Filter>('');
   const [filterInitialized, setFilterInitialized] = useState(false);
-
+  const [cameraStream, setCameraStream] = useState(null);
   const [takePic, setTakePic] = useState(false);
 
   useEffect(() => {
-    initCamera();
+    startCamera();
   }, []);
 
-  const initCamera = async () => {
-    //@ts-ignore
+  const startCamera = async () => {
     if (!('mediaDevices' in navigator)) navigator.mediaDevices = {};
-
     if (!('getUserMedia' in navigator.mediaDevices)) {
-      //@ts-ignore
       navigator.mediaDevices.getUserMedia = (constraints) => {
-        //@ts-ignore
         const getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-        if (!getUserMedia) {
+        if (!getUserMedia)
           return Promise.reject(new Error('getUserMedia() is not implemented!'));
-        }
-        return new Promise((resolve, reject) =>
-          getUserMedia.call(navigator, constraints, resolve, reject)
-        );
+        else
+          return new Promise((resolve, reject) =>
+            getUserMedia.call(navigator, constraints, resolve, reject)
+          );
       };
     }
-
     const [error, response] = await promise(
       navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: 'user',
           width: { ideal: 414 }
-          // height: { ideal: 736 }
         }
-        // audio: true
       })
     );
-
-    setStream(response);
-
+    setCameraStream(response);
     if (!error) videoElem.current.srcObject = response;
-    else alert(error);
+    else alert(error); //tmp
   };
 
   useEffect(() => {
     if (!activeFilter) return;
+    const stopCamera = () => cameraStream.getTracks().forEach((track) => track.stop());
     window.Filters[activeFilter].init(() => {
       setFilterInitialized(true);
       setLoading(false);
-      //@ts-ignore
-      stream.getTracks().forEach((track) => track.stop());
+      stopCamera();
     });
-  }, [activeFilter]);
+  }, [activeFilter, cameraStream]);
 
   // Set the chosen filter at the center of the nav
   const setActiveFilterButton = (selectFilter: Filter) => {
@@ -124,8 +114,10 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
         animateOnMount={false}
       >
         <div className="open-mouth">
-          <span>Open Mouth</span>
-          👅
+          <strong>Open Mouth</strong>
+          <span role="img" aria-label="tongue emoji">
+            👅
+          </span>
         </div>
       </Animated>
 
@@ -163,7 +155,6 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
               setShowFilterButtons(true);
               setFooterType('none');
               // Load the center filter on the button list by default
-              // 100ms is the animation duration of the filters container below
               onAnimationComplete(() => switchFilter(filters[2]), 100);
             }}
           />
@@ -203,13 +194,13 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
             <Button
               icon="faTimesCircle"
               buttonClass="close"
-              onclick={async () => {
+              onclick={() => {
                 setActiveFilter('');
                 setShowFilterButtons(false);
                 setFilterInitialized(false);
                 setFooterType('full');
-                initCamera(); // should we await here?
-                await promise(window.JEEFACEFILTERAPI.destroy()); // do we need to await here?
+                startCamera();
+                promise(window.JEEFACEFILTERAPI.destroy());
               }}
             />
             <Button icon="faLaugh" round />

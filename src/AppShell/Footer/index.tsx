@@ -1,19 +1,38 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { ShowDrawer, HideDrawer, FooterType, SetFooterType } from 'AppShell/types';
+import {
+  Drawer,
+  ShowDrawer,
+  HideDrawer,
+  FooterType,
+  SetFooterType
+} from 'AppShell/types';
+import { atleastOneDrawerOpen } from 'AppShell/utils';
 import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
   footerType: FooterType;
   setFooterType: SetFooterType;
+  drawers: Drawer[];
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
 }
 
-const Footer: React.FC<Props> = ({ footerType, setFooterType, showDrawer, hideDrawer }) =>
+const Footer: React.FC<Props> = ({
+  footerType,
+  setFooterType,
+  drawers,
+  showDrawer,
+  hideDrawer
+}) =>
   footerType !== 'none' ? (
-    <footer className="footer">
+    <footer
+      className={classNames('footer', {
+        'light-shadow': atleastOneDrawerOpen(drawers)
+      })}
+    >
       <div className="left">
         <Button
           icons={['faCommentAlt', 'faDot']}

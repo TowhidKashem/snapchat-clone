@@ -1,7 +1,15 @@
 
 *** Add new filter
 
-------
+skeleton frames on discover page
+
+camera roll page
+
+share button?
+
+image download doesn't work on mobile
+
+typescript errors and use of any
 
 see if these (Optionnal init arguments) on https://github.com/jeeliz/jeelizFaceFilter help with the red transition state
 
@@ -9,12 +17,8 @@ in chat the username color alternates on odd/even, it should be based on usernam
 
 add finger swipe navigation?
 
-rename jeeFaceFilterCanvas
-
 when u run npm i at the root, can it also cd into filters dir and install all the deps there too? 
    add the jeeliz repo as a dep and have it installed via the npm i command in there too instead of committing the contents of that repo (yuck)
-
-get rid of all the warnings in dev tools
 
 write end to end cypress tests
 
@@ -22,8 +26,6 @@ cross browser compatability / mobile
         check browser stack
 
 read and apply redux style guide rules
-
-bring back CSS modules?
 
 `var` in filter index files
 
@@ -33,23 +35,13 @@ add git repo link!
 
 tap to close message on image snaps
 
-is there a way to include imports globally e.g. the flexbox grid lib?
 remove tmp rules from tsconfig
-can we import just the parts of animate.css that we need?
 
 include storybook
 
 pwa things like manifect, shortcuts, etc
 
 have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
-
-in read me:
-
-        one of the biggest factors in FE scalability is to keep things flat! in both folder strcuture and state tree
-        <pic of redux dev tool and folder strcuture> with big x and check marks comparison
-
-        folder strcuture based around features
-
 
 renew all api keys in commits
 
@@ -90,11 +82,19 @@ hit BE api to hide api keys
 once u get the lat/lon, u can save it in redux to avoid the call in snapmap
 cut videos to small seconds, for fairuse and performance
 *** Fix wonkiness with filters
+rename jeeFaceFilterCanvas
+get rid of all the warnings in dev tools
+404 page
+
+
 
 NOT DOING:
 
 loadable for all GET requests
 immer.js
 use map image for lazy loaded placeholder
+bring back CSS modules?
+is there a way to include imports globally e.g. the flexbox grid lib?
+can we import just the parts of animate.css that we need?
 
 

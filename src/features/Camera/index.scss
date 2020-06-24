@@ -34,7 +34,7 @@
     border-radius: 50px;
     box-shadow: 0 0 1px $color-black;
 
-    span {
+    strong {
       display: block;
       text-shadow: 0 0 1px $color-black;
     }
@@ -54,8 +54,7 @@
       left: 50%;
 
       .icon {
-        // box-shadow: 0 0 8px $color-black;
-        filter: drop-shadow(1px 1px 8px $color-black);
+        @extend %icon-shadow-dark;
         border-radius: 100%;
       }
     }

@@ -1,8 +1,6 @@
 @import '~styles/vars';
 
 .search {
-  border: 2px solid red !important;
-
   > header {
     padding: 0 0 7px;
     background: $color-light-grey;
@@ -26,17 +24,7 @@
   }
 
   .view {
-    // height: 90vh;
-    height: auto;
     overflow: scroll;
-    padding: 0;
-    margin: 0;
-
-    border: 2px solid green;
-
-    .results {
-      border: 2px solid blue;
-    }
 
     .no-results {
       font-weight: bold;

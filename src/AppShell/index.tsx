@@ -51,6 +51,7 @@ const AppShell: React.FC<Props> = ({
       <Footer
         footerType={footerType}
         setFooterType={setFooterType}
+        drawers={drawers}
         showDrawer={showDrawer}
         hideDrawer={hideDrawer}
       />
