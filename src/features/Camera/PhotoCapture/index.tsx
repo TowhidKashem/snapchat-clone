@@ -1,16 +1,20 @@
 import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Button from 'common/Button';
+import { SetPhoto } from '../types';
 import './index.scss';
 
 interface Props {
   takePic: boolean;
   closePic: () => void;
   videoElem: any;
+  setPhoto: SetPhoto;
 }
 
-const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
+const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto }) => {
   const canvasElem = useRef<HTMLCanvasElement>(null);
+
+  const getDataURL = () => canvasElem?.current?.toDataURL('image/png');
 
   useEffect(() => {
     const takePhoto = () => {
@@ -23,13 +27,16 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
         context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
       }
     };
-    if (takePic) takePhoto();
+    if (takePic) {
+      takePhoto();
+      //@ts-ignore
+      setPhoto(getDataURL());
+    }
   }, [takePic, videoElem]);
 
   const downloadPhoto = () => {
-    const dataURL = canvasElem?.current
-      ?.toDataURL('image/png')
-      .replace('image/png', 'image/octet-stream');
+    //@ts-ignore
+    const dataURL = getDataURL().replace('image/png', 'image/octet-stream');
     window.location.href = dataURL as string;
   };
 

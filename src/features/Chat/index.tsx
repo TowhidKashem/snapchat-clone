@@ -5,7 +5,7 @@ import { getMessages, postMessage, switchThread } from './duck';
 import { dummyMessages } from './data';
 import { hideDrawer } from 'AppShell/duck';
 import { HideDrawer } from 'AppShell/types';
-import { randomArrayVal } from 'utils/arrays';
+import { randomArrayVal } from 'utils/array';
 import { playSound } from 'utils/audio';
 import Notification from 'common/Notification';
 import Input from 'common/Input';

@@ -1,4 +1,4 @@
-import { api } from 'utils/api';
+import { api } from 'utils/system';
 import { celsiusToFahrenheit } from './utils';
 import { abbrConditionMap } from './data';
 

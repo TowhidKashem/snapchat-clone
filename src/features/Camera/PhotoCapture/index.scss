@@ -2,7 +2,7 @@
 @import '~styles/extendables';
 
 .photo-capture {
-  position: relative;
+  position: fixed;
   z-index: 100;
 
   &.hide {

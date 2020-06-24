@@ -9,6 +9,7 @@ import {
 } from './types';
 import { showDrawer, hideDrawer, setFooterType } from './duck';
 import { getUser, getUsers } from 'features/User/duck';
+import { getPhotos } from 'features/Camera/duck';
 import Toolbar from './Toolbar';
 import Footer from './Footer';
 import Drawer from './Drawer';
@@ -23,6 +24,7 @@ interface Props {
   setFooterType: SetFooterType;
   getUser: () => void;
   getUsers: () => void;
+  getPhotos: () => void;
   children: JSX.Element;
 }
 
@@ -34,13 +36,15 @@ const AppShell: React.FC<Props> = ({
   setFooterType,
   getUser,
   getUsers,
+  getPhotos,
   children
 }) => {
   // Init the app
   useEffect(() => {
     getUser();
     getUsers();
-  }, [getUser, getUsers]);
+    getPhotos();
+  }, [getUser, getUsers, getPhotos]);
 
   return (
     <>
@@ -71,7 +75,8 @@ const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component?) => dispatch(hideDrawer(component)),
   setFooterType: (footerType) => dispatch(setFooterType(footerType)),
   getUser: () => dispatch(getUser()),
-  getUsers: () => dispatch(getUsers())
+  getUsers: () => dispatch(getUsers()),
+  getPhotos: () => dispatch(getPhotos())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppShell);

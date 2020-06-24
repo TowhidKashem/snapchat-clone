@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import { relativeTime } from 'utils/dates';
+import { relativeTime } from 'utils/time';
 import { Snap as SnapType } from './types';
 import { HideDrawer } from 'AppShell/types';
 import { hideDrawer } from 'AppShell/duck';

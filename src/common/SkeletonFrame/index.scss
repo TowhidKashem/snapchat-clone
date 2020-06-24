@@ -1,0 +1,52 @@
+@import '~styles/vars';
+
+:root {
+  --card-padding: 10px;
+  --card-height: 250px;
+  --card-skeleton: linear-gradient(white var(--card-height), transparent 0);
+  --desc-line-height: 10px;
+  --desc-line-skeleton: linear-gradient(lightgrey var(--desc-line-height), transparent 0);
+  --desc-line-1-width: 170px;
+  --desc-line-1-position: var(--card-padding) 202px;
+  --desc-line-2-width: 80px;
+  --desc-line-2-position: var(--card-padding) 220px;
+  --blur-width: 220px;
+  --blur-size: var(--blur-width) calc(var(--card-height));
+}
+
+.skeleton-frame {
+  width: 50%;
+  padding: 5px;
+  height: var(--card-height);
+  margin-bottom: 10px;
+  border-radius: 7px;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    box-shadow: 0 0 3px $color-grey;
+    background-image: linear-gradient(
+        90deg,
+        rgba($color-white, 0) 0,
+        rgba($color-white, 0.5) 50%,
+        rgba($color-white, 0) 100%
+      ),
+      var(--desc-line-skeleton), var(--desc-line-skeleton), var(--card-skeleton);
+    background-size: var(--blur-size), var(--desc-line-1-width) var(--desc-line-height),
+      var(--desc-line-2-width) var(--desc-line-height), 100%, 100% 100%;
+    background-position: -200% 0, var(--desc-line-1-position), var(--desc-line-2-position),
+      0 0;
+    background-repeat: no-repeat;
+    animation: loading 0.8s infinite;
+  }
+}
+
+@keyframes loading {
+  to {
+    background-position: 350% 0, var(--desc-line-1-position), var(--desc-line-2-position),
+      0 0;
+  }
+}

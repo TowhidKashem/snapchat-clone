@@ -1,0 +1,24 @@
+@import '~styles/vars';
+
+.archive {
+  .message {
+    text-align: center;
+    color: #bbb;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid $color-grey;
+    padding: 30px 0;
+    margin: 15px 0 20px;
+  }
+
+  .month {
+    h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    img {
+      margin-right: 5px;
+    }
+  }
+}

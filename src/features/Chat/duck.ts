@@ -1,4 +1,4 @@
-import { api } from 'utils/api';
+import { api } from 'utils/system';
 
 // Action types
 const SET_MESSAGES = 'SET_MESSAGES';

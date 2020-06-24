@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { api } from 'utils/api';
+import { api } from 'utils/system';
+import { sleep } from 'utils/system';
 import { showDrawer } from 'AppShell/duck';
 import { ShowDrawer } from 'AppShell/types';
 import Header from 'common/Header';
 import Widget from 'common/Widget';
 import Button from 'common/Button';
+import SkeletonFrame from 'common/SkeletonFrame';
 import SpotlightPod from 'common/Pod/Spotlight';
 import './index.scss';
 
@@ -19,7 +21,11 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
   useEffect(() => {
     (async () => {
       const [error, response] = await api.get('/discover.json');
-      if (!error) setProfiles(response.discover);
+      if (!error) {
+        // Simulate a slow API response to show off skeleton frames
+        await sleep(1000);
+        setProfiles(response.discover);
+      }
     })();
   }, []);
 
@@ -33,9 +39,13 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
         </Widget>
         <Widget header="For You" transparent>
           <div className="inner">
-            {profiles.map(({ image, title, time }, index) => (
-              <SpotlightPod key={index} image={image} title={title} time={time} />
-            ))}
+            {profiles.length ? (
+              profiles.map(({ image, title, time }, index) => (
+                <SpotlightPod key={index} image={image} title={title} time={time} />
+              ))
+            ) : (
+              <SkeletonFrame count={10} />
+            )}
           </div>
         </Widget>
       </section>

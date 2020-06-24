@@ -3,12 +3,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { promise } from 'utils/promises';
+import { promise } from 'utils/system';
 import { playSound } from 'utils/audio';
 import { onAnimationComplete } from 'utils/animation';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
-import { Filter } from './types';
+import { Filter, SetPhoto } from './types';
+import { setPhoto } from './duck';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
 import Loader from 'common/Loader';
@@ -23,11 +24,12 @@ declare global {
 
 interface Props {
   setFooterType: SetFooterType;
+  setPhoto: SetPhoto;
 }
 
 const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'tmp'];
 
-const Camera: React.FC<Props> = ({ setFooterType }) => {
+const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
   const videoElem = useRef<HTMLVideoElement>(null);
   const audioElem = useRef<HTMLAudioElement>(null);
 
@@ -135,6 +137,7 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
         takePic={takePic}
         closePic={() => setTakePic(false)}
         videoElem={videoElem}
+        setPhoto={setPhoto}
       />
 
       <section className="controls">
@@ -215,7 +218,8 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  setFooterType: (footerType) => dispatch(setFooterType(footerType))
+  setFooterType: (footerType) => dispatch(setFooterType(footerType)),
+  setPhoto: (dataURL) => dispatch(setPhoto(dataURL))
 });
 
 export default connect(null, mapDispatchToProps)(Camera);

@@ -1,12 +1,6 @@
 
 *** Add new filter
 
-skeleton frames on discover page
-
-camera roll page
-
-share button?
-
 image download doesn't work on mobile
 
 typescript errors and use of any
@@ -26,8 +20,6 @@ cross browser compatability / mobile
         check browser stack
 
 read and apply redux style guide rules
-
-`var` in filter index files
 
 some type of walk through tool to show what's working (pulsing effect?)
 
@@ -49,23 +41,12 @@ use svg cleaner tool
 
 block all readuests (especially external api calls) and confirm no error
 
-const [PreviewMapComponent, setPreviewMapComponent] = useState<JSX.Element>();
-
-// useEffect(() => {
-//   (async () => {
-//     const PreviewMap = await lazy(() => import('./PreviewMap'));
-//     setPreviewMapComponent(
-//       <Suspense fallback={<div>Loading...</div>}>
-//         <PreviewMap showDrawer={showDrawer} />
-//       </Suspense>
-//     );
-//   })();
-// }, []);
-
+====
 
 GRUNT WORK:
 
 add more dummy snaps
+discover page items
 
 You can use openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 120 -nodes to generate self-signed certificate and private key.
 
@@ -85,7 +66,8 @@ cut videos to small seconds, for fairuse and performance
 rename jeeFaceFilterCanvas
 get rid of all the warnings in dev tools
 404 page
-
+skeleton frames on discover page
+camera roll page
 
 
 NOT DOING:
@@ -96,5 +78,6 @@ use map image for lazy loaded placeholder
 bring back CSS modules?
 is there a way to include imports globally e.g. the flexbox grid lib?
 can we import just the parts of animate.css that we need?
-
+share button?
+`var` in filter index files
 
