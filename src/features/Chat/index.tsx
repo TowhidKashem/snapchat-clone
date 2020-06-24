@@ -70,6 +70,12 @@ const Chat: React.FC<Props> = ({
     botResponse(); // New message from current user
   }, [user, getMessages, botResponse]);
 
+  const submitMessage = () => {
+    postMessage(user, session.username, message);
+    setMessage('');
+    botResponse();
+  };
+
   return (
     <main className="chat">
       <Notification
@@ -109,11 +115,8 @@ const Chat: React.FC<Props> = ({
             placeholder="Send a chat"
             rightIcon="faMicrophone"
             onChange={(e) => setMessage(e.currentTarget.value)}
-            onEnter={() => {
-              postMessage(user, session.username, message);
-              setMessage('');
-              botResponse();
-            }}
+            onEnter={submitMessage}
+            onBlur={submitMessage}
             value={message}
           />
           <div className="right">

@@ -11,6 +11,7 @@ interface Props {
   rightIcon?: string;
   onClick?: () => void;
   onFocus?: () => void;
+  onBlur?: () => void;
   onChange?: (e: React.SyntheticEvent<HTMLInputElement>) => void;
   onEnter?: () => void;
   focus?: boolean;
@@ -25,6 +26,7 @@ const Input: React.FC<Props> = ({
   rightIcon,
   onClick,
   onFocus,
+  onBlur,
   onChange,
   onEnter,
   focus,
@@ -36,17 +38,13 @@ const Input: React.FC<Props> = ({
 
   useEffect(() => {
     if (animate) setFull(true);
-    onAnimationComplete(() => focus && inputElem.current.focus());
+    onAnimationComplete(() => {
+      if (focus) inputElem.current.focus();
+    });
   }, [animate, focus]);
 
   return (
-    <div
-      className={classNames('input', {
-        animate,
-        full
-      })}
-      onClick={onClick}
-    >
+    <div className={classNames('input', { animate, full })} onClick={onClick}>
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
         type="text"
@@ -54,6 +52,7 @@ const Input: React.FC<Props> = ({
         placeholder={placeholder}
         value={value}
         onFocus={onFocus}
+        onBlur={onBlur}
         onChange={onChange}
         onKeyPress={({ key }) => onEnter && key === 'Enter' && onEnter()}
         disabled={onClick ? true : false}

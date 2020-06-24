@@ -4,12 +4,13 @@
 
 html {
   box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 html,
 body {
-  // touch-action: manipulation;
-  touch-action: none; // Disable pinch zoom on ios
+  touch-action: none;
 }
 
 *,
@@ -37,20 +38,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #222;
   color: #222;
-  overflow: hidden; // Prevents ios background scrolling
+  height: 100%;
+  overflow: auto;
 }
 
 a {
   color: $color-white;
   text-decoration: none;
-
-  // &:active,
-  // &:focus {
-  //   outline: 0;
-  //   border: none;
-  //   -moz-outline-style: none;
-  //   outline-style: none;
-  // }
 }
 
 .wrapper {
@@ -71,21 +65,3 @@ a {
 .app-sound {
   display: none;
 }
-
-///////
-
-// .row {
-//   border: 1px solid green;
-// }
-
-// .col-xs-1,
-// .col-xs-3,
-// .col-xs-4,
-// .col-xs-6,
-// .col-xs-12,
-// .col-xs-10,
-// .col-xs-9,
-// .col-xs-2,
-// .col-xs {
-//   box-shadow: 0 0 8px red;
-// }

@@ -29,7 +29,8 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
     ? friends.filter(
         ({ fullName, username }) => fullName.match(pattern) || username.match(pattern)
       )
-    : friends.slice(0, 10);
+    : friends;
+  // : friends.slice(0, 10);
   const hasResults = users.length > 0;
 
   return (
@@ -54,13 +55,15 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
           animationOutDuration={0}
           isVisible={show}
         >
-          {hasResults && (
-            <Widget header="Quick Add" transparent>
-              {users.map((user) => (
-                <UserPod key={user.id} user={user} />
-              ))}
-            </Widget>
-          )}
+          <div className="results">
+            {hasResults && (
+              <Widget header="Quick Add" transparent>
+                {users.map((user) => (
+                  <UserPod key={user.id} user={user} />
+                ))}
+              </Widget>
+            )}
+          </div>
           {query && !hasResults && (
             <p className="no-results">
               <span role="img" aria-label="poop emoji">

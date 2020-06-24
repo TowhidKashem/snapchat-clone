@@ -78,21 +78,22 @@ Filters.deform = {
   },
   init: (callback) => {
     JeelizResizer.size_canvas({
-      canvasId: 'jeeFaceFilterCanvas',
+      canvasId: 'filter-canvas',
       callback: (isError, bestVideoSettings) => {
-        const foo = {
-          ...bestVideoSettings,
-          maxWidth: 414
-        };
-        console.warn('mma 1', bestVideoSettings);
-        console.warn('mma 2', foo);
-        Filters.deform.initFaceFilter(foo, callback);
+        const maxWidth = document.querySelector('#wrapper').offsetWidth;
+        Filters.deform.initFaceFilter(
+          {
+            ...bestVideoSettings,
+            maxWidth
+          },
+          callback
+        );
       }
     });
   },
   initFaceFilter: (videoSettings, callback) => {
     JEEFACEFILTERAPI.init({
-      canvasId: 'jeeFaceFilterCanvas',
+      canvasId: 'filter-canvas',
       NNCpath: './filters/jeelizFaceFilter/dist/',
       videoSettings,
       callbackReady: function (errCode, spec) {

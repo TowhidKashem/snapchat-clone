@@ -6,7 +6,6 @@ import { promise, playSound, onAnimationComplete } from 'utils';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
 import { Filter } from './types';
-import useCamera from 'hooks/useCamera';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
 import Loader from 'common/Loader';
@@ -23,11 +22,13 @@ interface Props {
   setFooterType: SetFooterType;
 }
 
-export const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'tmp'];
+const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'tmp'];
 
 const Camera: React.FC<Props> = ({ setFooterType }) => {
   const videoElem = useRef<any>();
   const audioElem = useRef<any>(null);
+
+  const [stream, setStream] = useState();
 
   const [loading, setLoading] = useState(false);
   const [showFilterButtons, setShowFilterButtons] = useState(false);
@@ -37,13 +38,52 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
 
   const [takePic, setTakePic] = useState(false);
 
-  useCamera((videoStream) => (videoElem.current.srcObject = videoStream));
+  useEffect(() => {
+    initCamera();
+  }, []);
+
+  const initCamera = async () => {
+    //@ts-ignore
+    if (!('mediaDevices' in navigator)) navigator.mediaDevices = {};
+
+    if (!('getUserMedia' in navigator.mediaDevices)) {
+      //@ts-ignore
+      navigator.mediaDevices.getUserMedia = (constraints) => {
+        //@ts-ignore
+        const getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        if (!getUserMedia) {
+          return Promise.reject(new Error('getUserMedia() is not implemented!'));
+        }
+        return new Promise((resolve, reject) =>
+          getUserMedia.call(navigator, constraints, resolve, reject)
+        );
+      };
+    }
+
+    const [error, response] = await promise(
+      navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: 'user',
+          width: { ideal: 414 }
+          // height: { ideal: 736 }
+        }
+        // audio: true
+      })
+    );
+
+    setStream(response);
+
+    if (!error) videoElem.current.srcObject = response;
+    else alert(error);
+  };
 
   useEffect(() => {
     if (!activeFilter) return;
     window.Filters[activeFilter].init(() => {
       setFilterInitialized(true);
       setLoading(false);
+      //@ts-ignore
+      stream.getTracks().forEach((track) => track.stop());
     });
   }, [activeFilter]);
 
@@ -120,11 +160,9 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
             onclick={() => {
               setShowFilterButtons(true);
               setFooterType('none');
-              onAnimationComplete(() => {
-                // Load the center filter on the button list by default
-                const defaultFilter = filters[2];
-                switchFilter(defaultFilter);
-              }, 100); // 100ms is the animation duration of the filters container below
+              // Load the center filter on the button list by default
+              // 100ms is the animation duration of the filters container below
+              onAnimationComplete(() => switchFilter(filters[2]), 100);
             }}
           />
         )}
@@ -168,7 +206,8 @@ const Camera: React.FC<Props> = ({ setFooterType }) => {
                 setShowFilterButtons(false);
                 setFilterInitialized(false);
                 setFooterType('full');
-                await promise(window.JEEFACEFILTERAPI.destroy());
+                initCamera(); // should we await here?
+                await promise(window.JEEFACEFILTERAPI.destroy()); // do we need to await here?
               }}
             />
             <Button icon="faLaugh" round />

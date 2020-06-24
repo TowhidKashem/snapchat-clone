@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Web site created using create-react-app" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -15,9 +15,9 @@
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" />
 </head>
 <body>
-  <div class="wrapper">
+  <div id="wrapper" class="wrapper">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <canvas id="jeeFaceFilterCanvas" class="filter-canvas"></canvas>
+    <canvas id="filter-canvas" class="filter-canvas"></canvas>
     <div id="root"></div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r97/three.min.js"></script>

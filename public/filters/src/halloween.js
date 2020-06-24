@@ -161,7 +161,7 @@ Filters.halloween = {
   init: (callback) => {
     Filters.halloween.MASKOBJ3D = new THREE.Object3D();
     JeelizResizer.size_canvas({
-      canvasId: 'jeeFaceFilterCanvas',
+      canvasId: 'filter-canvas',
       callback: function (isError, bestVideoSettings) {
         Filters.halloween.initFaceFilter(bestVideoSettings, callback);
       }
@@ -181,7 +181,7 @@ Filters.halloween = {
   },
   initFaceFilter: (videoSettings, callback) => {
     JEEFACEFILTERAPI.init({
-      canvasId: 'jeeFaceFilterCanvas',
+      canvasId: 'filter-canvas',
       NNCpath: './filters/jeelizFaceFilter/dist/',
       videoSettings: videoSettings,
       callbackReady: function (errCode, spec) {
