@@ -17,3 +17,20 @@ export interface Geolocation {
 }
 
 export type SetLatLon = (lat: number, lon: number) => void;
+
+export type GetGeoLocation = () => [
+  boolean,
+  {
+    latitude: string;
+    longitude: string;
+  }
+];
+
+export interface Session {
+  id: number;
+  username: string;
+  avatar: string;
+  gender: 'male' | 'female' | 'other';
+  age: number;
+  fullName: string;
+}

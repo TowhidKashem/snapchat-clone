@@ -1,4 +1,5 @@
 import { api } from 'utils/system';
+import { Photos } from 'features/Camera/types';
 
 // Action types
 const SET_PHOTOS = 'SET_PHOTOS';
@@ -28,7 +29,7 @@ export default function reducer(prevState = initialState, { type, photos, dataUR
     case SET_PHOTOS:
       return { ...prevState, photos };
     case SET_PHOTO:
-      const photoCopy: any = [...prevState.photos];
+      const photoCopy: Photos = [...prevState.photos];
       if (prevState.photoTaken) {
         photoCopy[0].images.unshift(dataURL);
       } else {

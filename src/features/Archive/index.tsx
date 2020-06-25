@@ -4,12 +4,12 @@ import { showDrawer } from 'AppShell/duck';
 import { ShowDrawer } from 'AppShell/types';
 import { openSnap } from 'features/Snap/duck';
 import { OpenSnap } from 'features/Snap/types';
-
+import { Photos } from 'features/Camera/types';
 import Header from 'common/Header';
 import './index.scss';
 
 interface Props {
-  photos: any;
+  photos: Photos;
   photoTaken: boolean;
   showDrawer: ShowDrawer;
   openSnap: OpenSnap;

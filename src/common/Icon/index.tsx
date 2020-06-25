@@ -128,16 +128,14 @@ const iconMap = {
 
 interface Props {
   icon: string;
-  size?: string;
   onClick?: () => void;
   className?: string;
 }
 
-const Icon: React.FC<Props> = ({ icon, size, onClick, className = '' }) =>
+const Icon: React.FC<Props> = ({ icon, onClick, className = '' }) =>
   icon ? (
     <FontAwesomeIcon
       icon={iconMap[icon]}
-      size={size as any}
       onClick={onClick}
       className={classNames('icon', {
         [className]: className

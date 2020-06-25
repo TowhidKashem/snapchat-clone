@@ -23,7 +23,7 @@ const Notification: React.FC<Props> = ({ sender, time, show, onClick }) => (
       <div className="message">
         <header>
           <div className="left">
-            <Icon icon="faSnapchatSquare" size="7x" />
+            <Icon icon="faSnapchatSquare" />
             <span>SnapChat</span>
           </div>
           <time>{time}</time>

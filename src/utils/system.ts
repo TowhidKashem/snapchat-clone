@@ -25,7 +25,7 @@ export const api = {
 
 // Helper to remove async/await try/catch litter
 // https://gist.github.com/DavidWells/54f9dd1af4a489e5f1358f33ce59e8ad
-export const promise = (promise: Promise<any>) =>
+export const promise = (promise: Promise<[boolean, any]>) =>
   promise
     .then((data) => {
       if (data instanceof Error) return [data];

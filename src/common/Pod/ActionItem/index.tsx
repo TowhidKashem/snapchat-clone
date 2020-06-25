@@ -4,9 +4,9 @@ import Icon from 'common/Icon';
 import './index.scss';
 
 interface Props {
-  leftIcon?: any;
-  rightIcon?: any;
-  label?: string;
+  leftIcon: string;
+  rightIcon: string;
+  label: string;
   transparent?: boolean;
 }
 

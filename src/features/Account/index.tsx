@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { User } from 'features/User/types';
 import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
-import { SetLatLon } from 'features/User/types';
+import { SetLatLon, GetGeoLocation } from 'features/User/types';
 import { getGeoLocation, setLatLon } from 'features/User/duck';
 import Button from 'common/Button';
 import Widget from 'common/Widget';
@@ -16,7 +16,7 @@ interface Props {
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
   session: User;
-  getGeoLocation: () => any;
+  getGeoLocation: GetGeoLocation;
   setLatLon: SetLatLon;
 }
 
@@ -33,7 +33,7 @@ const Account: React.FC<Props> = ({
       <Icon icon="faCog" className="gear-icon" />
     </header>
     <div className="profile">
-      <Icon icon="faSnapchatSquare" size="7x" />
+      <Icon icon="faSnapchatSquare" />
       <strong>{session.username}</strong>
     </div>
     <Widget header="Stories" transparent>

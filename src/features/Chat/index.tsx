@@ -5,6 +5,8 @@ import { getMessages, postMessage, switchThread } from './duck';
 import { dummyMessages } from './data';
 import { hideDrawer } from 'AppShell/duck';
 import { HideDrawer } from 'AppShell/types';
+import { Session } from 'features/User/types';
+import { GetMessages, PostMessage, SwitchThread, Message } from 'features/Chat/types';
 import { randomArrayVal } from 'utils/array';
 import { playSound } from 'utils/audio';
 import Notification from 'common/Notification';
@@ -15,13 +17,13 @@ import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
-  session: any;
+  session: Session;
   user: string;
-  messages: any;
+  messages: Message[];
   hideDrawer: HideDrawer;
-  getMessages: any;
-  postMessage: any;
-  switchThread: any;
+  getMessages: GetMessages;
+  postMessage: PostMessage;
+  switchThread: SwitchThread;
 }
 
 const Chat: React.FC<Props> = ({
@@ -33,8 +35,8 @@ const Chat: React.FC<Props> = ({
   postMessage,
   switchThread
 }) => {
-  const messageContainer = useRef<any>(null);
-  const audioElem = useRef<any>(null);
+  const messageContainer = useRef<HTMLElement>(null);
+  const audioElem = useRef<HTMLAudioElement>(null);
 
   const [message, setMessage] = useState<string>('');
   const [typing, setTyping] = useState<boolean>(false);
@@ -44,14 +46,15 @@ const Chat: React.FC<Props> = ({
   useEffect(() => {
     setTimeout(() => {
       setMessageReceived(true);
-      playSound('newSystemMessage', audioElem.current);
+      if (audioElem.current) playSound('newSystemMessage', audioElem.current);
       setTimeout(() => setMessageReceived(false), 3000);
     }, 3000);
   }, []);
 
   useLayoutEffect(() => {
     // Scroll to bottom of container on load and each time a new message is posted
-    messageContainer.current.scrollTop = messageContainer.current.scrollHeight;
+    if (messageContainer.current)
+      messageContainer.current.scrollTop = messageContainer.current.scrollHeight;
   }, [messages]);
 
   const botResponse = useCallback(() => {
@@ -62,7 +65,7 @@ const Chat: React.FC<Props> = ({
     setTimeout(() => {
       setTyping(false);
       postMessage(user, user, randomArrayVal(dummyMessages));
-      playSound('newAppMessage', audioElem.current);
+      if (audioElem.current) playSound('newAppMessage', audioElem.current);
     }, randomArrayVal(typeTimes));
   }, [postMessage, user]);
 

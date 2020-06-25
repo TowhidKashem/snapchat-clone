@@ -6,7 +6,7 @@ interface Props {
   className?: string;
   header: string;
   transparent?: boolean;
-  children: any;
+  children: JSX.Element | JSX.Element[];
 }
 
 const Widget: React.FC<Props> = ({ className = '', header, transparent, children }) => (

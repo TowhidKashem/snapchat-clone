@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { ShowDrawer } from 'AppShell/types';
-import { SetLatLon } from 'features/User/types';
+import { SetLatLon, GetGeoLocation } from 'features/User/types';
 import Loader from 'common/Loader';
 import './index.scss';
 
 interface Props {
   showDrawer: ShowDrawer;
-  getGeoLocation: () => any;
+  getGeoLocation: GetGeoLocation;
   setLatLon: SetLatLon;
 }
 
@@ -16,7 +16,7 @@ const hasApiKey = apiKey?.length ? true : false;
 if (hasApiKey) mapboxgl.accessToken = apiKey;
 
 const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
-  const mapRef = useRef<any>();
+  const mapRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
