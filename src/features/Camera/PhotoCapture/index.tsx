@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Button from 'common/Button';
 import { SetPhoto } from '../types';
+import { isIOS } from 'utils/browser';
 import './index.scss';
 
 interface Props {
@@ -34,8 +35,9 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto 
   }, [takePic, videoElem, setPhoto]);
 
   const downloadPhoto = () => {
-    const dataURL = getDataURL().replace('image/png', 'image/octet-stream');
-    window.location.href = dataURL as string;
+    const dataURL = getDataURL();
+    if (isIOS()) window.open(dataURL, '_blank');
+    else window.location.href = dataURL.replace('image/png', 'image/octet-stream');
   };
 
   return (

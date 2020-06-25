@@ -1,7 +1,6 @@
 export const playSound = (sound: string, audioElem: HTMLAudioElement) => {
   const soundMap = {
     newAppMessage: './audio/blip.mp3',
-    newSystemMessage: './audio/ding.mp3',
     cameraShutter: './audio/shutter.mp3'
   };
   // IOS no longer allows sounds to be played without a user action

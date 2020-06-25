@@ -1,15 +1,14 @@
 import React, { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { getMessages, postMessage, switchThread } from './duck';
+import { getMessages, postMessage } from './duck';
 import { dummyMessages } from './data';
 import { hideDrawer } from 'AppShell/duck';
 import { HideDrawer } from 'AppShell/types';
 import { Session } from 'features/User/types';
-import { GetMessages, PostMessage, SwitchThread, Message } from 'features/Chat/types';
+import { GetMessages, PostMessage, Message } from 'features/Chat/types';
 import { randomArrayVal } from 'utils/array';
 import { playSound } from 'utils/audio';
-import Notification from 'common/Notification';
 import Input from 'common/Input';
 import Avatar from 'common/Avatar';
 import PillButtons from 'common/PillButtons';
@@ -23,7 +22,6 @@ interface Props {
   hideDrawer: HideDrawer;
   getMessages: GetMessages;
   postMessage: PostMessage;
-  switchThread: SwitchThread;
 }
 
 const Chat: React.FC<Props> = ({
@@ -32,24 +30,13 @@ const Chat: React.FC<Props> = ({
   messages,
   hideDrawer,
   getMessages,
-  postMessage,
-  switchThread
+  postMessage
 }) => {
   const messageContainer = useRef<HTMLElement>(null);
   const audioElem = useRef<HTMLAudioElement>(null);
 
-  const [message, setMessage] = useState<string>('');
-  const [typing, setTyping] = useState<boolean>(false);
-  const [messageReceived, setMessageReceived] = useState<boolean>(false);
-
-  // New message from other user
-  useEffect(() => {
-    setTimeout(() => {
-      setMessageReceived(true);
-      if (audioElem.current) playSound('newSystemMessage', audioElem.current);
-      setTimeout(() => setMessageReceived(false), 3000);
-    }, 3000);
-  }, []);
+  const [message, setMessage] = useState('');
+  const [typing, setTyping] = useState(false);
 
   useLayoutEffect(() => {
     // Scroll to bottom of container on load and each time a new message is posted
@@ -82,16 +69,6 @@ const Chat: React.FC<Props> = ({
 
   return (
     <main className="chat">
-      <Notification
-        sender="Tom"
-        time="now"
-        show={messageReceived}
-        onClick={() => {
-          setMessageReceived(false);
-          switchThread('tom');
-        }}
-      />
-
       <header>
         <Avatar src="./images/bitmoji.png" />
         <h2>{user}</h2>
@@ -144,8 +121,7 @@ const mapStateToProps = ({ user, chat }) => ({
 const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component) => dispatch(hideDrawer(component)),
   getMessages: (user) => dispatch(getMessages(user)),
-  postMessage: (user, author, message) => dispatch(postMessage(user, author, message)),
-  switchThread: (user) => dispatch(switchThread(user))
+  postMessage: (user, author, message) => dispatch(postMessage(user, author, message))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

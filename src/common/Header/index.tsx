@@ -10,7 +10,11 @@ interface Props {
 
 const Header: React.FC<Props> = ({ showDrawer }) => (
   <header className="header">
-    <Icon icon="faUserCircle" onClick={() => showDrawer({ component: 'account' })} />
+    <Icon
+      icon="faUserCircle"
+      onClick={() => showDrawer({ component: 'account' })}
+      className="ico-user"
+    />
     <Input
       placeholder="Search"
       leftIcon="faSearch"

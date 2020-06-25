@@ -3,7 +3,6 @@ import { api } from 'utils/system';
 // Action types
 const SET_MESSAGES = 'SET_MESSAGES';
 const SET_MESSAGE = 'SET_MESSAGE';
-const SET_THREAD = 'SET_THREAD';
 
 // Action creators
 export const getMessages = (user) => async (dispatch) => {
@@ -30,9 +29,6 @@ export const postMessage = (user, author, message) => (dispatch) =>
     }
   });
 
-export const switchThread = (user) => async (dispatch) =>
-  dispatch({ type: SET_THREAD, user });
-
 // Reducer
 const initialState = {
   activeThread: 'julia'
@@ -52,11 +48,6 @@ export default function reducer(
       return {
         ...prevState,
         [user]: [...prevState[user], message]
-      };
-    case SET_THREAD:
-      return {
-        ...prevState,
-        activeThread: user
       };
     default:
       return prevState;

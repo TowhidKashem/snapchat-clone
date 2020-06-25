@@ -1,11 +1,9 @@
 
 *** Add new filter
 
-image download doesn't work on mobile
+set initial state for all ducks
 
 typescript errors and use of any
-
-see if these (Optionnal init arguments) on https://github.com/jeeliz/jeelizFaceFilter help with the red transition state
 
 in chat the username color alternates on odd/even, it should be based on username, in snapchat writing mulitplee messages are touching lines
 
@@ -69,6 +67,8 @@ get rid of all the warnings in dev tools
 404 page
 skeleton frames on discover page
 camera roll page
+image download doesn't work on mobile
+
 
 
 NOT DOING:
@@ -81,4 +81,8 @@ is there a way to include imports globally e.g. the flexbox grid lib?
 can we import just the parts of animate.css that we need?
 share button?
 `var` in filter index files
+see if these (Optionnal init arguments) on https://github.com/jeeliz/jeelizFaceFilter help with the red transition state
+
+
+
 

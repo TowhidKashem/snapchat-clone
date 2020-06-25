@@ -40,7 +40,7 @@ const Input: React.FC<Props> = ({
     if (animate) setFull(true);
     onAnimationComplete(() => {
       if (focus) inputElem?.current?.focus();
-    });
+    }, 300); // 300ms drawer animation duration
   }, [animate, focus]);
 
   return (

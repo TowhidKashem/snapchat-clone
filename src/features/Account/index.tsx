@@ -30,10 +30,10 @@ const Account: React.FC<Props> = ({
   <main className="account">
     <header>
       <Button icon="faAngleDown" onclick={() => hideDrawer('account')} />
-      <Icon icon="faCog" className="gear-icon" />
+      <Icon icon="faCog" className="ico-gear" />
     </header>
     <div className="profile">
-      <Icon icon="faSnapchatSquare" />
+      <Icon icon="faSnapchatSquare" className="ico-brand" />
       <strong>{session.username}</strong>
     </div>
     <Widget header="Stories" transparent>

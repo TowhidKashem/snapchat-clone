@@ -38,7 +38,7 @@ const initialState = {
     //   animationInDuration: 300,
     //   animationOutDuration: 300,
     //   // theme: 'dark',
-    //   component: 'archive',
+    //   component: 'chat',
     //   show: true
     // }
   ]
