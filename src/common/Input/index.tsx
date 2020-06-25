@@ -33,13 +33,13 @@ const Input: React.FC<Props> = ({
   spellCheck,
   animate
 }) => {
-  const inputElem = useRef<any>();
+  const inputElem = useRef<HTMLInputElement>(null);
   const [full, setFull] = useState(false);
 
   useEffect(() => {
     if (animate) setFull(true);
     onAnimationComplete(() => {
-      if (focus) inputElem.current.focus();
+      if (focus) inputElem?.current?.focus();
     });
   }, [animate, focus]);
 

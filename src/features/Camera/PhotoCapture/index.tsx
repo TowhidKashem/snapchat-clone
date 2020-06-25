@@ -7,6 +7,7 @@ import './index.scss';
 interface Props {
   takePic: boolean;
   closePic: () => void;
+  // videoElem: React.Ref<HTMLVideoElement>;
   videoElem: any;
   setPhoto: SetPhoto;
 }
@@ -14,7 +15,7 @@ interface Props {
 const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto }) => {
   const canvasElem = useRef<HTMLCanvasElement>(null);
 
-  const getDataURL = () => canvasElem?.current?.toDataURL('image/png');
+  const getDataURL = () => canvasElem?.current?.toDataURL('image/png') || '';
 
   useEffect(() => {
     const takePhoto = () => {
@@ -23,19 +24,16 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto 
       if (context) {
         context.canvas.width = innerWidth;
         context.canvas.height = innerHeight;
-        // ctx.scale(2, 2)
         context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
       }
     };
     if (takePic) {
       takePhoto();
-      //@ts-ignore
       setPhoto(getDataURL());
     }
-  }, [takePic, videoElem]);
+  }, [takePic, videoElem, setPhoto]);
 
   const downloadPhoto = () => {
-    //@ts-ignore
     const dataURL = getDataURL().replace('image/png', 'image/octet-stream');
     window.location.href = dataURL as string;
   };

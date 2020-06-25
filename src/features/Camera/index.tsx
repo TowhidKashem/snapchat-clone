@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
@@ -46,6 +45,7 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
   }, []);
 
   const startCamera = async () => {
+    const navigator: any = window.navigator;
     if (!('mediaDevices' in navigator)) navigator.mediaDevices = {};
     if (!('getUserMedia' in navigator.mediaDevices)) {
       navigator.mediaDevices.getUserMedia = (constraints) => {
@@ -67,12 +67,13 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
       })
     );
     setCameraStream(response);
-    if (!error) videoElem.current.srcObject = response;
+    if (!error && videoElem.current) videoElem.current.srcObject = response;
     else alert(error); //tmp
   };
 
   useEffect(() => {
     if (!activeFilter) return;
+    //@ts-ignore
     const stopCamera = () => cameraStream.getTracks().forEach((track) => track.stop());
     window.Filters[activeFilter].init(() => {
       setFilterInitialized(true);
@@ -146,7 +147,7 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
           buttonClass="btn-capture"
           onclick={() => {
             setTakePic(true);
-            playSound('cameraShutter', audioElem.current);
+            if (audioElem.current) playSound('cameraShutter', audioElem.current);
           }}
         />
 

@@ -14,14 +14,14 @@ const initialState = {
   lon: null,
   time: null,
   type: null,
-  caption: null,
-  userId: null
+  url: null,
+  caption: null
 };
 
 export default function reducer(prevState = initialState, { type, snap }) {
   switch (type) {
     case SET_SNAP:
-      return { ...prevState, ...snap };
+      return snap;
     default:
       return prevState;
   }

@@ -5,8 +5,8 @@ import './index.scss';
 
 interface Props {
   image?: string;
-  icon?: any;
-  icons?: any[];
+  icon?: string;
+  icons?: string[];
   iconClass?: string;
   iconClasses?: Array<string | null>;
   buttonClass?: string;
@@ -33,7 +33,7 @@ const Button: React.FC<Props> = ({
   <button
     type="button"
     onClick={onclick}
-    className={classNames('button', {
+    className={classNames('btn', {
       [buttonClass]: buttonClass,
       round,
       plain,

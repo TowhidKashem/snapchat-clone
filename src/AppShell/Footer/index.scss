@@ -15,7 +15,7 @@
   );
 
   &.light-shadow {
-    .button {
+    .btn {
       .icon {
         &:not(.new-msg) {
           @extend %icon-shadow-light;
@@ -24,7 +24,7 @@
     }
   }
 
-  .button {
+  .btn {
     text-shadow: 0 0 1px $color-darker-grey;
 
     .icon {

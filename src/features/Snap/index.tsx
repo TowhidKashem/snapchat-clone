@@ -13,11 +13,11 @@ interface Props {
 }
 
 const Snap: React.FC<Props> = ({ snap, hideDrawer }) => {
-  const videoElem = useRef<any>();
+  const videoElem = useRef<HTMLVideoElement>(null);
   const { location, time, type, url, caption } = snap;
 
   useEffect(() => {
-    if (type === 'video') {
+    if (type === 'video' && videoElem.current) {
       videoElem.current.load();
       videoElem.current.play();
     }
@@ -26,10 +26,12 @@ const Snap: React.FC<Props> = ({ snap, hideDrawer }) => {
   return (
     <main className="snap" onClick={() => hideDrawer('snap')}>
       <header>
-        <div className="left">
-          {location}
-          <time>{relativeTime(time)}</time>
-        </div>
+        {location && time && (
+          <div className="left">
+            {location}
+            <time>{relativeTime(time)}</time>
+          </div>
+        )}
         <div className="right">
           <Icon icon="faEllipsisV" />
         </div>

@@ -29,8 +29,6 @@ tap to close message on image snaps
 
 remove tmp rules from tsconfig
 
-include storybook
-
 pwa things like manifect, shortcuts, etc
 
 have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
@@ -47,6 +45,9 @@ GRUNT WORK:
 
 add more dummy snaps
 discover page items
+storybook stories
+common component unit tests
+
 
 You can use openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 120 -nodes to generate self-signed certificate and private key.
 

@@ -16,7 +16,7 @@ interface Props {
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
   session: User;
-  getGeoLocation: () => void;
+  getGeoLocation: () => any;
   setLatLon: SetLatLon;
 }
 

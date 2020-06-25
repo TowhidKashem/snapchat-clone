@@ -8,7 +8,6 @@ interface Props {
   rightIcon?: any;
   label?: string;
   transparent?: boolean;
-  children?: any;
 }
 
 const ActionItem: React.FC<Props> = ({ leftIcon, rightIcon, label, transparent }) => (

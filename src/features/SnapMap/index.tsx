@@ -37,10 +37,10 @@ const SnapMap: React.FC<Props> = ({
 }) => {
   const { latitude, longitude } = geolocation;
 
-  const mapElem = useRef<any>();
+  const mapElem = useRef<HTMLDivElement>(null);
 
   const [loading, setLoading] = useState(true);
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState<any>(null);
 
   useEffect(() => {
     getSnaps(latitude, longitude);
@@ -80,7 +80,6 @@ const SnapMap: React.FC<Props> = ({
       addSelfMarker();
 
       // Zoom in effect on load
-      //@ts-ignore
       setTimeout(() => map.flyTo({ zoom: 14 }), 2000);
     }
   }, [map, latitude, longitude]);
