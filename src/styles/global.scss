@@ -1,5 +1,5 @@
 @import 'vars';
-// @import 'extendables';
+@import 'extendables';
 // @import 'mixins';
 
 html {
@@ -48,11 +48,9 @@ a {
 }
 
 .wrapper {
+  @extend %app-width;
   position: relative;
   background-color: $color-dark-grey;
-  width: $app-width;
-  // min-width: 320px;
-  // max-width: 414px;
   height: 100vh;
   margin: 0 auto;
   overflow: hidden;

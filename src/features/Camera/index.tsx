@@ -46,6 +46,8 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
 
   const startCamera = async () => {
     const navigator: any = window.navigator;
+    const maxWidth = (document.querySelector('#wrapper') as HTMLDivElement)?.offsetWidth;
+
     if (!('mediaDevices' in navigator)) navigator.mediaDevices = {};
     if (!('getUserMedia' in navigator.mediaDevices)) {
       navigator.mediaDevices.getUserMedia = (constraints) => {
@@ -58,14 +60,16 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
           );
       };
     }
+
     const [error, response] = await promise(
       navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: 'user',
-          width: { ideal: 414 }
+          width: { ideal: maxWidth }
         }
       })
     );
+
     setCameraStream(response);
     if (!error && videoElem.current) videoElem.current.srcObject = response;
     else alert(error); //tmp

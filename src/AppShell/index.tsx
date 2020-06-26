@@ -14,7 +14,6 @@ import Toolbar from './Toolbar';
 import Footer from './Footer';
 import Drawer from './Drawer';
 import Header from 'common/Header';
-import './index.scss';
 
 interface Props {
   drawers: DrawerType[];

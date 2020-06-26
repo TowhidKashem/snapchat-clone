@@ -3,8 +3,8 @@
 
 .not-found {
   @extend %center-x-y;
+  @extend %app-width;
   background: $color-yellow;
-  width: $app-width;
   height: 100vh;
   position: fixed;
   top: 0;

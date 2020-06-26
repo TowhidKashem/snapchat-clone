@@ -3,8 +3,8 @@
 
 .toolbar {
   @extend %center-x-y;
+  @extend %app-width;
   position: fixed;
-  width: $app-width;
   top: 0;
   color: $color-white;
   padding: 5px 10px;

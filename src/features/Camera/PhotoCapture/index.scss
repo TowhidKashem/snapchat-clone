@@ -2,71 +2,76 @@
 @import '~styles/extendables';
 
 .photo-capture {
+  @extend %app-width;
   position: fixed;
+  top: 0;
   z-index: 100;
 
   &.hide {
     display: none;
   }
 
-  .icon {
-    @extend %icon-shadow-dark;
-  }
+  .inner {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 
-  .btn {
     .icon {
-      font-size: 25px;
+      @extend %icon-shadow-dark;
     }
-  }
-
-  header {
-    position: fixed;
-    top: 0;
-    padding: 15px;
-    z-index: 1;
-  }
-
-  canvas {
-    @extend %video-cover;
-  }
-
-  aside {
-    position: fixed;
-    top: 15px;
-    margin-left: $app-width - 40px;
-    display: flex;
-    flex-direction: column;
 
     .btn {
-      margin-bottom: 15px;
-
       .icon {
-        font-size: 22px;
+        font-size: 25px;
       }
     }
-  }
 
-  footer {
-    position: fixed;
-    bottom: 15px;
-    width: $app-width;
-
-    .left,
-    .right {
-      position: absolute;
-      bottom: 0;
+    canvas {
+      @extend %video-cover;
     }
 
-    .left {
-      left: 15px;
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      padding: 15px;
+    }
+
+    aside {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
 
       .btn {
-        margin-right: 15px;
+        margin-bottom: 15px;
+
+        .icon {
+          font-size: 22px;
+        }
       }
     }
 
-    .right {
-      right: 15px;
+    footer {
+      @extend %app-width;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      padding: 15px;
+
+      .left {
+        .btn {
+          margin-right: 15px;
+        }
+      }
+
+      .right {
+        margin-left: auto;
+      }
     }
   }
 }

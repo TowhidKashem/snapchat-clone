@@ -41,9 +41,9 @@
   }
 
   .controls {
+    @extend %app-width;
     position: fixed;
     bottom: 0;
-    width: $app-width;
     height: 240px;
     overflow: hidden;
 

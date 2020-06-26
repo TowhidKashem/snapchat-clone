@@ -1,7 +1,13 @@
 @import 'vars';
 
+%app-width {
+  width: 100%;
+  min-width: 320px;
+  max-width: 414px;
+}
+
 %video-cover {
-  width: $app-width;
+  @extend %app-width;
   height: 100vh;
   position: fixed;
   top: 0;

@@ -3,10 +3,10 @@
 
 .footer {
   @extend %center-x-y;
+  @extend %app-width;
   position: fixed;
   bottom: 0;
   padding-bottom: 25px;
-  width: $app-width;
   z-index: 10;
   background-image: linear-gradient(
     to bottom,

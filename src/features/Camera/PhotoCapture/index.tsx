@@ -15,6 +15,11 @@ interface Props {
 const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto }) => {
   const canvasElem = useRef<HTMLCanvasElement>(null);
 
+  useEffect(() => {
+    const viewportHeight = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', viewportHeight + 'px');
+  }, []);
+
   const getDataURL = () => canvasElem?.current?.toDataURL('image/png') || '';
 
   useEffect(() => {
@@ -45,28 +50,30 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto 
         hide: !takePic
       })}
     >
-      <header>
-        <Button icon="faTimes" onclick={closePic} />
-      </header>
-      <canvas ref={canvasElem}></canvas>
-      <aside>
-        <Button icon="faTextHeight" />
-        <Button icon="faPen" />
-        <Button icon="faStickyNote" />
-        <Button icon="faCut" />
-        <Button icon="faPaperclip" />
-        <Button icon="faCropAlt" />
-        <Button icon="faStopwatch" />
-      </aside>
-      <footer>
-        <div className="left">
-          <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
-          <Button icon="faExternalLinkAlt" label="Story" />
-        </div>
-        <div className="right">
-          <Button icon="faPlayCircle" label="Send To" />
-        </div>
-      </footer>
+      <div className="inner">
+        <header>
+          <Button icon="faTimes" onclick={closePic} />
+        </header>
+        <canvas ref={canvasElem}></canvas>
+        <aside>
+          <Button icon="faTextHeight" />
+          <Button icon="faPen" />
+          <Button icon="faStickyNote" />
+          <Button icon="faCut" />
+          <Button icon="faPaperclip" />
+          <Button icon="faCropAlt" />
+          <Button icon="faStopwatch" />
+        </aside>
+        <footer>
+          <div className="left">
+            <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
+            <Button icon="faExternalLinkAlt" label="Story" />
+          </div>
+          <div className="right">
+            <Button icon="faPlayCircle" label="Send To" />
+          </div>
+        </footer>
+      </div>
     </section>
   );
 };

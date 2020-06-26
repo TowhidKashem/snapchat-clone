@@ -1,13 +1,14 @@
 @import '~styles/vars';
 @import '~styles/mixins';
+@import '~styles/extendables';
 
 .loading {
   @include overlay-bg;
   color: $color-white;
 
   &.fixed {
+    @extend %app-width;
     position: fixed;
-    width: $app-width;
     height: 100vh;
   }
 
