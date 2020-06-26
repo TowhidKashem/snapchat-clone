@@ -1,9 +1,9 @@
 
 *** Add new filter
 
-set initial state for all ducks
+CSS pixel perfect
 
-typescript errors and use of any
+set initial state for all ducks
 
 in chat the username color alternates on odd/even, it should be based on username, in snapchat writing mulitplee messages are touching lines
 
@@ -22,8 +22,6 @@ read and apply redux style guide rules
 some type of walk through tool to show what's working (pulsing effect?)
 
 add git repo link!
-
-tap to close message on image snaps
 
 remove tmp rules from tsconfig
 
@@ -68,6 +66,7 @@ get rid of all the warnings in dev tools
 skeleton frames on discover page
 camera roll page
 image download doesn't work on mobile
+typescript errors and use of any
 
 
 
@@ -82,7 +81,7 @@ can we import just the parts of animate.css that we need?
 share button?
 `var` in filter index files
 see if these (Optionnal init arguments) on https://github.com/jeeliz/jeelizFaceFilter help with the red transition state
-
+tap to close message on image snaps
 
 
 

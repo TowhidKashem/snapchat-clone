@@ -13,7 +13,7 @@ interface Props {
 
 const apiKey = process.env.REACT_APP_MAP_BOX_API_KEY;
 const hasApiKey = apiKey?.length ? true : false;
-if (hasApiKey) mapboxgl.accessToken = apiKey;
+if (hasApiKey) mapboxgl.accessToken = apiKey as string;
 
 const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -62,7 +62,7 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
 
   const loadMap = (lat, lon) => {
     const map = new mapboxgl.Map({
-      container: mapRef.current,
+      container: mapRef.current as HTMLDivElement,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [lon, lat],
       zoom: 13

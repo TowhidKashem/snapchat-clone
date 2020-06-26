@@ -8,11 +8,12 @@ import { GetSnaps, GetWeather, Weather } from './types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
 import { openSnap } from 'features/Snap/duck';
 import { getSnaps, getWeather } from './duck';
+import { onAnimationComplete } from 'utils/animation';
 import Header from './Header';
 import Loader from 'common/Loader';
 import './index.scss';
 
-mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
+mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY as string;
 
 interface Props {
   snaps: Snap[];
@@ -40,14 +41,14 @@ const SnapMap: React.FC<Props> = ({
   const mapElem = useRef<HTMLDivElement>(null);
 
   const [loading, setLoading] = useState(true);
-  const [map, setMap] = useState<any>(null);
+  const [map, setMap] = useState<mapboxgl.Map | null>(null);
 
   useEffect(() => {
     getSnaps(latitude, longitude);
     getWeather(latitude, longitude);
     setMap(
       new mapboxgl.Map({
-        container: mapElem.current,
+        container: mapElem.current as HTMLDivElement,
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [longitude, latitude],
         zoom: 13
@@ -89,11 +90,11 @@ const SnapMap: React.FC<Props> = ({
     const addSnapToMap = (snap: Snap) => {
       const marker = document.createElement('div');
       marker.className = 'marker';
-      marker.onclick = (e: any) => {
+      marker.onclick = function (e: any) {
+        // Show pulse animation
         e.target.classList.add('active');
-
-        // Delay opening the drawer so we can see the pulse animation
-        setTimeout(() => {
+        // Delay opening the drawer so we can see the pulse
+        onAnimationComplete(() => {
           openSnap(snap);
           showDrawer({
             component: 'snap',
@@ -102,14 +103,15 @@ const SnapMap: React.FC<Props> = ({
             theme: 'dark'
           });
         }, 900);
-
-        // Remove pulse animation
-        setTimeout(() => e.target.classList.remove('active'), 1000);
+        // Remove pulse
+        onAnimationComplete(() => e.target.classList.remove('active'), 1000);
       };
-      new mapboxgl.Marker(marker).setLngLat([snap.lon, snap.lat]).addTo(map);
+      new mapboxgl.Marker(marker)
+        .setLngLat([snap.lon as number, snap.lat as number])
+        .addTo(map as mapboxgl.Map);
     };
 
-    if (map) snaps.map((snap) => addSnapToMap(snap));
+    snaps.map((snap) => addSnapToMap(snap));
   }, [snaps, map, openSnap, showDrawer]);
 
   return (

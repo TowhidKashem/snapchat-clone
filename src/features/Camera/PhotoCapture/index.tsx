@@ -8,8 +8,7 @@ import './index.scss';
 interface Props {
   takePic: boolean;
   closePic: () => void;
-  // videoElem: React.Ref<HTMLVideoElement>;
-  videoElem: any;
+  videoElem: HTMLVideoElement;
   setPhoto: SetPhoto;
 }
 
@@ -25,7 +24,7 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto 
       if (context) {
         context.canvas.width = innerWidth;
         context.canvas.height = innerHeight;
-        context.drawImage(videoElem.current, 0, 0, innerWidth, innerHeight);
+        context.drawImage(videoElem, 0, 0, innerWidth, innerHeight);
       }
     };
     if (takePic) {

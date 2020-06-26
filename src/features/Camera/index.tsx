@@ -7,7 +7,7 @@ import { playSound } from 'utils/audio';
 import { onAnimationComplete } from 'utils/animation';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
-import { Filter, SetPhoto } from './types';
+import { Filter, FilterObj, SetPhoto } from './types';
 import { setPhoto } from './duck';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
@@ -17,7 +17,7 @@ import './index.scss';
 declare global {
   interface Window {
     JEEFACEFILTERAPI: any;
-    Filters: any;
+    Filters: FilterObj;
   }
 }
 
@@ -137,7 +137,7 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
       <PhotoCapture
         takePic={takePic}
         closePic={() => setTakePic(false)}
-        videoElem={videoElem}
+        videoElem={videoElem.current as HTMLVideoElement}
         setPhoto={setPhoto}
       />
 

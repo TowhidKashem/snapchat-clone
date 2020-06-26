@@ -7,3 +7,14 @@ export type Photos = Array<{
   year: number;
   images: string[];
 }>;
+
+type FilterFunction = {
+  init: (callback: () => void) => void;
+};
+
+export type FilterObj = {
+  bees: FilterFunction;
+  deform: FilterFunction;
+  dog: FilterFunction;
+  halloween: FilterFunction;
+};
