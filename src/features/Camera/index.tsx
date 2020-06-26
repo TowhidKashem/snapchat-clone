@@ -77,8 +77,10 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
 
   useEffect(() => {
     if (!activeFilter) return;
-    //@ts-ignore
-    const stopCamera = () => cameraStream.getTracks().forEach((track) => track.stop());
+
+    const stopCamera = () =>
+      (cameraStream as any).getTracks().forEach((track) => track.stop());
+
     window.Filters[activeFilter].init(() => {
       setFilterInitialized(true);
       setLoading(false);

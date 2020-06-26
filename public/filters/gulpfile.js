@@ -33,12 +33,10 @@ const defaultTask = (cb) => {
   return gulp
     .src([
       // Main dependencies
-      // 'jeelizFaceFilter/libs/threejs/v97/three.js',
       'jeelizFaceFilter/dist/jeelizFaceFilter.js',
       'jeelizFaceFilter/helpers/JeelizResizer.js',
       'jeelizFaceFilter/helpers/JeelizThreejsHelper.js',
       // Dog dependencies
-      // 'jeelizFaceFilter/libs/tween/v16_3_5/Tween.min.js',
       'jeelizFaceFilter/libs/threejs/customMaterials/FlexMaterial/ThreeFlexMaterial.js',
       'jeelizFaceFilter/demos/threejs/dog_face/libs/glfx.js',
       // Dog and bees dependency
@@ -57,7 +55,7 @@ const defaultTask = (cb) => {
       })
     )
     .pipe(terser())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('build'));
   cb();
 };
 

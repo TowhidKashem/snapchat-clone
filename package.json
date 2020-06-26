@@ -28,6 +28,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "setup": "npm i && cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && npm run gulp",
     "start": "HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

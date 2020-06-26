@@ -6,14 +6,7 @@ Filters.liberty = {
   BASE_URL: './filters/jeelizFaceFilter/demos/threejs/multiLiberty',
   THREECAMERA: null,
   SETTINGS: {
-    maxFaces: 4 //max number of detected faces
-  },
-  detectCallback: (faceIndex, isDetected) => {
-    if (isDetected) {
-      console.log('INFO in detect_callback(): face n°', faceIndex, 'DETECTED');
-    } else {
-      console.log('INFO in detect_callback(): face n°', faceIndex, 'LOST');
-    }
+    maxFaces: 4
   },
   createLibertyMaterial: () => {
     return new THREE.MeshLambertMaterial({
@@ -25,8 +18,8 @@ Filters.liberty = {
       premultipliedAlpha: true
     });
   },
-  createFaceMaterial: () => {
-    return new THREE.MeshBasicMaterial({
+  createFaceMaterial: () =>
+    new THREE.MeshBasicMaterial({
       color: 0x5da0a0,
       transparent: true,
       side: THREE.DoubleSide,
@@ -35,19 +28,17 @@ Filters.liberty = {
       blendSrc: THREE.SrcColorFactor,
       blendDst: THREE.OneFactor,
       blendEquation: THREE.AddEquation
-    });
-  },
+    }),
   initThreeScene: (spec) => {
-    const threeStuffs = THREE.JeelizHelper.init(spec, Filters.liberty.detectCallback);
-
-    function add_faceMesh(threeFaceMesh) {
+    const threeStuffs = THREE.JeelizHelper.init(spec);
+    const addFaceMesh = (threeFaceMesh) => {
       threeFaceMesh.frustumCulled = false;
       threeFaceMesh.scale.multiplyScalar(0.37);
       threeFaceMesh.position.set(0, 0.25, 0.5);
-      threeStuffs.faceObjects.forEach(function (faceObject) {
-        faceObject.add(threeFaceMesh.clone());
-      });
-    }
+      threeStuffs.faceObjects.forEach((faceObject) =>
+        faceObject.add(threeFaceMesh.clone())
+      );
+    };
     const libertyLoader = new THREE.BufferGeometryLoader();
     libertyLoader.load(Filters.liberty.BASE_URL + '/assets/liberty.json', function (
       libertyGeometry
@@ -58,18 +49,18 @@ Filters.liberty = {
         Filters.liberty.createLibertyMaterial()
       );
       libertyMesh.renderOrder = 2;
-      add_faceMesh(libertyMesh);
+      addFaceMesh(libertyMesh);
     });
     new THREE.BufferGeometryLoader().load(
       Filters.liberty.BASE_URL + '/assets/libertyFaceMask.json',
-      function (faceGeometry) {
+      (faceGeometry) => {
         THREE.JeelizHelper.sortFaces(faceGeometry, 'z', true);
         const faceMesh = new THREE.Mesh(
           faceGeometry,
           Filters.liberty.createFaceMaterial()
         );
         faceMesh.renderOrder = 1;
-        add_faceMesh(faceMesh);
+        addFaceMesh(faceMesh);
       }
     );
     Filters.liberty.THREECAMERA = THREE.JeelizHelper.create_camera();
@@ -78,23 +69,18 @@ Filters.liberty = {
     dirLight.position.set(0, 0.05, 1);
     threeStuffs.scene.add(ambientLight, dirLight);
   },
-  init: (callback) => {
+  init: (callback) =>
     JEEFACEFILTERAPI.init({
       canvasId: 'filter-canvas',
       NNCpath: './filters/jeelizFaceFilter/dist/',
       maxFacesDetected: Filters.liberty.SETTINGS.maxFaces,
       callbackReady: function (errCode, spec) {
-        if (errCode) {
-          console.log('AN ERROR HAPPENS. SORRY BRO :( . ERR =', errCode);
-          return;
-        }
-        console.log('INFO: JEEFACEFILTERAPI IS READY');
+        if (errCode) return;
         Filters.liberty.initThreeScene(spec);
         if (callback) setTimeout(callback, 100);
       },
       callbackTrack: function (detectState) {
         THREE.JeelizHelper.render(detectState, Filters.liberty.THREECAMERA);
       }
-    });
-  }
+    })
 };
