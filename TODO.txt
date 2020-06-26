@@ -1,13 +1,12 @@
+//@ts-ignore
 
-*** Add new filter
+turn off eslint on filters dir
 
 CSS pixel perfect
 
 set initial state for all ducks
 
 in chat the username color alternates on odd/even, it should be based on username, in snapchat writing mulitplee messages are touching lines
-
-add finger swipe navigation?
 
 when u run npm i at the root, can it also cd into filters dir and install all the deps there too? 
    add the jeeliz repo as a dep and have it installed via the npm i command in there too instead of committing the contents of that repo (yuck)
@@ -67,7 +66,7 @@ skeleton frames on discover page
 camera roll page
 image download doesn't work on mobile
 typescript errors and use of any
-
+*** Add new filter
 
 
 NOT DOING:
@@ -82,6 +81,7 @@ share button?
 `var` in filter index files
 see if these (Optionnal init arguments) on https://github.com/jeeliz/jeelizFaceFilter help with the red transition state
 tap to close message on image snaps
+add finger swipe navigation?
 
 
 

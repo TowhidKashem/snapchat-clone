@@ -47,7 +47,8 @@ const defaultTask = (cb) => {
       'src/dog.js',
       'src/bees.js',
       'src/halloween.js',
-      'src/deform.js'
+      'src/deform.js',
+      'src/liberty.js'
     ])
     .pipe(concat('filters.min.js'))
     .pipe(

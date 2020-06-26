@@ -26,7 +26,7 @@ interface Props {
   setPhoto: SetPhoto;
 }
 
-const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'tmp'];
+const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'liberty'];
 
 const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
   const videoElem = useRef<HTMLVideoElement>(null);
