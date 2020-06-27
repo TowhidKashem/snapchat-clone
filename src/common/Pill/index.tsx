@@ -6,7 +6,7 @@ interface Props {
   icons: string[];
 }
 
-const PillButtons: React.FC<Props> = ({ icons }) => (
+const Pill: React.FC<Props> = ({ icons }) => (
   <div className="pill">
     {icons.map((icon) => (
       <Button key={icon} icon={icon} />
@@ -14,4 +14,4 @@ const PillButtons: React.FC<Props> = ({ icons }) => (
   </div>
 );
 
-export default PillButtons;
+export default Pill;

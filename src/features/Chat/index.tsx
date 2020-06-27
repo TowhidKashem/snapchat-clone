@@ -11,7 +11,7 @@ import { randomArrayVal } from 'utils/array';
 import { playSound } from 'utils/audio';
 import Input from 'common/Input';
 import Avatar from 'common/Avatar';
-import PillButtons from 'common/PillButtons';
+import Pill from 'common/Pill';
 import Button from 'common/Button';
 import './index.scss';
 
@@ -74,8 +74,12 @@ const Chat: React.FC<Props> = ({
         <Avatar src="./images/bitmoji.png" />
         <h2>{user}</h2>
         <div className="right">
-          <PillButtons icons={['faPhoneAlt', 'faVideo']} />
-          <Button icon="faAngleRight" onclick={() => hideDrawer('chat')} />
+          <Pill icons={['faPhoneAlt', 'faVideo']} />
+          <Button
+            icon="faAngleRight"
+            onclick={() => hideDrawer('chat')}
+            buttonClass="btn-arrow"
+          />
         </div>
       </header>
 

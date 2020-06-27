@@ -1,0 +1,22 @@
+@import '~styles/extendables';
+@import '~styles/vars';
+
+.pill {
+  display: flex;
+  background: $color-light-grey;
+  border-radius: 20px;
+
+  .btn {
+    @extend %center-x-y;
+    border-right: 1px solid $color-white;
+    padding: 7px 12px;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    .icon {
+      color: $color-blue-grey;
+    }
+  }
+}

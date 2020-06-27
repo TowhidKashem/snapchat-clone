@@ -15,9 +15,10 @@ $footer-height: 70px;
     display: flex;
     height: $header-height;
     position: fixed;
+    padding: 0 10px;
 
     .avatar {
-      width: 60px;
+      width: 50px;
       margin-right: 5px;
     }
 
@@ -26,7 +27,11 @@ $footer-height: 70px;
       margin-left: auto;
 
       .pill {
-        margin-right: 10px;
+        margin-right: 15px;
+      }
+
+      .btn-arrow {
+        font-size: 23px;
       }
     }
   }
