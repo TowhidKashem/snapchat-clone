@@ -12,8 +12,7 @@
   }
 
   .inner {
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: $mobile-vh;
 
     .icon {
       @extend %icon-shadow-dark;

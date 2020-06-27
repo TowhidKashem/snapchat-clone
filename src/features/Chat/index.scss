@@ -1,16 +1,24 @@
 @import '~styles/extendables';
 @import '~styles/vars';
 
+$header-height: 65px;
+$footer-height: 70px;
+
 .chat {
   position: relative;
-  height: 100%;
+  padding-top: $toolbar-height;
+  background: $color-white;
+  height: 100vh;
 
   > header {
+    @extend %app-width;
     display: flex;
+    height: $header-height;
+    position: fixed;
 
     .avatar {
       width: 60px;
-      margin-right: 10px;
+      margin-right: 5px;
     }
 
     .right {
@@ -24,8 +32,11 @@
   }
 
   .messages {
-    height: 600px;
+    padding: 10px 5px;
+    margin-top: $header-height;
     overflow: auto;
+    height: calc(#{$mobile-vh} - #{$toolbar-height + $header-height + $footer-height});
+    // box-shadow: inset 0 0 8px red;
 
     .message {
       margin-bottom: 10px;
@@ -44,7 +55,7 @@
         margin: 0;
       }
 
-      &:nth-child(even) {
+      &.other {
         header {
           color: $color-salmon;
         }
@@ -57,44 +68,61 @@
   }
 
   footer {
-    width: 100%;
-    position: absolute;
+    @extend %app-width;
+    height: $footer-height;
+    position: fixed;
     bottom: 0;
     border-top: 1px solid $color-grey;
-    padding: 10px 0 20px;
+
+    .icon {
+      color: $color-blue-grey;
+      font-size: 20px;
+    }
 
     .avatar {
       position: absolute;
-      top: -13px;
+      top: -20px;
       width: 50px;
     }
 
     .typing {
       .avatar {
         position: absolute;
-        top: -21px;
-        width: 50px;
+        top: -32px;
       }
     }
 
     .inner-content {
       display: flex;
       position: relative;
-      background: $color-light-grey;
+      padding: 10px;
+      background: $color-white;
 
-      > .btn {
+      .btn-camera {
+        &.round {
+          .icon {
+            color: $color-blue-grey;
+          }
+        }
+      }
+
+      .btn-camera,
+      .input input[type='text'] {
+        background: $color-light-grey;
         margin-right: 10px;
       }
 
       .input {
-        width: 320px;
+        width: 250px;
         margin-right: 10px;
 
-        input[type='text'] {
-          background: rgba($color-black, 0.1);
+        .icon {
+          margin-top: -10px;
+        }
 
+        input[type='text'] {
           &::placeholder {
-            color: $color-dark-grey;
+            color: $color-blue-grey;
             font-weight: normal;
           }
         }
@@ -102,6 +130,20 @@
 
       .right {
         @extend %center-x-y;
+
+        .archive-btn {
+          margin: 0 5px;
+
+          .icon {
+            &:first-child {
+              transform: rotate(-5deg);
+            }
+
+            &:last-child {
+              transform: rotate(5deg);
+            }
+          }
+        }
       }
     }
   }

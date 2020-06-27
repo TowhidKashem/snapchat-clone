@@ -12,7 +12,7 @@ type FilterFunction = {
   init: (callback: () => void) => void;
 };
 
-export type FilterObj = {
+export type FilterScript = {
   bees: FilterFunction;
   deform: FilterFunction;
   dog: FilterFunction;

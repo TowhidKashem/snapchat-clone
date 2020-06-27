@@ -2,6 +2,7 @@ $color-white: #ffffff;
 $color-black: #000000;
 $color-grey: #cccccc;
 $color-darker-grey: #999999;
+$color-blue-grey: #646e76;
 $color-dark-grey: #333333;
 $color-light-grey: #eee;
 $color-yellow: #fffc00;
@@ -15,4 +16,7 @@ $color-pastel-green: #aee5ad;
 $color-pastel-blue: #84b8f4;
 $color-pastel-pink: #ecb3d2;
 
-$toolbar-height: 30px;
+// Same as 100vh but takes into account the bottom toolbar on mobile browsers like ios safari
+$mobile-vh: calc(var(--vh, 1vh) * 100);
+
+$toolbar-height: 29px;

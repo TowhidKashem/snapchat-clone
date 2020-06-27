@@ -58,10 +58,11 @@ const Chat: React.FC<Props> = ({
 
   useEffect(() => {
     getMessages(user);
-    botResponse(); // New message from current user
+    botResponse();
   }, [user, getMessages, botResponse]);
 
   const submitMessage = () => {
+    if (!message.length) return;
     postMessage(user, session.username, message);
     setMessage('');
     botResponse();
@@ -80,33 +81,42 @@ const Chat: React.FC<Props> = ({
 
       <section ref={messageContainer} className="messages">
         {messages[user]?.map(({ author, message, time }, index) => (
-          <article key={time + index} className="message">
+          <article
+            key={time + index}
+            className={classNames('message', {
+              other: author !== session.username
+            })}
+          >
             <header>{author}</header>
             <blockquote>{message}</blockquote>
           </article>
         ))}
       </section>
+
       <footer>
         <div className={classNames({ typing })}>
           <Avatar src="./images/bitmoji.png" />
         </div>
         <div className="inner-content">
-          <Button icon="faCamera" />
+          <Button icon="faCamera" buttonClass="btn-camera" round />
           <Input
             placeholder="Send a chat"
             rightIcon="faMicrophone"
-            onChange={(e) => setMessage(e.currentTarget.value)}
+            onChange={(e: React.SyntheticEvent<HTMLInputElement>) =>
+              setMessage(e.currentTarget.value)
+            }
             onEnter={submitMessage}
             onBlur={submitMessage}
             value={message}
           />
           <div className="right">
             <Button icon="faSmileWink" />
-            <Button icon="faSmileWink" />
+            <Button icons={['faMobile', 'faMobileAlt']} buttonClass="archive-btn" />
             <Button icon="faRocket" />
           </div>
         </div>
       </footer>
+
       <audio ref={audioElem} className="app-sound"></audio>
     </main>
   );

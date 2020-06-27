@@ -37,7 +37,7 @@ const initialState = {
     //   animationOut: 'zoomOut',
     //   animationInDuration: 300,
     //   animationOutDuration: 300,
-    //   // theme: 'dark',
+    //   theme: 'stripped',
     //   component: 'chat',
     //   show: true
     // }

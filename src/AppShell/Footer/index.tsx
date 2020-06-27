@@ -43,7 +43,8 @@ const Footer: React.FC<Props> = ({
             showDrawer({
               component: 'chat',
               animationIn: 'slideInLeft',
-              animationOut: 'slideOutLeft'
+              animationOut: 'slideOutLeft',
+              theme: 'stripped'
             })
           }
         />

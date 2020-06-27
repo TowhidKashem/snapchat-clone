@@ -1,8 +1,6 @@
+some type of walk through tool to show what's working (pulsing effect?)
+
 CSS pixel perfect
-
-in chat the username color alternates on odd/even, it should be based on username, in snapchat writing mulitplee messages are touching lines
-
-error moving down to field on chat message recived and enter
 
 write end to end cypress tests
 
@@ -11,15 +9,11 @@ cross browser compatability / mobile
 
 read and apply redux style guide rules
 
-some type of walk through tool to show what's working (pulsing effect?)
-
 add git repo link!
 
 remove tmp rules from tsconfig
 
 pwa things like manifect, shortcuts, etc
-
-have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
 
 renew all api keys in commits
 
@@ -64,7 +58,8 @@ turn off eslint on filters dir
 //@ts-ignore
 when u run npm i at the root, can it also cd into filters dir and install all the deps there too? 
    add the jeeliz repo as a dep and have it installed via the npm i command in there too instead of committing the contents of that repo (yuck)
-
+in chat the username color alternates on odd/even, it should be based on username
+error moving down to field on chat message recived and enter
 
 
 
@@ -82,5 +77,6 @@ see if these (Optionnal init arguments) on https://github.com/jeeliz/jeelizFaceF
 tap to close message on image snaps
 add finger swipe navigation?
 set initial state for all ducks
-
+have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
+in snapchat writing mulitplee messages are touching lines
 

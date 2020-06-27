@@ -7,7 +7,7 @@ import { playSound } from 'utils/audio';
 import { onAnimationComplete } from 'utils/animation';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
-import { Filter, FilterObj, SetPhoto } from './types';
+import { Filter, FilterScript, SetPhoto } from './types';
 import { setPhoto } from './duck';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
@@ -17,7 +17,7 @@ import './index.scss';
 declare global {
   interface Window {
     JEEFACEFILTERAPI: any;
-    Filters: FilterObj;
+    Filters: FilterScript;
   }
 }
 

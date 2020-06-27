@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Button from 'common/Button';
 import { SetPhoto } from '../types';
-import { isIOS } from 'utils/browser';
+import { isIOS, stretchViewPortHeight } from 'utils/browser';
 import './index.scss';
 
 interface Props {
@@ -16,8 +16,7 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto 
   const canvasElem = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const viewportHeight = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', viewportHeight + 'px');
+    stretchViewPortHeight();
   }, []);
 
   const getDataURL = () => canvasElem?.current?.toDataURL('image/png') || '';
