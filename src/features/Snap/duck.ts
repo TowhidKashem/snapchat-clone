@@ -8,16 +8,7 @@ export const openSnap = (snap: Snap) => async (dispatch) =>
   dispatch({ type: SET_SNAP, snap });
 
 // Reducer
-const initialState = {
-  location: null,
-  lat: null,
-  lon: null,
-  time: null,
-  type: null,
-  url: null,
-  caption: null,
-  lastLoaded: null
-};
+const initialState = {};
 
 export default function reducer(prevState = initialState, { type, snap }) {
   switch (type) {

@@ -13,18 +13,6 @@ write end to end cypress tests
 
 read and apply redux style guide rules
 
-add git repo link!
-
-remove tmp rules from tsconfig
-
-pwa things like manifect, shortcuts, etc
-
-block all readuests (especially external api calls) and confirm no error
-
-renew all api keys in commits
-
-have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
-
 ====
 
 GRUNT WORK:
@@ -33,4 +21,16 @@ add more dummy snaps
 discover page items
 storybook stories
 common component unit tests
+
+--
+
+Last:
+
+  block all requests (especially external api calls) and confirm no error
+  remove tmp rules from tsconfig
+  renew all api keys in commits
+  have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
+
+  make sure pwa manifest related things are being picked up once depoyed!
+
 

@@ -1,6 +1,5 @@
 @import 'vars';
 @import 'extendables';
-// @import 'mixins';
 
 html {
   box-sizing: border-box;
@@ -33,10 +32,10 @@ img {
 
 body {
   position: relative;
-  font: normal 14px 'Lato', sans-serif;
+  font: normal 14px 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  // text-rendering: optimizeLegibility;
   background: #222;
   color: #222;
   height: 100%;

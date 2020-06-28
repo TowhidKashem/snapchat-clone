@@ -3,19 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="A SnapChat clone demo built in React and TypeScript" />
+  <meta name="description" content="A SnapChat clone demo built with React, Redux and TypeScript" />
+  <meta name="apple-mobile-web-app-title" content="SnapChat Clone" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo@192x192.png" />
+  <link rel="apple-touch-startup-image" href="%PUBLIC_URL%/logo@512x512.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <title>SnapChat Clone</title>
-  <style>
-    body { background: #222; }
-  </style>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="%PUBLIC_URL%/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" />
 </head>
 <body>
+  <a href="https://github.com/TowhidKashem/react-snapchat-clone" target="_blank" class="fork-github">
+    <img src="/images/git-banner.svg" alt="" />
+  </a>
   <div id="wrapper" class="wrapper">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <canvas id="filter-canvas" class="filter-canvas"></canvas>
