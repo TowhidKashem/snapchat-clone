@@ -6,6 +6,7 @@ export interface Snap {
   lon?: number;
   time?: number;
   caption?: string;
+  lastLoaded?: number;
 }
 
 export type OpenSnap = (snap: Snap) => void;

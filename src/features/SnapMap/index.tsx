@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React, { useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import mapboxgl from 'mapbox-gl';
@@ -96,7 +95,10 @@ const SnapMap: React.FC<Props> = ({
         e.target.classList.add('active');
         // Delay opening the drawer so we can see the pulse
         onAnimationComplete(() => {
-          openSnap(snap);
+          openSnap({
+            ...snap,
+            lastLoaded: Date.now()
+          });
           showDrawer({
             component: 'snap',
             animationIn: 'zoomIn',

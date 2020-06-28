@@ -33,9 +33,10 @@ img {
 
 body {
   position: relative;
-  font: normal 14px 'AvenirNext', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font: normal 14px 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   background: #222;
   color: #222;
   height: 100%;

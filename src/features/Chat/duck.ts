@@ -11,18 +11,15 @@ export const getMessages = (user) => async (dispatch) => {
   if (!error) {
     dispatch({
       type: SET_MESSAGES,
-      user,
       messages: response.messages
     });
   }
 };
 
-export const postMessage = (user, author, message) => (dispatch) =>
+export const postMessage = (author, message) => (dispatch) =>
   dispatch({
     type: SET_MESSAGE,
-    user,
     message: {
-      thread: user,
       author,
       message,
       time: Date.now()
@@ -31,23 +28,21 @@ export const postMessage = (user, author, message) => (dispatch) =>
 
 // Reducer
 const initialState = {
-  activeThread: 'julia'
+  thread: 'Julia',
+  messages: []
 };
 
-export default function reducer(
-  prevState = initialState,
-  { type, user, messages, message }
-) {
+export default function reducer(prevState = initialState, { type, messages, message }) {
   switch (type) {
     case SET_MESSAGES:
       return {
         ...prevState,
-        [user]: [...messages]
+        messages
       };
     case SET_MESSAGE:
       return {
         ...prevState,
-        [user]: [...prevState[user], message]
+        messages: [...prevState.messages, message]
       };
     default:
       return prevState;

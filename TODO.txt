@@ -5,7 +5,9 @@ cross browser compatability / mobile
 
 ----
 
-give rounded edges to image cover
+click center footer btn, click discover, click center again
+  - both dissapeat at once
+  - position fixed is broken
 
 write end to end cypress tests
 
@@ -63,7 +65,9 @@ when u run npm i at the root, can it also cd into filters dir and install all th
 in chat the username color alternates on odd/even, it should be based on username
 error moving down to field on chat message recived and enter
 some type of walk through tool to show what's working (pulsing effect?)
-
+give rounded edges to image cover
+once video snap ends, can't be played again
+removed `activeThread` functionality
 
 
 
@@ -82,5 +86,5 @@ tap to close message on image snaps
 add finger swipe navigation?
 set initial state for all ducks
 have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
-in snapchat writing mulitplee messages are touching lines
+in snapchat writing mulitple messages are touching lines
 

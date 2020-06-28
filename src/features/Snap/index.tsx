@@ -13,8 +13,9 @@ interface Props {
 }
 
 const Snap: React.FC<Props> = ({ snap, hideDrawer }) => {
-  const videoElem = useRef<HTMLVideoElement>(null);
   const { location, time, type, url, caption } = snap;
+
+  const videoElem = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (type === 'video' && videoElem.current) {

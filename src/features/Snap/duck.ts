@@ -15,7 +15,8 @@ const initialState = {
   time: null,
   type: null,
   url: null,
-  caption: null
+  caption: null,
+  lastLoaded: null
 };
 
 export default function reducer(prevState = initialState, { type, snap }) {

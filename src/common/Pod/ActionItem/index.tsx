@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Icon from 'common/Icon';
+import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
@@ -16,9 +17,9 @@ const ActionItem: React.FC<Props> = ({ leftIcon, rightIcon, label, straightEdge 
       'straight-edge': straightEdge
     })}
   >
-    <Icon icon={leftIcon} />
+    <Icon icon={leftIcon} className="ico-left" />
     {label}
-    <Icon icon={rightIcon} className="right-icon" />
+    <Button icon={rightIcon} buttonClass="ico-right" />
   </article>
 );
 

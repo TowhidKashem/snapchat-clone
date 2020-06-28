@@ -17,7 +17,12 @@ const Header: React.FC<Props> = ({ weather, city, hideDrawer }) => {
   return (
     <header className="weather-header">
       <div className="left">
-        <Button icon="faTimes" round onclick={() => hideDrawer('snapMap')} />
+        <Button
+          icon="faTimes"
+          round
+          onclick={() => hideDrawer('snapMap')}
+          buttonClass="btn-close"
+        />
         <Button icon="faSearch" round />
       </div>
       <div className="center">

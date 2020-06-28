@@ -17,6 +17,10 @@
     margin-right: 3px;
   }
 
+  .btn-close {
+    @extend %clickable;
+  }
+
   .left,
   .center,
   .right {

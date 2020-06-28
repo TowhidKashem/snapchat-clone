@@ -17,7 +17,7 @@ import './index.scss';
 
 interface Props {
   session: Session;
-  user: string;
+  thread: string;
   messages: Message[];
   hideDrawer: HideDrawer;
   getMessages: GetMessages;
@@ -26,7 +26,7 @@ interface Props {
 
 const Chat: React.FC<Props> = ({
   session,
-  user,
+  thread,
   messages,
   hideDrawer,
   getMessages,
@@ -51,19 +51,19 @@ const Chat: React.FC<Props> = ({
     setTimeout(() => setTyping(true), randomArrayVal(responseTimes));
     setTimeout(() => {
       setTyping(false);
-      postMessage(user, user, randomArrayVal(dummyMessages));
+      postMessage(thread, randomArrayVal(dummyMessages));
       if (audioElem.current) playSound('newAppMessage', audioElem.current);
     }, randomArrayVal(typeTimes));
-  }, [postMessage, user]);
+  }, [postMessage, thread]);
 
   useEffect(() => {
-    getMessages(user);
+    getMessages(thread);
     botResponse();
-  }, [user, getMessages, botResponse]);
+  }, [thread, getMessages, botResponse]);
 
   const submitMessage = () => {
     if (!message.length) return;
-    postMessage(user, session.username, message);
+    postMessage(session.username, message);
     setMessage('');
     botResponse();
   };
@@ -72,7 +72,7 @@ const Chat: React.FC<Props> = ({
     <main className="chat">
       <header>
         <Avatar src="./images/bitmoji.png" />
-        <h2>{user}</h2>
+        <h2>{thread}</h2>
         <div className="right">
           <Pill icons={['faPhoneAlt', 'faVideo']} />
           <Button
@@ -84,7 +84,7 @@ const Chat: React.FC<Props> = ({
       </header>
 
       <section ref={messageContainer} className="messages">
-        {messages[user]?.map(({ author, message, time }, index) => (
+        {messages.map(({ author, message, time }, index) => (
           <article
             key={time + index}
             className={classNames('message', {
@@ -128,14 +128,14 @@ const Chat: React.FC<Props> = ({
 
 const mapStateToProps = ({ user, chat }) => ({
   session: user.session,
-  user: chat.activeThread,
-  messages: chat
+  thread: chat.thread,
+  messages: chat.messages
 });
 
 const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component) => dispatch(hideDrawer(component)),
   getMessages: (user) => dispatch(getMessages(user)),
-  postMessage: (user, author, message) => dispatch(postMessage(user, author, message))
+  postMessage: (author, message) => dispatch(postMessage(author, message))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

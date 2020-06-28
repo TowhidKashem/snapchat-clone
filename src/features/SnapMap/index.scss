@@ -73,12 +73,3 @@
     box-shadow: 0 0 0 35px rgba($color-black, 0);
   }
 }
-
-@keyframes shadow-pulse-big {
-  0% {
-    box-shadow: 0 0 0 0px rgba($color-black, 0.1);
-  }
-  100% {
-    box-shadow: 0 0 0 70px rgba($color-black, 0);
-  }
-}

@@ -32,15 +32,15 @@ export const setFooterType = (footerType: FooterType) => (dispatch) =>
 const initialState = {
   footerType: 'full',
   drawers: [
-    {
-      animationIn: 'zoomIn',
-      animationOut: 'zoomOut',
-      animationInDuration: 300,
-      animationOutDuration: 300,
-      // theme: 'stripped',
-      component: 'account',
-      show: true
-    }
+    // {
+    //   animationIn: 'zoomIn',
+    //   animationOut: 'zoomOut',
+    //   animationInDuration: 300,
+    //   animationOutDuration: 300,
+    //   // theme: 'stripped',
+    //   component: 'account',
+    //   show: true
+    // }
   ]
 };
 
