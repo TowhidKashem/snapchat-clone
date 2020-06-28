@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShowDrawer } from 'AppShell/types';
-import Icon from 'common/Icon';
+import Button from 'common/Button';
 import Input from 'common/Input';
 import './index.scss';
 
@@ -10,10 +10,10 @@ interface Props {
 
 const Header: React.FC<Props> = ({ showDrawer }) => (
   <header className="header">
-    <Icon
+    <Button
       icon="faUserCircle"
-      onClick={() => showDrawer({ component: 'account' })}
-      className="ico-user"
+      onclick={() => showDrawer({ component: 'account' })}
+      buttonClass="btn-user"
     />
     <Input
       placeholder="Search"
@@ -29,7 +29,7 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
         })
       }
     />
-    <Icon icon="faRetweet" />
+    <Button icon="faRetweet" />
   </header>
 );
 

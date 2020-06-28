@@ -37,8 +37,8 @@ const initialState = {
       animationOut: 'zoomOut',
       animationInDuration: 300,
       animationOutDuration: 300,
-      theme: 'stripped',
-      component: 'chat',
+      // theme: 'stripped',
+      component: 'account',
       show: true
     }
   ]

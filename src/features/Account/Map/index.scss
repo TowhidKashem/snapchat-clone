@@ -5,21 +5,22 @@
 .preview-map {
   position: relative;
   min-height: 170px;
+  background: $color-light-grey;
 
-  // Overlay on top prevents zoom/pinch on map
+  // Overlay on top prevents pinch/zoom on map on mobile
   &:after {
     @include overlay-bg(0);
     content: '';
     left: 0;
+    cursor: pointer;
   }
 
   .map {
     .self-marker {
-      background-image: url('/images/self-marker.png');
+      background-image: url(/images/self-marker.png);
       background-size: cover;
       width: 55px;
       height: 55px;
-      transition: all 80ms ease-in;
     }
   }
 
@@ -37,6 +38,7 @@
     background: url(/images/map-bg-sm.png) no-repeat;
     background-size: cover;
     z-index: 1000;
+    overflow: hidden;
 
     &:after {
       @include overlay-bg(0.3);

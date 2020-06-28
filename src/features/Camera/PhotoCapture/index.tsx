@@ -65,7 +65,12 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto 
         </aside>
         <footer>
           <div className="left">
-            <Button icon="faDownload" label="Save" onclick={downloadPhoto} />
+            <Button
+              icon="faDownload"
+              label="Save"
+              onclick={downloadPhoto}
+              buttonClass="btn-download"
+            />
             <Button icon="faExternalLinkAlt" label="Story" />
           </div>
           <div className="right">

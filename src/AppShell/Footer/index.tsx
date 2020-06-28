@@ -37,7 +37,7 @@ const Footer: React.FC<Props> = ({
         <Button
           icons={['faCommentAlt', 'faDot']}
           iconClasses={[null, 'new-msg']}
-          buttonClass="chat-btn"
+          buttonClass="btn-chat"
           label="Chat"
           onclick={() =>
             showDrawer({

@@ -50,3 +50,26 @@
 %icon-shadow-light {
   filter: drop-shadow(1px 1px 4px $color-darker-grey);
 }
+
+%clickable {
+  animation: glow 0.8s infinite alternate;
+}
+
+%clickable-button {
+  .icon {
+    @extend %clickable;
+    margin: 0;
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 100%;
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -5px $color-pastel-blue;
+  }
+  to {
+    box-shadow: 0 0 5px 5px $color-pastel-blue;
+  }
+}

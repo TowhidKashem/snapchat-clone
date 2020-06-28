@@ -10,6 +10,13 @@ $footer-height: 70px;
   background: $color-white;
   height: 100vh;
 
+  .btn,
+  .input {
+    .icon {
+      color: $color-blue-grey;
+    }
+  }
+
   > header {
     @extend %app-width;
     display: flex;
@@ -31,6 +38,7 @@ $footer-height: 70px;
       }
 
       .btn-arrow {
+        @extend %clickable-button;
         font-size: 23px;
       }
     }
@@ -80,7 +88,6 @@ $footer-height: 70px;
     border-top: 1px solid $color-grey;
 
     .icon {
-      color: $color-blue-grey;
       font-size: 20px;
     }
 
@@ -102,14 +109,6 @@ $footer-height: 70px;
       position: relative;
       padding: 10px;
       background: $color-white;
-
-      .btn-camera {
-        &.round {
-          .icon {
-            color: $color-blue-grey;
-          }
-        }
-      }
 
       .btn-camera,
       .input input[type='text'] {

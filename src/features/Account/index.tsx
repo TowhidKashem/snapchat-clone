@@ -29,10 +29,14 @@ const Account: React.FC<Props> = ({
 }) => (
   <main className="account">
     <header>
-      <Button icon="faAngleDown" onclick={() => hideDrawer('account')} />
+      <Button
+        icon="faAngleDown"
+        onclick={() => hideDrawer('account')}
+        buttonClass="btn-close"
+      />
       <Icon icon="faCog" className="ico-gear" />
     </header>
-    <div className="profile">
+    <div className="logo">
       <Icon icon="faSnapchatSquare" className="ico-brand" />
       <strong>{session.username}</strong>
     </div>
@@ -57,7 +61,7 @@ const Account: React.FC<Props> = ({
         leftIcon="faCompass"
         rightIcon="faAngleRight"
         label="Set a Status"
-        transparent
+        straightEdge
       />
     </Widget>
   </main>

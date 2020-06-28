@@ -1,8 +1,13 @@
 @import '~styles/vars';
+@import '~styles/extendables';
 
 .account {
   > header {
     display: flex;
+
+    .btn-close {
+      @extend %clickable-button;
+    }
 
     .icon {
       font-size: 20px;
@@ -13,7 +18,7 @@
     }
   }
 
-  .profile {
+  .logo {
     text-align: center;
 
     .ico-brand {

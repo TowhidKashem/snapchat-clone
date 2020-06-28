@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import mapboxgl from 'mapbox-gl';

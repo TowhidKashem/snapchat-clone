@@ -11,13 +11,11 @@
   }
 
   .inner-content {
-    border-radius: 10px;
-    overflow: hidden;
-
     &:not(.transparent) {
-      background: $color-white;
-      box-shadow: 0 0 6px $color-grey;
+      box-shadow: 0 0 8px $color-light-grey;
+      // box-shadow: 0 0 8px red;
       border-radius: 7px;
+      overflow: hidden;
     }
   }
 }

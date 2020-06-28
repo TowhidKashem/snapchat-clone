@@ -7,11 +7,15 @@ interface Props {
   leftIcon: string;
   rightIcon: string;
   label: string;
-  transparent?: boolean;
+  straightEdge?: boolean;
 }
 
-const ActionItem: React.FC<Props> = ({ leftIcon, rightIcon, label, transparent }) => (
-  <article className={classNames('pod-action-item', { transparent })}>
+const ActionItem: React.FC<Props> = ({ leftIcon, rightIcon, label, straightEdge }) => (
+  <article
+    className={classNames('pod-action-item', {
+      'straight-edge': straightEdge
+    })}
+  >
     <Icon icon={leftIcon} />
     {label}
     <Icon icon={rightIcon} className="right-icon" />

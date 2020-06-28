@@ -203,7 +203,7 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
             <Button icon="faQrcode" round />
             <Button
               icon="faTimesCircle"
-              buttonClass="close"
+              buttonClass="btn-close"
               onclick={() => {
                 setActiveFilter('');
                 setShowFilterButtons(false);
