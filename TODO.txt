@@ -19,11 +19,11 @@ remove tmp rules from tsconfig
 
 pwa things like manifect, shortcuts, etc
 
+block all readuests (especially external api calls) and confirm no error
+
 renew all api keys in commits
 
-use svg cleaner tool
-
-block all readuests (especially external api calls) and confirm no error
+have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
 
 ====
 
@@ -33,58 +33,4 @@ add more dummy snaps
 discover page items
 storybook stories
 common component unit tests
-
-
-You can use openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 120 -nodes to generate self-signed certificate and private key.
-
-==============================================
-
-DONE:
-
-zoom map in on open
-filters
-fonts
-when picking new filter it needs to animate to the center capture button
-open discover drawer, then open search drawer, them click discover drawer button and watch the flash, it shouldn't do anything when its already open
-hit BE api to hide api keys
-once u get the lat/lon, u can save it in redux to avoid the call in snapmap
-cut videos to small seconds, for fairuse and performance
-*** Fix wonkiness with filters
-rename jeeFaceFilterCanvas
-get rid of all the warnings in dev tools
-404 page
-skeleton frames on discover page
-camera roll page
-image download doesn't work on mobile
-typescript errors and use of any
-*** Add new filter
-turn off eslint on filters dir
-//@ts-ignore
-when u run npm i at the root, can it also cd into filters dir and install all the deps there too? 
-   add the jeeliz repo as a dep and have it installed via the npm i command in there too instead of committing the contents of that repo (yuck)
-in chat the username color alternates on odd/even, it should be based on username
-error moving down to field on chat message recived and enter
-some type of walk through tool to show what's working (pulsing effect?)
-give rounded edges to image cover
-once video snap ends, can't be played again
-removed `activeThread` functionality
-
-
-
-NOT DOING:
-
-loadable for all GET requests
-immer.js
-use map image for lazy loaded placeholder
-bring back CSS modules?
-is there a way to include imports globally e.g. the flexbox grid lib?
-can we import just the parts of animate.css that we need?
-share button?
-`var` in filter index files
-see if these (Optionnal init arguments) on https://github.com/jeeliz/jeelizFaceFilter help with the red transition state
-tap to close message on image snaps
-add finger swipe navigation?
-set initial state for all ducks
-have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
-in snapchat writing mulitple messages are touching lines
 

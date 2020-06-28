@@ -28,6 +28,10 @@
     background: $color-purple;
     padding: 10px 20px;
     border-radius: 20px;
+
+    strong {
+      margin-top: 0;
+    }
   }
 
   .icon {

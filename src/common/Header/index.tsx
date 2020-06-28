@@ -29,7 +29,7 @@ const Header: React.FC<Props> = ({ showDrawer }) => (
         })
       }
     />
-    <Button icon="faRetweet" />
+    <Button icon="faRetweet" buttonClass="btn-flip-camera" />
   </header>
 );
 

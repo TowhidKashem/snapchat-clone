@@ -17,7 +17,7 @@
 
   .map {
     .self-marker {
-      background-image: url(/images/self-marker.png);
+      background-image: url(/images/bitmoji-self.png);
       background-size: cover;
       width: 55px;
       height: 55px;
@@ -35,7 +35,7 @@
 
   .api-key-msg {
     @extend %center-x-y;
-    background: url(/images/map-bg-sm.png) no-repeat;
+    background: url(/images/map-bg.png) no-repeat;
     background-size: cover;
     z-index: 1000;
     overflow: hidden;

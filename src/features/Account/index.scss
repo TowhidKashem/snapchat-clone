@@ -4,6 +4,8 @@
 .account {
   > header {
     display: flex;
+    padding: 20px 10px;
+    margin-bottom: -35px;
 
     .btn-close {
       @extend %clickable-button;

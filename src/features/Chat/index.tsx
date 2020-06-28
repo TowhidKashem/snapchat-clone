@@ -71,7 +71,7 @@ const Chat: React.FC<Props> = ({
   return (
     <main className="chat">
       <header>
-        <Avatar src="./images/bitmoji.png" />
+        <Avatar src="./images/bitmoji-other.png" />
         <h2>{thread}</h2>
         <div className="right">
           <Pill icons={['faPhoneAlt', 'faVideo']} />
@@ -99,7 +99,7 @@ const Chat: React.FC<Props> = ({
 
       <footer>
         <div className={classNames({ typing })}>
-          <Avatar src="./images/bitmoji.png" />
+          <Avatar src="./images/bitmoji-other.png" />
         </div>
         <div className="inner-content">
           <Button icon="faCamera" buttonClass="btn-camera" round />
