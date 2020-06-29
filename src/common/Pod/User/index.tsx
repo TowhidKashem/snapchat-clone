@@ -10,7 +10,7 @@ interface Props {
 const User: React.FC<Props> = ({ user }) => {
   const { username, fullName, avatar } = user;
   return (
-    <article className="pod-user">
+    <article className="pod user">
       <Avatar src={avatar} size="sm" />
       <div className="meta">
         <header>{fullName}</header>

@@ -12,9 +12,9 @@
 
   .inner-content {
     &:not(.transparent) {
-      box-shadow: 0 0 8px $color-light-grey;
+      box-shadow: 0 0 8px #ddd;
       // box-shadow: 0 0 8px red;
-      border-radius: 7px;
+      border-radius: 8px;
       overflow: hidden;
     }
   }

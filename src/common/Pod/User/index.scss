@@ -1,8 +1,8 @@
 @import '~styles/vars';
 
-.pod-user {
+.pod.user {
   display: flex;
-  padding: 10px 0;
+  padding: 10px;
   background: $color-white;
   border-bottom: 1px solid $color-light-grey;
 

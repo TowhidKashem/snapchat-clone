@@ -136,6 +136,7 @@
         &.btn-close {
           @extend %clickable-button;
           margin: 0 25px;
+          border: 1px solid red;
         }
       }
     }

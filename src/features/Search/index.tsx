@@ -56,7 +56,7 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
         >
           <div className="results">
             {hasResults && (
-              <Widget header="Quick Add" transparent>
+              <Widget header="Quick Add">
                 {users.map((user) => (
                   <UserPod key={user.id} user={user} />
                 ))}

@@ -38,7 +38,7 @@ const initialState = {
     //   animationInDuration: 300,
     //   animationOutDuration: 300,
     //   // theme: 'stripped',
-    //   component: 'account',
+    //   component: 'search',
     //   show: true
     // }
   ]
@@ -53,7 +53,8 @@ const setShowDrawer = (prevState, drawer) => {
         if (curDrawer.component === drawer.component)
           return {
             ...curDrawer,
-            show: true
+            show: true,
+            animationOutDuration: drawer.animationOutDuration
           };
         return curDrawer;
       })
@@ -62,21 +63,47 @@ const setShowDrawer = (prevState, drawer) => {
 };
 
 const setHideDrawer = (prevState, component) => {
-  const drawers = component
-    ? // Close select drawer
-      prevState.drawers.map((drawer) => {
-        if (drawer.component === component)
+  let drawers;
+
+  // Close select drawer
+  if (component) {
+    drawers = prevState.drawers.map((drawer) => {
+      if (drawer.component === component)
+        return {
+          ...drawer,
+          show: false
+        };
+      return drawer;
+    });
+  }
+  // Close all drawers
+  else {
+    const drawersOpen = prevState.drawers.filter(({ show }) => show);
+    const lastDrawerOpen = drawersOpen[drawersOpen.length - 1].component;
+
+    // Close all drawers but show exit animation only on the last opened one
+    if (drawersOpen.length > 1) {
+      drawers = prevState.drawers.map((drawer) => {
+        if (drawer.component === lastDrawerOpen) {
           return {
             ...drawer,
             show: false
           };
-        return drawer;
-      })
-    : // Close all drawers
-      prevState.drawers.map((drawer) => ({
+        }
+        return {
+          ...drawer,
+          show: false,
+          animationOutDuration: 0
+        };
+      });
+    } else {
+      drawers = prevState.drawers.map((drawer) => ({
         ...drawer,
         show: false
       }));
+    }
+  }
+
   return { ...prevState, drawers };
 };
 

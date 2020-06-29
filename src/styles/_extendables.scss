@@ -56,12 +56,13 @@
 }
 
 %clickable-button {
+  @extend %clickable;
+  border-radius: 100%;
+  min-width: 25px;
+  min-height: 25px;
+
   .icon {
-    @extend %clickable;
     margin: 0;
-    min-width: 25px;
-    min-height: 25px;
-    border-radius: 100%;
   }
 }
 

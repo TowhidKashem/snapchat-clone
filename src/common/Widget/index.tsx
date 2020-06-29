@@ -3,26 +3,27 @@ import classNames from 'classnames';
 import './index.scss';
 
 interface Props {
-  className?: string;
   header: string;
-  transparent?: boolean;
   children: JSX.Element | JSX.Element[];
+  className?: string;
+  transparent?: boolean;
+  box?: boolean;
 }
 
-const Widget: React.FC<Props> = ({ className = '', header, transparent, children }) => (
+const Widget: React.FC<Props> = ({
+  header,
+  children,
+  className = '',
+  transparent,
+  box
+}) => (
   <section
     className={classNames('widget', {
       [className]: className
     })}
   >
     <header>{header}</header>
-    <div
-      className={classNames('inner-content', {
-        transparent
-      })}
-    >
-      {children}
-    </div>
+    <div className={classNames('inner-content', { transparent, box })}>{children}</div>
   </section>
 );
 

@@ -3,15 +3,15 @@ CSS pixel perfect
 cross browser compatability / mobile
         check browser stack
 
-----
-
-click center footer btn, click discover, click center again
-  - both dissapeat at once
-  - position fixed is broken
+safari open filter, then close, issue
 
 write end to end cypress tests
 
 read and apply redux style guide rules
+
+clear snap unmount
+
+move SET_PHOTO reducer to its own function
 
 ====
 

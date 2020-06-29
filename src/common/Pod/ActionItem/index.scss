@@ -1,15 +1,15 @@
 @import '~styles/vars';
 @import '~styles/extendables';
 
-.pod-action-item {
+.pod.action-item {
   @extend %center-x-y;
   background: $color-white;
   padding: 13px 15px;
   font-weight: 500;
 
   &:not(.straight-edge) {
-    box-shadow: 0 0 8px $color-light-grey;
-    border-radius: 7px;
+    box-shadow: 0 0 8px #ddd;
+    border-radius: 8px;
   }
 
   &:not(:last-child) {

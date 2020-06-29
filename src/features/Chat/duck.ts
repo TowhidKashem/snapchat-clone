@@ -35,10 +35,7 @@ const initialState = {
 export default function reducer(prevState = initialState, { type, messages, message }) {
   switch (type) {
     case SET_MESSAGES:
-      return {
-        ...prevState,
-        messages
-      };
+      return { ...prevState, messages };
     case SET_MESSAGE:
       return {
         ...prevState,

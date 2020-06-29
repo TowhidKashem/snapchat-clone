@@ -44,18 +44,18 @@ const Input: React.FC<Props> = ({
   }, [animate, focus]);
 
   return (
-    <div className={classNames('input', { animate, full })} onClick={onClick}>
+    <div className={classNames('input', { animate, full })}>
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
         type="text"
         ref={inputElem}
         placeholder={placeholder}
         value={value}
+        onClick={onClick}
         onFocus={onFocus}
         onBlur={onBlur}
         onChange={onChange}
         onKeyPress={({ key }) => onEnter && key === 'Enter' && onEnter()}
-        disabled={onClick ? true : false}
         spellCheck={spellCheck || false}
         className={classNames({
           'has-left-icon': leftIcon

@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Spotlight: React.FC<Props> = ({ title, time, image }) => (
-  <article className="pod-spotlight">
+  <article className="pod spotlight">
     <img src={image} alt="" />
     <div className="meta">
       <header>{title}</header>

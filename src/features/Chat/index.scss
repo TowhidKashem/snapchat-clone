@@ -126,8 +126,7 @@ $footer-height: 70px;
 
         input[type='text'] {
           &::placeholder {
-            color: $color-blue-grey;
-            font-weight: normal;
+            color: $color-darker-grey;
           }
         }
       }

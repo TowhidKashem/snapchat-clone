@@ -25,6 +25,8 @@
 
   .view {
     overflow: scroll;
+    padding: 0 10px;
+    margin: 0 -10px;
 
     .no-results {
       font-weight: bold;
