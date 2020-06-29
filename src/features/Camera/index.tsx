@@ -7,8 +7,8 @@ import { playSound } from 'utils/audio';
 import { onAnimationComplete } from 'utils/animation';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
-import { Filter, FilterScript, SetPhoto } from './types';
-import { setPhoto } from './duck';
+import { Filter, FilterScript, PickPhoto } from './types';
+import { pickPhoto } from './duck';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
 import Loader from 'common/Loader';
@@ -23,12 +23,12 @@ declare global {
 
 interface Props {
   setFooterType: SetFooterType;
-  setPhoto: SetPhoto;
+  pickPhoto: PickPhoto;
 }
 
 const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'liberty'];
 
-const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
+const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
   const videoElem = useRef<HTMLVideoElement>(null);
   const audioElem = useRef<HTMLAudioElement>(null);
 
@@ -41,7 +41,7 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
   const [takePic, setTakePic] = useState(false);
 
   useEffect(() => {
-    startCamera();
+    // startCamera();
   }, []);
 
   const startCamera = async () => {
@@ -144,7 +144,7 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
         takePic={takePic}
         closePic={() => setTakePic(false)}
         videoElem={videoElem.current as HTMLVideoElement}
-        setPhoto={setPhoto}
+        pickPhoto={pickPhoto}
       />
 
       <section className="controls">
@@ -226,7 +226,7 @@ const Camera: React.FC<Props> = ({ setFooterType, setPhoto }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   setFooterType: (footerType) => dispatch(setFooterType(footerType)),
-  setPhoto: (dataURL) => dispatch(setPhoto(dataURL))
+  pickPhoto: (dataURL) => dispatch(pickPhoto(dataURL))
 });
 
 export default connect(null, mapDispatchToProps)(Camera);

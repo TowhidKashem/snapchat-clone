@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import mapboxgl from 'mapbox-gl';
 import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { Geolocation } from 'features/User/types';
-import { Snap, OpenSnap } from 'features/Snap/types';
+import { Snap, AddSnap } from 'features/Snap/types';
 import { GetSnaps, GetWeather, Weather } from './types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
-import { openSnap } from 'features/Snap/duck';
+import { addSnap } from 'features/Snap/duck';
 import { getSnaps, getWeather } from './duck';
 import { onAnimationComplete } from 'utils/animation';
 import Header from './Header';
@@ -19,7 +19,7 @@ interface Props {
   snaps: Snap[];
   weather: Weather;
   getSnaps: GetSnaps;
-  openSnap: OpenSnap;
+  addSnap: AddSnap;
   getWeather: GetWeather;
   showDrawer: ShowDrawer;
   hideDrawer: HideDrawer;
@@ -30,7 +30,7 @@ const SnapMap: React.FC<Props> = ({
   snaps,
   weather,
   getSnaps,
-  openSnap,
+  addSnap,
   getWeather,
   showDrawer,
   hideDrawer,
@@ -95,10 +95,7 @@ const SnapMap: React.FC<Props> = ({
         e.target.classList.add('active');
         // Delay opening the drawer so we can see the pulse
         onAnimationComplete(() => {
-          openSnap({
-            ...snap,
-            lastLoaded: Date.now()
-          });
+          addSnap(snap);
           showDrawer({
             component: 'snap',
             animationIn: 'zoomIn',
@@ -115,7 +112,7 @@ const SnapMap: React.FC<Props> = ({
     };
 
     snaps.map((snap) => addSnapToMap(snap));
-  }, [snaps, map, openSnap, showDrawer]);
+  }, [snaps, map, addSnap, showDrawer]);
 
   return (
     <div className="snap-map">
@@ -136,7 +133,7 @@ const mapStateToProps = ({ snapMap, user }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getSnaps: (lat, lon) => dispatch(getSnaps(lat, lon)),
-  openSnap: (snap) => dispatch(openSnap(snap)),
+  addSnap: (snap) => dispatch(addSnap(snap)),
   getWeather: (lat, lon) => dispatch(getWeather(lat, lon)),
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),
   hideDrawer: (component) => dispatch(hideDrawer(component))

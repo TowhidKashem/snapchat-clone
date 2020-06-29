@@ -4,8 +4,9 @@ import { Snap } from './types';
 export const SET_SNAP = 'SET_SNAP';
 
 // Action creators
-export const openSnap = (snap: Snap) => async (dispatch) =>
-  dispatch({ type: SET_SNAP, snap });
+export const addSnap = (snap: Snap) => (dispatch) => dispatch({ type: SET_SNAP, snap });
+
+export const removeSnap = () => (dispatch) => dispatch({ type: SET_SNAP, snap: {} });
 
 // Reducer
 const initialState = {};

@@ -16,7 +16,8 @@ export const getPhotos = () => async (dispatch) => {
     });
 };
 
-export const setPhoto = (dataURL) => (dispatch) => dispatch({ type: SET_PHOTO, dataURL });
+export const pickPhoto = (dataURL) => (dispatch) =>
+  dispatch({ type: SET_PHOTO, dataURL });
 
 // Reducer
 const initialState = {
@@ -24,27 +25,31 @@ const initialState = {
   photos: []
 };
 
+const setPhoto = (prevState, dataURL) => {
+  const photoCopy: Photos = [...prevState.photos];
+  if (prevState.photoTaken) {
+    photoCopy[0].images.unshift(dataURL);
+  } else {
+    const date = new Date();
+    photoCopy.unshift({
+      month: date.toLocaleString('default', { month: 'long' }),
+      year: date.getFullYear(),
+      images: [dataURL]
+    });
+  }
+  return {
+    ...prevState,
+    photoTaken: true,
+    photos: photoCopy
+  };
+};
+
 export default function reducer(prevState = initialState, { type, photos, dataURL }) {
   switch (type) {
     case SET_PHOTOS:
       return { ...prevState, photos };
     case SET_PHOTO:
-      const photoCopy: Photos = [...prevState.photos];
-      if (prevState.photoTaken) {
-        photoCopy[0].images.unshift(dataURL);
-      } else {
-        const date = new Date();
-        photoCopy.unshift({
-          month: date.toLocaleString('default', { month: 'long' }),
-          year: date.getFullYear(),
-          images: [dataURL]
-        });
-      }
-      return {
-        ...prevState,
-        photoTaken: true,
-        photos: photoCopy
-      };
+      return setPhoto(prevState, dataURL);
     default:
       return prevState;
   }

@@ -13,7 +13,7 @@ interface Props {
 
 const ActionItem: React.FC<Props> = ({ leftIcon, rightIcon, label, straightEdge }) => (
   <article
-    className={classNames('pod action-item', {
+    className={classNames('pod', 'action-item', {
       'straight-edge': straightEdge
     })}
   >

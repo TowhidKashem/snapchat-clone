@@ -40,11 +40,13 @@ const Input: React.FC<Props> = ({
     if (animate) setFull(true);
     onAnimationComplete(() => {
       if (focus) inputElem?.current?.focus();
-    }, 300); // 300ms drawer animation duration
+    });
   }, [animate, focus]);
 
+  const disabled = onClick ? true : false;
+
   return (
-    <div className={classNames('input', { animate, full })}>
+    <div onClick={onClick} className={classNames('input', { animate, full, disabled })}>
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
         type="text"
@@ -56,6 +58,7 @@ const Input: React.FC<Props> = ({
         onBlur={onBlur}
         onChange={onChange}
         onKeyPress={({ key }) => onEnter && key === 'Enter' && onEnter()}
+        disabled={disabled}
         spellCheck={spellCheck || false}
         className={classNames({
           'has-left-icon': leftIcon

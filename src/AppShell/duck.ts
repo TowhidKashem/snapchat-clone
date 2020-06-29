@@ -38,7 +38,7 @@ const initialState = {
     //   animationInDuration: 300,
     //   animationOutDuration: 300,
     //   // theme: 'stripped',
-    //   component: 'search',
+    //   component: 'account',
     //   show: true
     // }
   ]
@@ -68,11 +68,7 @@ const setHideDrawer = (prevState, component) => {
   // Close select drawer
   if (component) {
     drawers = prevState.drawers.map((drawer) => {
-      if (drawer.component === component)
-        return {
-          ...drawer,
-          show: false
-        };
+      if (drawer.component === component) return { ...drawer, show: false };
       return drawer;
     });
   }
@@ -85,10 +81,7 @@ const setHideDrawer = (prevState, component) => {
     if (drawersOpen.length > 1) {
       drawers = prevState.drawers.map((drawer) => {
         if (drawer.component === lastDrawerOpen) {
-          return {
-            ...drawer,
-            show: false
-          };
+          return { ...drawer, show: false };
         }
         return {
           ...drawer,

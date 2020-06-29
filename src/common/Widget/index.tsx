@@ -7,23 +7,16 @@ interface Props {
   children: JSX.Element | JSX.Element[];
   className?: string;
   transparent?: boolean;
-  box?: boolean;
 }
 
-const Widget: React.FC<Props> = ({
-  header,
-  children,
-  className = '',
-  transparent,
-  box
-}) => (
+const Widget: React.FC<Props> = ({ header, children, className = '', transparent }) => (
   <section
     className={classNames('widget', {
       [className]: className
     })}
   >
     <header>{header}</header>
-    <div className={classNames('inner-content', { transparent, box })}>{children}</div>
+    <div className={classNames('inner-content', { transparent })}>{children}</div>
   </section>
 );
 

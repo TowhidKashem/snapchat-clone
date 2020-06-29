@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { showDrawer } from 'AppShell/duck';
 import { ShowDrawer } from 'AppShell/types';
-import { openSnap } from 'features/Snap/duck';
-import { OpenSnap } from 'features/Snap/types';
+import { addSnap } from 'features/Snap/duck';
+import { AddSnap } from 'features/Snap/types';
 import { Photos } from 'features/Camera/types';
 import Header from 'common/Header';
 import './index.scss';
@@ -12,12 +12,12 @@ interface Props {
   photos: Photos;
   photoTaken: boolean;
   showDrawer: ShowDrawer;
-  openSnap: OpenSnap;
+  addSnap: AddSnap;
 }
 
-const Archive: React.FC<Props> = ({ photos, photoTaken, showDrawer, openSnap }) => {
+const Archive: React.FC<Props> = ({ photos, photoTaken, showDrawer, addSnap }) => {
   const openPhoto = (image) => {
-    openSnap({
+    addSnap({
       type: 'photo',
       url: image
     });
@@ -66,7 +66,7 @@ const mapStateToProps = ({ camera }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),
-  openSnap: (snap) => dispatch(openSnap(snap))
+  addSnap: (snap) => dispatch(addSnap(snap))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Archive);

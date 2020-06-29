@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Button from 'common/Button';
-import { SetPhoto } from '../types';
+import { PickPhoto } from '../types';
 import { isIOS, stretchViewPortHeight } from 'utils/browser';
 import './index.scss';
 
@@ -9,10 +9,10 @@ interface Props {
   takePic: boolean;
   closePic: () => void;
   videoElem: HTMLVideoElement;
-  setPhoto: SetPhoto;
+  pickPhoto: PickPhoto;
 }
 
-const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto }) => {
+const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, pickPhoto }) => {
   const canvasElem = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -33,9 +33,9 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, setPhoto 
     };
     if (takePic) {
       takePhoto();
-      setPhoto(getDataURL());
+      pickPhoto(getDataURL());
     }
-  }, [takePic, videoElem, setPhoto]);
+  }, [takePic, videoElem, pickPhoto]);
 
   const downloadPhoto = () => {
     const dataURL = getDataURL();

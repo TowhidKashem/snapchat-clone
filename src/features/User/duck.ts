@@ -3,7 +3,7 @@ import { api } from 'utils/system';
 // Action types
 const SET_USER = 'SET_USER';
 const SET_USERS = 'SET_USERS';
-const SET_GEO = 'SET_GEO';
+const SET_GEO_LOCATION = 'SET_GEO_LOCATION';
 const SET_LAT_LON = 'SET_LAT_LON';
 
 // Action creators
@@ -35,7 +35,7 @@ export const getGeoLocation = () => async (dispatch) => {
   const { country_name, state, city, postal, latitude, longitude } = response;
 
   dispatch({
-    type: SET_GEO,
+    type: SET_GEO_LOCATION,
     geolocation: {
       country: country_name,
       state,
@@ -74,7 +74,7 @@ export default function reducer(
       return { ...prevState, session: user };
     case SET_USERS:
       return { ...prevState, friends: users };
-    case SET_GEO:
+    case SET_GEO_LOCATION:
     case SET_LAT_LON:
       return { ...prevState, geolocation };
     default:

@@ -7,12 +7,6 @@ safari open filter, then close, issue
 
 write end to end cypress tests
 
-read and apply redux style guide rules
-
-clear snap unmount
-
-move SET_PHOTO reducer to its own function
-
 ====
 
 GRUNT WORK:
@@ -26,11 +20,7 @@ common component unit tests
 
 Last:
 
-  block all requests (especially external api calls) and confirm no error
-  remove tmp rules from tsconfig
   renew all api keys in commits
   have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
-
   make sure pwa manifest related things are being picked up once depoyed!
-
 

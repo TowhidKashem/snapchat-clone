@@ -5,7 +5,7 @@
   @extend %center-x-y;
   background: $color-white;
   padding: 13px 15px;
-  font-weight: 500;
+  font-weight: bold;
 
   &:not(.straight-edge) {
     box-shadow: 0 0 8px #ddd;
