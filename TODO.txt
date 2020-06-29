@@ -2,6 +2,7 @@ CSS pixel perfect
 
 cross browser compatability / mobile
         check browser stack
+        npm i on windows
 
 safari open filter, then close, issue
 

@@ -8,7 +8,7 @@ import {
   SetFooterType
 } from './types';
 import { showDrawer, hideDrawer, setFooterType } from './duck';
-import { getUser, getUsers } from 'features/User/duck';
+import { getSession, getFriends } from 'features/User/duck';
 import { getPhotos } from 'features/Camera/duck';
 import Toolbar from './Toolbar';
 import Footer from './Footer';
@@ -21,8 +21,8 @@ interface Props {
   hideDrawer: HideDrawer;
   footerType: FooterType;
   setFooterType: SetFooterType;
-  getUser: () => void;
-  getUsers: () => void;
+  getSession: () => void;
+  getFriends: () => void;
   getPhotos: () => void;
   children: JSX.Element;
 }
@@ -33,17 +33,17 @@ const AppShell: React.FC<Props> = ({
   hideDrawer,
   footerType,
   setFooterType,
-  getUser,
-  getUsers,
+  getSession,
+  getFriends,
   getPhotos,
   children
 }) => {
   // Init the app
   useEffect(() => {
-    getUser();
-    getUsers();
+    getSession();
+    getFriends();
     getPhotos();
-  }, [getUser, getUsers, getPhotos]);
+  }, [getSession, getFriends, getPhotos]);
 
   return (
     <>
@@ -73,8 +73,8 @@ const mapDispatchToProps = (dispatch) => ({
   showDrawer: (component) => dispatch(showDrawer(component)),
   hideDrawer: (component?) => dispatch(hideDrawer(component)),
   setFooterType: (footerType) => dispatch(setFooterType(footerType)),
-  getUser: () => dispatch(getUser()),
-  getUsers: () => dispatch(getUsers()),
+  getSession: () => dispatch(getSession()),
+  getFriends: () => dispatch(getFriends()),
   getPhotos: () => dispatch(getPhotos())
 });
 

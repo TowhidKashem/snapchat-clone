@@ -3,8 +3,8 @@ import { celsiusToFahrenheit } from './utils';
 import { abbrConditionMap } from './data';
 
 // Action types
-export const SET_SNAPS = 'SET_SNAPS';
-export const SET_WEATHER = 'SET_WEATHER';
+export const SNAPS_FETCHED = 'snapMap/snapsFetched';
+export const WEATHER_FETCHED = 'snapMap/weatherFetched';
 
 // Action creators
 export const getSnaps = (lat, lon) => async (dispatch) => {
@@ -37,7 +37,7 @@ export const getSnaps = (lat, lon) => async (dispatch) => {
       lon: coords[index].lon
     }));
 
-    dispatch({ type: SET_SNAPS, snaps });
+    dispatch({ type: SNAPS_FETCHED, snaps });
   }
 };
 
@@ -71,7 +71,7 @@ export const getWeather = (lat, lon) => async (dispatch) => {
     }
   }
 
-  dispatch({ type: SET_WEATHER, weather });
+  dispatch({ type: WEATHER_FETCHED, weather });
 };
 
 // Reducer
@@ -82,9 +82,9 @@ const initialState = {
 
 export default function reducer(prevState = initialState, { type, snaps, weather }) {
   switch (type) {
-    case SET_SNAPS:
+    case SNAPS_FETCHED:
       return { ...prevState, snaps };
-    case SET_WEATHER:
+    case WEATHER_FETCHED:
       return { ...prevState, weather };
     default:
       return prevState;

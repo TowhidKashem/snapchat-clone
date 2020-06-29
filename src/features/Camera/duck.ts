@@ -2,8 +2,8 @@ import { api } from 'utils/system';
 import { Photos } from 'features/Camera/types';
 
 // Action types
-const SET_PHOTOS = 'SET_PHOTOS';
-const SET_PHOTO = 'SET_PHOTO';
+const PHOTOS_FETCHED = 'camera/photosFetched';
+const SET_PHOTO = 'camera/setPhoto';
 
 // Action creators
 export const getPhotos = () => async (dispatch) => {
@@ -11,7 +11,7 @@ export const getPhotos = () => async (dispatch) => {
 
   if (!error)
     dispatch({
-      type: SET_PHOTOS,
+      type: PHOTOS_FETCHED,
       photos: response.photos
     });
 };
@@ -46,7 +46,7 @@ const setPhoto = (prevState, dataURL) => {
 
 export default function reducer(prevState = initialState, { type, photos, dataURL }) {
   switch (type) {
-    case SET_PHOTOS:
+    case PHOTOS_FETCHED:
       return { ...prevState, photos };
     case SET_PHOTO:
       return setPhoto(prevState, dataURL);

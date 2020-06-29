@@ -1,28 +1,28 @@
 import { api } from 'utils/system';
 
 // Action types
-const SET_USER = 'SET_USER';
-const SET_USERS = 'SET_USERS';
-const SET_GEO_LOCATION = 'SET_GEO_LOCATION';
-const SET_LAT_LON = 'SET_LAT_LON';
+const SESSION_FETCHED = 'user/sessionFetched';
+const FRIENDS_FETCHED = 'user/friendsFetched';
+const GEO_LOCATION_FETCHED = 'user/geoLocationFetched';
+const SET_LAT_LON = 'user/setLatLon';
 
 // Action creators
-export const getUser = () => async (dispatch) => {
+export const getSession = () => async (dispatch) => {
   const [error, response] = await api.get('/session.json');
 
   if (!error)
     dispatch({
-      type: SET_USER,
+      type: SESSION_FETCHED,
       user: response
     });
 };
 
-export const getUsers = () => async (dispatch) => {
-  const [error, response] = await api.get('/users.json');
+export const getFriends = () => async (dispatch) => {
+  const [error, response] = await api.get('/friends.json');
 
   if (!error)
     dispatch({
-      type: SET_USERS,
+      type: FRIENDS_FETCHED,
       users: response.users
     });
 };
@@ -35,7 +35,7 @@ export const getGeoLocation = () => async (dispatch) => {
   const { country_name, state, city, postal, latitude, longitude } = response;
 
   dispatch({
-    type: SET_GEO_LOCATION,
+    type: GEO_LOCATION_FETCHED,
     geolocation: {
       country: country_name,
       state,
@@ -70,11 +70,11 @@ export default function reducer(
   { type, user, users, geolocation }
 ) {
   switch (type) {
-    case SET_USER:
+    case SESSION_FETCHED:
       return { ...prevState, session: user };
-    case SET_USERS:
+    case FRIENDS_FETCHED:
       return { ...prevState, friends: users };
-    case SET_GEO_LOCATION:
+    case GEO_LOCATION_FETCHED:
     case SET_LAT_LON:
       return { ...prevState, geolocation };
     default:

@@ -1,8 +1,8 @@
 import { api } from 'utils/system';
 
 // Action types
-const SET_MESSAGES = 'SET_MESSAGES';
-const SET_MESSAGE = 'SET_MESSAGE';
+const MESSAGES_RECEIVED = 'chat/messagesReceived';
+const POST_MESSAGE = 'chat/postMessage';
 
 // Action creators
 export const getMessages = (user) => async (dispatch) => {
@@ -10,7 +10,7 @@ export const getMessages = (user) => async (dispatch) => {
 
   if (!error) {
     dispatch({
-      type: SET_MESSAGES,
+      type: MESSAGES_RECEIVED,
       messages: response.messages
     });
   }
@@ -18,7 +18,7 @@ export const getMessages = (user) => async (dispatch) => {
 
 export const postMessage = (author, message) => (dispatch) =>
   dispatch({
-    type: SET_MESSAGE,
+    type: POST_MESSAGE,
     message: {
       author,
       message,
@@ -34,9 +34,9 @@ const initialState = {
 
 export default function reducer(prevState = initialState, { type, messages, message }) {
   switch (type) {
-    case SET_MESSAGES:
+    case MESSAGES_RECEIVED:
       return { ...prevState, messages };
-    case SET_MESSAGE:
+    case POST_MESSAGE:
       return {
         ...prevState,
         messages: [...prevState.messages, message]

@@ -1,9 +1,9 @@
 import { Drawer, FooterType } from 'AppShell/types';
 
 // Action types
-const SHOW_DRAWER = 'SHOW_DRAWER';
-const HIDE_DRAWER = 'HIDE_DRAWER';
-const SET_FOOTER_TYPE = 'SET_FOOTER_TYPE';
+const SHOW_DRAWER = 'app/showDrawer';
+const HIDE_DRAWER = 'app/hideDrawer';
+const SET_FOOTER_TYPE = 'app/setFooterType';
 
 // Action creators
 export const showDrawer = (drawer: Drawer) => (dispatch) => {
