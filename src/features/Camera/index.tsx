@@ -41,7 +41,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
   const [takePic, setTakePic] = useState(false);
 
   useEffect(() => {
-    // startCamera();
+    startCamera();
   }, []);
 
   const startCamera = async () => {
@@ -171,10 +171,10 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
         )}
 
         <Animated
-          animationIn="slideInRight"
-          animationOut="fadeOut"
+          animationIn="zoomIn"
+          animationOut="zoomOut"
           animationInDuration={100}
-          animationOutDuration={0}
+          animationOutDuration={100}
           isVisible={showFilterButtons}
           animateOnMount={false}
         >
@@ -188,16 +188,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
               />
             ))}
           </div>
-        </Animated>
 
-        <Animated
-          animationIn="zoomIn"
-          animationOut="zoomOut"
-          animationInDuration={100}
-          animationOutDuration={0}
-          isVisible={showFilterButtons}
-          animateOnMount={false}
-        >
           <div className="filter-actions">
             <Button icon="faMagic" round />
             <Button icon="faQrcode" round />
