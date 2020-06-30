@@ -45,26 +45,17 @@ const initialState = {
 };
 
 const setShowDrawer = (prevState, drawer) => {
-  const drawerFound = prevState.drawers.find(
-    ({ component }) => component === drawer.component
+  const minusCurrentDrawer = prevState.drawers.filter(
+    ({ component }) => component !== drawer.component
   );
-  const drawers = drawerFound
-    ? prevState.drawers.map((curDrawer) => {
-        if (curDrawer.component === drawer.component)
-          return {
-            ...curDrawer,
-            show: true,
-            animationOutDuration: drawer.animationOutDuration
-          };
-        return curDrawer;
-      })
-    : [...prevState.drawers, drawer];
-  return { ...prevState, drawers };
+  return {
+    ...prevState,
+    drawers: [...minusCurrentDrawer, drawer]
+  };
 };
 
 const setHideDrawer = (prevState, component) => {
   let drawers;
-
   // Close select drawer
   if (component) {
     drawers = prevState.drawers.map((drawer) => {
@@ -76,7 +67,6 @@ const setHideDrawer = (prevState, component) => {
   else {
     const drawersOpen = prevState.drawers.filter(({ show }) => show);
     const lastDrawerOpen = drawersOpen[drawersOpen.length - 1].component;
-
     // Close all drawers but show exit animation only on the last opened one
     if (drawersOpen.length > 1) {
       drawers = prevState.drawers.map((drawer) => {
@@ -96,7 +86,6 @@ const setHideDrawer = (prevState, component) => {
       }));
     }
   }
-
   return { ...prevState, drawers };
 };
 

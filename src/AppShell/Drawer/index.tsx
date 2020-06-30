@@ -63,7 +63,7 @@ const Drawer: React.FC<Props> = ({ drawers }) => {
               className={classNames('drawer', {
                 dark: theme === 'dark',
                 stripped: theme === 'stripped',
-                back: position === 'back'
+                [position]: true
               })}
             >
               <Animated
