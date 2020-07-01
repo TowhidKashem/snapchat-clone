@@ -52,11 +52,12 @@
 }
 
 %clickable {
-  animation: glow 0.8s infinite alternate;
+  color: red;
+  // animation: glow 0.8s infinite alternate;
 }
 
 %clickable-button {
-  @extend %clickable;
+  // @extend %clickable;
   border-radius: 100%;
   min-width: 25px;
   min-height: 25px;

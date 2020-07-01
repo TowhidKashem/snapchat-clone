@@ -2,14 +2,16 @@
 @import '~styles/extendables';
 
 .account {
+  padding-bottom: 25px;
+
   > header {
     display: flex;
     padding: 20px 10px;
     margin-bottom: -35px;
 
-    .btn-close {
-      @extend %clickable-button;
-    }
+    // .btn-close {
+    //   @extend %clickable-button;
+    // }
 
     .icon {
       font-size: 20px;
@@ -29,6 +31,22 @@
 
     strong {
       display: block;
+    }
+  }
+
+  footer {
+    p {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 13px;
+
+      a {
+        color: inherit;
+      }
+
+      .icon {
+        margin-right: 2px;
+      }
     }
   }
 }

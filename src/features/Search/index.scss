@@ -1,8 +1,11 @@
 @import '~styles/vars';
 
 .search {
+  padding-bottom: 25px;
+
   > header {
     padding: 0 0 7px;
+    margin-bottom: 10px;
     background: $color-light-grey;
 
     form {
@@ -23,8 +26,7 @@
     }
   }
 
-  .view {
-    overflow: scroll;
+  > section {
     padding: 0 10px;
     margin: 0 -10px;
 
@@ -41,3 +43,11 @@
     }
   }
 }
+
+// .animated.slideInUp {
+//   border: 5px solid blue;
+//   margin: 0;
+//   padding: 0;
+//   max-height: 100vh;
+//   overflow: scroll;
+// }

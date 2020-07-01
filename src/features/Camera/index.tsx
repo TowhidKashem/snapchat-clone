@@ -41,7 +41,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
   const [takePic, setTakePic] = useState(false);
 
   useEffect(() => {
-    startCamera();
+    // startCamera();
   }, []);
 
   const startCamera = async () => {
@@ -201,7 +201,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
                 setFilterInitialized(false);
                 setFooterType('full');
                 startCamera();
-                promise(window.JEEFACEFILTERAPI.destroy());
+                window.JEEFACEFILTERAPI.destroy();
               }}
             />
             <Button icon="faLaugh" round />

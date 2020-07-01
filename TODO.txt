@@ -6,6 +6,8 @@ cross browser compatability / mobile
 
 write end to end cypress tests
 
+lazy load discover page
+
 ====
 
 GRUNT WORK:

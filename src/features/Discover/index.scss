@@ -1,19 +1,20 @@
 @import '~styles/vars';
 
 .discover {
-  .view {
-    overflow: scroll;
-    height: 90vh;
+  padding-bottom: 75px;
 
+  .view {
     .widget {
       &.friends {
         .inner-content {
           text-align: center;
+
           p {
             font-weight: bold;
           }
         }
       }
+
       .inner {
         display: flex;
         flex-flow: row wrap;

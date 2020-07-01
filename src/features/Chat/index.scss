@@ -8,7 +8,6 @@ $footer-height: 70px;
   position: relative;
   padding-top: $toolbar-height;
   background: $color-white;
-  height: 100vh;
 
   .btn,
   .input {
@@ -105,8 +104,10 @@ $footer-height: 70px;
     }
 
     .inner-content {
+      @extend %center-x-y;
       display: flex;
       position: relative;
+      height: 100%;
       padding: 10px;
       background: $color-white;
 

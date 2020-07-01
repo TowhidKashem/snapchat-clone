@@ -66,7 +66,8 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
       container: mapRef.current as HTMLDivElement,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [lon, lat],
-      zoom: 13
+      zoom: 13,
+      interactive: false
     }).on('load', () => {
       setLoading(false);
       // Add self marker

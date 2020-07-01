@@ -22,7 +22,7 @@ export const showDrawer = (drawer: Drawer) => (dispatch) => {
   });
 };
 
-export const hideDrawer = (component) => (dispatch) =>
+export const hideDrawer = (component: string) => (dispatch) =>
   dispatch({ type: HIDE_DRAWER, component });
 
 export const setFooterType = (footerType: FooterType) => (dispatch) =>
@@ -37,8 +37,9 @@ const initialState = {
     //   animationOut: 'zoomOut',
     //   animationInDuration: 300,
     //   animationOutDuration: 300,
-    //   // theme: 'stripped',
-    //   component: 'account',
+    //   theme: 'stripped',
+    //   component: 'chat',
+    //   position: 'front',
     //   show: true
     // }
   ]

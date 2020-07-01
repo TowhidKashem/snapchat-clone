@@ -7,15 +7,10 @@
   min-height: 170px;
   background: $color-light-grey;
 
-  // Overlay on top prevents pinch/zoom on map on mobile
-  &:after {
-    @include overlay-bg(0);
-    content: '';
-    left: 0;
-    cursor: pointer;
-  }
-
   .map {
+    min-height: 165px;
+    cursor: pointer;
+
     .self-marker {
       background-image: url(/images/bitmoji-self.png);
       background-size: cover;

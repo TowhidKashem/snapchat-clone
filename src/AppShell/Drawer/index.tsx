@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
+import { onAnimationComplete } from 'utils/animation';
 import { Drawer as DrawerType } from '../types';
 import Account from 'features/Account';
 import Search from 'features/Search';
@@ -29,20 +30,6 @@ const Drawer: React.FC<Props> = ({ drawers }) => {
     return componentMap[component];
   };
 
-  // // Set the drawer to position `fixed` so there is less wonkiness on mobile (rubber band scrolling, etc)
-  // const affixDrawer = (show, animationInDuration) => {
-  //   if (show)
-  //     setTimeout(() => {
-  //       document
-  //         .querySelectorAll('.drawer')
-  //         .forEach((drawer) => drawer.classList.add('fixed'));
-  //     }, animationInDuration);
-  //   else
-  //     document
-  //       .querySelectorAll('.drawer')
-  //       .forEach((drawer) => drawer.classList.remove('fixed'));
-  // };
-
   return drawers
     ? (drawers as any).map(
         ({
@@ -55,31 +42,41 @@ const Drawer: React.FC<Props> = ({ drawers }) => {
           theme,
           position
         }) => {
-          // affixDrawer(show, animationInDuration);
+          const elem = document.getElementById(component);
+          if (show) {
+            elem?.classList.remove('collapse');
+          } else {
+            onAnimationComplete(
+              () => elem?.classList.add('collapse'),
+              animationOutDuration
+            );
+          }
 
           return (
             <aside
+              id={component}
               key={component}
               className={classNames('drawer', {
-                dark: theme === 'dark',
-                stripped: theme === 'stripped',
+                [theme]: true,
                 [position]: true
               })}
             >
-              <Animated
-                animationIn={animationIn}
-                animationOut={animationOut}
-                animationInDuration={animationInDuration}
-                animationOutDuration={animationOutDuration}
-                isVisible={show}
-              >
-                <section
-                  className="content"
-                  style={{ height: window.innerHeight + 'px' }}
+              <div className="view">
+                <Animated
+                  animationIn={animationIn}
+                  animationOut={animationOut}
+                  animationInDuration={animationInDuration}
+                  animationOutDuration={animationOutDuration}
+                  isVisible={show}
                 >
-                  {getComponent(component, show)}
-                </section>
-              </Animated>
+                  <section
+                    className="content"
+                    style={{ height: window.innerHeight + 'px' }}
+                  >
+                    {getComponent(component, show)}
+                  </section>
+                </Animated>
+              </div>
             </aside>
           );
         }

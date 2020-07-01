@@ -3,13 +3,20 @@
 
 html {
   box-sizing: border-box;
-  height: 100%;
-  overflow: hidden;
 }
 
 html,
 body {
   touch-action: none;
+  height: 100%;
+  overflow: hidden;
+
+  // -webkit-touch-callout: none; /* iOS Safari */
+  // -webkit-user-select: none; /* Safari */
+  // -khtml-user-select: none; /* Konqueror HTML */
+  // -moz-user-select: none; /* Old versions of Firefox */
+  // -ms-user-select: none; /* Internet Explorer/Edge */
+  // user-select: none; /* Non-prefixed version, currently  */
 }
 
 *,
@@ -39,7 +46,6 @@ body {
   background: #222;
   color: #222;
   height: 100%;
-  overflow: auto;
 }
 
 a {

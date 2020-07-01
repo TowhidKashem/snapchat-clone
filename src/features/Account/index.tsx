@@ -64,6 +64,17 @@ const Account: React.FC<Props> = ({
         straightEdge
       />
     </Widget>
+    <footer>
+      <p>
+        <a
+          href="https://github.com/TowhidKashem/react-snapchat-clone"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon icon="faGithub" /> Github Repo
+        </a>
+      </p>
+    </footer>
   </main>
 );
 

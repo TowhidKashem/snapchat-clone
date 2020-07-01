@@ -2,8 +2,7 @@
 @import '~styles/extendables';
 
 .drawer {
-  @extend %app-width;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -11,9 +10,11 @@
   width: 100%;
   height: 0;
 
-  // &.fixed {
-  //   position: fixed;
-  // }
+  &.collapse {
+    .view {
+      height: 0;
+    }
+  }
 
   &.front {
     z-index: 100;
@@ -23,36 +24,58 @@
     z-index: 50;
   }
 
-  .content {
-    padding: $toolbar-height 10px 10px;
-    overflow: scroll;
-    background: $color-light-grey;
-
-    .header {
-      margin-top: 0;
-    }
-  }
-
   .icon {
     color: $color-dark-grey;
   }
 
+  .view {
+    @extend %app-width;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .content {
+      @extend %app-width;
+      margin: 0 auto;
+      padding: $toolbar-height 10px 0;
+      background: $color-light-grey;
+
+      overflow-x: hidden;
+      overflow-y: scroll;
+
+      backface-visibility: hidden;
+      perspective: 1000;
+      transform: translate3d(0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      -webkit-perspective: 1000;
+      -webkit-transform: translate3d(0, 0, 0);
+      -webkit-overflow-scrolling: touch;
+
+      .header {
+        margin-top: 0;
+      }
+    }
+  }
+
   &.stripped,
   &.dark {
-    .content {
-      padding: 0;
+    .view {
+      .content {
+        padding: 0;
+      }
     }
   }
 
   &.dark {
     z-index: 200;
 
-    .content {
-      background: $color-black;
-      color: $color-white;
-
-      .icon {
+    .view {
+      .content {
+        background: $color-black;
         color: $color-white;
+
+        .icon {
+          color: $color-white;
+        }
       }
     }
   }

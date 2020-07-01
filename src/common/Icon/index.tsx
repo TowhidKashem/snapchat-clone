@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSnapchatSquare, faForumbee } from '@fortawesome/free-brands-svg-icons';
+import { faSnapchatSquare, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faCamera,
@@ -65,7 +65,7 @@ import './index.scss';
 const iconMap = {
   // free-brands-svg-icons
   faSnapchatSquare,
-  faForumbee,
+  faGithub,
   // free-regular-svg-icons
   faCircle,
   // free-solid-svg-icons
