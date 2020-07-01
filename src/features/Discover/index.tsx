@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
-import { api } from 'utils/system';
-import { sleep } from 'utils/system';
+import { api, sleep } from 'utils/system';
+import { elemInView } from 'utils/browser';
 import { showDrawer } from 'AppShell/duck';
 import { ShowDrawer } from 'AppShell/types';
 import Header from 'common/Header';
@@ -16,17 +16,30 @@ interface Props {
 }
 
 const Discover: React.FC<Props> = ({ showDrawer }) => {
-  const [profiles, setProfiles] = useState([]);
+  const [profiles, setProfiles] = useState<any[]>([]);
+  const [page, setPage] = useState(1);
+
+  const loadMore = useRef(null);
+  const isFetching = useRef(false);
 
   useEffect(() => {
     (async () => {
-      const [error, response] = await api.get('/discover.json');
+      if (page > 3) return;
+      isFetching.current = true;
+      const [error, response] = await api.get(`/discover-page-${page}.json`);
       if (!error) {
-        // Simulate a slow API response to show off skeleton frames
-        await sleep(1000);
-        setProfiles(response.discover);
+        if (page === 1) await sleep(1000); // Simulate slow API response on the first call to show off skeleton frames
+        setProfiles((prevProfiles) => [...prevProfiles, ...response.discover]);
+        isFetching.current = false;
       }
     })();
+  }, [page]);
+
+  useEffect(() => {
+    document.querySelector('#discover .content')?.addEventListener('scroll', () => {
+      if (!isFetching.current && elemInView(loadMore.current))
+        setPage((prevPage) => prevPage + 1);
+    });
   }, []);
 
   return (
@@ -48,6 +61,7 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
             )}
           </div>
         </Widget>
+        <div ref={loadMore} className="load-more"></div>
       </section>
     </main>
   );

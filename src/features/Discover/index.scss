@@ -1,7 +1,7 @@
 @import '~styles/vars';
 
 .discover {
-  padding-bottom: 75px;
+  padding-bottom: 55px;
 
   .view {
     .widget {
@@ -15,10 +15,18 @@
         }
       }
 
+      header {
+        margin: 0 0 0 5px;
+      }
+
       .inner {
         display: flex;
         flex-flow: row wrap;
       }
+    }
+
+    .load-more {
+      height: 20px;
     }
   }
 }
