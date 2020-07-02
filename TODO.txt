@@ -1,6 +1,6 @@
 CSS pixel perfect
 
-search drawer content animation extra bottom white space
+is 414px the right width
 
 cross browser compatability / mobile
         check browser stack
@@ -8,13 +8,9 @@ cross browser compatability / mobile
 
 write end to end cypress tests
 
-lazy load discover page
-
 dog and other filters not working suddenly
 
 show alert if user just npm installed and not run the setup script
-
-add debounce util
 
 ====
 

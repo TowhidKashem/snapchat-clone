@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
-import { api, sleep } from 'utils/system';
+import { api, sleep, debounce } from 'utils/system';
 import { elemInView } from 'utils/browser';
 import { showDrawer } from 'AppShell/duck';
 import { ShowDrawer } from 'AppShell/types';
@@ -28,7 +28,8 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
       isFetching.current = true;
       const [error, response] = await api.get(`/discover-page-${page}.json`);
       if (!error) {
-        if (page === 1) await sleep(1000); // Simulate slow API response on the first call to show off skeleton frames
+        // Simulate slow API response on the first call to show off skeleton frames
+        if (page === 1) await sleep(1000);
         setProfiles((prevProfiles) => [...prevProfiles, ...response.discover]);
         isFetching.current = false;
       }
@@ -36,10 +37,13 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
   }, [page]);
 
   useEffect(() => {
-    document.querySelector('#discover .content')?.addEventListener('scroll', () => {
-      if (!isFetching.current && elemInView(loadMore.current))
-        setPage((prevPage) => prevPage + 1);
-    });
+    document.querySelector('#discover .content')?.addEventListener(
+      'scroll',
+      debounce(() => {
+        if (!isFetching.current && elemInView(loadMore.current))
+          setPage((prevPage) => prevPage + 1);
+      }, 10)
+    );
   }, []);
 
   return (

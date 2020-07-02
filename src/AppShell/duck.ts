@@ -32,16 +32,16 @@ export const setFooterType = (footerType: FooterType) => (dispatch) =>
 const initialState = {
   footerType: 'full',
   drawers: [
-    {
-      animationIn: 'zoomIn',
-      animationOut: 'zoomOut',
-      animationInDuration: 300,
-      animationOutDuration: 300,
-      // theme: 'stripped',
-      component: 'discover',
-      position: 'front',
-      show: true
-    }
+    // {
+    //   animationIn: 'zoomIn',
+    //   animationOut: 'zoomOut',
+    //   animationInDuration: 300,
+    //   animationOutDuration: 300,
+    //   // theme: 'stripped',
+    //   component: 'search',
+    //   position: 'front',
+    //   show: true
+    // }
   ]
 };
 

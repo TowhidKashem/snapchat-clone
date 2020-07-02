@@ -39,39 +39,40 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
           <Input
             placeholder="Search"
             leftIcon="faSearch"
+            value={query}
             onChange={(e) => setQuery(e.currentTarget.value.trim())}
-            focus
+            focus={show}
             animate
           />
           <Button label="Cancel" plain onclick={() => hideDrawer('search')} />
         </form>
       </header>
       <section>
-        {/* <Animated
+        <Animated
           animationIn="slideInUp"
           animationOut="slideOutDown"
           animationInDuration={250}
           animationOutDuration={0}
           isVisible={show}
-        > */}
-        <div className="results">
-          {hasResults && (
-            <Widget header="Quick Add">
-              {users.map((user) => (
-                <UserPod key={user.id} user={user} />
-              ))}
-            </Widget>
+        >
+          <div className="results">
+            {hasResults && (
+              <Widget header="Quick Add">
+                {users.map((user) => (
+                  <UserPod key={user.id} user={user} />
+                ))}
+              </Widget>
+            )}
+          </div>
+          {query && !hasResults && (
+            <p className="no-results">
+              <span role="img" aria-label="poop emoji">
+                💩
+              </span>{' '}
+              No results
+            </p>
           )}
-        </div>
-        {query && !hasResults && (
-          <p className="no-results">
-            <span role="img" aria-label="poop emoji">
-              💩
-            </span>{' '}
-            No results
-          </p>
-        )}
-        {/* </Animated> */}
+        </Animated>
       </section>
     </main>
   );
