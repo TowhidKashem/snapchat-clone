@@ -43,7 +43,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
 
   useEffect(() => {
     if (typeof window.Filters === 'undefined') setInstallError(true);
-    startCamera();
+    // startCamera();
   }, []);
 
   const startCamera = async () => {

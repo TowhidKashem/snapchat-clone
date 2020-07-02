@@ -57,8 +57,8 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
         <Widget header="For You" transparent>
           <div className="inner">
             {profiles.length ? (
-              profiles.map(({ image, title, time }, index) => (
-                <SpotlightPod key={index} image={image} title={title} time={time} />
+              profiles.map(({ image, title }, index) => (
+                <SpotlightPod key={index} image={image} title={title} />
               ))
             ) : (
               <SkeletonFrame count={10} />

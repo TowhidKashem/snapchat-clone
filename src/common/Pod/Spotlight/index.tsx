@@ -3,16 +3,14 @@ import './index.scss';
 
 interface Props {
   title: string;
-  time: string;
   image: string;
 }
 
-const Spotlight: React.FC<Props> = ({ title, time, image }) => (
+const Spotlight: React.FC<Props> = ({ title, image }) => (
   <article className="pod spotlight">
     <img src={image} alt="" />
     <div className="meta">
       <header>{title}</header>
-      <time>{time}</time>
     </div>
   </article>
 );

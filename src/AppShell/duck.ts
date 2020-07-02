@@ -38,7 +38,7 @@ const initialState = {
     //   animationInDuration: 300,
     //   animationOutDuration: 300,
     //   // theme: 'stripped',
-    //   component: 'search',
+    //   component: 'discover',
     //   position: 'front',
     //   show: true
     // }
