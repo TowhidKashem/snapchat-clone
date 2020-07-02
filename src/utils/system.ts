@@ -1,5 +1,5 @@
 export const api = {
-  baseURL: 'https://inspiring-easley-e7d034.netlify.app',
+  baseURL: '/api',
   get: (endpoint, external = false) => api.respond('get', endpoint, null, external),
   post: (endpoint, options) => api.respond('post', endpoint, options),
   put: (endpoint, options) => api.respond('put', endpoint, options),

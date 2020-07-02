@@ -1,0 +1,21 @@
+{
+  "photos": [
+    {
+      "month": "March",
+      "year": 2020,
+      "images": [
+        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg"
+      ]
+    },
+    {
+      "month": "January",
+      "year": 2020,
+      "images": [
+        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
+        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg"
+      ]
+    }
+  ]
+}

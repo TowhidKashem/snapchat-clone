@@ -1,0 +1,23 @@
+{
+  "thread": "Julia",
+  "messages": [
+    {
+      "id": 1,
+      "author": "Julia",
+      "message": "Hey there2!",
+      "time": 1593057824382
+    },
+    {
+      "id": 2,
+      "author": "Julia",
+      "message": "Oh wow",
+      "time": 1593057832262
+    },
+    {
+      "id": 3,
+      "author": "Towhid",
+      "message": "Hi",
+      "time": 1593057839073
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "discover": [
+    {
+      "image": "./images/discover/15.jpg",
+      "title": "No One Can Keep Up With Her"
+    },
+    {
+      "image": "./images/discover/5.jpg",
+      "title": "No One Can Keep Up With Her"
+    },
+    {
+      "image": "./images/discover/23.jpg",
+      "title": "No One Can Keep Up With Her"
+    },
+    {
+      "image": "./images/discover/18.jpg",
+      "title": "No One Can Keep Up With Her"
+    },
+    {
+      "image": "./images/discover/20.jpg",
+      "title": "No One Can Keep Up With Her"
+    },
+    {
+      "image": "./images/discover/21.jpg",
+      "title": "No One Can Keep Up With Her"
+    },
+    {
+      "image": "./images/discover/22.jpg",
+      "title": "No One Can Keep Up With Her"
+    },
+    {
+      "image": "./images/discover/24.jpg",
+      "title": "No One Can Keep Up With Her"
+    }
+  ]
+}

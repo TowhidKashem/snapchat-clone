@@ -26,7 +26,7 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
     (async () => {
       if (page > 3) return;
       isFetching.current = true;
-      const [error, response] = await api.get(`/discover-page-${page}.json`);
+      const [error, response] = await api.get(`/discover/page/${page}.json`);
       if (!error) {
         // Simulate slow API response on the first call to show off skeleton frames
         if (page === 1) await sleep(1000);

@@ -31,6 +31,7 @@
         height: 70px;
         border-radius: 100%;
         cursor: pointer;
+        border: 1px solid red;
 
         &.active {
           animation: shadow-pulse 0.5s infinite;

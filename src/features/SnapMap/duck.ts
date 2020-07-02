@@ -28,6 +28,30 @@ export const getSnaps = (lat, lon) => async (dispatch) => {
       {
         lat: lat - 0.005,
         lon: lon - 0.002
+      },
+      {
+        lat: lat - 0.001,
+        lon: lon - 0.005
+      },
+      {
+        lat: lat + 0.005,
+        lon: lon - -0.006
+      },
+      {
+        lat: lat - 0.01,
+        lon: lon + 0.002
+      },
+      {
+        lat: lat - 0.01,
+        lon: lon - 0.007
+      },
+      {
+        lat: lat - 0.005,
+        lon: lon + 0.005
+      },
+      {
+        lat: lat,
+        lon: lon + 0.004
       }
     ];
 
