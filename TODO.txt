@@ -10,8 +10,6 @@ write end to end cypress tests
 
 dog and other filters not working suddenly
 
-show alert if user just npm installed and not run the setup script
-
 ====
 
 GRUNT WORK:

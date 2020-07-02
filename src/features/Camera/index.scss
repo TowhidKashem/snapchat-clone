@@ -1,5 +1,6 @@
 @import '~styles/vars';
 @import '~styles/extendables';
+@import '~styles/mixins';
 
 .filter-canvas {
   @extend %video-cover;
@@ -10,6 +11,18 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+
+  .install-error {
+    @include overlay-bg;
+    @extend %app-width;
+    @extend %center-x-y;
+    position: fixed;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+    padding: 0 25px;
+    margin: 0;
+  }
 
   .video-stream {
     @extend %video-cover;
@@ -134,9 +147,11 @@
         margin: 0 10px;
 
         &.btn-close {
-          @extend %clickable-button;
           margin: 0 25px;
-          border: 1px solid red;
+
+          .icon {
+            @extend %clickable-button;
+          }
         }
       }
     }

@@ -52,26 +52,16 @@
 }
 
 %clickable {
-  color: red;
-  // animation: glow 0.8s infinite alternate;
+  box-shadow: 0 0 18px red;
 }
 
 %clickable-button {
-  // @extend %clickable;
+  @extend %clickable;
   border-radius: 100%;
   min-width: 25px;
   min-height: 25px;
 
   .icon {
     margin: 0;
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 10px -5px $color-pastel-blue;
-  }
-  to {
-    box-shadow: 0 0 5px 5px $color-pastel-blue;
   }
 }
