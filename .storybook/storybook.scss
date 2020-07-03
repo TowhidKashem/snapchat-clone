@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Work+Sans:ital,wght@1,800&display=swap');
+
+@import '~styles/vars';
+@import '~styles/extendables';
+
+body {
+  width: 100%;
+
+  #root {
+    @extend %center-x-y;
+    position: relative;
+    max-width: 1000px;
+    height: 100vh;
+    margin: 0 auto;
+
+    .btn,
+    .ico-lg {
+      .icon {
+        font-size: 40px;
+      }
+    }
+
+    .input {
+      max-width: 400px;
+
+      input[type='text'] {
+        color: $color-white;
+      }
+    }
+
+    .pill {
+      .icon {
+        font-size: 18px;
+        color: $color-blue-grey;
+      }
+    }
+
+    .pod {
+      &.action-item {
+        width: 400px;
+
+        .btn {
+          .icon {
+            font-size: inherit;
+          }
+        }
+      }
+
+      &.spotlight,
+      &.user {
+        width: 190px;
+      }
+    }
+
+    .skeleton-frame {
+      width: 200px;
+    }
+
+    .widget {
+      > header,
+      p {
+        color: $color-white;
+      }
+    }
+
+    .header {
+      .input {
+        width: 275px;
+      }
+
+      .icon {
+        font-size: 15px;
+      }
+
+      .btn-user {
+        .icon {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

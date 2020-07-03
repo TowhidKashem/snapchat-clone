@@ -33,9 +33,6 @@ export const promise = (promise: Promise<[boolean, any]>) =>
     })
     .catch((err) => [err]);
 
-export const sleep = (milliseconds) =>
-  new Promise((resolve) => setTimeout(resolve, milliseconds));
-
 // https://levelup.gitconnected.com/debounce-in-javascript-improve-your-applications-performance-5b01855e086
 export const debounce = (func, wait) => {
   let timeout;
@@ -48,3 +45,6 @@ export const debounce = (func, wait) => {
     timeout = setTimeout(later, wait);
   };
 };
+
+export const sleep = (milliseconds) =>
+  new Promise((resolve) => setTimeout(resolve, milliseconds));

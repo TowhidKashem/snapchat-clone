@@ -2,7 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Button from 'common/Button';
 import { PickPhoto } from '../types';
-import { isIOS, stretchViewPortHeight } from 'utils/browser';
+import { isIOS } from 'utils/browser';
+import { stretchViewPortHeight } from 'utils/viewport';
 import './index.scss';
 
 interface Props {

@@ -1,11 +1,9 @@
 import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import ActionItem from './index';
 
 export default {
   title: 'Pod - ActionItem',
-  component: ActionItem,
-  decorators: [withKnobs]
+  component: ActionItem
 };
 
 export const Default = () => (

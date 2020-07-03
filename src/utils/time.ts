@@ -1,4 +1,4 @@
-// Pollyfill (mobile safari doesn't support `Intl.RelativeTimeFormat` atm)
+// Pollyfill (mobile safari doesn't support `Intl.RelativeTimeFormat` at the moment)
 import '@formatjs/intl-relativetimeformat/polyfill';
 import '@formatjs/intl-relativetimeformat/polyfill-locales';
 

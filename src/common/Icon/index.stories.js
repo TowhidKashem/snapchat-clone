@@ -1,11 +1,13 @@
 import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 import Icon from './index';
 
 export default {
   title: 'Icon',
-  component: Icon,
-  decorators: [withKnobs]
+  component: Icon
 };
 
-export const Default = () => <Icon icon="faSnapchatSquare" />;
+export const Default = () => (
+  <div className="ico-lg">
+    <Icon icon="faSnapchatSquare" />
+  </div>
+);

@@ -9,7 +9,7 @@ export default {
 };
 
 export const Default = () => (
-  <Avatar src="https://pngimage.net/wp-content/uploads/2019/05/bitmoji-png-1.png" />
+  <Avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/anatolinicolae/128.jpg" />
 );
 
 export const Sizes = () => {
@@ -24,7 +24,7 @@ export const Sizes = () => {
   );
   return (
     <Avatar
-      src="https://pngimage.net/wp-content/uploads/2019/05/bitmoji-png-1.png"
+      src="https://s3.amazonaws.com/uifaces/faces/twitter/anatolinicolae/128.jpg"
       size={size}
     />
   );

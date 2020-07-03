@@ -12,7 +12,6 @@ dog and other filters not working suddenly
 
 GRUNT WORK:
 
-storybook stories
 common component unit tests
 
 --

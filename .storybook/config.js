@@ -1,1 +1,2 @@
-import '../src/styles/global.scss';
+import 'styles/app.scss';
+import './storybook.scss';

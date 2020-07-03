@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import { api, sleep, debounce } from 'utils/system';
-import { elemInView } from 'utils/browser';
+import { elemInView } from 'utils/viewport';
 import { showDrawer } from 'AppShell/duck';
 import { ShowDrawer } from 'AppShell/types';
 import Header from 'common/Header';
