@@ -6,4 +6,8 @@ export default {
   component: Header
 };
 
-export const Default = () => <Header showDrawe={() => {}} />;
+export const withAvatar = () => (
+  <Header avatar="https://i.imgur.com/EbafXMb.png" showDrawer={() => {}} />
+);
+
+export const withIcon = () => <Header showDrawer={() => {}} />;

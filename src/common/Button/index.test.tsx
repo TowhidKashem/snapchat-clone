@@ -16,9 +16,16 @@ describe('<Button />', () => {
   });
 
   it('image button', () => {
-    const image = '/dev/null/img.png';
+    const image = '/path/to/img.png';
     const component = shallow(<Button image={image} />);
     expect(component.find('img').prop('src')).toEqual(image);
+  });
+
+  it('single icon button', () => {
+    const icon = 'faCamera';
+    const component = shallow(<Button icon={icon} />);
+    expect(component.find(Icon)).toHaveLength(1);
+    expect(component.find(Icon).prop('icon')).toEqual(icon);
   });
 
   it('multiple icons button', () => {
@@ -30,10 +37,18 @@ describe('<Button />', () => {
     });
   });
 
-  it('single icon button', () => {
-    const icon = 'faCamera';
-    const component = shallow(<Button icon={icon} />);
-    expect(component.find(Icon)).toHaveLength(1);
-    expect(component.find(Icon).prop('icon')).toEqual(icon);
+  it('`purple`, `round` and `plain` buttons', () => {
+    ['purple', 'round', 'plain'].forEach((type) => {
+      const prop = { [type]: true };
+      const component = shallow(<Button {...prop} />);
+      expect(component.find('button').hasClass(type)).toBe(true);
+    });
+  });
+
+  it('supports click handler', () => {
+    const callback = jest.fn();
+    const component = shallow(<Button onclick={callback} />);
+    component.simulate('click');
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 });

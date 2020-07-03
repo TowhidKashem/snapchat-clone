@@ -21,6 +21,7 @@ interface Props {
   hideDrawer: HideDrawer;
   footerType: FooterType;
   setFooterType: SetFooterType;
+  avatar: string;
   getSession: () => void;
   getFriends: () => void;
   getPhotos: () => void;
@@ -33,6 +34,7 @@ const AppShell: React.FC<Props> = ({
   hideDrawer,
   footerType,
   setFooterType,
+  avatar,
   getSession,
   getFriends,
   getPhotos,
@@ -48,7 +50,7 @@ const AppShell: React.FC<Props> = ({
   return (
     <>
       <Toolbar drawers={drawers} />
-      <Header showDrawer={showDrawer} />
+      <Header avatar={avatar} showDrawer={showDrawer} />
       <section className="view">{children}</section>
       {drawers && <Drawer drawers={drawers} />}
       <Footer
@@ -62,11 +64,12 @@ const AppShell: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({ app, users, media }) => ({
+const mapStateToProps = ({ app, user, users, media }) => ({
   users,
   media,
   drawers: app.drawers,
-  footerType: app.footerType
+  footerType: app.footerType,
+  avatar: user.session.avatar
 });
 
 const mapDispatchToProps = (dispatch) => ({

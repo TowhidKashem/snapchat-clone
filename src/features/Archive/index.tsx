@@ -13,9 +13,16 @@ interface Props {
   photoTaken: boolean;
   showDrawer: ShowDrawer;
   addSnap: AddSnap;
+  avatar: string;
 }
 
-const Archive: React.FC<Props> = ({ photos, photoTaken, showDrawer, addSnap }) => {
+const Archive: React.FC<Props> = ({
+  photos,
+  photoTaken,
+  showDrawer,
+  addSnap,
+  avatar
+}) => {
   const openPhoto = (image) => {
     addSnap({
       type: 'photo',
@@ -31,7 +38,7 @@ const Archive: React.FC<Props> = ({ photos, photoTaken, showDrawer, addSnap }) =
 
   return (
     <main className="archive">
-      <Header showDrawer={showDrawer} />
+      <Header avatar={avatar} showDrawer={showDrawer} />
 
       {!photoTaken && (
         <section className="message">
@@ -59,9 +66,10 @@ const Archive: React.FC<Props> = ({ photos, photoTaken, showDrawer, addSnap }) =
   );
 };
 
-const mapStateToProps = ({ camera }) => ({
+const mapStateToProps = ({ user, camera }) => ({
   photos: camera.photos,
-  photoTaken: camera.photoTaken
+  photoTaken: camera.photoTaken,
+  avatar: user.session.avatar
 });
 
 const mapDispatchToProps = (dispatch) => ({

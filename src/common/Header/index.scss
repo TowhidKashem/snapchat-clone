@@ -10,7 +10,13 @@
   margin-top: $toolbar-height;
 
   .btn-user {
-    font-size: 28px;
+    .icon {
+      font-size: 30px;
+    }
+
+    img {
+      width: 30px;
+    }
   }
 
   .input {

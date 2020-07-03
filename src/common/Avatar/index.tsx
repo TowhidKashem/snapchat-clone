@@ -1,9 +1,11 @@
 import React from 'react';
 import './index.scss';
 
+export type sizeType = 'sm' | 'md' | 'lg';
+
 interface Props {
   src: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: sizeType;
 }
 
 export const sizeMap = {

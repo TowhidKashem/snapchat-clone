@@ -62,7 +62,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
-const iconMap = {
+export const iconMap = {
   // free-brands-svg-icons
   faSnapchatSquare,
   faGithub,

@@ -12,10 +12,11 @@ import SpotlightPod from 'common/Pod/Spotlight';
 import './index.scss';
 
 interface Props {
+  avatar: string;
   showDrawer: ShowDrawer;
 }
 
-const Discover: React.FC<Props> = ({ showDrawer }) => {
+const Discover: React.FC<Props> = ({ avatar, showDrawer }) => {
   const [profiles, setProfiles] = useState<any[]>([]);
   const [page, setPage] = useState(1);
 
@@ -48,7 +49,7 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
 
   return (
     <main className="discover">
-      <Header showDrawer={showDrawer} />
+      <Header avatar={avatar} showDrawer={showDrawer} />
       <section className="view">
         <Widget className="friends" header="Friends" transparent>
           <p>Stories from your friends will appear here.</p>
@@ -71,8 +72,10 @@ const Discover: React.FC<Props> = ({ showDrawer }) => {
   );
 };
 
+const mapStateToProps = ({ user }) => ({ avatar: user.session.avatar });
+
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (component) => dispatch(showDrawer(component))
 });
 
-export default connect(null, mapDispatchToProps)(Discover);
+export default connect(mapStateToProps, mapDispatchToProps)(Discover);
