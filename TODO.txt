@@ -8,12 +8,6 @@ write end to end cypress tests
 
 dog and other filters not working suddenly
 
-====
-
-GRUNT WORK:
-
-common component unit tests
-
 --
 
 Last:

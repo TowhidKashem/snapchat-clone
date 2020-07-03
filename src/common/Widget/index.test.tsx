@@ -4,7 +4,7 @@ import Widget from './index';
 
 const defaultProps = { header: 'Hello World' };
 
-describe('<SkeletonFrame />', () => {
+describe('<Widget />', () => {
   it('renders without crashing', () => {
     const component = shallow(
       <Widget {...defaultProps}>

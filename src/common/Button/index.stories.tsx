@@ -8,9 +8,7 @@ export default {
 
 export const Default = () => <Button label="Click Me" />;
 
-export const Image = () => (
-  <Button label="Click Me" image="https://picsum.photos/id/823/150/100" />
-);
+export const Image = () => <Button image="https://picsum.photos/id/823/150/100" />;
 
 export const Icon = () => <Button icon="faUserCircle" />;
 
