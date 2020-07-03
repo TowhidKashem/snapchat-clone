@@ -22,10 +22,10 @@
       "location": null,
       "lat": null,
       "lon": null,
-      "time": 1593576000000,
-      "type": "video",
-      "url": "./video/girl-dancing.mp4",
-      "caption": null
+      "time": 1593489600000,
+      "type": "photo",
+      "url": "./images/snaps/cake.jpg",
+      "caption": "hmmmm 🤔🎂"
     },
     {
       "location": null,
@@ -85,10 +85,10 @@
       "location": null,
       "lat": null,
       "lon": null,
-      "time": 1593489600000,
-      "type": "photo",
-      "url": "./images/snaps/cake.jpg",
-      "caption": "hmmmm 🤔🎂"
+      "time": 1593576000000,
+      "type": "video",
+      "url": "./video/girl-dancing.mp4",
+      "caption": null
     }
   ]
 }

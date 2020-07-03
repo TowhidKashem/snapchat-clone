@@ -1908,7 +1908,7 @@
     qs "^6.6.0"
     util-deprecate "^1.0.2"
 
-"@storybook/theming@5.3.19":
+"@storybook/theming@5.3.19", "@storybook/theming@^5.3.19":
   version "5.3.19"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.3.19.tgz#177d9819bd64f7a1a6ea2f1920ffa5baf9a5f467"
   integrity sha512-ecG+Rq3hc1GOzKHamYnD4wZ0PEP9nNg0mXbC3RhbxfHj+pMMCWWmx9B2Uu75SL1PTT8WcfkFO0hU/0IO84Pzlg==
