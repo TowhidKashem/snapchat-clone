@@ -14,7 +14,6 @@ dog and other filters not working suddenly
 
 GRUNT WORK:
 
-add more dummy snaps
 storybook stories
 common component unit tests
 
@@ -23,6 +22,4 @@ common component unit tests
 Last:
 
   renew all api keys in commits
-  have compiled version of both the app and storybook for users who may run into npm issues (have both in build or dist folder)
   make sure pwa manifest related things are being picked up once depoyed!
-

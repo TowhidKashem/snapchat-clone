@@ -62,10 +62,7 @@ export const setLatLon = (latitude, longitude) => (dispatch) =>
 const initialState = {
   session: {},
   friends: [],
-  geolocation: {
-    latitude: 40.75491,
-    longitude: -73.994102
-  }
+  geolocation: {}
 };
 
 export default function reducer(

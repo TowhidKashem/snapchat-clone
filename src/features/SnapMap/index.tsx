@@ -36,7 +36,7 @@ const SnapMap: React.FC<Props> = ({
   hideDrawer,
   geolocation
 }) => {
-  const { latitude, longitude } = geolocation;
+  const { latitude, longitude, city, state } = geolocation;
 
   const mapElem = useRef<HTMLDivElement>(null);
 
@@ -44,7 +44,7 @@ const SnapMap: React.FC<Props> = ({
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
 
   useEffect(() => {
-    getSnaps(latitude, longitude);
+    getSnaps(latitude, longitude, city, state);
     getWeather(latitude, longitude);
     setMap(
       new mapboxgl.Map({
@@ -54,7 +54,7 @@ const SnapMap: React.FC<Props> = ({
         zoom: 13
       }).on('load', () => setLoading(false))
     );
-  }, [getSnaps, getWeather, latitude, longitude]);
+  }, [getSnaps, getWeather, latitude, longitude, city, state]);
 
   // Add self marker on map
   useEffect(() => {
@@ -132,7 +132,7 @@ const mapStateToProps = ({ snapMap, user }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getSnaps: (lat, lon) => dispatch(getSnaps(lat, lon)),
+  getSnaps: (lat, lon, city, state) => dispatch(getSnaps(lat, lon, city, state)),
   addSnap: (snap) => dispatch(addSnap(snap)),
   getWeather: (lat, lon) => dispatch(getWeather(lat, lon)),
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),

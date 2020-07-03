@@ -1,104 +1,94 @@
 {
   "snaps": [
     {
-      "location": "Corona, Queens",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1593489600000,
       "type": "video",
       "url": "./video/street-tour.mp4",
-      "caption": null,
-      "userId": "00975694-7b26-4cdc-83d7-a6bdd783c987"
+      "caption": null
     },
     {
-      "location": "Maspeth, Queens",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1593736863689,
       "type": "photo",
       "url": "./images/snaps/food.jpg",
-      "caption": "Hmm can't wait to dig in!! 😋",
-      "userId": "0a08aeaa-5d5c-4367-bbd4-078cf9cb8f5f"
+      "caption": "Hmm can't wait to dig in!! 😋"
     },
     {
-      "location": "New York City, New York",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1593576000000,
       "type": "video",
       "url": "./video/girl-dancing.mp4",
-      "caption": null,
-      "userId": "329798fe-82f5-4ff2-a71e-113e2262de30"
+      "caption": null
     },
     {
-      "location": "Maspeth, Queens",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1593662400000,
       "type": "photo",
-      "url": "https://images.squarespace-cdn.com/content/v1/58822b55f7e0ab55272490d8/1505533090732-N9UHXH0AV0CBMLDDJLJG/ke17ZwdGBToddI8pDm48kAvdkb3CNuXChRgEIzwpKrAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2CHkir-BWnn8JnIyn7v-fE5S1T7ENgwaqkmWtynw5yGzvOzbI-NzUQK-lrlmb-Qyr/WalkerPOV.JPG",
-      "caption": null,
-      "userId": "7fcdd6e7-d987-48a9-91c0-86f63958e5df"
+      "url": "./images/snaps/hookah.jpg",
+      "caption": "Pregaaaaaaaaame!"
     },
     {
-      "location": "Maspeth, Queens",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1592884800000,
       "type": "video",
       "url": "./video/birthday-kid.mp4",
-      "caption": null,
-      "userId": "7fcdd6e7-d987-48a9-91c0-86f63958e5df"
+      "caption": null
     },
     {
-      "location": "Maspeth, Queens",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1592798400000,
       "type": "photo",
-      "url": "https://i.ytimg.com/vi/A7qU-u30Jws/maxresdefault.jpg",
-      "caption": null,
-      "userId": "7fcdd6e7-d987-48a9-91c0-86f63958e5df"
+      "url": "./images/snaps/concert.jpg",
+      "caption": null
     },
     {
-      "location": "Maspeth, Queens",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1593230400000,
       "type": "video",
       "url": "./video/skate-park.mp4",
-      "caption": null,
-      "userId": "7fcdd6e7-d987-48a9-91c0-86f63958e5df"
+      "caption": null
     },
     {
-      "location": "Maspeth, Queens",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1593576000000,
       "type": "photo",
-      "url": "https://images.squarespace-cdn.com/content/v1/58822b55f7e0ab55272490d8/1505533090732-N9UHXH0AV0CBMLDDJLJG/ke17ZwdGBToddI8pDm48kAvdkb3CNuXChRgEIzwpKrAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2CHkir-BWnn8JnIyn7v-fE5S1T7ENgwaqkmWtynw5yGzvOzbI-NzUQK-lrlmb-Qyr/WalkerPOV.JPG",
-      "caption": null,
-      "userId": "7fcdd6e7-d987-48a9-91c0-86f63958e5dsf"
+      "url": "./images/snaps/dog-walk.jpg",
+      "caption": null
     },
     {
-      "location": "Maspeth, Queens",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1593737330667,
       "type": "video",
       "url": "./video/city-drive.mp4",
-      "caption": null,
-      "userId": "7fcdd6e7-d987-48a9-91c0-86f63958e5df"
+      "caption": null
     },
     {
-      "location": "Maspeth, Queens",
+      "location": null,
       "lat": null,
       "lon": null,
-      "time": 1590788444596,
+      "time": 1593489600000,
       "type": "photo",
-      "url": "https://images.squarespace-cdn.com/content/v1/58822b55f7e0ab55272490d8/1505533090732-N9UHXH0AV0CBMLDDJLJG/ke17ZwdGBToddI8pDm48kAvdkb3CNuXChRgEIzwpKrAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2CHkir-BWnn8JnIyn7v-fE5S1T7ENgwaqkmWtynw5yGzvOzbI-NzUQK-lrlmb-Qyr/WalkerPOV.JPG",
-      "caption": null,
-      "userId": "7fcdd6e7-d987-48a9-91c0-86f63958e5df"
+      "url": "./images/snaps/cake.jpg",
+      "caption": "hmmmm 🤔🎂"
     }
   ]
 }

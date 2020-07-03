@@ -7,7 +7,7 @@ export const SNAPS_FETCHED = 'snapMap/snapsFetched';
 export const WEATHER_FETCHED = 'snapMap/weatherFetched';
 
 // Action creators
-export const getSnaps = (lat, lon) => async (dispatch) => {
+export const getSnaps = (lat, lon, city, state) => async (dispatch) => {
   const [error, response] = await api.get(`/snaps.json?geo=${lat},${lon}`);
 
   if (!error) {
@@ -57,6 +57,7 @@ export const getSnaps = (lat, lon) => async (dispatch) => {
 
     const snaps = response.snaps.map((snap, index) => ({
       ...snap,
+      location: `${city}, ${state}`,
       lat: coords[index].lat,
       lon: coords[index].lon
     }));
