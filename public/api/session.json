@@ -1,7 +1,7 @@
 {
   "id": 123,
   "username": "Towhid",
-  "avatar": "./images/bitmoji-self-head.png",
+  "avatar": "./images/bitmoji-self-avatar.png",
   "gender": "male",
   "age": 31,
   "fullName": "Towhid Kashem"
