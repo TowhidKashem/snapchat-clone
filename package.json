@@ -7,7 +7,6 @@
     "email": "tkashem@gmail.com",
     "url": "https://github.com/TowhidKashem"
   },
-  "homepage": "https://towhidkashem.github.io/snapchat-clone",
   "dependencies": {
     "@formatjs/intl-relativetimeformat": "^5.2.7",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
@@ -39,7 +38,9 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "serve": "serve -s build",
+    "cleanup": "rm -rf node_modules && cd public/filters && rm -rf node_modules && rm -rf jeelizFaceFilter && rm -rf build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -80,6 +81,7 @@
     "node-sass": "^4.14.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
+    "serve": "^11.3.2",
     "typescript": "~3.7.2"
   },
   "husky": {

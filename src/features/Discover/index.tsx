@@ -13,19 +13,29 @@ import './index.scss';
 
 interface Props {
   avatar: string;
+  drawerContent: any;
   showDrawer: ShowDrawer;
 }
 
-const Discover: React.FC<Props> = ({ avatar, showDrawer }) => {
+const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
   const [profiles, setProfiles] = useState<any[]>([]);
   const [page, setPage] = useState(1);
 
   const loadMore = useRef(null);
   const isFetching = useRef(false);
+  const onScroll = useRef(
+    debounce(() => {
+      if (!isFetching.current && elemInView(loadMore.current))
+        setPage((prevPage) => prevPage + 1);
+    }, 10)
+  );
+
+  useEffect(() => {
+    drawerContent.current.addEventListener('scroll', onScroll.current);
+  }, [drawerContent]);
 
   useEffect(() => {
     (async () => {
-      if (page > 3) return;
       isFetching.current = true;
       const [error, response] = await api.get(`/discover/page/${page}.json`);
       if (!error) {
@@ -34,18 +44,10 @@ const Discover: React.FC<Props> = ({ avatar, showDrawer }) => {
         setProfiles((prevProfiles) => [...prevProfiles, ...response.discover]);
         isFetching.current = false;
       }
+      if (page === 3)
+        drawerContent.current.removeEventListener('scroll', onScroll.current);
     })();
-  }, [page]);
-
-  useEffect(() => {
-    document.querySelector('#discover .content')?.addEventListener(
-      'scroll',
-      debounce(() => {
-        if (!isFetching.current && elemInView(loadMore.current))
-          setPage((prevPage) => prevPage + 1);
-      }, 10)
-    );
-  }, []);
+  }, [page, drawerContent]);
 
   return (
     <main className="discover">

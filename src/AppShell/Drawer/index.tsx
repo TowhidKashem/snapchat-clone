@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
 import { onAnimationComplete } from 'utils/animation';
@@ -17,6 +17,8 @@ interface Props {
 }
 
 const Drawer: React.FC<Props> = ({ drawers }) => {
+  const drawerContent = useRef(null);
+
   const getComponent = (component, show) => {
     const componentMap = {
       account: <Account />,
@@ -25,7 +27,7 @@ const Drawer: React.FC<Props> = ({ drawers }) => {
       snap: <Snap />,
       archive: <Archive />,
       chat: <Chat />,
-      discover: <Discover />
+      discover: <Discover drawerContent={drawerContent} />
     };
     return componentMap[component];
   };
@@ -70,6 +72,7 @@ const Drawer: React.FC<Props> = ({ drawers }) => {
                   isVisible={show}
                 >
                   <section
+                    ref={drawerContent}
                     className="content"
                     style={{ height: window.innerHeight + 'px' }}
                   >
