@@ -14,14 +14,6 @@
 
       .input {
         margin-right: 5px;
-
-        input[type='text'] {
-          background: rgba($color-black, 0.1);
-
-          &::placeholder {
-            color: $color-darker-grey;
-          }
-        }
       }
     }
   }

@@ -38,7 +38,7 @@ const Archive: React.FC<Props> = ({
 
   return (
     <main className="archive">
-      <Header avatar={avatar} showDrawer={showDrawer} />
+      <Header avatar={avatar} showDrawer={showDrawer} insideDrawer />
 
       {!photoTaken && (
         <section className="message">

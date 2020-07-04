@@ -25,6 +25,16 @@
     }
   }
 
+  &.dark {
+    input[type='text'] {
+      background: rgba($color-black, 0.1);
+
+      &::placeholder {
+        color: $color-darker-grey;
+      }
+    }
+  }
+
   input[type='text'] {
     border: 0;
     outline: 0;

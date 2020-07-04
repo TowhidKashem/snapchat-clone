@@ -41,7 +41,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
   const [takePic, setTakePic] = useState(false);
 
   useEffect(() => {
-    // startCamera();
+    startCamera();
   }, []);
 
   const startCamera = async () => {

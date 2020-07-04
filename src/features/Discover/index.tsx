@@ -49,7 +49,7 @@ const Discover: React.FC<Props> = ({ avatar, showDrawer }) => {
 
   return (
     <main className="discover">
-      <Header avatar={avatar} showDrawer={showDrawer} />
+      <Header avatar={avatar} showDrawer={showDrawer} insideDrawer />
       <section className="view">
         <Widget className="friends" header="Friends" transparent>
           <p>Stories from your friends will appear here.</p>

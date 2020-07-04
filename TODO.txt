@@ -1,14 +1,19 @@
-is 414px the right width
+
+dog and other filters not working suddenly
+
+nice hardcoded chat messages / increase dummy responses
+
+----
+
+write end to end cypress tests
 
 cross browser compatability / mobile
         check browser stack
         npm i on windows
 
-write end to end cypress tests
+storybook unmet dependency warnings
 
-dog and other filters not working suddenly
-
-nice hardcoded chat messages / increase dummy responses
+archived snaps from prev months
 
 --
 

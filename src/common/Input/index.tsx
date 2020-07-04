@@ -17,6 +17,7 @@ interface Props {
   focus?: boolean;
   spellCheck?: boolean;
   animate?: boolean;
+  dark?: boolean;
 }
 
 const Input: React.FC<Props> = ({
@@ -31,7 +32,8 @@ const Input: React.FC<Props> = ({
   onEnter,
   focus,
   spellCheck,
-  animate
+  animate,
+  dark
 }) => {
   const inputElem = useRef<HTMLInputElement>(null);
   const [full, setFull] = useState(false);
@@ -46,7 +48,10 @@ const Input: React.FC<Props> = ({
   const disabled = onClick ? true : false;
 
   return (
-    <div onClick={onClick} className={classNames('input', { animate, full, disabled })}>
+    <div
+      onClick={onClick}
+      className={classNames('input', { animate, full, disabled, dark })}
+    >
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
         type="text"

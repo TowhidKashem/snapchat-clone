@@ -36,7 +36,9 @@
     "postinstall": "cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && npm run gulp",
     "precommit": "pretty-quick --staged && react-scripts test --watchAll=false",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -72,6 +74,7 @@
     "cypress": "^4.9.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "gh-pages": "^3.1.0",
     "husky": "^4.2.5",
     "node-sass": "^4.14.0",
     "prettier": "^2.0.5",

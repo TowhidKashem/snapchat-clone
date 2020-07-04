@@ -43,6 +43,7 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
             onChange={(e) => setQuery(e.currentTarget.value.trim())}
             focus={show}
             animate
+            dark
           />
           <Button label="Cancel" plain onclick={() => hideDrawer('search')} />
         </form>

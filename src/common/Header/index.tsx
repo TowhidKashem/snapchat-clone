@@ -7,9 +7,10 @@ import './index.scss';
 interface Props {
   avatar?: string;
   showDrawer: ShowDrawer;
+  insideDrawer?: boolean;
 }
 
-const Header: React.FC<Props> = ({ avatar, showDrawer }) => {
+const Header: React.FC<Props> = ({ avatar, showDrawer, insideDrawer }) => {
   const iconImage = avatar ? { image: avatar } : { icon: 'faUserCircle' };
   return (
     <header className="header">
@@ -31,6 +32,7 @@ const Header: React.FC<Props> = ({ avatar, showDrawer }) => {
             animationOutDuration: 200
           })
         }
+        dark={insideDrawer}
       />
       <Button icon="faRetweet" buttonClass="btn-flip-camera" />
     </header>
