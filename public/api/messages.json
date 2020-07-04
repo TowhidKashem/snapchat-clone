@@ -1,21 +1,21 @@
 {
-  "thread": "Julia",
+  "thread": "Lisa",
   "messages": [
     {
       "id": 1,
-      "author": "Julia",
+      "author": "Lisa",
       "message": "Hey there2!",
       "time": 1593057824382
     },
     {
       "id": 2,
-      "author": "Julia",
+      "author": "Lisa",
       "message": "Oh wow",
       "time": 1593057832262
     },
     {
       "id": 3,
-      "author": "Towhid",
+      "author": "Julia",
       "message": "Hi",
       "time": 1593057839073
     }

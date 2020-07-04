@@ -41,7 +41,7 @@ export const postMessage = (author, message) => (dispatch) =>
 
 // Reducer
 const initialState = {
-  thread: 'Julia',
+  thread: 'Lisa',
   messages: []
 };
 

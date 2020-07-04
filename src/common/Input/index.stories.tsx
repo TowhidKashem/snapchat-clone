@@ -6,22 +6,28 @@ export default {
   component: Input
 };
 
-export const Default = () => <Input />;
+const defaultProps = { placeholder: 'Type here..' };
+
+export const Default = () => <Input {...defaultProps} />;
 
 export const Placeholder = () => <Input placeholder="Type here..." />;
 
-export const disabled = () => <Input value="Can't type here.." onClick={() => {}} />;
+export const disabled = () => (
+  <Input {...defaultProps} value="Can't type here.." onClick={() => {}} />
+);
 
-export const LeftIcon = () => <Input leftIcon="faSearch" />;
+export const LeftIcon = () => <Input {...defaultProps} leftIcon="faSearch" />;
 
-export const RightIcon = () => <Input rightIcon="faUserPlus" />;
+export const RightIcon = () => <Input {...defaultProps} rightIcon="faUserPlus" />;
 
-export const bothIcons = () => <Input leftIcon="faSearch" rightIcon="faUserPlus" />;
+export const bothIcons = () => (
+  <Input {...defaultProps} leftIcon="faSearch" rightIcon="faUserPlus" />
+);
 
 export const expandAnimation = () => (
   <div>
-    <Input animate />
+    <Input {...defaultProps} animate />
   </div>
 );
 
-export const focusField = () => <Input focus />;
+export const focusField = () => <Input {...defaultProps} focus />;

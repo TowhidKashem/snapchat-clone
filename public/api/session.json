@@ -1,8 +1,8 @@
 {
-  "id": 123,
-  "username": "Towhid",
+  "id": "dc1a7178-72b4-452e-98be-2f0ec33178e8",
+  "username": "Julia",
   "avatar": "./images/bitmoji-self-avatar.png",
-  "gender": "male",
-  "age": 31,
-  "fullName": "Towhid Kashem"
+  "gender": "female",
+  "age": 26,
+  "fullName": "Julia Charles"
 }

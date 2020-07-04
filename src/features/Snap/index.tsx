@@ -47,7 +47,7 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
       </header>
       {type === 'video' ? (
         <div className="video-container">
-          <video ref={videoElem} onEnded={closeSnap}>
+          <video ref={videoElem} playsInline onEnded={closeSnap}>
             <source src={url} type="video/mp4" />
           </video>
         </div>

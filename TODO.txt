@@ -8,9 +8,12 @@ write end to end cypress tests
 
 dog and other filters not working suddenly
 
+nice hardcoded chat messages / increase dummy responses
+
 --
 
 Last:
 
   renew all api keys in commits
   make sure pwa manifest related things are being picked up once depoyed!
+

@@ -39,10 +39,8 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
   const [filterInitialized, setFilterInitialized] = useState(false);
   const [cameraStream, setCameraStream] = useState(null);
   const [takePic, setTakePic] = useState(false);
-  const [installError, setInstallError] = useState(false);
 
   useEffect(() => {
-    if (typeof window.Filters === 'undefined') setInstallError(true);
     startCamera();
   }, []);
 
@@ -114,13 +112,6 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
 
   return (
     <main className="camera">
-      {installError && (
-        <p className="install-error">
-          Oops, looks like you just ran `npm install`. You need to run `npm run setup`
-          instead for the filters to work!
-        </p>
-      )}
-
       {loading && <Loader message="Applying Filter" fixed />}
 
       <Animated

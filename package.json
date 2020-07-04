@@ -1,7 +1,7 @@
 {
   "name": "react-snapchat-clone",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
   "author": {
     "name": "Towhid Kashem",
     "email": "tkashem@gmail.com",
@@ -28,11 +28,11 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "setup": "npm i && cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && npm run gulp",
     "start": "HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "postinstall": "cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && npm run gulp",
     "precommit": "pretty-quick --staged",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -68,6 +68,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
+    "cypress": "^4.9.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "husky": "^4.2.5",
