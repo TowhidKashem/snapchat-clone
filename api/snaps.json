@@ -1,0 +1,94 @@
+{
+  "snaps": [
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1593489600000,
+      "type": "video",
+      "url": "./video/street-tour.mp4",
+      "caption": null
+    },
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1593736863689,
+      "type": "photo",
+      "url": "./images/snaps/food.jpg",
+      "caption": "Hmm can't wait to dig in!! 😋"
+    },
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1593489600000,
+      "type": "photo",
+      "url": "./images/snaps/cake.jpg",
+      "caption": "hmmmm 🤔🎂"
+    },
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1593662400000,
+      "type": "photo",
+      "url": "./images/snaps/hookah.jpg",
+      "caption": "Pregaaaaaaaaame!"
+    },
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1592884800000,
+      "type": "video",
+      "url": "./video/birthday-kid.mp4",
+      "caption": null
+    },
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1592798400000,
+      "type": "photo",
+      "url": "./images/snaps/concert.jpg",
+      "caption": null
+    },
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1593230400000,
+      "type": "video",
+      "url": "./video/skate-park.mp4",
+      "caption": null
+    },
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1593576000000,
+      "type": "photo",
+      "url": "./images/snaps/dog-walk.jpg",
+      "caption": null
+    },
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1593737330667,
+      "type": "video",
+      "url": "./video/city-drive.mp4",
+      "caption": null
+    },
+    {
+      "location": null,
+      "lat": null,
+      "lon": null,
+      "time": 1593576000000,
+      "type": "video",
+      "url": "./video/girl-dancing.mp4",
+      "caption": null
+    }
+  ]
+}

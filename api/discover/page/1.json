@@ -1,0 +1,36 @@
+{
+  "discover": [
+    {
+      "image": "./images/discover/1.jpg",
+      "title": "I Love Ice Cream Sooo Much"
+    },
+    {
+      "image": "./images/discover/7.jpg",
+      "title": "Girls love taking selfies!"
+    },
+    {
+      "image": "./images/discover/11.jpg",
+      "title": "Flamingo raft floaing on the beach"
+    },
+    {
+      "image": "./images/discover/14.jpg",
+      "title": "Fireworks on the 4th of July"
+    },
+    {
+      "image": "./images/discover/17.jpg",
+      "title": "Too Cool For School of Hard Knocks"
+    },
+    {
+      "image": "./images/discover/8.jpg",
+      "title": "Down the Lazy River of Life"
+    },
+    {
+      "image": "./images/discover/4.jpg",
+      "title": "OMG Sunglasses are the BEST"
+    },
+    {
+      "image": "./images/discover/10.jpg",
+      "title": "Relax on the Roof"
+    }
+  ]
+}

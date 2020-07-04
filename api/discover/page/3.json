@@ -1,0 +1,36 @@
+{
+  "discover": [
+    {
+      "image": "./images/discover/15.jpg",
+      "title": "Confetti makes the best parties"
+    },
+    {
+      "image": "./images/discover/5.jpg",
+      "title": "Oh wow we're doing this again?"
+    },
+    {
+      "image": "./images/discover/23.jpg",
+      "title": "Get a load of this guy"
+    },
+    {
+      "image": "./images/discover/18.jpg",
+      "title": "Wow a bubble, so cool!"
+    },
+    {
+      "image": "./images/discover/20.jpg",
+      "title": "Haha loooser!"
+    },
+    {
+      "image": "./images/discover/21.jpg",
+      "title": "Pretty sunset at the beach just don't leave your kid behind"
+    },
+    {
+      "image": "./images/discover/22.jpg",
+      "title": "Camping with friends"
+    },
+    {
+      "image": "./images/discover/24.jpg",
+      "title": "Blowing Bubbles!"
+    }
+  ]
+}

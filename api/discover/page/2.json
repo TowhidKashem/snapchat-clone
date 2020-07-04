@@ -1,0 +1,36 @@
+{
+  "discover": [
+    {
+      "image": "./images/discover/19.jpg",
+      "title": "How cool are people who can skateboard?"
+    },
+    {
+      "image": "./images/discover/2.jpg",
+      "title": "We Just Vibin'"
+    },
+    {
+      "image": "./images/discover/3.jpg",
+      "title": "Jumping in the air like there's no tommorow!"
+    },
+    {
+      "image": "./images/discover/16.jpg",
+      "title": "Listen to this sweet music"
+    },
+    {
+      "image": "./images/discover/6.jpg",
+      "title": "One foot in front of the other up the hill"
+    },
+    {
+      "image": "./images/discover/9.jpg",
+      "title": "Grunge Rock 80s"
+    },
+    {
+      "image": "./images/discover/12.jpg",
+      "title": "Flip Flop"
+    },
+    {
+      "image": "./images/discover/13.jpg",
+      "title": "Off the coast of Maldives"
+    }
+  ]
+}
