@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && npm run gulp",
-    "precommit": "pretty-quick --staged",
+    "precommit": "pretty-quick --staged && react-scripts test --watchAll=false",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
