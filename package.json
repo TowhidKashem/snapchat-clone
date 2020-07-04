@@ -7,6 +7,7 @@
     "email": "tkashem@gmail.com",
     "url": "https://github.com/TowhidKashem"
   },
+  "homepage": "https://towhidkashem.github.io/snapchat-clone",
   "dependencies": {
     "@formatjs/intl-relativetimeformat": "^5.2.7",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
