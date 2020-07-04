@@ -1,5 +1,5 @@
 {
-  "name": "react-snapchat-clone",
+  "name": "snapchat-clone",
   "version": "1.0.0",
   "license": "MIT",
   "author": {
@@ -31,6 +31,7 @@
     "start": "HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "e2e": "cypress open",
     "eject": "react-scripts eject",
     "postinstall": "cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && npm run gulp",
     "precommit": "pretty-quick --staged && react-scripts test --watchAll=false",
