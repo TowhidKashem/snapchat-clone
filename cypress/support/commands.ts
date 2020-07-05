@@ -26,5 +26,5 @@
 
 Cypress.Commands.add('loadApp', () => {
   cy.visit('https://localhost:3000/');
-  cy.viewport(414, 750);
+  cy.viewport(414, 840);
 });

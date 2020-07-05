@@ -5,6 +5,14 @@ cross browser compatability / mobile
         check browser stack
         npm i on windows
 
+
+destination path 'jeelizFaceFilter' already exists and is not an empty directory.
+
+easy way to set up CI?
+
+brief avatar flash in header
+
+
 --
 
 Last:

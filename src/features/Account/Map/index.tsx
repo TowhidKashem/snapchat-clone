@@ -80,6 +80,7 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
   return (
     <div
       className="preview-map"
+      data-test="preview-map"
       onClick={() =>
         hasApiKey &&
         showDrawer({

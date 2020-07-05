@@ -90,6 +90,7 @@ const SnapMap: React.FC<Props> = ({
     const addSnapToMap = (snap: Snap) => {
       const marker = document.createElement('div');
       marker.className = 'marker';
+      marker.setAttribute('data-test', 'marker');
       marker.onclick = function (e: any) {
         // Show pulse animation
         e.target.classList.add('active');

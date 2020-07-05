@@ -33,12 +33,12 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
   };
 
   return (
-    <main className="snap" onClick={closeSnap}>
+    <main className="snap" onClick={closeSnap} data-test="snap">
       <header>
         {location && time && (
           <div className="left">
-            {location}
-            <time>{relativeTime(time)}</time>
+            <span data-test="location">{location}</span>
+            <time data-test="time">{relativeTime(time)}</time>
           </div>
         )}
         <div className="right">
@@ -47,13 +47,17 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
       </header>
       {type === 'video' ? (
         <div className="video-container">
-          <video ref={videoElem} playsInline onEnded={closeSnap}>
+          <video ref={videoElem} playsInline onEnded={closeSnap} data-test="video">
             <source src={url} type="video/mp4" />
           </video>
         </div>
       ) : (
-        <div className="image-container">
-          {caption && <div className="caption">{caption}</div>}
+        <div className="image-container" data-test="image">
+          {caption && (
+            <div className="caption" data-test="caption">
+              {caption}
+            </div>
+          )}
           <img src={url} alt="" />
         </div>
       )}
