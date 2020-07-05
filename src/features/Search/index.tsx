@@ -45,7 +45,12 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
             animate
             dark
           />
-          <Button label="Cancel" plain onclick={() => hideDrawer('search')} />
+          <Button
+            label="Cancel"
+            plain
+            onclick={() => hideDrawer('search')}
+            testId="cancel-btn"
+          />
         </form>
       </header>
       <section>

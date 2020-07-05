@@ -13,7 +13,7 @@ interface Props {
 const Header: React.FC<Props> = ({ avatar, showDrawer, insideDrawer }) => {
   const iconImage = avatar ? { image: avatar } : { icon: 'faUserCircle' };
   return (
-    <header className="header">
+    <header className="header" data-test="header">
       <Button
         {...iconImage}
         onclick={() => showDrawer({ component: 'account' })}

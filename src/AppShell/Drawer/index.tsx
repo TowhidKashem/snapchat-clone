@@ -63,7 +63,7 @@ const Drawer: React.FC<Props> = ({ drawers }) => {
                 [position]: true
               })}
             >
-              <div className="view">
+              <div className="view" data-test={`${component}-drawer`}>
                 <Animated
                   animationIn={animationIn}
                   animationOut={animationOut}
