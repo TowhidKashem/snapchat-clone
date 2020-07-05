@@ -37,8 +37,8 @@ const initialState = {
     //   animationOut: 'zoomOut',
     //   animationInDuration: 300,
     //   animationOutDuration: 300,
-    //   theme: 'stripped',
-    //   component: 'snapMap',
+    //   // theme: 'stripped',
+    //   component: 'archive',
     //   position: 'front',
     //   show: true
     // }

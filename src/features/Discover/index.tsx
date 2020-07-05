@@ -17,9 +17,14 @@ interface Props {
   showDrawer: ShowDrawer;
 }
 
+type Profile = {
+  image: string;
+  title: string;
+};
+
 const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
-  const [profiles, setProfiles] = useState<any[]>([]);
   const [page, setPage] = useState(1);
+  const [profiles, setProfiles] = useState<Profile[]>([]);
 
   const loadMore = useRef(null);
   const isFetching = useRef(false);

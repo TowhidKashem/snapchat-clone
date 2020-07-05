@@ -33,14 +33,14 @@
     "test": "react-scripts test",
     "e2e": "cypress open",
     "eject": "react-scripts eject",
-    "postinstall": "cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && npm run gulp",
+    "postinstall": "cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && cd jeelizFaceFilter && git reset --hard bd3cdcd0ca01ced09d836c55af82c36047d82dac && cd .. && npm run gulp",
+    "cleanup": "rm -rf node_modules && cd public/filters && rm -rf node_modules jeelizFaceFilter build",
     "precommit": "pretty-quick --staged && react-scripts test --watchAll=false",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "serve": "serve -s build",
-    "cleanup": "rm -rf node_modules && cd public/filters && rm -rf node_modules && rm -rf jeelizFaceFilter && rm -rf build"
+    "serve": "serve -s build"
   },
   "eslintConfig": {
     "extends": "react-app"

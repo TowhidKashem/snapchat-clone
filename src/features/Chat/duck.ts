@@ -11,20 +11,7 @@ export const getMessages = (user) => async (dispatch) => {
   if (!error) {
     dispatch({
       type: MESSAGES_RECEIVED,
-      messages: [
-        ...response.messages,
-        ...response.messages,
-        ...response.messages,
-        ...response.messages,
-        ...response.messages,
-        ...response.messages,
-        ...response.messages,
-        ...response.messages,
-        ...response.messages,
-        ...response.messages,
-        ...response.messages,
-        ...response.messages
-      ]
+      messages: response.messages
     });
   }
 };

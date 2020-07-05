@@ -2,6 +2,8 @@
 @import '~styles/extendables';
 
 .archive {
+  padding-bottom: 100px;
+
   .message {
     text-align: center;
     color: #bbb;
@@ -20,7 +22,7 @@
 
     img {
       margin-right: 5px;
-      @extend %clickable;
+      // @extend %clickable;
     }
   }
 }

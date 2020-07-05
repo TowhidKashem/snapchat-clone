@@ -1,28 +1,14 @@
 
-dog and other filters not working suddenly
-
-nice hardcoded chat messages / increase dummy responses
-
-----
-
 write end to end cypress tests
 
 cross browser compatability / mobile
         check browser stack
         npm i on windows
 
-
-archived snaps from prev months
-
-lock down jeeliz git repo to exact version
-
- const [profiles, setProfiles] = useState<any[]>([]);
-
 --
 
 Last:
 
   renew all api keys in commits
-  make sure pwa manifest related things are being picked up once depoyed!
   remove yarn lock files and keep only npm ones
   

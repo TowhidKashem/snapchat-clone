@@ -171,7 +171,7 @@ Filters.dog = {
       Filters.dog.DOGOBJ3D.add(Filters.dog.EARMESH);
       Filters.dog.DOGOBJ3D.add(Filters.dog.NOSEMESH);
       Filters.dog.DOGOBJ3D.add(Filters.dog.TONGUEMESH);
-      addDragEventListener(Filters.dog.DOGOBJ3D);
+      // addDragEventListener(Filters.dog.DOGOBJ3D);
       threeStuffs.faceObject.add(Filters.dog.DOGOBJ3D);
       Filters.dog.ISLOADED = true;
     };

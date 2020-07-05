@@ -2,22 +2,64 @@
   "thread": "Lisa",
   "messages": [
     {
-      "id": 1,
+      "id": "9a8fcb4b-f820-4a9b-a736-a6c7297c39e0",
       "author": "Lisa",
-      "message": "Hey there2!",
-      "time": 1593057824382
+      "message": "Hey girl))",
+      "time": 1593915027272
     },
     {
-      "id": 2,
+      "id": "9fd0a280-02c0-4510-b768-b40e9fd9ef4a",
       "author": "Lisa",
-      "message": "Oh wow",
-      "time": 1593057832262
+      "message": "How you been?",
+      "time": 1593915032403
     },
     {
-      "id": 3,
+      "id": "58377272-7014-4fb3-9aad-fb9cd1cb84ca",
       "author": "Julia",
-      "message": "Hi",
-      "time": 1593057839073
+      "message": "Oh hey Lisa!!",
+      "time": 1593915038980
+    },
+    {
+      "id": "4e8bfb1f-f087-4bf1-a577-c3b83f82a811",
+      "author": "Julia",
+      "message": "I've been good, about to go to that restaurant you recomended",
+      "time": 1593915044855
+    },
+    {
+      "id": "85298dde-d272-4937-8507-fe847e5bbcc5",
+      "author": "Lisa",
+      "message": "OMG what dish are you gonna try?? 😋🍽",
+      "time": 1593915051122
+    },
+    {
+      "id": "8c75c657-172b-4185-aca7-7b6d9ef2a12b",
+      "author": "Julia",
+      "message": "The chicken parmesan of course 💁🏻‍♀️",
+      "time": 1593915058801
+    },
+    {
+      "id": "e476f51f-e72e-4922-a400-00c9eea758f0",
+      "author": "Lisa",
+      "message": "HAHAHAHAHAHA",
+      "time": 1593915064982
+    },
+    {
+      "id": "4960dbac-b86d-4604-afb6-bdc1ba6bc006",
+      "author": "Lisa",
+      "message": "You and that chicken parmesan, you know other food exists right??",
+      "time": 1593915071585
+    },
+    {
+      "id": "a2b99907-9dc0-4fa5-8e58-3a7f9acc1a5b",
+      "author": "Julia",
+      "message": "Not to me it doesn't!!!",
+      "time": 1593915076911
+    },
+    {
+      "id": "ea6891d3-dfe8-4062-a095-21d3fe1b7b1d",
+      "author": "Julia",
+      "message": "Gotta go girl, later))",
+      "time": 1593915083382
     }
   ]
 }

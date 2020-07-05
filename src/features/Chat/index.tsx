@@ -44,21 +44,24 @@ const Chat: React.FC<Props> = ({
       messageContainer.current.scrollTop = messageContainer.current.scrollHeight;
   }, [messages]);
 
-  const botResponse = useCallback(() => {
-    // Randomize the response and typing times to make the bot seem a little more "realistic"
-    const responseTimes = [500, 700, 900];
-    const typeTimes = [1200, 1400, 1600];
-    setTimeout(() => setTyping(true), randomArrayVal(responseTimes));
-    setTimeout(() => {
-      setTyping(false);
-      postMessage(thread, randomArrayVal(dummyMessages));
-      if (audioElem.current) playSound('newAppMessage', audioElem.current);
-    }, randomArrayVal(typeTimes));
-  }, [postMessage, thread]);
+  const botResponse = useCallback(
+    (message?) => {
+      // Randomize the response and typing times to make the bot seem a little more "realistic"
+      const responseTimes = [500, 700, 900];
+      const typeTimes = [1200, 1400, 1600];
+      setTimeout(() => setTyping(true), randomArrayVal(responseTimes));
+      setTimeout(() => {
+        setTyping(false);
+        postMessage(thread, message || randomArrayVal(dummyMessages));
+        if (audioElem.current) playSound('newAppMessage', audioElem.current);
+      }, randomArrayVal(typeTimes));
+    },
+    [postMessage, thread]
+  );
 
   useEffect(() => {
     getMessages(thread);
-    botResponse();
+    botResponse('Soooo, how was it!?');
   }, [thread, getMessages, botResponse]);
 
   const submitMessage = () => {

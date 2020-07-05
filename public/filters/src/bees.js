@@ -83,7 +83,7 @@ Filters.bees = {
       Filters.bees.GLASSESOBJ3D.scale.multiplyScalar(1.1);
       Filters.bees.GLASSESOBJ3D.position.setY(0.05);
       Filters.bees.GLASSESOBJ3D.position.setZ(0.25);
-      addDragEventListener(Filters.bees.GLASSESOBJ3D);
+      // addDragEventListener(Filters.bees.GLASSESOBJ3D);
       threeStuffs.faceObject.add(Filters.bees.GLASSESOBJ3D);
     };
     const beeLoader = new THREE.JSONLoader();
