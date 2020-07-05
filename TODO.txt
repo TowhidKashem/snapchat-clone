@@ -1,4 +1,6 @@
 
+rename react-snap-chat folder
+
 write end to end cypress tests
 
 cross browser compatability / mobile
