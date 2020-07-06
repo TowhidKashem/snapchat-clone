@@ -12,6 +12,10 @@ easy way to set up CI?
 
 brief avatar flash in header
 
+block geo location request, see error when open snapmap
+
+toolbar layout breaks in e2e browser
+
 
 --
 

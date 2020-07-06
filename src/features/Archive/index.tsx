@@ -47,7 +47,7 @@ const Archive: React.FC<Props> = ({
       )}
 
       {photos.map(({ month, year, images }) => (
-        <section key={month} className="month">
+        <section key={month} className="month" data-test="month">
           <h3>
             {month} {year}
           </h3>

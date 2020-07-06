@@ -46,13 +46,14 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, pickPhoto
 
   return (
     <section
+      data-test="photo-capture"
       className={classNames('photo-capture', {
         hide: !takePic
       })}
     >
       <div className="inner">
         <header>
-          <Button icon="faTimes" onclick={closePic} />
+          <Button icon="faTimes" onclick={closePic} testId="close-btn" />
         </header>
         <canvas ref={canvasElem}></canvas>
         <aside>

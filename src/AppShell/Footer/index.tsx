@@ -78,6 +78,7 @@ const Footer: React.FC<Props> = ({
           <Button
             icons={['faMobile', 'faMobileAlt']}
             buttonClass="archive-btn"
+            testId="archive-btn"
             onclick={() => {
               setFooterType('collapsed');
               showDrawer({

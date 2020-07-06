@@ -25,11 +25,11 @@ describe('Snap Map', () => {
     cy.get('@snapMapDrawer').find('[data-test=marker]').first().click();
     cy.get('[data-test=snap-drawer]').as('snapDrawer');
     cy.get('@snapDrawer').find('[data-test=snap]').click();
-    cy.wait(1000);
+    cy.wait(300);
     cy.get('@snapDrawer').should('not.be.visible');
   });
 
-  it('displays snap location and time in header', () => {
+  it('snap location and time appears in header', () => {
     cy.get('@snapMapDrawer').find('[data-test=marker]').first().click();
     cy.get('[data-test=snap-drawer]').as('snapDrawer');
     cy.get('@snapDrawer')

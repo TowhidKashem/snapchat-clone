@@ -151,6 +151,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
         <Button
           icon="faCircle"
           buttonClass="btn-capture"
+          testId="btn-capture"
           onclick={() => {
             setTakePic(true);
             if (audioElem.current) playSound('cameraShutter', audioElem.current);
@@ -161,6 +162,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
           <Button
             icon="faLaugh"
             buttonClass="btn-filters"
+            testId="btn-filters"
             onclick={() => {
               setShowFilterButtons(true);
               setFooterType('none');
@@ -178,7 +180,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
           isVisible={showFilterButtons}
           animateOnMount={false}
         >
-          <div className="filters">
+          <div className="filters" data-test="filters">
             {filters.map((filter) => (
               <Button
                 key={filter}

@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+///<reference path="./index.d.ts"/>
+
 Cypress.Commands.add('loadApp', () => {
   cy.visit('https://localhost:3000/');
   cy.viewport(414, 840);
