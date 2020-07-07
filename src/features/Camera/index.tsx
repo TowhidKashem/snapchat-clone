@@ -151,7 +151,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
         <Button
           icon="faCircle"
           buttonClass="btn-capture"
-          testId="btn-capture"
+          testId="btn-capture-main"
           onclick={() => {
             setTakePic(true);
             if (audioElem.current) playSound('cameraShutter', audioElem.current);

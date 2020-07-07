@@ -22,6 +22,7 @@ const Header: React.FC<Props> = ({ weather, city, hideDrawer }) => {
           round
           onclick={() => hideDrawer('snapMap')}
           buttonClass="btn-close"
+          testId="btn-close"
         />
         <Button icon="faSearch" round />
       </div>

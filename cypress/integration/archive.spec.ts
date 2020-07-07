@@ -1,11 +1,17 @@
 /// <reference types="cypress" />
 
 describe('Archive', () => {
-  describe('old items', () => {
+  describe('default', () => {
     beforeEach(() => {
       cy.loadApp();
       cy.get('[data-test=archive-btn]').click();
       cy.get('[data-test=archive-drawer]').as('archiveDrawer');
+    });
+
+    it('can open and close archive drawer', () => {
+      cy.get('@archiveDrawer').should('be.visible');
+      cy.get('[data-test=btn-capture-footer]').click();
+      cy.get('@archiveDrawer').should('not.be.visible');
     });
 
     it('loads default set of items', () => {
@@ -33,7 +39,7 @@ describe('Archive', () => {
   describe('new photos', () => {
     beforeEach(() => {
       cy.loadApp();
-      cy.get('[data-test=btn-capture]').as('captureBtn');
+      cy.get('[data-test=btn-capture-main]').as('captureBtn');
       cy.get('@captureBtn').click();
       cy.get('[data-test=photo-capture]').as('photoCapture');
       cy.get('@photoCapture').find('[data-test=close-btn]').click();
@@ -47,7 +53,7 @@ describe('Archive', () => {
         .should('contain', 'data:image/png;base64,');
     });
 
-    it('"photo will appear here" placeholder goes away after taking photo', () => {
+    it('"photo will appear here" placeholder message goes away after taking photo', () => {
       cy.get('[data-test=archive-drawer]')
         .find('[data-test=placeholder-msg]')
         .should('not.exist');

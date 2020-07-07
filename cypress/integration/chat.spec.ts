@@ -9,6 +9,12 @@ describe('Chat', () => {
     cy.wait(1000); // Default message is received after 1 second
   });
 
+  it('can open and close chat drawer', () => {
+    cy.get('@chatDrawer').should('be.visible');
+    cy.get('[data-test=btn-close-chat]').click();
+    cy.get('@chatDrawer').should('not.be.visible');
+  });
+
   it('recieves default message on opening drawer', () => {
     cy.fixture('message').then(({ author, message }) => {
       cy.getLastMessage(true).should('equal', author);

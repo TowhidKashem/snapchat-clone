@@ -84,6 +84,7 @@ const Chat: React.FC<Props> = ({
             icon="faAngleRight"
             onclick={() => hideDrawer('chat')}
             buttonClass="btn-arrow"
+            testId="btn-close-chat"
           />
         </div>
       </header>

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('User Drawer', () => {
+describe('Search', () => {
   beforeEach(() => {
     cy.loadApp();
     cy.get('[data-test=header] [data-test=input]').click();
@@ -9,8 +9,11 @@ describe('User Drawer', () => {
     cy.get('@searchDrawer').find('[data-test=cancel-btn]').as('cancelButton');
   });
 
-  it('can open user drawer', () => {
+  it('can open and close search drawer', () => {
     cy.get('@searchDrawer').should('be.visible');
+    cy.get('@searchField').focus().type('abc');
+    cy.get('@cancelButton').click();
+    cy.get('@searchDrawer').should('not.be.visible');
   });
 
   it('can filter search results', () => {

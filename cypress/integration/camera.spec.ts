@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe('Camera', () => {
-  describe('Filters', () => {
+  describe('filters', () => {
     beforeEach(() => {
       cy.loadApp();
       cy.get('[data-test=btn-filters]').as('filtersBtn');
@@ -22,10 +22,10 @@ describe('Camera', () => {
     });
   });
 
-  describe('Photo Capture', () => {
+  describe('photo capture', () => {
     beforeEach(() => {
       cy.loadApp();
-      cy.get('[data-test=btn-capture]').as('captureBtn');
+      cy.get('[data-test=btn-capture-main]').as('captureBtn');
       cy.get('@captureBtn').click();
       cy.get('[data-test=photo-capture]').as('photoCapture');
     });

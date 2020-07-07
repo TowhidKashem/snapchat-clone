@@ -62,6 +62,7 @@ const Footer: React.FC<Props> = ({
           <Button
             icon="faCircle"
             buttonClass="btn-capture"
+            testId="btn-capture-footer"
             onclick={() => {
               setFooterType('full');
               hideDrawer();

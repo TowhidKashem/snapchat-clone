@@ -11,8 +11,10 @@ describe('Snap Map', () => {
     cy.get('[data-test=snapMap-drawer]').as('snapMapDrawer');
   });
 
-  it('can open snap map', () => {
+  it('can open and close snap map', () => {
     cy.get('@snapMapDrawer').should('be.visible');
+    cy.get('@snapMapDrawer').find('[data-test=btn-close]').click();
+    cy.get('@snapMapDrawer').should('not.be.visible');
   });
 
   it('can open snap', () => {
@@ -41,7 +43,7 @@ describe('Snap Map', () => {
       .should('not.have.length', 0);
   });
 
-  it('video snap', () => {
+  it('shows video snap', () => {
     cy.get('@snapMapDrawer').find('[data-test=marker]').first().click();
     cy.get('[data-test=snap-drawer]').as('snapDrawer');
     cy.get('@snapDrawer').find('[data-test=video]').should('be.visible');
@@ -53,7 +55,7 @@ describe('Snap Map', () => {
     cy.get('@snapMapDrawer').should('not.be.visible');
   });
 
-  it('image snap', () => {
+  it('shows image snap', () => {
     cy.get('@snapMapDrawer').find('[data-test=marker]').eq(1).click();
     cy.get('[data-test=snap-drawer]').as('snapDrawer');
     cy.get('@snapDrawer').find('[data-test=image]').should('be.visible');
