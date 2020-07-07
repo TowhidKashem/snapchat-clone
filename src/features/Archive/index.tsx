@@ -6,6 +6,7 @@ import { addSnap } from 'features/Snap/duck';
 import { AddSnap } from 'features/Snap/types';
 import { Photos } from 'features/Camera/types';
 import Header from 'common/Header';
+import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
@@ -40,6 +41,11 @@ const Archive: React.FC<Props> = ({
     <main className="archive">
       <Header avatar={avatar} showDrawer={showDrawer} insideDrawer />
 
+      <nav className="view-options">
+        <Button label="Snaps" buttonClass="active" />
+        <Button label="Camera Roll" />
+      </nav>
+
       {!photoTaken && (
         <section className="message">
           <p>Take a photo and it will appear here!</p>
@@ -58,6 +64,7 @@ const Archive: React.FC<Props> = ({
               width={100}
               alt=""
               onClick={() => openPhoto(image)}
+              data-test="snap-image"
             />
           ))}
         </section>

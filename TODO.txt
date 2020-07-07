@@ -6,15 +6,9 @@ cross browser compatability / mobile
         npm i on windows
 
 
-destination path 'jeelizFaceFilter' already exists and is not an empty directory.
-
-easy way to set up CI?
-
-brief avatar flash in header
-
-block geo location request, see error when open snapmap
-
 toolbar layout breaks in e2e browser
+
+showDrawer -> openDrawer
 
 
 --

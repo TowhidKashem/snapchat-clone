@@ -74,6 +74,7 @@ const Drawer: React.FC<Props> = ({ drawers }) => {
                   <section
                     ref={drawerContent}
                     className="content"
+                    data-test="drawer-content"
                     style={{ height: window.innerHeight + 'px' }}
                   >
                     {getComponent(component, show)}

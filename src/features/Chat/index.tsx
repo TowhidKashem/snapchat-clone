@@ -9,6 +9,7 @@ import { Session } from 'features/User/types';
 import { GetMessages, PostMessage, Message } from 'features/Chat/types';
 import { randomArrayVal } from 'utils/array';
 import { playSound } from 'utils/audio';
+import { sleep } from 'utils/system';
 import Input from 'common/Input';
 import Avatar from 'common/Avatar';
 import Pill from 'common/Pill';
@@ -45,30 +46,31 @@ const Chat: React.FC<Props> = ({
   }, [messages]);
 
   const botResponse = useCallback(
-    (message?) => {
-      // Randomize the response and typing times to make the bot seem a little more "realistic"
-      const responseTimes = [500, 700, 900];
-      const typeTimes = [1200, 1400, 1600];
-      setTimeout(() => setTyping(true), randomArrayVal(responseTimes));
-      setTimeout(() => {
-        setTyping(false);
-        postMessage(thread, message || randomArrayVal(dummyMessages));
-        if (audioElem.current) playSound('newAppMessage', audioElem.current);
-      }, randomArrayVal(typeTimes));
+    async (firstMsg?: boolean) => {
+      // Pretend to type for a bit..
+      const typeAndStop = firstMsg ? [1000, 0] : [800, 500, 1000, 700, 600, 0];
+      for (let i = 0; i < typeAndStop.length; i++) {
+        setTyping((prevTyping) => !prevTyping);
+        await sleep(typeAndStop[i]);
+        continue;
+      }
+      const message = firstMsg ? 'Soooo, how was it!?' : randomArrayVal(dummyMessages);
+      postMessage(thread, message);
+      if (audioElem.current) playSound('newAppMessage', audioElem.current);
     },
     [postMessage, thread]
   );
 
   useEffect(() => {
     getMessages(thread);
-    botResponse('Soooo, how was it!?');
+    botResponse(true);
   }, [thread, getMessages, botResponse]);
 
   const submitMessage = () => {
     if (!message.length) return;
     postMessage(session.username, message);
     setMessage('');
-    botResponse();
+    setTimeout(botResponse, 1000);
   };
 
   return (
@@ -93,6 +95,7 @@ const Chat: React.FC<Props> = ({
             className={classNames('message', {
               other: author !== session.username
             })}
+            data-test="message"
           >
             <header>{author}</header>
             <blockquote>{message}</blockquote>
@@ -101,7 +104,7 @@ const Chat: React.FC<Props> = ({
       </section>
 
       <footer>
-        <div className={classNames({ typing })}>
+        <div className={classNames('gravatar', { typing })}>
           <Avatar src="./images/bitmoji-other.png" />
         </div>
         <div className="inner-content">

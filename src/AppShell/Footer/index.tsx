@@ -38,6 +38,7 @@ const Footer: React.FC<Props> = ({
           icons={['faCommentAlt', 'faDot']}
           iconClasses={[null, 'new-msg']}
           buttonClass="btn-chat"
+          testId="btn-chat"
           label="Chat"
           onclick={() =>
             showDrawer({
@@ -95,6 +96,7 @@ const Footer: React.FC<Props> = ({
         <Button
           icons={['faMobile', 'faMobile']}
           buttonClass="discover-btn"
+          testId="discover-btn"
           label="Discover"
           onclick={() => {
             setFooterType('collapsed');

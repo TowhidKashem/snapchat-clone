@@ -4,6 +4,20 @@
 .archive {
   padding-bottom: 100px;
 
+  .view-options {
+    text-align: center;
+
+    button {
+      color: $color-darker-grey;
+      margin: 0 15px;
+
+      &.active {
+        color: $color-black;
+        border-bottom: 2px solid;
+      }
+    }
+  }
+
   .message {
     text-align: center;
     color: #bbb;
@@ -22,6 +36,7 @@
 
     img {
       margin-right: 5px;
+      cursor: pointer;
       // @extend %clickable;
     }
   }

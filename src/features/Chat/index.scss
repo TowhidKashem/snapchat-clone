@@ -44,7 +44,7 @@ $footer-height: 70px;
   }
 
   .messages {
-    padding: 10px 5px;
+    padding: 10px 5px 40px;
     margin-top: $header-height;
     overflow: auto;
     height: calc(#{$mobile-vh} - #{$toolbar-height + $header-height + $footer-height});
@@ -90,16 +90,28 @@ $footer-height: 70px;
       font-size: 20px;
     }
 
-    .avatar {
-      position: absolute;
-      top: -20px;
-      width: 50px;
-    }
+    .gravatar {
+      &.typing {
+        &:after {
+          position: absolute;
+          top: -50px;
+          left: 38px;
+          content: '';
+          width: 30px;
+          height: 30px;
+          background: url(/images/thought-bubble.png) no-repeat;
+          background-size: 100%;
+        }
 
-    .typing {
+        .avatar {
+          top: -32px;
+        }
+      }
+
       .avatar {
         position: absolute;
-        top: -32px;
+        top: -20px;
+        width: 50px;
       }
     }
 

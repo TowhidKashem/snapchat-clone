@@ -1,4 +1,4 @@
-export const playSound = (sound: string, audioElem: HTMLAudioElement) => {
+export const playSound = async (sound: string, audioElem: HTMLAudioElement) => {
   const soundMap = {
     newAppMessage: './audio/blip.mp3',
     cameraShutter: './audio/shutter.mp3'
@@ -7,5 +7,7 @@ export const playSound = (sound: string, audioElem: HTMLAudioElement) => {
   // passing an audio tag from the component and setting it's `src` attribute
   // and then paying it seems to bypass this restriction for now..
   audioElem.src = soundMap[sound];
-  audioElem.play();
+  try {
+    await audioElem.play();
+  } catch (err) {}
 };

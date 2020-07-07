@@ -66,7 +66,12 @@ const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
           <div className="inner">
             {profiles.length ? (
               profiles.map(({ image, title }, index) => (
-                <SpotlightPod key={index} image={image} title={title} />
+                <SpotlightPod
+                  key={index}
+                  image={image}
+                  title={title}
+                  testId="discover-item"
+                />
               ))
             ) : (
               <SkeletonFrame count={10} />
