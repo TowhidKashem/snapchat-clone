@@ -1,18 +1,4 @@
 
-write end to end cypress tests
-
-cross browser compatability / mobile
-        check browser stack
-        npm i on windows
-
-
-toolbar layout breaks in e2e browser
-
-showDrawer -> openDrawer
-
-
---
-
 Last:
 
   renew all api keys in commits

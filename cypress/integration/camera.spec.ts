@@ -16,13 +16,4 @@ context('Photo Capture', () => {
     cy.get('@photoCapture').find('[data-test=close-btn]').click();
     cy.get('@photoCapture').should('not.be.visible');
   });
-
-  it('photo gets added to archive drawer', () => {
-    cy.get('@photoCapture').find('[data-test=close-btn]').click();
-    cy.get('[data-test=archive-btn]').click();
-    cy.get('[data-test=archive-drawer]')
-      .find('[data-test=month]:first img:first')
-      .invoke('attr', 'src')
-      .should('contain', 'data:image/png;base64,');
-  });
 });

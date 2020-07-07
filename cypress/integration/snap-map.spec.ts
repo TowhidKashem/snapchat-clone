@@ -25,7 +25,6 @@ describe('Snap Map', () => {
     cy.get('@snapMapDrawer').find('[data-test=marker]').first().click();
     cy.get('[data-test=snap-drawer]').as('snapDrawer');
     cy.get('@snapDrawer').find('[data-test=snap]').click();
-    // cy.wait(300);
     cy.get('@snapDrawer').should('not.be.visible');
   });
 
@@ -50,7 +49,6 @@ describe('Snap Map', () => {
 
   it('drawer automatically closes after video finishes playing', () => {
     cy.get('@snapMapDrawer').find('[data-test=marker]').first().click();
-    cy.get('[data-test=snap-drawer]').as('snapDrawer');
     cy.wait(7000);
     cy.get('@snapMapDrawer').should('not.be.visible');
   });

@@ -3,9 +3,9 @@
 describe('User Drawer', () => {
   beforeEach(() => {
     cy.loadApp();
-    cy.get('[data-test=header] [data-test=input-field]').click();
+    cy.get('[data-test=header] [data-test=input]').click();
     cy.get('[data-test=search-drawer]').as('searchDrawer');
-    cy.get('@searchDrawer').find('[data-test=input-field]').as('searchField');
+    cy.get('@searchDrawer').find('[data-test=field]').as('searchField');
     cy.get('@searchDrawer').find('[data-test=cancel-btn]').as('cancelButton');
   });
 
@@ -14,7 +14,7 @@ describe('User Drawer', () => {
   });
 
   it('can filter search results', () => {
-    cy.get('@searchField').type('ed');
+    cy.get('@searchField').focus().type('ed');
     cy.get('@searchDrawer').find('.results .pod.user').should('have.length', 7);
     cy.wait(100);
     cy.get('@searchField').type('d');
@@ -22,13 +22,8 @@ describe('User Drawer', () => {
   });
 
   it('can see no results message', () => {
-    cy.get('@searchField').type('xyz');
+    cy.get('@searchField').focus().type('xyz');
     cy.get('@searchDrawer').find('.results .pod.user').should('have.length', 0);
     cy.get('@searchDrawer').find('.no-results').should('be.visible');
-  });
-
-  it('can close user drawer', () => {
-    cy.get('@cancelButton').click();
-    cy.get('@searchDrawer').should('not.be.visible');
   });
 });

@@ -5,7 +5,7 @@ describe('Chat', () => {
     cy.loadApp();
     cy.get('[data-test=btn-chat]').click();
     cy.get('[data-test=chat-drawer]').as('chatDrawer');
-    cy.get('@chatDrawer').find('[data-test=input-field]').as('chatField');
+    cy.get('@chatDrawer').find('[data-test=field]').as('chatField');
     cy.wait(1000); // Default message is received after 1 second
   });
 

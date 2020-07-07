@@ -12,9 +12,10 @@ describe('Discover', () => {
   });
 
   it('infinite scroll works', () => {
-    cy.get('@discoverDrawer').find('[data-test=drawer-content]').scrollTo('bottom');
+    cy.get('@discoverDrawer').find('[data-test=drawer-content]').as('drawerContent');
+    cy.get('@drawerContent').scrollTo('bottom');
     cy.get('@discoverDrawer').find('[data-test=discover-item]').should('have.length', 16);
-    cy.get('@discoverDrawer').find('[data-test=drawer-content]').scrollTo('bottom');
+    cy.get('@drawerContent').scrollTo('bottom');
     cy.get('@discoverDrawer').find('[data-test=discover-item]').should('have.length', 24);
   });
 });

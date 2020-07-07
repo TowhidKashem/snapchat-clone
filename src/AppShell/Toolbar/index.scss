@@ -2,7 +2,6 @@
 @import '~styles/vars';
 
 .toolbar {
-  display: none;
   @extend %center-x-y;
   @extend %app-width;
   position: fixed;

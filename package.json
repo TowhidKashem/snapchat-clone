@@ -32,6 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "e2e": "cypress open",
+    "e2e-headless": "cypress run",
     "eject": "react-scripts eject",
     "postinstall": "if [ ! -d 'public/filters/jeelizFaceFilter' ]; then cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && cd jeelizFaceFilter && git reset --hard bd3cdcd0ca01ced09d836c55af82c36047d82dac && cd .. && npm run gulp; fi",
     "cleanup": "rm -rf node_modules && cd public/filters && rm -rf node_modules jeelizFaceFilter build coverage",

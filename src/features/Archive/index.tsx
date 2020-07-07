@@ -47,7 +47,7 @@ const Archive: React.FC<Props> = ({
       </nav>
 
       {!photoTaken && (
-        <section className="message">
+        <section className="message" data-test="placeholder-msg">
           <p>Take a photo and it will appear here!</p>
         </section>
       )}

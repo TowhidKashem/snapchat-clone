@@ -51,7 +51,7 @@ const Input: React.FC<Props> = ({
     <div
       onClick={onClick}
       className={classNames('input', { animate, full, disabled, dark })}
-      data-test="input-field"
+      data-test="input"
     >
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
@@ -69,6 +69,7 @@ const Input: React.FC<Props> = ({
         className={classNames({
           'has-left-icon': leftIcon
         })}
+        data-test="field"
       />
       {rightIcon && <Icon icon={rightIcon} className="right-icon" />}
     </div>
