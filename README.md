@@ -68,19 +68,13 @@ Run these commands in the terminal:
   - In Chrome you will receive a "Your connection is not private" error
     - Click "Advanced" > "Proceed to localhost (unsafe)"
       - You'll get this warning because the app uses a self signed `https` certificate. The `getUserMedia` API used by the camera requires the `https` protocol so we run the dev server in https mode.
+  - After this you will be prompted to give access to your webcam, click "Allow"
 
-<p align="middle">
-  <img src="public/github/https-step-1.png" width="400" />
-  <img src="public/github/https-step-2.png" width="400" /> 
-</p>
+|               Step 1                |               Step 2                |                Step 3                |
+| :---------------------------------: | :---------------------------------: | :----------------------------------: |
+| ![](public/github/https-step-1.png) | ![](public/github/https-step-2.png) | ![](public/github/camera-access.png) |
 
-6. After this you will be prompted to give access to your webcam, click "Allow"
-
-<p align="middle">
-  <img src="public/github/camera-access.png" width="300" />
-</p>
-
-7. You're all set!
+6. You're all set!
 
 # 🦮 Guides
 
@@ -93,12 +87,11 @@ Where it's not obvious which buttons actually work I added a red box-shadow as g
 
 </div>
 
-# 🛠 Tooling
+## 🛠 Tooling
 
-<p align="middle">
-  <img src="public/github/storybook.png" width="400" />
-  <img src="public/github/redux-extension.png" width="400" />
-</p>
+|            Storybook             |            Redux Dev Tools             |
+| :------------------------------: | :------------------------------------: |
+| ![](public/github/storybook.png) | ![](public/github/redux-extension.png) |
 
 - The app has it's own component library and uses Storybook to showcase it. You can run Storybook using the command `npm run storybook`.
 - The Redux Devtools Extension is implemented in the app, it makes things like viewing the state, state flow and debugging much easier, to use it you need to install the browser extension [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) or [here](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/).
@@ -114,17 +107,9 @@ There are two types of tests in the app (end to end and unit).
   - This will spawn the Cypress electron app
   - Click "Run all specs", Cypress will spawn a Chrome instance and you will see all the tests as they're being run:
 
-<p align="middle">
-  <img src="public/github/cypress-tests.png" width="600" />
-</p>
-
-- 👇 Click the image below to see tthe entire test suite being run:
-
-<p align="middle">
-  <a href="public/github/cypress-run-video.mp4">
-    <img src="public/github/cypress-run-screenshot.png" width="600" />
-  </a>
-</p>
+|                Step 1                |                                            Step 2                                            |
+| :----------------------------------: | :------------------------------------------------------------------------------------------: |
+| ![](public/github/cypress-tests.png) | ![](public/github/cypress-run-screenshot.png) 👆Click to see the entire test suite being run |
 
 - Alternatively you can also run the e2e suite in the terminal using the command `npm run e2e-headless`. This command still generates videos in `cypress/videos/*.mp4` of the tests being run should you need them.
 
