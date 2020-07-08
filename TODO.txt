@@ -4,3 +4,5 @@ Last:
   renew all api keys in commits
   remove yarn lock files and keep only npm ones
   
+
+git ignoew .env file
