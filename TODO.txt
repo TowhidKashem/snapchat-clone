@@ -6,3 +6,5 @@ Last:
   
 
 git ignoew .env file
+
+test windows

@@ -8,7 +8,7 @@
   - `common` directory for shared components
   - Bootstraped using Create React App
 - Global state management via `Redux`
-  - Follows the modular `ducks` proposal to bundle action types, creators and reducers all in one file
+  - Follows the modular [ducks](https://github.com/erikras/ducks-modular-redux) proposal to bundle action types, creators and reducers all in one file
   - Flat state tree (avoids deeply nested properties)
   - Follows official Redux styleguide recomendations for naming actions and action types, e.g. `camera/photosFetched` vs `SET_PHOTOS`
   - Uses `thunk` middleware for async operations
@@ -16,6 +16,8 @@
 - Unit tested with `Jest` and `Enzyme`
 - End-to-end tested in `Cypress`
 - Custom component library showcased in `Storybook`
+- Linted using `Eslint`
+- Code is auto formatted using `Prettier` (ran as a pre-commit git hook) before it gets pushed to the repo
 
 ## Installation
 
@@ -33,10 +35,14 @@ Run these commands in the terminal:
     - In Chrome you will receive a "Your connection is not private" error
       - Click "Advanced" > "Proceed to localhost (unsafe)"
 
-![Step 1](public/github/https-step-1.png)
-![Step 2](public/github/https-step-2.png)
+<p align="middle">
+  <img src="public/github/https-step-1.png" width="400" />
+  <img src="public/github/https-step-2.png" width="400" /> 
+</p>
 
 You'll get this warning because the app uses a self signed `https` certificate. The `getUserMedia` API used by the camera requires the `https` protocol so we run the dev server in https mode.
+
+- After this you will be prompted to give access to your webcam, click "Allow"
 
 ## Full feature walkthrough
 
