@@ -12,7 +12,7 @@ interface Props {
 const Widget: React.FC<Props> = ({ header, children, className = '', transparent }) => (
   <section
     className={classNames('widget', {
-      [className]: className
+      [className]: true
     })}
   >
     <header>{header}</header>

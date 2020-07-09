@@ -13,7 +13,6 @@ interface Props {
 
 const apiKey = process.env.REACT_APP_MAP_BOX_API_KEY;
 const hasApiKey = apiKey?.length ? true : false;
-//const hasApiKey = false;
 if (hasApiKey) mapboxgl.accessToken = apiKey as string;
 
 const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {

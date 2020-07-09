@@ -60,6 +60,7 @@ import {
   faCloudSun,
   faSun
 } from '@fortawesome/free-solid-svg-icons';
+import './index.scss';
 
 export const iconMap = {
   // free-brands-svg-icons
@@ -137,7 +138,7 @@ const Icon: React.FC<Props> = ({ icon, onClick, className = '' }) =>
       icon={iconMap[icon]}
       onClick={onClick}
       className={classNames('icon', {
-        [className]: className
+        [className]: true
       })}
     />
   ) : null;

@@ -1,8 +1,9 @@
+export type Gender = 'male' | 'female' | 'other';
 export interface User {
   id: string;
   username: string;
   avatar: string;
-  gender: 'male' | 'female' | 'other';
+  gender: Gender;
   age: number;
   fullName: string;
 }
@@ -30,7 +31,7 @@ export interface Session {
   id: number;
   username: string;
   avatar: string;
-  gender: 'male' | 'female' | 'other';
+  gender: Gender;
   age: number;
   fullName: string;
 }

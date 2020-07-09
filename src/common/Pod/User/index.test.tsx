@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Gender } from 'features/User/types';
 import Avatar from 'common/Avatar';
 import User from './index';
 
@@ -8,7 +9,7 @@ const defaultProps = {
     id: '00975694-7b26-4cdc-83d7-a6bdd783c987',
     username: 'Itzel50',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kevinjohndayy/128.jpg',
-    gender: 'male',
+    gender: 'male' as Gender,
     age: 22,
     fullName: 'Josiane Keebler'
   }

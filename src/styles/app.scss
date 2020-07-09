@@ -33,12 +33,11 @@ img {
 
 body {
   font: normal 14px $font-lato;
+  color: $color-grey-shade-0;
+  background: $color-grey-shade-0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  background: $color-grey-shade-0;
-  color: $color-grey-shade-0;
-  height: 100%;
 }
 
 a {
@@ -53,10 +52,6 @@ a {
   height: 100vh;
   margin: 0 auto;
   overflow: hidden;
-}
-
-.icon {
-  color: $color-white;
 }
 
 .app-sound {

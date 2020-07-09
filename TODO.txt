@@ -7,3 +7,6 @@ get rid of actual address from screenshots
 
 add link on github sidebar
 
+right icon in snap header to the right css
+
+ugly box shadow around save button
