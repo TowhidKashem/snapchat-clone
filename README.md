@@ -168,7 +168,6 @@
         </ul>
       </li>
     </ul>
-
     <table>
       <tbody>
         <tr>
@@ -195,7 +194,6 @@
         </tr>
       </tbody>
     </table>
-
   </li>
   <li>You're all set! 🎉</li>
 </ol>
@@ -232,14 +230,13 @@
       <td valign="top">
         <img src="public/github/storybook.png" />
         <p>
-          The app has it's own component library and uses Storybook to showcase
-          it. You can run Storybook using the command <code>npm run storybook</code>.
+          <strong>Storybook</strong> is used to showcase the app's custom component library. You can run Storybook using the command <code>npm run storybook</code>.
         </p>
       </td>
       <td valign="top">
         <img src="public/github/redux-extension.png" />
         <p>
-          The Redux Devtools Extension is implemented in the app, it makes
+          <strong>Redux Devtools Extension</strong> is implemented in the app, it makes
           things like viewing the state, state flow and debugging much easier,
           to use it you need to install the browser extension
           <a
