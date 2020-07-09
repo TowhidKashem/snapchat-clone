@@ -18,7 +18,7 @@
         <h2 align="center">
           <a href="https://google.com">[LIVE DEMO]</a>
         </h2>
-        <ul class="rich-diff-level-one">
+        <ul>
           <li>
             Built with <code>React</code>
             <ul>
@@ -105,10 +105,8 @@
     </ul>
   </li>
   <li>
-    <p>
-      This part is optional but strongly recomended, without it you won't be
-      able to view any of the snap map features:
-    </p>
+    This part is optional but strongly recomended, without it you won't be able
+    to view any of the snap map features:
     <ul>
       <li>
         Make a Mapbox account and
@@ -135,10 +133,7 @@
     </ul>
   </li>
   <li>
-    <p><code>&gt; npm start</code></p>
-  </li>
-  <li>
-    <p><code>&gt; npm start</code></p>
+    <code>&gt; npm start</code>
     <ul>
       <li>
         The app should open automatically in your browser at
@@ -168,6 +163,7 @@
         </ul>
       </li>
     </ul>
+    <br />
     <table>
       <tbody>
         <tr>
@@ -211,9 +207,9 @@
       </td>
       <td valign="top">
         Not all the buttons are actionable, many of them are there just for show
-        since this is a minimal demo. This <a href="">video</a> shows all the things you
-        can currently do. Where it's not obvious which buttons actually work I
-        added a red box-shadow as guide.
+        since this is a minimal demo. This <a href="">video</a> shows all the
+        things you can currently do. Where it's not obvious which buttons
+        actually work I added a red box-shadow as guide.
       </td>
     </tr>
   </tbody>
@@ -230,15 +226,17 @@
       <td valign="top">
         <img src="public/github/storybook.png" />
         <p>
-          <strong>Storybook</strong> is used to showcase the app's custom component library. You can run Storybook using the command <code>npm run storybook</code>.
+          <strong>Storybook</strong> is used to showcase the app's custom
+          component library. You can run Storybook using the command
+          <code>npm run storybook</code>.
         </p>
       </td>
       <td valign="top">
         <img src="public/github/redux-extension.png" />
         <p>
-          <strong>Redux Devtools Extension</strong> is implemented in the app, it makes
-          things like viewing the state, state flow and debugging much easier,
-          to use it you need to install the browser extension
+          <strong>Redux Devtools Extension</strong> is implemented in the app,
+          it makes things like viewing the state, state flow and debugging much
+          easier, to use it you need to install the browser extension
           <a
             href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en"
             target="_blank"
@@ -257,20 +255,21 @@
   </tbody>
 </table>
 
+<h2>🧪 Testing</h2>
+
 <table>
   <tbody>
     <tr>
       <th colspan="2" align="left">
-        <h2>🧪 Testing</h2>
+        <h2>End-to-End Tests</h2>
       </th>
     </tr>
     <tr>
       <td align="center" valign="top">
-        <img src="public/github/cypress-run-screenshot.png" width="400" />
+        <img src="public/github/cypress-run-screenshot.png" width="600" />
         👆Click to see the entire test suite being run
       </td>
       <td valign="top">
-        <h3>End-to-End Tests</h3>
         <ul>
           <li>
             All e2e tests are located in
@@ -293,12 +292,21 @@
         </ul>
       </td>
     </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
-      <td  valign="top">
-        <img src="public/github/unit-tests.png"  />
+      <th colspan="2" align="left">
+        <h2>Unit Tests</h2>
+      </th>
+    </tr>
+    <tr>
+      <td valign="top">
+        <img src="public/github/unit-tests.png" width="400" />
       </td>
       <td valign="top">
-        <h3>Unit Tests</h3>
         <ul>
           <li>
             All the shared components in the <code>common</code> directory have
