@@ -28,13 +28,15 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "HTTPS=true react-scripts start",
+    "start": "(HTTPS=true || set HTTPS=true) && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "e2e": "cypress open",
     "e2e-headless": "cypress run",
     "eject": "react-scripts eject",
-    "postinstall": "if [ ! -d 'public/filters/jeelizFaceFilter' ]; then cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && cd jeelizFaceFilter && git reset --hard bd3cdcd0ca01ced09d836c55af82c36047d82dac && cd .. && npm run gulp; fi",
+    "install-filter-deps:linux": "if [ ! -d 'public/filters/jeelizFaceFilter' ]; then cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && cd jeelizFaceFilter && git reset --hard bd3cdcd0ca01ced09d836c55af82c36047d82dac && cd .. && npm run gulp; fi",
+    "install-filter-deps:windows": "if not exist public/filters/jeelizFaceFilter (cd public/filters && npm i && git clone git@github.com:jeeliz/jeelizFaceFilter.git && cd jeelizFaceFilter && git reset --hard bd3cdcd0ca01ced09d836c55af82c36047d82dac && cd .. && npm run gulp)",
+    "postinstall": "npm run install-filter-deps:linux || install-filter-deps:windows",
     "cleanup": "rm -rf node_modules && cd public/filters && rm -rf node_modules jeelizFaceFilter build coverage",
     "precommit": "pretty-quick --staged && react-scripts test --watchAll=false",
     "storybook": "start-storybook -p 6006",

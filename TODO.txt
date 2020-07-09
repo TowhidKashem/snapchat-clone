@@ -4,13 +4,7 @@ Make Gif
 Get rid of actual address from screenshots
 Cut images, optimize and resize
 
-
-
 test on windows
-Npm run build and check folder to see if video assets are there 
-Block 3rd party api requests and see if things break 
-
-
 
 Add analytics to gh pages 
 Should I add linked in?

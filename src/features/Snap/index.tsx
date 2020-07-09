@@ -35,11 +35,11 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
 
   return (
     <main className="snap" onClick={closeSnap} data-test="snap">
-      <header className={classNames({ metadata: location && time })}>
-        {location && time && (
+      <header className={classNames({ metadata: location || time })}>
+        {(location || time) && (
           <div className="left">
-            <span data-test="location">{location}</span>
-            <time data-test="time">{relativeTime(time)}</time>
+            {location && <span data-test="location">{location}</span>}
+            {time && <time data-test="time">{relativeTime(time)}</time>}
           </div>
         )}
         <div className="right">

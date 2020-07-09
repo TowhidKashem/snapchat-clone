@@ -57,7 +57,7 @@ export const getSnaps = (lat, lon, city, state) => async (dispatch) => {
 
     const snaps = response.snaps.map((snap, index) => ({
       ...snap,
-      location: `${city}, ${state}`,
+      location: city && state ? `${city}, ${state}` : null,
       lat: coords[index].lat,
       lon: coords[index].lon
     }));
@@ -74,7 +74,7 @@ export const getWeather = (lat, lon) => async (dispatch) => {
   // store this dummy data for purposes of the demo
   let weather = {
     temperature: 75,
-    condition: 'c'
+    condition: 'clear'
   };
 
   let [error, response] = await api.get(

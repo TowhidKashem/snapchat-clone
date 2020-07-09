@@ -44,6 +44,11 @@
     }
   }
 
+  .image-container,
+  .video-container {
+    cursor: pointer;
+  }
+
   .image-container {
     @extend %image-cover;
 
