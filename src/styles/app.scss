@@ -7,10 +7,10 @@ html {
 
 html,
 body {
-  touch-action: none;
   height: 100%;
   overflow: hidden;
   user-select: none;
+  touch-action: none;
 }
 
 *,
@@ -32,13 +32,12 @@ img {
 }
 
 body {
-  position: relative;
   font: normal 14px 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  background: #222;
-  color: #222;
+  background: $color-grey-shade-0;
+  color: $color-grey-shade-0;
   height: 100%;
 }
 
@@ -50,7 +49,7 @@ a {
 .wrapper {
   @extend %app-width;
   position: relative;
-  background-color: $color-dark-grey;
+  background: $color-grey-shade-1;
   height: 100vh;
   margin: 0 auto;
   overflow: hidden;

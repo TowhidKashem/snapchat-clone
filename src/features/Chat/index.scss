@@ -12,7 +12,7 @@ $footer-height: 70px;
   .btn,
   .input {
     .icon {
-      color: $color-blue-grey;
+      color: $color-grey-shade-2;
     }
   }
 
@@ -48,7 +48,6 @@ $footer-height: 70px;
     margin-top: $header-height;
     overflow: auto;
     height: calc(#{$mobile-vh} - #{$toolbar-height + $header-height + $footer-height});
-    // box-shadow: inset 0 0 8px red;
 
     .message {
       margin-bottom: 10px;
@@ -84,7 +83,7 @@ $footer-height: 70px;
     height: $footer-height;
     position: fixed;
     bottom: 0;
-    border-top: 1px solid $color-grey;
+    border-top: 1px solid $color-grey-shade-4;
 
     .icon {
       font-size: 20px;
@@ -125,7 +124,7 @@ $footer-height: 70px;
 
       .btn-camera,
       .input input[type='text'] {
-        background: $color-light-grey;
+        background: $color-grey-shade-6;
         margin-right: 10px;
       }
 
@@ -139,7 +138,7 @@ $footer-height: 70px;
 
         input[type='text'] {
           &::placeholder {
-            color: $color-darker-grey;
+            color: $color-grey-shade-3;
           }
         }
       }

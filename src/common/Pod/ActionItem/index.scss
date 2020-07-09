@@ -8,7 +8,7 @@
   font-weight: bold;
 
   &:not(.straight-edge) {
-    box-shadow: 0 0 8px #ddd;
+    box-shadow: 0 0 8px $color-grey-shade-5;
     border-radius: 8px;
   }
 
@@ -23,7 +23,7 @@
   .ico-left {
     &.icon {
       margin-right: 10px;
-      color: #aaa;
+      color: $color-grey-shade-7;
     }
   }
 
@@ -31,7 +31,7 @@
     margin-left: auto;
 
     .icon {
-      color: #aaa;
+      color: $color-grey-shade-7;
     }
   }
 }

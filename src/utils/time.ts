@@ -2,7 +2,6 @@
 import '@formatjs/intl-relativetimeformat/polyfill';
 import '@formatjs/intl-relativetimeformat/polyfill-locales';
 
-// https://gist.github.com/liamnewmarch/a345fbf0c4fdf938d9844b82a4f127ab
 export const relativeTime = (timestamp: number) => {
   const { language = 'en-US' } = navigator;
   const formatter = new (Intl as any).RelativeTimeFormat(language, {

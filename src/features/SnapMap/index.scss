@@ -43,7 +43,7 @@
         padding-bottom: 40px;
 
         .mapboxgl-popup-content {
-          box-shadow: 0 0 8px $color-darker-grey;
+          box-shadow: 0 0 8px $color-grey-shade-3;
           border-radius: 6px;
           text-align: center;
 
@@ -58,7 +58,7 @@
 
         p {
           margin: 0;
-          color: $color-dark-grey;
+          color: $color-grey-shade-1;
         }
       }
     }

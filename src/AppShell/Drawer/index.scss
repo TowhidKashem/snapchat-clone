@@ -25,7 +25,7 @@
   }
 
   .icon {
-    color: $color-dark-grey;
+    color: $color-grey-shade-1;
   }
 
   .view {
@@ -37,7 +37,7 @@
       @extend %app-width;
       margin: 0 auto;
       padding: $toolbar-height 10px 0;
-      background: $color-light-grey;
+      background: $color-grey-shade-6;
 
       overflow-x: hidden;
       overflow-y: scroll;

@@ -10,7 +10,7 @@
   width: 100%;
   font-weight: bold;
   color: $color-white;
-  text-shadow: 0 0 10px $color-dark-grey;
+  text-shadow: 0 0 10px $color-grey-shade-1;
   padding: 0 10px;
 
   .btn {
@@ -46,7 +46,7 @@
           margin-right: 5px;
           color: $color-white;
           font-size: 14px;
-          filter: drop-shadow(1px 1px 8px $color-dark-grey);
+          filter: drop-shadow(1px 1px 8px $color-grey-shade-1);
         }
 
         .temperature {

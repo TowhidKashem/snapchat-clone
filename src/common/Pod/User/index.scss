@@ -4,7 +4,7 @@
   display: flex;
   padding: 10px;
   background: $color-white;
-  border-bottom: 1px solid $color-light-grey;
+  border-bottom: 1px solid $color-grey-shade-6;
 
   .meta {
     padding: 3px 0 0 10px;
@@ -15,7 +15,7 @@
     }
 
     span {
-      color: $color-darker-grey;
+      color: $color-grey-shade-3;
       text-transform: lowercase;
     }
   }

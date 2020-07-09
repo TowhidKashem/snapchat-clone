@@ -60,7 +60,6 @@ import {
   faCloudSun,
   faSun
 } from '@fortawesome/free-solid-svg-icons';
-import './index.scss';
 
 export const iconMap = {
   // free-brands-svg-icons

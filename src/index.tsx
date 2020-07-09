@@ -23,7 +23,6 @@ import './styles/app.scss';
 const rootReducer = combineReducers({ app, user, snapMap, snap, chat, camera });
 
 // Redux devtools extension
-// https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
 const composeEnhancers =
   (typeof window !== 'undefined' &&
     (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||

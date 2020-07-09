@@ -5,7 +5,7 @@
 .preview-map {
   position: relative;
   min-height: 170px;
-  background: $color-light-grey;
+  background: $color-grey-shade-6;
 
   .map {
     min-height: 165px;
@@ -47,7 +47,7 @@
       width: 90%;
       padding: 10px 10px 15px;
       background: $color-white;
-      box-shadow: 0 0 4px $color-dark-grey;
+      box-shadow: 0 0 4px $color-grey-shade-1;
       border-radius: 3px;
 
       a {
@@ -58,7 +58,7 @@
       code {
         padding: 0 3px;
         font-weight: bold;
-        background: $color-light-grey;
+        background: $color-grey-shade-6;
       }
     }
   }

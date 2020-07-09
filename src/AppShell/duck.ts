@@ -31,18 +31,7 @@ export const setFooterType = (footerType: FooterType) => (dispatch) =>
 // Reducer
 const initialState = {
   footerType: 'full',
-  drawers: [
-    // {
-    //   animationIn: 'zoomIn',
-    //   animationOut: 'zoomOut',
-    //   animationInDuration: 300,
-    //   animationOutDuration: 300,
-    //   // theme: 'stripped',
-    //   component: 'archive',
-    //   position: 'front',
-    //   show: true
-    // }
-  ]
+  drawers: []
 };
 
 const setShowDrawer = (prevState, drawer) => {

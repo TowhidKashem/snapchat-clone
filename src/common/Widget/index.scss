@@ -4,15 +4,16 @@
   margin-bottom: 15px;
 
   > header {
-    color: $color-dark-grey;
-    font-weight: 700;
+    color: $color-grey-shade-1;
+    font-family: 'Work Sans', sans-serif;
     font-size: 15px;
+    font-weight: 600;
     margin-bottom: 8px;
   }
 
   .inner-content {
     &:not(.transparent) {
-      box-shadow: 0 0 8px #ddd;
+      box-shadow: 0 0 8px $color-grey-shade-5;
       border-radius: 8px;
       overflow: hidden;
     }
