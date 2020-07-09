@@ -78,7 +78,16 @@
           <li>Styled with <code>SASS</code></li>
           <li>Type checked with <code>Typescript</code></li>
           <li>Unit tested with <code>Jest</code> and <code>Enzyme</code></li>
-          <li>End-to-end tested with <code>Cypress</code></li>
+          <li>
+            End-to-end tested with <code>Cypress</code>
+            <ul>
+              <li>
+                Selectors use <code>data-*</code> attributes to avoid writing
+                brittle tests
+              </li>
+              <li>Integration suite covers all functionality</li>
+            </ul>
+          </li>
           <li>Custom component library showcased in <code>Storybook</code></li>
           <li>Linted using <code>Eslint</code></li>
           <li>
