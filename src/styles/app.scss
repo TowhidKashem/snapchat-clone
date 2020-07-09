@@ -32,7 +32,7 @@ img {
 }
 
 body {
-  font: normal 14px 'Lato', sans-serif;
+  font: normal 14px $font-lato;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
