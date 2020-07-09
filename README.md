@@ -15,7 +15,7 @@
   />
   <img src="./public/github/tech-logos/sass.svg" width="55" alt="Sass" />
   <img src="./public/github/tech-logos/webpack.svg" width="55" alt="Webpack" />
-    <img src="./public/github/tech-logos/webpack.svg" width="35" alt="gulp" />
+    <img src="./public/github/tech-logos/gulp.svg" width="35" alt="gulp" />
   <img src="./public/github/tech-logos/cypress.svg" width="55" alt="Cypress" />
   <img src="./public/github/tech-logos/jest.svg" width="55" alt="Jest" />
   <img src="./public/github/tech-logos/eslint.svg" width="55" alt="Eslint" />
