@@ -1,17 +1,33 @@
 <h1 align="center">👻 SnapChat Clone</h1>
 
 <div align="center">
-  <img src="./public/github/tech-logos/react.svg" width="55">
-  <img src="./public/github/tech-logos/redux.svg" width="55">
-  <img src="./public/github/tech-logos/typescript-icon.svg" width="55">
-  <img src="./public/github/tech-logos/javascript.svg" width="55">
-  <img src="./public/github/tech-logos/sass.svg" width="55">
-  <img src="./public/github/tech-logos/webpack.svg" width="55">
-  <img src="./public/github/tech-logos/cypress.svg" width="55">
-  <img src="./public/github/tech-logos/jest.svg" width="55">
-  <img src="./public/github/tech-logos/eslint.svg" width="55">
-  <img src="./public/github/tech-logos/prettier.svg" width="55">
-  <img src="./public/github/tech-logos/storybook-icon.svg" width="55">
+  <img src="./public/github/tech-logos/react.svg" width="55" alt="React" />
+  <img src="./public/github/tech-logos/redux.svg" width="55" alt="Redux" />
+  <img
+    src="./public/github/tech-logos/typescript-icon.svg"
+    width="55"
+    alt="TypeScript"
+  />
+  <img
+    src="./public/github/tech-logos/javascript.svg"
+    width="55"
+    alt="JavaScript"
+  />
+  <img src="./public/github/tech-logos/sass.svg" width="55" alt="Sass" />
+  <img src="./public/github/tech-logos/webpack.svg" width="55" alt="Webpack" />
+  <img src="./public/github/tech-logos/cypress.svg" width="55" alt="Cypress" />
+  <img src="./public/github/tech-logos/jest.svg" width="55" alt="Jest" />
+  <img src="./public/github/tech-logos/eslint.svg" width="55" alt="Eslint" />
+  <img
+    src="./public/github/tech-logos/prettier.svg"
+    width="55"
+    alt="Prettier"
+  />
+  <img
+    src="./public/github/tech-logos/storybook-icon.svg"
+    width="55"
+    alt="Storybook"
+  />
 </div>
 <br />
 
@@ -26,7 +42,7 @@
       <td align="center" valign="top">
         <a href="public/github/snapchat.mp4">
           <img src="public/github/snapchat.gif" />
-          👆Click to see all implemented features
+          <p>👆Click to see all implemented features</p>
         </a>
       </td>
       <td valign="top">
@@ -47,14 +63,9 @@
             Global state management via <code>Redux</code>
             <ul>
               <li>
-                Follows the modular
-                <a
-                  href="https://github.com/erikras/ducks-modular-redux"
-                  target="_blank"
-                  >ducks</a
-                >
-                proposal to bundle action types, creators and reducers all in
-                one file (reducing need to jump around)
+                Follows the modular ducks proposal to bundle action types,
+                creators and reducers all in one file (reducing need to jump
+                around)
               </li>
               <li>Flat state tree (avoids deeply nested properties)</li>
               <li>
@@ -373,9 +384,9 @@
 
 <p>
   Please note
-  <strong><u>I will not be accepting PR's on this project</u></strong> since it is part
-  of my personal portfolio. You're more than welcome to fork and maintain your
-  own version if you like!
+  <strong><ins>I will not be accepting PR's on this project</ins></strong> since
+  it is part of my personal portfolio. You're more than welcome to fork and
+  maintain your own version if you like!
 </p>
 
 <h2>⚖️ License</h2>
