@@ -89,6 +89,9 @@
             Feels close to a native app if you "add to homescreen" on mobile
           </li>
         </ul>
+        <h2 align="center">
+          <a href="https://google.com">[LIVE DEMO]</a>
+        </h2>
       </td>
     </tr>
   </tbody>
@@ -289,8 +292,10 @@
     </tr>
     <tr>
       <td align="center" valign="top">
-        <img src="public/github/cypress-run-screenshot.png" width="600" />
-        👆Click to see the entire test suite being run
+        <a href="">
+          <img src="public/github/cypress-run-screenshot.png" width="600" />
+          👆Click to see the entire test suite being run
+        </a>
       </td>
       <td valign="top">
         <ul>
