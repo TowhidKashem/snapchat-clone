@@ -122,15 +122,18 @@ $footer-height: 70px;
       padding: 10px;
       background: $color-white;
 
+      .btn-camera {
+        margin-right: 8px;
+      }
+
       .btn-camera,
       .input input[type='text'] {
         background: $color-grey-shade-6;
-        margin-right: 10px;
       }
 
       .input {
-        width: 250px;
-        margin-right: 10px;
+        width: 237px;
+        margin-right: 8px;
 
         .icon {
           margin-top: -10px;
