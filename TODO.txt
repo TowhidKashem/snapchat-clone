@@ -9,10 +9,8 @@ git ignoew .env file
 
 test windows
 
-mention dummy api?
-
 get rid of actual address from screenshots
 
-how to not push .env file to github pages but still work?
+how to not push .env file to github pages but still work
 
-styled with scss
+add link on github sidebar

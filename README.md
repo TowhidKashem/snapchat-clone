@@ -1,5 +1,20 @@
 <h1 align="center">👻 SnapChat Clone</h1>
 
+<div align="center">
+  <img src="./public/github/tech-logos/react.svg" width="75">
+  <img src="./public/github/tech-logos/redux.svg" width="75">
+  <img src="./public/github/tech-logos/typescript-icon.svg" width="75">
+  <img src="./public/github/tech-logos/javascript.svg" width="75">
+  <img src="./public/github/tech-logos/sass.svg" width="75">
+  <img src="./public/github/tech-logos/webpack.svg" width="75">
+  <br />
+  <img src="./public/github/tech-logos/cypress.svg" width="75">
+  <img src="./public/github/tech-logos/jest.svg" width="75">
+  <img src="./public/github/tech-logos/eslint.svg" width="75">
+  <img src="./public/github/tech-logos/prettier.svg" width="75">
+  <img src="./public/github/tech-logos/storybook-icon.svg" width="75">
+</div>
+
 <table>
   <tbody>
     <tr>
@@ -39,17 +54,17 @@
                   >ducks</a
                 >
                 proposal to bundle action types, creators and reducers all in
-                one file (reducing the need to jump around)
+                one file (reducing need to jump around)
               </li>
               <li>Flat state tree (avoids deeply nested properties)</li>
               <li>
                 Follows official Redux styleguide recomendations for naming
-                actions and action types, e.g.
-                <code>camera/photosFetched</code> vs <code>SET_PHOTOS</code>
+                actions and action types
               </li>
               <li>Uses <code>thunk</code> middleware for async operations</li>
             </ul>
           </li>
+          <li>Styled with <code>SASS</code></li>
           <li>Type checked with <code>Typescript</code></li>
           <li>Unit tested with <code>Jest</code> and <code>Enzyme</code></li>
           <li>End-to-end tested with <code>Cypress</code></li>
@@ -63,9 +78,6 @@
             Feels close to a native app if you "add to homescreen" on mobile
           </li>
         </ul>
-        <h2 align="center">
-          <a href="https://google.com">[LIVE DEMO]</a>
-        </h2>
       </td>
     </tr>
   </tbody>
@@ -361,7 +373,7 @@
 
 <p>
   Please note
-  <strong>I will not be accepting PR's on this project</strong> since it is part
+  <strong><u>I will not be accepting PR's on this project</u></strong> since it is part
   of my personal portfolio. You're more than welcome to fork and maintain your
   own version if you like!
 </p>
