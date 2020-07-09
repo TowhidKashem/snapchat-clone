@@ -1,19 +1,19 @@
 <h1 align="center">👻 SnapChat Clone</h1>
 
 <div align="center">
-  <img src="./public/github/tech-logos/react.svg" width="75">
-  <img src="./public/github/tech-logos/redux.svg" width="75">
-  <img src="./public/github/tech-logos/typescript-icon.svg" width="75">
-  <img src="./public/github/tech-logos/javascript.svg" width="75">
-  <img src="./public/github/tech-logos/sass.svg" width="75">
-  <img src="./public/github/tech-logos/webpack.svg" width="75">
-  <br />
-  <img src="./public/github/tech-logos/cypress.svg" width="75">
-  <img src="./public/github/tech-logos/jest.svg" width="75">
-  <img src="./public/github/tech-logos/eslint.svg" width="75">
-  <img src="./public/github/tech-logos/prettier.svg" width="75">
-  <img src="./public/github/tech-logos/storybook-icon.svg" width="75">
+  <img src="./public/github/tech-logos/react.svg" width="55">
+  <img src="./public/github/tech-logos/redux.svg" width="55">
+  <img src="./public/github/tech-logos/typescript-icon.svg" width="55">
+  <img src="./public/github/tech-logos/javascript.svg" width="55">
+  <img src="./public/github/tech-logos/sass.svg" width="55">
+  <img src="./public/github/tech-logos/webpack.svg" width="55">
+  <img src="./public/github/tech-logos/cypress.svg" width="55">
+  <img src="./public/github/tech-logos/jest.svg" width="55">
+  <img src="./public/github/tech-logos/eslint.svg" width="55">
+  <img src="./public/github/tech-logos/prettier.svg" width="55">
+  <img src="./public/github/tech-logos/storybook-icon.svg" width="55">
 </div>
+<br />
 
 <table>
   <tbody>
