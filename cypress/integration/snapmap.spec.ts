@@ -3,7 +3,7 @@
 describe('Snap Map', () => {
   beforeEach(() => {
     cy.loadApp();
-    cy.get('[data-test=header] [data-test=avatar-btn]').click();
+    cy.get('[data-test=header] [data-test=btn-user]').click();
     cy.get('[data-test=account-drawer]').as('accountDrawer');
     cy.get('@accountDrawer').find('[data-test=preview-map]').as('previewMap');
     cy.wait(2500);

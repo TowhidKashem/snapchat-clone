@@ -100,14 +100,16 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
             </span>{' '}
             Get a free mapboxgl{' '}
             <a
-              href="https://docs.mapbox.com/help/how-mapbox-works/access-tokens/"
+              href="https://docs.mapbox.com/help/glossary/access-token/"
               target="_blank"
               rel="noopener noreferrer"
             >
               API key here
             </a>
-            , then add it to the <code>.env</code> file and run <code>npm start</code>{' '}
-            again to view the snap map features!
+            , then rename the <code>.env.sample</code> file at the root of the project to
+            just <code>.env</code> and place the key inside, finally run
+            <br />
+            <code>npm start</code> again to view the snap map features!
           </p>
         </div>
       ) : loading ? (

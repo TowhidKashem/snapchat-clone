@@ -4,7 +4,7 @@ describe('Archive', () => {
   describe('default', () => {
     beforeEach(() => {
       cy.loadApp();
-      cy.get('[data-test=archive-btn]').click();
+      cy.get('[data-test=btn-archive]').click();
       cy.get('[data-test=archive-drawer]').as('archiveDrawer');
     });
 
@@ -42,8 +42,8 @@ describe('Archive', () => {
       cy.get('[data-test=btn-capture-main]').as('captureBtn');
       cy.get('@captureBtn').click();
       cy.get('[data-test=photo-capture]').as('photoCapture');
-      cy.get('@photoCapture').find('[data-test=close-btn]').click();
-      cy.get('[data-test=archive-btn]').click();
+      cy.get('@photoCapture').find('[data-test=btn-close]').click();
+      cy.get('[data-test=btn-archive]').click();
     });
 
     it('photo gets added to archive drawer', () => {

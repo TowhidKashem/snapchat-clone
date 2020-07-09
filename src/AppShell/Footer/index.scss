@@ -1,5 +1,6 @@
 @import '~styles/extendables';
 @import '~styles/vars';
+@import '~styles/mixins';
 
 .footer {
   @extend %center-x-y;
@@ -18,7 +19,7 @@
     .btn {
       .icon {
         &:not(.new-msg) {
-          @extend %icon-shadow-light;
+          @include icon-shadow($color-grey-shade-3, 4px);
         }
       }
     }
@@ -31,7 +32,7 @@
       font-size: 25px;
 
       &:not(.new-msg) {
-        @extend %icon-shadow-dark;
+        @include icon-shadow($color-black);
       }
     }
   }
@@ -84,12 +85,11 @@
         }
       }
 
-      .archive-btn {
+      .btn-archive {
         .icon {
           &:first-child {
             transform: rotate(-5deg);
           }
-
           &:last-child {
             transform: rotate(5deg);
           }

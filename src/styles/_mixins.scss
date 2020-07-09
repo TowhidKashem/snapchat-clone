@@ -1,3 +1,7 @@
+@mixin icon-shadow($color, $thickness: 8px) {
+  filter: drop-shadow(1px 1px $thickness $color);
+}
+
 @mixin overlay-bg($opacity: 0.5) {
   position: absolute;
   top: 0;

@@ -50,7 +50,6 @@ Filters.dog = {
     try {
       canvas = fx.canvas();
     } catch (e) {
-      alert("Ow no! WebGL isn't supported...");
       return;
     }
     const tempImage = new Image(512, 512);
@@ -64,18 +63,6 @@ Filters.dog = {
       const ctx = canvasOpacity.getContext('2d');
       ctx.globalAlpha = 0.2;
       ctx.drawImage(canvas, 0, 0, 512, 512);
-      // const calqueMesh = new THREE.Mesh(
-      //   THREESTUFF.videoMesh.geometry,
-      //   Filters.dog.createMat2d(
-      //     new THREE.TextureLoader().load(canvasOpacity.toDataURL('image/png')),
-      //     true
-      //   )
-      // );
-      // calqueMesh.material.opacity = 0.2;
-      // calqueMesh.material.transparent = true;
-      // calqueMesh.renderOrder = 999;
-      // calqueMesh.frustumCulled = false;
-      // Filters.dog.FRAMEOBJ3D.add(calqueMesh);
     };
   },
   initThreeScene: (spec) => {
@@ -171,7 +158,6 @@ Filters.dog = {
       Filters.dog.DOGOBJ3D.add(Filters.dog.EARMESH);
       Filters.dog.DOGOBJ3D.add(Filters.dog.NOSEMESH);
       Filters.dog.DOGOBJ3D.add(Filters.dog.TONGUEMESH);
-      // addDragEventListener(Filters.dog.DOGOBJ3D);
       threeStuffs.faceObject.add(Filters.dog.DOGOBJ3D);
       Filters.dog.ISLOADED = true;
     };

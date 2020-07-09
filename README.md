@@ -15,7 +15,7 @@
   />
   <img src="./public/github/tech-logos/sass.svg" width="55" alt="Sass" />
   <img src="./public/github/tech-logos/webpack.svg" width="55" alt="Webpack" />
-    <img src="./public/github/tech-logos/gulp.svg" width="35" alt="gulp" />
+  <img src="./public/github/tech-logos/gulp.svg" width="35" alt="gulp" />
   <img src="./public/github/tech-logos/cypress.svg" width="55" alt="Cypress" />
   <img src="./public/github/tech-logos/jest.svg" width="55" alt="Jest" />
   <img src="./public/github/tech-logos/eslint.svg" width="55" alt="Eslint" />
@@ -55,7 +55,7 @@
             Built with <code>React</code>
             <ul>
               <li>Functional components using hooks</li>
-              <li>Feature based folder structure</li>
+              <li>Feature based modular folder structure</li>
               <li><code>common</code> directory for shared components</li>
               <li>Relatively few prod dependencies</li>
             </ul>
@@ -65,13 +65,12 @@
             <ul>
               <li>
                 Follows the modular ducks proposal to bundle action types,
-                creators and reducers all in one file (reducing need to jump
+                creators and reducers all in one file (reducing the need to jump
                 around)
               </li>
               <li>Flat state tree (avoids deeply nested properties)</li>
               <li>
-                Follows official Redux styleguide recomendations for naming
-                actions and action types
+                Follows official Redux styleguide naming conventions
               </li>
               <li>Uses <code>thunk</code> middleware for async operations</li>
             </ul>
@@ -83,10 +82,12 @@
             End-to-end tested with <code>Cypress</code>
             <ul>
               <li>
-                Selectors use <code>data-*</code> attributes to avoid writing
+                Selectors use <code>data</code> attributes to avoid writing
                 brittle tests
               </li>
-              <li>Integration suite covers all functionality</li>
+              <li>
+                Integration suite covers all essential feature happy paths
+              </li>
             </ul>
           </li>
           <li>Custom component library showcased in <code>Storybook</code></li>
@@ -145,7 +146,8 @@
         Make a Mapbox account and
         <a
           href="https://docs.mapbox.com/help/glossary/access-token/"
-          rel="nofollow"
+          target="_blank"
+          rel="noopener noreferrer"
           >get a free API key</a
         >
       </li>
@@ -310,16 +312,20 @@
             All e2e tests are located in
             <code>cypress/integration/*.spec.ts</code>
             <ul>
-              <li>To run these use the command <code>npm run e2e</code></li>
+              <li>
+                To run these first make sure the dev server is running via `npm
+                start`, then use the command <code>npm run e2e</code>
+              </li>
               <li>This will spawn the Cypress electron app</li>
               <li>
-                Click "Run all specs", Cypress will spawn a Chrome instance and
-                you will see all the tests as they're being run:
+                Click "Run all specs" at the top right, Cypress will spawn a
+                Chrome instance and you will see all the tests as they're being
+                run:
               </li>
             </ul>
           </li>
           <li>
-            Alternatively you can also run the e2e suite in the terminal using
+            Alternatively you can also run the test suite in the terminal using
             the command <code>npm run e2e-headless</code>. This command still
             generates videos in <code>cypress/videos/*.mp4</code> of the tests
             being run should you need them.
@@ -350,7 +356,7 @@
           </li>
           <li>
             To run the unit test suite use the command
-            <code>npm run test</code> then enter <code>a</code> to run all tests
+            <code>npm run test</code>
           </li>
           <li>
             These tests are also automatically run on each commit, if there are
@@ -375,24 +381,25 @@
     <code>cd filters &amp;&amp; gulp watchJS</code> to watch for changes
   </li>
   <li>
-    If you want to browse the production build run the commands
+    If you want to browse the production build run the command
     <code>npm run build &amp;&amp; npm run serve</code>, then navigate to
     <code>http://localhost:5000</code> locally or
     <code>http://192.168.0.185:5000</code> on the network
   </li>
   <li>
-    The <code>baseUrl</code> is set to the <code>src</code> directory in tsconfig which means you can use clean
-    import paths like <code>import Foo from 'common/Foo'</code> instead of messy
-    relative paths like <code>import Foo from '../../common/Foo'</code>
+    The <code>baseUrl</code> is set to the <code>src</code> directory in
+    tsconfig which means you can use clean import paths like
+    <code>import Foo from 'common/Foo'</code> instead of messy relative paths
+    like <code>import Foo from '../../common/Foo'</code>
   </li>
   <li>
     The project was bootsraped using
     <code>Create React App</code>
     in case you were wondering where webpack configs and such are. You can
-    always <code>eject</code> if you need access to those things..
+    always <code>eject</code> if you need access to those things
   </li>
   <li>
-    This is purely a front end demo project, the "api" is nothing but a bunch of
+    This is purely a front end demo project, the "API" is nothing but a bunch of
     hard coded json files located in <code>/public/api/*.json</code>. All data
     is dummy data!
   </li>

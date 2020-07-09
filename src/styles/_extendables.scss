@@ -43,14 +43,6 @@
   justify-content: center;
 }
 
-%icon-shadow-dark {
-  filter: drop-shadow(1px 1px 8px $color-black);
-}
-
-%icon-shadow-light {
-  filter: drop-shadow(1px 1px 4px $color-grey-shade-3);
-}
-
 %clickable {
   box-shadow: 0 0 18px $color-red;
 }

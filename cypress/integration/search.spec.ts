@@ -6,7 +6,7 @@ describe('Search', () => {
     cy.get('[data-test=header] [data-test=input]').click();
     cy.get('[data-test=search-drawer]').as('searchDrawer');
     cy.get('@searchDrawer').find('[data-test=field]').as('searchField');
-    cy.get('@searchDrawer').find('[data-test=cancel-btn]').as('cancelButton');
+    cy.get('@searchDrawer').find('[data-test=btn-cancel]').as('cancelButton');
   });
 
   it('can open and close search drawer', () => {

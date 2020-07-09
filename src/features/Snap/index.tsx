@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 import { relativeTime } from 'utils/time';
 import { onAnimationComplete } from 'utils/animation';
 import { Snap as SnapType } from './types';
 import { removeSnap } from './duck';
 import { HideDrawer } from 'AppShell/types';
 import { hideDrawer } from 'AppShell/duck';
-import Icon from 'common/Icon';
+import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
@@ -16,7 +17,7 @@ interface Props {
 }
 
 const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
-  const { location, time, type, url, caption } = snap;
+  const { location, time, type, url, caption, shareable } = snap;
 
   const videoElem = useRef<HTMLVideoElement>(null);
 
@@ -34,7 +35,7 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
 
   return (
     <main className="snap" onClick={closeSnap} data-test="snap">
-      <header>
+      <header className={classNames({ metadata: location && time })}>
         {location && time && (
           <div className="left">
             <span data-test="location">{location}</span>
@@ -42,7 +43,7 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
           </div>
         )}
         <div className="right">
-          <Icon icon="faEllipsisV" />
+          <Button icon="faEllipsisV" />
         </div>
       </header>
       {type === 'video' ? (
@@ -60,6 +61,11 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
           )}
           <img src={url} alt="" />
         </div>
+      )}
+      {shareable && (
+        <footer>
+          <Button icon="faLocationArrow" />
+        </footer>
       )}
     </main>
   );

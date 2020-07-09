@@ -18,7 +18,7 @@ const Header: React.FC<Props> = ({ avatar, showDrawer, insideDrawer }) => {
         {...iconImage}
         onclick={() => showDrawer({ component: 'account' })}
         buttonClass="btn-user"
-        testId="avatar-btn"
+        testId="btn-user"
       />
       <Input
         placeholder="Search"

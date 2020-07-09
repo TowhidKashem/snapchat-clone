@@ -49,7 +49,7 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
             label="Cancel"
             plain
             onclick={() => hideDrawer('search')}
-            testId="cancel-btn"
+            testId="btn-cancel"
           />
         </form>
       </header>

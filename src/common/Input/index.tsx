@@ -66,9 +66,7 @@ const Input: React.FC<Props> = ({
         onKeyPress={({ key }) => onEnter && key === 'Enter' && onEnter()}
         disabled={disabled}
         spellCheck={spellCheck || false}
-        className={classNames({
-          'has-left-icon': leftIcon
-        })}
+        className={classNames({ 'has-left-icon': leftIcon })}
         data-test="field"
       />
       {rightIcon && <Icon icon={rightIcon} className="right-icon" />}

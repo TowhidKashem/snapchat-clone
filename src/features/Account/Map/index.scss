@@ -42,13 +42,14 @@
     }
 
     p {
-      z-index: 1000;
+      z-index: 10000;
       position: relative;
       width: 90%;
       padding: 10px 10px 15px;
       background: $color-white;
       box-shadow: 0 0 4px $color-grey-shade-1;
       border-radius: 3px;
+      text-align: center;
 
       a {
         color: $color-blue;

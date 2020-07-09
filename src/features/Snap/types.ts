@@ -6,6 +6,7 @@ export interface Snap {
   lon?: number;
   time?: number;
   caption?: string;
+  shareable?: boolean;
 }
 
 export type AddSnap = (snap: Snap) => void;

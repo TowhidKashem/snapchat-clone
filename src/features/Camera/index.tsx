@@ -41,7 +41,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
   const [takePic, setTakePic] = useState(false);
 
   useEffect(() => {
-    // startCamera();
+    startCamera();
   }, []);
 
   const startCamera = async () => {
@@ -72,7 +72,6 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
 
     setCameraStream(response);
     if (!error && videoElem.current) videoElem.current.srcObject = response;
-    else alert(error); //tmp
   };
 
   useEffect(() => {

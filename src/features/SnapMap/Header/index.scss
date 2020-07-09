@@ -1,5 +1,6 @@
 @import '~styles/vars';
 @import '~styles/extendables';
+@import '~styles/mixins';
 
 .weather-header {
   @extend %center-x-y;
@@ -43,15 +44,15 @@
         @extend %center-x-y;
 
         .icon {
-          margin-right: 5px;
-          color: $color-white;
+          @include icon-shadow($color-grey-shade-1);
           font-size: 14px;
-          filter: drop-shadow(1px 1px 8px $color-grey-shade-1);
+          color: $color-white;
+          margin-right: 5px;
         }
 
         .temperature {
-          padding-bottom: 7px;
           font-size: 14px;
+          padding-bottom: 7px;
         }
       }
     }

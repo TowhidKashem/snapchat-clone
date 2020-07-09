@@ -35,7 +35,7 @@ describe('Camera', () => {
     });
 
     it('can close out of photo', () => {
-      cy.get('@photoCapture').find('[data-test=close-btn]').click();
+      cy.get('@photoCapture').find('[data-test=btn-close]').click();
       cy.get('@photoCapture').should('not.be.visible');
     });
   });

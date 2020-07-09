@@ -1,12 +1,17 @@
 
-Last:
+Make video
+Make Gif
+Get rid of actual address from screenshots
+Cut images, optimize and resize
 
-test windows
 
-get rid of actual address from screenshots
 
-add link on github sidebar
+test on windows
+Npm run build and check folder to see if video assets are there 
+Block 3rd party api requests and see if things break 
 
-right icon in snap header to the right css
 
-ugly box shadow around save button
+
+Add analytics to gh pages 
+Should I add linked in?
+Add tags in GitHub 

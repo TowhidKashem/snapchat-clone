@@ -23,9 +23,6 @@ type Profile = {
 };
 
 const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
-  const [page, setPage] = useState(1);
-  const [profiles, setProfiles] = useState<Profile[]>([]);
-
   const loadMore = useRef(null);
   const isFetching = useRef(false);
   const onScroll = useRef(
@@ -34,6 +31,9 @@ const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
         setPage((prevPage) => prevPage + 1);
     }, 10)
   );
+
+  const [page, setPage] = useState(1);
+  const [profiles, setProfiles] = useState<Profile[]>([]);
 
   useEffect(() => {
     drawerContent.current.addEventListener('scroll', onScroll.current);

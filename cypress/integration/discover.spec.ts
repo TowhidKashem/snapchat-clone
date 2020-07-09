@@ -3,7 +3,7 @@
 describe('Discover', () => {
   beforeEach(() => {
     cy.loadApp();
-    cy.get('[data-test=discover-btn]').click();
+    cy.get('[data-test=btn-discover]').click();
     cy.get('[data-test=discover-drawer]').as('discoverDrawer');
   });
 

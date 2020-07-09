@@ -122,7 +122,7 @@ const Chat: React.FC<Props> = ({
           />
           <div className="right">
             <Button icon="faSmileWink" />
-            <Button icons={['faMobile', 'faMobileAlt']} buttonClass="archive-btn" />
+            <Button icons={['faMobile', 'faMobileAlt']} buttonClass="btn-archive" />
             <Button icon="faRocket" />
           </div>
         </div>

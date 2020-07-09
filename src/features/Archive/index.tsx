@@ -27,7 +27,8 @@ const Archive: React.FC<Props> = ({
   const openPhoto = (image) => {
     addSnap({
       type: 'photo',
-      url: image
+      url: image,
+      shareable: true
     });
     showDrawer({
       component: 'snap',

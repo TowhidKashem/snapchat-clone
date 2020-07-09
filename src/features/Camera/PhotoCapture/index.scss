@@ -1,5 +1,6 @@
 @import '~styles/vars';
 @import '~styles/extendables';
+@import '~styles/mixins';
 
 .photo-capture {
   @extend %app-width;
@@ -15,7 +16,7 @@
     height: $mobile-vh;
 
     .icon {
-      @extend %icon-shadow-dark;
+      @include icon-shadow($color-black);
     }
 
     .btn {
@@ -36,7 +37,7 @@
       padding: 15px;
 
       .btn {
-        @extend %clickable-button;
+        @include icon-shadow($color-red);
       }
     }
 
@@ -72,7 +73,7 @@
         }
 
         .btn-download {
-          @extend %clickable-button;
+          @include icon-shadow($color-red);
         }
       }
 
