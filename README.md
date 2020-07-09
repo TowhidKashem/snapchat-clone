@@ -56,7 +56,7 @@
               <li>Functional components using hooks</li>
               <li>Feature based folder structure</li>
               <li><code>common</code> directory for shared components</li>
-              <li>Bootstraped using <code>Create React App</code></li>
+              <li>Relatively few prod dependencies</li>
             </ul>
           </li>
           <li>
@@ -98,9 +98,6 @@
             Feels close to a native app if you "add to homescreen" on mobile
           </li>
         </ul>
-        <h2 align="center">
-          <a href="https://google.com">[LIVE DEMO]</a>
-        </h2>
       </td>
     </tr>
   </tbody>
