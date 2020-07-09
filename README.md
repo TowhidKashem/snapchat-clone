@@ -1,47 +1,66 @@
-<h1 align="center">👻 SnapChat Clone</h1>
+<table>
+    <tbody>
+        <tr>
+            <th colspan="2"><h1>👻 SnapChat Clone</h1></th>
+        </tr>
+        <tr>
+            <td align="center">
+                <a href="public/github/snapchat.mp4">
+                    <img src="public/github/snapchat.gif" />
+                    👆Click to see all implemented features
+                </a>
+            </td>
+            <td>
+                <h2 align="center">
+                    <a href="https://google.com">[LIVE DEMO]</a>
+                </h2>
+                <ul class="unchanged rich-diff-level-one">
+                    <li class="unchanged">Built with <code>React</code>
+                        <ul class="unchanged">
+                            <li class="unchanged">Functional components using hooks</li>
+                            <li class="unchanged">Feature based folder structure</li>
+                            <li class="unchanged">
+                                <code>common</code> directory for shared components</li>
+                            <li class="unchanged">Bootstraped using <code>Create React App</code>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="unchanged">Global state management via <code>Redux</code>
+                        <ul class="unchanged">
+                            <li class="unchanged">Follows the modular <a
+                                    href="https://github.com/erikras/ducks-modular-redux">ducks</a> proposal to bundle
+                                action types, creators and reducers all in one file (reducing the need to jump around)
+                            </li>
+                            <li class="unchanged">Flat state tree (avoids deeply nested properties)</li>
+                            <li class="unchanged">Follows official Redux styleguide recomendations for naming actions
+                                and action types, e.g. <code>camera/photosFetched</code> vs <code>SET_PHOTOS</code>
+                            </li>
+                            <li class="unchanged">Uses <code>thunk</code> middleware for async operations</li>
+                        </ul>
+                    </li>
+                    <li class="unchanged">Type checked with <code>Typescript</code>
+                    </li>
+                    <li class="unchanged">Unit tested with <code>Jest</code> and <code>Enzyme</code>
+                    </li>
+                    <li class="unchanged">End-to-end tested with <code>Cypress</code>
+                    </li>
+                    <li class="unchanged">Custom component library showcased in <code>Storybook</code>
+                    </li>
+                    <li class="unchanged">Linted using <code>Eslint</code>
+                    </li>
+                    <li class="unchanged">Code is auto formatted using <code>Prettier</code> (ran as a pre-commit git
+                        hook) before it gets pushed to the repo</li>
+                    <li class="unchanged">Feels close to a native app if you "add to homescreen" on mobile</li>
+                </ul>
+                <h2 align="center">
+                    <a href="https://google.com">[LIVE DEMO]</a>
+                </h2>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-# ⚡️Breakdown
-
-<div style="overflow:hidden;vertical-align:top">
-  <p style="float:left;width:35%;margin:0">
-    <a href="public/github/snapchat.mp4">
-      <img src="public/github/snapchat.gif" />
-      <br />
-      👆Click to see all implemented features
-    </a>
-  </p>
-  <div style="float:left;width:50%">
-
-  <h2 align="center">
-    <a href="https://google.com">[LIVE DEMO]</a>
-  </h2>
-
-- Built with `React`
-  - Functional components using hooks
-  - Feature based folder structure
-  - `common` directory for shared components
-  - Bootstraped using `Create React App`
-- Global state management via `Redux`
-  - Follows the modular [ducks](https://github.com/erikras/ducks-modular-redux) proposal to bundle action types, creators and reducers all in one file (reducing the need to jump around)
-  - Flat state tree (avoids deeply nested properties)
-  - Follows official Redux styleguide recomendations for naming actions and action types, e.g. `camera/photosFetched` vs `SET_PHOTOS`
-  - Uses `thunk` middleware for async operations
-- Type checked with `Typescript`
-- Unit tested with `Jest` and `Enzyme`
-- End-to-end tested with `Cypress`
-- Custom component library showcased in `Storybook`
-- Linted using `Eslint`
-- Code is auto formatted using `Prettier` (ran as a pre-commit git hook) before it gets pushed to the repo
-- Feels close to a native app if you "add to homescreen" on mobile
-
-<h2 align="center">
-  <a href="https://google.com">[LIVE DEMO]</a>
-</h2>
-
-  </div>
-</div>
-
-# 💿 Installation
+## 💿 Installation
 
 Run these commands in the terminal:
 
@@ -76,16 +95,11 @@ Run these commands in the terminal:
 
 6. You're all set!
 
-# 🦮 Guides
+## 🦮 Guides
 
-<div style="overflow:hidden">
-  <img src="public/github/guide.png" width="150" style="float:left;margin-right:20px" />
-
-Not all the buttons are actionable, many of them are there just for show since this is a minimal demo. [This video]() shows all the things you can currently do.
-
-Where it's not obvious which buttons actually work I added a red box-shadow as guide:
-
-</div>
+|                              |                                                                                                                                                                                                                                                        |
+| :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![](public/github/guide.png) | Not all the buttons are actionable, many of them are there just for show since this is a minimal demo. [This video]() shows all the things you can currently do. Where it's not obvious which buttons actually work I added a red box-shadow as guide. |
 
 ## 🛠 Tooling
 
@@ -96,7 +110,7 @@ Where it's not obvious which buttons actually work I added a red box-shadow as g
 - The app has it's own component library and uses Storybook to showcase it. You can run Storybook using the command `npm run storybook`.
 - The Redux Devtools Extension is implemented in the app, it makes things like viewing the state, state flow and debugging much easier, to use it you need to install the browser extension [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) or [here](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/).
 
-# 🧪 Testing
+## 🧪 Testing
 
 There are two types of tests in the app (end to end and unit).
 
@@ -123,7 +137,7 @@ There are two types of tests in the app (end to end and unit).
 - These tests are also automatically run on each commit, if there are any failures the commit will also fail
 </div>
 
-# 📝 Misc Notes
+## 📝 Misc Notes
 
 - In addition to running on the localhost domain the app is also available on your network at `https://192.168.0.185:3000` (useful for viewing on mobile)
 - If you want to make changes to the filter files, run the command `cd filters && gulp watchJS` to watch for changes
@@ -131,10 +145,10 @@ There are two types of tests in the app (end to end and unit).
 - Webpack root dir is set to `src` which means we can use clean import paths like these `import Foo from common/Foo` vs messy relative paths like `import Foo from ../../common/Foo`
 - This is purely a front end demo project, the "api" is nothing but a bunch of hard coded json files located in `/public/api/*.json`. All data is dummy data!
 
-# ⚠️ Contributing
+## ⚠️ Contributing
 
 Please note **I will not be accepting PR's on this project** since it is part of my personal portfolio. You're more than welcome to fork and maintain your own version if you like!
 
-# ⚖️ License
+## ⚖️ License
 
 [MIT](https://opensource.org/licenses/MIT)
