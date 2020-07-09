@@ -1,66 +1,77 @@
+<h1 align="center">👻 SnapChat Clone</h1>
+
 <table>
-    <tbody>
-        <tr>
-            <th colspan="2"><h1>👻 SnapChat Clone</h1></th>
-        </tr>
-        <tr>
-            <td align="center">
-                <a href="public/github/snapchat.mp4">
-                    <img src="public/github/snapchat.gif" />
-                    👆Click to see all implemented features
-                </a>
-            </td>
-            <td>
-                <h2 align="center">
-                    <a href="https://google.com">[LIVE DEMO]</a>
-                </h2>
-                <ul class="unchanged rich-diff-level-one">
-                    <li class="unchanged">Built with <code>React</code>
-                        <ul class="unchanged">
-                            <li class="unchanged">Functional components using hooks</li>
-                            <li class="unchanged">Feature based folder structure</li>
-                            <li class="unchanged">
-                                <code>common</code> directory for shared components</li>
-                            <li class="unchanged">Bootstraped using <code>Create React App</code>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="unchanged">Global state management via <code>Redux</code>
-                        <ul class="unchanged">
-                            <li class="unchanged">Follows the modular <a
-                                    href="https://github.com/erikras/ducks-modular-redux">ducks</a> proposal to bundle
-                                action types, creators and reducers all in one file (reducing the need to jump around)
-                            </li>
-                            <li class="unchanged">Flat state tree (avoids deeply nested properties)</li>
-                            <li class="unchanged">Follows official Redux styleguide recomendations for naming actions
-                                and action types, e.g. <code>camera/photosFetched</code> vs <code>SET_PHOTOS</code>
-                            </li>
-                            <li class="unchanged">Uses <code>thunk</code> middleware for async operations</li>
-                        </ul>
-                    </li>
-                    <li class="unchanged">Type checked with <code>Typescript</code>
-                    </li>
-                    <li class="unchanged">Unit tested with <code>Jest</code> and <code>Enzyme</code>
-                    </li>
-                    <li class="unchanged">End-to-end tested with <code>Cypress</code>
-                    </li>
-                    <li class="unchanged">Custom component library showcased in <code>Storybook</code>
-                    </li>
-                    <li class="unchanged">Linted using <code>Eslint</code>
-                    </li>
-                    <li class="unchanged">Code is auto formatted using <code>Prettier</code> (ran as a pre-commit git
-                        hook) before it gets pushed to the repo</li>
-                    <li class="unchanged">Feels close to a native app if you "add to homescreen" on mobile</li>
-                </ul>
-                <h2 align="center">
-                    <a href="https://google.com">[LIVE DEMO]</a>
-                </h2>
-            </td>
-        </tr>
-    </tbody>
+  <tbody>
+    <tr>
+      <th colspan="2" align="left">
+        <h2>⚡️Breakdown</h2>
+      </th>
+    </tr>
+    <tr>
+      <td align="center" valign="top">
+        <a href="public/github/snapchat.mp4">
+          <img src="public/github/snapchat.gif" />
+          👆Click to see all implemented features
+        </a>
+      </td>
+      <td valign="top">
+        <h2 align="center">
+          <a href="https://google.com">[LIVE DEMO]</a>
+        </h2>
+        <ul class="rich-diff-level-one">
+          <li>
+            Built with <code>React</code>
+            <ul>
+              <li>Functional components using hooks</li>
+              <li>Feature based folder structure</li>
+              <li><code>common</code> directory for shared components</li>
+              <li>Bootstraped using <code>Create React App</code></li>
+            </ul>
+          </li>
+          <li>
+            Global state management via <code>Redux</code>
+            <ul>
+              <li>
+                Follows the modular
+                <a
+                  href="https://github.com/erikras/ducks-modular-redux"
+                  target="_blank"
+                  >ducks</a
+                >
+                proposal to bundle action types, creators and reducers all in
+                one file (reducing the need to jump around)
+              </li>
+              <li>Flat state tree (avoids deeply nested properties)</li>
+              <li>
+                Follows official Redux styleguide recomendations for naming
+                actions and action types, e.g.
+                <code>camera/photosFetched</code> vs <code>SET_PHOTOS</code>
+              </li>
+              <li>Uses <code>thunk</code> middleware for async operations</li>
+            </ul>
+          </li>
+          <li>Type checked with <code>Typescript</code></li>
+          <li>Unit tested with <code>Jest</code> and <code>Enzyme</code></li>
+          <li>End-to-end tested with <code>Cypress</code></li>
+          <li>Custom component library showcased in <code>Storybook</code></li>
+          <li>Linted using <code>Eslint</code></li>
+          <li>
+            Code is auto formatted using <code>Prettier</code> (ran as a
+            pre-commit git hook) before it gets pushed to the repo
+          </li>
+          <li>
+            Feels close to a native app if you "add to homescreen" on mobile
+          </li>
+        </ul>
+        <h2 align="center">
+          <a href="https://google.com">[LIVE DEMO]</a>
+        </h2>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
-## 💿 Installation
+<h2>💿 Installation</h2>
 
 Run these commands in the terminal:
 
