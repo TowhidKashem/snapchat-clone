@@ -15,7 +15,7 @@
   />
   <img src="./public/github/tech-logos/sass.svg" width="55" alt="Sass" />
   <img src="./public/github/tech-logos/webpack.svg" width="55" alt="Webpack" />
-  <img src="./public/github/tech-logos/gulp.svg" width="55" alt="Gulp" />
+  <img src="./public/github/tech-logos/gulp.svg" width="35" alt="Gulp" />
   <img src="./public/github/tech-logos/cypress.svg" width="55" alt="Cypress" />
   <img src="./public/github/tech-logos/jest.svg" width="55" alt="Jest" />
   <img src="./public/github/tech-logos/eslint.svg" width="55" alt="Eslint" />
@@ -26,7 +26,7 @@
   />
   <img
     src="./public/github/tech-logos/storybook-icon.svg"
-    width="55"
+    width="50"
     alt="Storybook"
   />
 </div>
@@ -70,8 +70,8 @@
               </li>
               <li>Flat state tree (avoids deeply nested properties)</li>
               <li>
-                Follows official Redux styleguide for naming
-                actions and action types
+                Follows official Redux styleguide for naming actions and action
+                types
               </li>
               <li>Uses <code>thunk</code> middleware for async operations</li>
             </ul>
@@ -173,7 +173,8 @@
         <code>https://localhost:3000/</code>
         <ul>
           <li>
-            In Chrome you will receive a "Your connection is not private" error
+            In Chrome you will receive a "Your connection is not private"
+            warning
             <ul>
               <li>
                 Click "Advanced" &gt; "Proceed to localhost (unsafe)"
@@ -280,8 +281,7 @@
             href="https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/"
             target="_blank"
             >here</a
-          >
-          .
+          >.
         </p>
       </td>
     </tr>
