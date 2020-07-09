@@ -38,10 +38,8 @@
       margin: 0 auto;
       padding: $toolbar-height 10px 0;
       background: $color-grey-shade-6;
-
       overflow-x: hidden;
       overflow-y: scroll;
-
       backface-visibility: hidden;
       perspective: 1000;
       transform: translate3d(0, 0, 0);

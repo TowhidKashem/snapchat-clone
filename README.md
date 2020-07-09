@@ -381,9 +381,9 @@
     <code>http://192.168.0.185:5000</code> on the network
   </li>
   <li>
-    Webpack root dir is set to <code>src</code> which means we can use clean
-    import paths like these <code>import Foo from common/Foo</code> vs messy
-    relative paths like <code>import Foo from ../../common/Foo</code>
+    The <code>baseUrl</code> is set to the <code>src</code> directory in tsconfig which means you can use clean
+    import paths like <code>import Foo from 'common/Foo'</code> instead of messy
+    relative paths like <code>import Foo from '../../common/Foo'</code>
   </li>
   <li>
     The project was bootsraped using

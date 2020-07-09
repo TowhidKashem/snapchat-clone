@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
 import { onAnimationComplete } from 'utils/animation';
-import { Drawer as DrawerType } from '../types';
+import { Drawer as DrawerType, AnimationType } from '../types';
 import Account from 'features/Account';
 import Search from 'features/Search';
 import SnapMap from 'features/SnapMap';
@@ -32,60 +32,63 @@ const Drawer: React.FC<Props> = ({ drawers }) => {
     return componentMap[component];
   };
 
-  return drawers
-    ? (drawers as any).map(
-        ({
-          component,
-          animationIn,
-          animationOut,
-          animationInDuration,
-          animationOutDuration,
-          show,
-          theme,
-          position
-        }) => {
-          const elem = document.getElementById(component);
-          if (show) {
-            elem?.classList.remove('collapse');
-          } else {
-            onAnimationComplete(
-              () => elem?.classList.add('collapse'),
-              animationOutDuration
+  return (
+    <>
+      {drawers &&
+        drawers.map(
+          ({
+            component,
+            animationIn,
+            animationOut,
+            animationInDuration,
+            animationOutDuration,
+            show,
+            theme,
+            position
+          }) => {
+            const elem = document.getElementById(component);
+            if (show) {
+              elem?.classList.remove('collapse');
+            } else {
+              onAnimationComplete(
+                () => elem?.classList.add('collapse'),
+                animationOutDuration
+              );
+            }
+
+            return (
+              <aside
+                id={component}
+                key={component}
+                className={classNames('drawer', {
+                  [theme as string]: true,
+                  [position as string]: true
+                })}
+              >
+                <div className="view" data-test={`${component}-drawer`}>
+                  <Animated
+                    animationIn={animationIn as AnimationType}
+                    animationOut={animationOut as AnimationType}
+                    animationInDuration={animationInDuration}
+                    animationOutDuration={animationOutDuration}
+                    isVisible={show as boolean}
+                  >
+                    <section
+                      ref={drawerContent}
+                      className="content"
+                      data-test="drawer-content"
+                      style={{ height: window.innerHeight + 'px' }}
+                    >
+                      {getComponent(component, show)}
+                    </section>
+                  </Animated>
+                </div>
+              </aside>
             );
           }
-
-          return (
-            <aside
-              id={component}
-              key={component}
-              className={classNames('drawer', {
-                [theme]: true,
-                [position]: true
-              })}
-            >
-              <div className="view" data-test={`${component}-drawer`}>
-                <Animated
-                  animationIn={animationIn}
-                  animationOut={animationOut}
-                  animationInDuration={animationInDuration}
-                  animationOutDuration={animationOutDuration}
-                  isVisible={show}
-                >
-                  <section
-                    ref={drawerContent}
-                    className="content"
-                    data-test="drawer-content"
-                    style={{ height: window.innerHeight + 'px' }}
-                  >
-                    {getComponent(component, show)}
-                  </section>
-                </Animated>
-              </div>
-            </aside>
-          );
-        }
-      )
-    : null;
+        )}
+    </>
+  );
 };
 
 export default Drawer;

@@ -17,7 +17,7 @@ export type FooterType = 'full' | 'collapsed' | 'none';
 
 export type SetFooterType = (footerType: FooterType) => void;
 
-type AnimationType =
+export type AnimationType =
   | 'bounce'
   | 'flash'
   | 'pulse'
