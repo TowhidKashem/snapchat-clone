@@ -66,9 +66,9 @@ const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
         <Widget header="For You" transparent>
           <div className="inner">
             {profiles.length ? (
-              profiles.map(({ image, title }, index) => (
+              profiles.map(({ image, title }) => (
                 <SpotlightPod
-                  key={index}
+                  key={image}
                   image={image}
                   title={title}
                   testId="discover-item"

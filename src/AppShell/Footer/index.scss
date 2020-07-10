@@ -19,20 +19,20 @@
     .btn {
       .icon {
         &:not(.new-msg) {
-          @include icon-shadow($color-grey-shade-3, 4px);
+          @include icon-shadow($color-grey-shade-3, 2px);
         }
       }
     }
   }
 
   .btn {
-    text-shadow: 0 0 1px $color-grey-shade-3;
+    text-shadow: 0 0 1px $color-grey-shade-0;
 
     .icon {
       font-size: 25px;
 
       &:not(.new-msg) {
-        @include icon-shadow($color-grey-shade-2);
+        @include icon-shadow($color-grey-shade-0, 2px);
       }
     }
   }

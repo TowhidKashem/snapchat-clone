@@ -57,7 +57,7 @@
       left: 50%;
 
       .icon {
-        @include icon-shadow($color-grey-shade-1);
+        @include icon-shadow($color-grey-shade-0, 2px);
         border-radius: 100%;
       }
     }

@@ -37,7 +37,7 @@ const Toolbar: React.FC<Props> = ({ drawers }) => {
     >
       <div className="left">
         <time>{time}</time>
-        <Icon icon="faLocationArrow" />
+        <Icon icon="faLocationArrow" className="icon-location" />
       </div>
       <div className="right">
         <Icon icon="faSignal" />

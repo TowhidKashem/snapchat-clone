@@ -16,12 +16,22 @@
     width: 50%;
   }
 
-  .right {
-    text-align: right;
+  .left {
+    time {
+      margin-right: 3px;
+    }
+
+    .icon-location {
+      font-size: 10px;
+    }
   }
 
-  .icon {
-    margin-left: 8px;
+  .right {
+    text-align: right;
+
+    .icon {
+      margin-left: 8px;
+    }
   }
 
   &.dark {
