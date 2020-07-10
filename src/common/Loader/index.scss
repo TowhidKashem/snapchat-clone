@@ -22,8 +22,7 @@
 
     span {
       display: block;
-      font-weight: bold;
-      font-size: 18px;
+      font: bold 18px $font-arial;
     }
 
     .sk-cube-grid {

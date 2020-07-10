@@ -40,7 +40,7 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
             placeholder="Search"
             leftIcon="faSearch"
             value={query}
-            onChange={(e) => setQuery(e.currentTarget.value.trim())}
+            onChange={(e) => setQuery(e.currentTarget.value)}
             focus={show}
             animate
             dark

@@ -14,12 +14,9 @@
   text-shadow: 0 0 10px $color-grey-shade-1;
   padding: 0 10px;
 
-  .btn {
-    margin-right: 3px;
-
-    &.btn-close {
-      @include highlight(35px, 35px);
-    }
+  .btn-close {
+    @include highlight(35px, 35px, 10px);
+    margin-right: 10px;
   }
 
   .left,

@@ -28,6 +28,7 @@
   &.dark {
     input[type='text'] {
       background: rgba($color-black, 0.1);
+      border: 0;
 
       &::placeholder {
         color: $color-grey-shade-3;
@@ -36,21 +37,24 @@
   }
 
   input[type='text'] {
-    border: 0;
-    outline: 0;
     width: 100%;
     background: rgba($color-black, 0.2);
-    padding: 10px 5px;
+    border: 1px solid rgba($color-grey-shade-2, 0.3);
     border-radius: 20px;
+    padding: 10px 5px;
     text-indent: 10px;
+    font-weight: bold;
+    outline: 0;
+    -webkit-appearance: none;
+    appearance: none;
 
     &.has-left-icon {
       text-indent: 25px;
     }
 
     &::placeholder {
-      color: $color-white;
-      font-weight: bold;
+      font: bold 15px $font-work-sans;
+      color: $color-grey-shade-3;
     }
   }
 

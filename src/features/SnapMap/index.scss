@@ -25,8 +25,8 @@
       }
 
       .marker {
-        background-image: url(/images/heat-map.png);
-        background-size: cover;
+        background: url(/images/heat-map.png) no-repeat -10px;
+        background-size: 110px;
         width: 70px;
         height: 70px;
         border-radius: 100%;

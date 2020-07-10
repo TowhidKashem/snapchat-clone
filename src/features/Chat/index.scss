@@ -26,7 +26,10 @@ $footer-height: 70px;
 
     .avatar {
       width: 50px;
-      margin-right: 5px;
+    }
+
+    h2 {
+      font-family: $font-verdana;
     }
 
     .right {
@@ -38,7 +41,7 @@ $footer-height: 70px;
       }
 
       .btn-arrow {
-        @include highlight(35px, 35px);
+        @include highlight(35px, 35px, 10px);
         font-size: 23px;
       }
     }
@@ -141,7 +144,11 @@ $footer-height: 70px;
         }
 
         input[type='text'] {
+          font-weight: normal;
+          border: 0;
+
           &::placeholder {
+            font: normal 14px $font-lato;
             color: $color-grey-shade-3;
           }
         }

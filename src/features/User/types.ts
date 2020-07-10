@@ -27,12 +27,3 @@ export type GetGeoLocation = () => [
     longitude: string;
   }
 ];
-
-export interface Session {
-  id: number;
-  username: string;
-  avatar: string;
-  gender: Gender;
-  age: number;
-  fullName: string;
-}

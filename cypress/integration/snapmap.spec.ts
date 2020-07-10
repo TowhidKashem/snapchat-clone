@@ -56,13 +56,13 @@ describe('Snap Map', () => {
   });
 
   it('shows image snap', () => {
-    cy.get('@snapMapDrawer').find('[data-test=marker]').eq(1).click();
+    cy.get('@snapMapDrawer').find('[data-test=marker]').eq(2).click();
     cy.get('[data-test=snap-drawer]').as('snapDrawer');
     cy.get('@snapDrawer').find('[data-test=image]').should('be.visible');
   });
 
   it('displays image caption', () => {
-    cy.get('@snapMapDrawer').find('[data-test=marker]').eq(1).click();
+    cy.get('@snapMapDrawer').find('[data-test=marker]').eq(2).click();
     cy.get('[data-test=snap-drawer]').as('snapDrawer');
     cy.get('@snapDrawer').find('[data-test=caption]').should('be.visible');
     cy.get('@snapDrawer')

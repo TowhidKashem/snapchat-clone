@@ -5,7 +5,6 @@ import { getMessages, postMessage } from './duck';
 import { dummyMessages } from './data';
 import { hideDrawer } from 'AppShell/duck';
 import { HideDrawer } from 'AppShell/types';
-import { Session } from 'features/User/types';
 import { GetMessages, PostMessage, Message } from 'features/Chat/types';
 import { randomArrayVal } from 'utils/array';
 import { playSound } from 'utils/audio';
@@ -17,7 +16,7 @@ import Button from 'common/Button';
 import './index.scss';
 
 interface Props {
-  session: Session;
+  username: string;
   thread: string;
   messages: Message[];
   hideDrawer: HideDrawer;
@@ -26,7 +25,7 @@ interface Props {
 }
 
 const Chat: React.FC<Props> = ({
-  session,
+  username,
   thread,
   messages,
   hideDrawer,
@@ -68,7 +67,7 @@ const Chat: React.FC<Props> = ({
 
   const submitMessage = () => {
     if (!message.length) return;
-    postMessage(session.username, message);
+    postMessage(username, message);
     setMessage('');
     setTimeout(botResponse, 1000);
   };
@@ -94,11 +93,11 @@ const Chat: React.FC<Props> = ({
           <article
             key={time + index}
             className={classNames('message', {
-              other: author !== session.username
+              other: author !== username
             })}
             data-test="message"
           >
-            <header>{author}</header>
+            <header>{author !== username ? author : 'Me'}</header>
             <blockquote>{message}</blockquote>
           </article>
         ))}
@@ -134,7 +133,7 @@ const Chat: React.FC<Props> = ({
 };
 
 const mapStateToProps = ({ user, chat }) => ({
-  session: user.session,
+  username: user.session.username,
   thread: chat.thread,
   messages: chat.messages
 });

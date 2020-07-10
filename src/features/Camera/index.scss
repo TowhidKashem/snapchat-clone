@@ -38,6 +38,7 @@
 
     strong {
       display: block;
+      font-family: $font-arial;
       text-shadow: 0 0 1px $color-black;
     }
   }
@@ -56,7 +57,7 @@
       left: 50%;
 
       .icon {
-        @include icon-shadow($color-black);
+        @include icon-shadow($color-grey-shade-1);
         border-radius: 100%;
       }
     }

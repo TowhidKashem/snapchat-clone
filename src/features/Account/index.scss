@@ -3,15 +3,16 @@
 @import '~styles/mixins';
 
 .account {
-  padding-bottom: 25px;
+  padding-bottom: 15px;
 
   > header {
+    @extend %center-x-y;
     display: flex;
     padding: 10px 10px;
     margin-bottom: -15px;
 
     .btn-close {
-      @include highlight(35px, 35px);
+      @include highlight(35px, 35px, 10px);
 
       .icon {
         font-size: 25px;
@@ -30,8 +31,9 @@
   .logo {
     text-align: center;
 
-    .ico-brand {
-      font-size: 100px;
+    img {
+      width: 100px;
+      margin-bottom: 5px;
     }
 
     strong {

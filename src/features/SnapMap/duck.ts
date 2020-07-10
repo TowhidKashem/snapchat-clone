@@ -14,8 +14,8 @@ export const getSnaps = (lat, lon, city, state) => async (dispatch) => {
     // Set some dummy coordinates to make snaps seem close to user
     const coords = [
       {
-        lat: lat + 0.007,
-        lon: lon - 0.007
+        lat: lat + 0.006,
+        lon: lon - 0.006
       },
       {
         lat: lat + 0.009,
@@ -36,18 +36,6 @@ export const getSnaps = (lat, lon, city, state) => async (dispatch) => {
       {
         lat: lat + 0.005,
         lon: lon - -0.006
-      },
-      {
-        lat: lat - 0.01,
-        lon: lon + 0.002
-      },
-      {
-        lat: lat - 0.01,
-        lon: lon - 0.007
-      },
-      {
-        lat: lat - 0.005,
-        lon: lon + 0.005
       },
       {
         lat: lat,

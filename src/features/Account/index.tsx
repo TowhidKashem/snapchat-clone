@@ -37,7 +37,7 @@ const Account: React.FC<Props> = ({
       <Icon icon="faCog" className="ico-gear" />
     </header>
     <div className="logo">
-      <Icon icon="faSnapchatSquare" className="ico-brand" />
+      <img src="./images/logo.svg" alt="" />
       <strong>{session.username}</strong>
     </div>
     <Widget header="Stories" transparent>
