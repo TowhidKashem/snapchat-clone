@@ -1,5 +1,6 @@
-@import '~styles/extendables';
 @import '~styles/vars';
+@import '~styles/extendables';
+@import '~styles/mixins';
 
 $header-height: 65px;
 $footer-height: 70px;
@@ -37,7 +38,7 @@ $footer-height: 70px;
       }
 
       .btn-arrow {
-        @extend %clickable-button;
+        @include highlight(35px, 35px);
         font-size: 23px;
       }
     }

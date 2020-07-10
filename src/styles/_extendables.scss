@@ -14,46 +14,8 @@
   object-fit: cover;
 }
 
-%image-cover {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  height: 100vh;
-
-  img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: auto;
-    max-height: none;
-    max-width: none;
-    min-height: 100%;
-    min-width: 100%;
-    transform: translate(-50%, -50%);
-  }
-}
-
 %center-x-y {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-%clickable {
-  box-shadow: 0 0 18px $color-red;
-}
-
-%clickable-button {
-  @extend %clickable;
-  border-radius: 100%;
-  min-width: 25px;
-  min-height: 25px;
-
-  .icon {
-    margin: 0;
-  }
 }

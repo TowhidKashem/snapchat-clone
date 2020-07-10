@@ -37,7 +37,7 @@
       padding: 15px;
 
       .btn {
-        @include icon-shadow($color-red);
+        @include highlight(45px, 45px);
       }
     }
 
@@ -60,6 +60,7 @@
 
     footer {
       @extend %app-width;
+      @extend %center-x-y;
       position: absolute;
       left: 0;
       bottom: 0;
@@ -73,7 +74,7 @@
         }
 
         .btn-download {
-          @include icon-shadow($color-red);
+          @include highlight(60px, 60px);
         }
       }
 

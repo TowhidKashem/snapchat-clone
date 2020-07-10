@@ -166,7 +166,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
               setShowFilterButtons(true);
               setFooterType('none');
               // Load the center filter on the button list by default
-              onAnimationComplete(() => switchFilter(filters[2]), 100); // 100ms filter button container animation
+              onAnimationComplete(() => switchFilter(filters[2]), 100);
             }}
           />
         )}

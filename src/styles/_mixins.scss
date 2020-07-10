@@ -11,3 +11,15 @@
   background: rgba($color-black, $opacity);
   color: $color-white;
 }
+
+@mixin highlight($width, $height) {
+  box-shadow: 0 0 15px $color-red;
+  border: 1px solid rgba($color-red, 0.5);
+  border-radius: 100%;
+  width: $width;
+  height: $height;
+
+  .icon {
+    margin: 0;
+  }
+}

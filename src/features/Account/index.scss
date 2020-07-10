@@ -1,5 +1,6 @@
 @import '~styles/vars';
 @import '~styles/extendables';
+@import '~styles/mixins';
 
 .account {
   padding-bottom: 25px;
@@ -10,7 +11,7 @@
     margin-bottom: -15px;
 
     .btn-close {
-      @extend %clickable-button;
+      @include highlight(35px, 35px);
 
       .icon {
         font-size: 25px;

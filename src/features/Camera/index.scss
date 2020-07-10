@@ -8,6 +8,7 @@
 
 .camera {
   width: 100%;
+  height: 100vh;
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -23,11 +24,10 @@
 
   .open-mouth {
     position: absolute;
-    top: 50px;
+    top: 135px;
     right: 5%;
     color: $color-white;
     font-size: 20px;
-    font-weight: bold;
     text-align: center;
     transform: rotate(10deg);
     z-index: 1;
@@ -73,7 +73,6 @@
     .btn-filters {
       font-size: 25px;
       margin: -12.5px 0 0 50px;
-      border-radius: 100%;
     }
 
     .filters {
@@ -136,11 +135,8 @@
         margin: 0 10px;
 
         &.btn-close {
+          @include highlight(35px, 35px);
           margin: 0 25px;
-
-          .icon {
-            @extend %clickable-button;
-          }
         }
       }
     }

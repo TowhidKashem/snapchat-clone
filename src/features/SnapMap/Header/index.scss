@@ -16,10 +16,10 @@
 
   .btn {
     margin-right: 3px;
-  }
 
-  .btn-close {
-    @extend %clickable;
+    &.btn-close {
+      @include highlight(35px, 35px);
+    }
   }
 
   .left,
