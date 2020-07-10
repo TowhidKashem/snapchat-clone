@@ -40,8 +40,14 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem, pickPhoto
 
   const downloadPhoto = () => {
     const dataURL = getDataURL();
-    if (isIOS()) window.open(dataURL, '_blank');
-    else window.location.href = dataURL.replace('image/png', 'image/octet-stream');
+    if (isIOS()) {
+      window.open(dataURL, '_blank');
+    } else {
+      const link = document.createElement('a');
+      link.download = 'download.png';
+      link.href = dataURL;
+      link.click();
+    }
   };
 
   return (
