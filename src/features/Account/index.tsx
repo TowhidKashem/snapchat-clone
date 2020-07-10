@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { language } from 'utils/browser';
 import { User } from 'features/User/types';
 import { ShowDrawer, HideDrawer } from 'AppShell/types';
 import { showDrawer, hideDrawer } from 'AppShell/duck';
@@ -19,6 +20,12 @@ interface Props {
   getGeoLocation: GetGeoLocation;
   setLatLon: SetLatLon;
 }
+
+const currentDate = new Date().toLocaleDateString(language, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
 
 const Account: React.FC<Props> = ({
   showDrawer,
@@ -70,17 +77,17 @@ const Account: React.FC<Props> = ({
           href="https://github.com/TowhidKashem/react-snapchat-clone"
           target="_blank"
           rel="noopener noreferrer"
+          title="Github Repo"
         >
-          <Icon icon="faGithub" /> Github Repo
+          <Icon icon="faGithub" />
         </a>
+        Joined SnapChat on {currentDate}
       </p>
     </footer>
   </main>
 );
 
-const mapStateToProps = ({ user }) => ({
-  session: user.session
-});
+const mapStateToProps = ({ user }) => ({ session: user.session });
 
 const mapDispatchToProps = (dispatch) => ({
   showDrawer: (drawer) => dispatch(showDrawer(drawer)),

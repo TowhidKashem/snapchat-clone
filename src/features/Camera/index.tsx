@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
@@ -7,7 +7,7 @@ import { playSound } from 'utils/audio';
 import { onAnimationComplete } from 'utils/animation';
 import { setFooterType } from 'AppShell/duck';
 import { SetFooterType } from 'AppShell/types';
-import { Filter, FilterScript, PickPhoto } from './types';
+import { Filter, FilterScript, PickPhoto, CameraMode } from './types';
 import { pickPhoto } from './duck';
 import PhotoCapture from './PhotoCapture';
 import Button from 'common/Button';
@@ -24,11 +24,12 @@ declare global {
 interface Props {
   setFooterType: SetFooterType;
   pickPhoto: PickPhoto;
+  cameraMode: CameraMode;
 }
 
 const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'liberty'];
 
-const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
+const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
   const videoElem = useRef<HTMLVideoElement>(null);
   const audioElem = useRef<HTMLAudioElement>(null);
 
@@ -40,14 +41,9 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
   const [cameraStream, setCameraStream] = useState(null);
   const [takePic, setTakePic] = useState(false);
 
-  useEffect(() => {
-    startCamera();
-  }, []);
-
-  const startCamera = async () => {
+  const startCamera = useCallback(async () => {
     const navigator: any = window.navigator;
     const maxWidth = (document.querySelector('#wrapper') as HTMLDivElement)?.offsetWidth;
-
     if (!('mediaDevices' in navigator)) navigator.mediaDevices = {};
     if (!('getUserMedia' in navigator.mediaDevices)) {
       navigator.mediaDevices.getUserMedia = (constraints) => {
@@ -60,19 +56,21 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
           );
       };
     }
-
     const [error, response] = await promise(
       navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: 'user',
+          facingMode: cameraMode,
           width: { ideal: maxWidth }
         }
       })
     );
-
     setCameraStream(response);
     if (!error && videoElem.current) videoElem.current.srcObject = response;
-  };
+  }, [cameraMode]);
+
+  useEffect(() => {
+    startCamera();
+  }, [startCamera]);
 
   useEffect(() => {
     if (!activeFilter) return;
@@ -216,9 +214,11 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto }) => {
   );
 };
 
+const mapStateToProps = ({ camera }) => ({ cameraMode: camera.cameraMode });
+
 const mapDispatchToProps = (dispatch) => ({
   setFooterType: (footerType) => dispatch(setFooterType(footerType)),
   pickPhoto: (dataURL) => dispatch(pickPhoto(dataURL))
 });
 
-export default connect(null, mapDispatchToProps)(Camera);
+export default connect(mapStateToProps, mapDispatchToProps)(Camera);

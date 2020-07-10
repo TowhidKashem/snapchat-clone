@@ -8,9 +8,15 @@ interface Props {
   avatar?: string;
   showDrawer: ShowDrawer;
   insideDrawer?: boolean;
+  toggleCameraMode?: () => void;
 }
 
-const Header: React.FC<Props> = ({ avatar, showDrawer, insideDrawer }) => {
+const Header: React.FC<Props> = ({
+  avatar,
+  showDrawer,
+  insideDrawer,
+  toggleCameraMode
+}) => {
   const iconImage = avatar ? { image: avatar } : { icon: 'faUserCircle' };
   return (
     <header className="header" data-test="header">
@@ -35,7 +41,7 @@ const Header: React.FC<Props> = ({ avatar, showDrawer, insideDrawer }) => {
         }
         dark={insideDrawer}
       />
-      <Button icon="faRetweet" buttonClass="btn-flip-camera" />
+      <Button icon="faRetweet" buttonClass="btn-flip-camera" onclick={toggleCameraMode} />
     </header>
   );
 };

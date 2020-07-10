@@ -1,9 +1,10 @@
+import { language } from './browser';
+
 // Pollyfill (mobile safari doesn't support `Intl.RelativeTimeFormat` at the moment)
 import '@formatjs/intl-relativetimeformat/polyfill';
 import '@formatjs/intl-relativetimeformat/polyfill-locales';
 
 export const relativeTime = (timestamp: number) => {
-  const { language = 'en-US' } = navigator;
   const formatter = new (Intl as any).RelativeTimeFormat(language, {
     numeric: 'auto',
     style: 'long'

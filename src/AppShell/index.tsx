@@ -9,7 +9,7 @@ import {
 } from './types';
 import { showDrawer, hideDrawer, setFooterType } from './duck';
 import { getSession, getFriends } from 'features/User/duck';
-import { getPhotos } from 'features/Camera/duck';
+import { getPhotos, toggleCameraMode } from 'features/Camera/duck';
 import Toolbar from './Toolbar';
 import Footer from './Footer';
 import Drawer from './Drawer';
@@ -25,6 +25,7 @@ interface Props {
   getSession: () => void;
   getFriends: () => void;
   getPhotos: () => void;
+  toggleCameraMode: () => void;
   children: JSX.Element;
 }
 
@@ -38,6 +39,7 @@ const AppShell: React.FC<Props> = ({
   getSession,
   getFriends,
   getPhotos,
+  toggleCameraMode,
   children
 }) => {
   // Init the app
@@ -50,7 +52,11 @@ const AppShell: React.FC<Props> = ({
   return (
     <>
       <Toolbar drawers={drawers} />
-      <Header avatar={avatar} showDrawer={showDrawer} />
+      <Header
+        avatar={avatar}
+        showDrawer={showDrawer}
+        toggleCameraMode={toggleCameraMode}
+      />
       <section className="view">{children}</section>
       {drawers && <Drawer drawers={drawers} />}
       <Footer
@@ -78,7 +84,8 @@ const mapDispatchToProps = (dispatch) => ({
   setFooterType: (footerType) => dispatch(setFooterType(footerType)),
   getSession: () => dispatch(getSession()),
   getFriends: () => dispatch(getFriends()),
-  getPhotos: () => dispatch(getPhotos())
+  getPhotos: () => dispatch(getPhotos()),
+  toggleCameraMode: () => dispatch(toggleCameraMode())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppShell);

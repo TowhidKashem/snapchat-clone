@@ -7,7 +7,13 @@ export default {
 };
 
 export const withAvatar = () => (
-  <Header avatar="https://i.imgur.com/EbafXMb.png" showDrawer={() => {}} />
+  <Header
+    avatar="https://i.imgur.com/EbafXMb.png"
+    showDrawer={() => {}}
+    toggleCameraMode={() => {}}
+  />
 );
 
-export const withIcon = () => <Header showDrawer={() => {}} />;
+export const withIcon = () => (
+  <Header showDrawer={() => {}} toggleCameraMode={() => {}} />
+);

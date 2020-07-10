@@ -18,3 +18,5 @@ export type FilterScript = {
   dog: FilterFunction;
   halloween: FilterFunction;
 };
+
+export type CameraMode = 'user' | 'environment';

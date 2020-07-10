@@ -1,9 +1,10 @@
 import { api } from 'utils/system';
-import { Photos } from 'features/Camera/types';
+import { Photos } from './types';
 
 // Action types
 const PHOTOS_FETCHED = 'camera/photosFetched';
 const SET_PHOTO = 'camera/setPhoto';
+const TOGGLE_CAMERA_MODE = 'camera/toggleCameraMode';
 
 // Action creators
 export const getPhotos = () => async (dispatch) => {
@@ -19,8 +20,12 @@ export const getPhotos = () => async (dispatch) => {
 export const pickPhoto = (dataURL) => (dispatch) =>
   dispatch({ type: SET_PHOTO, dataURL });
 
+export const toggleCameraMode = () => (dispatch) =>
+  dispatch({ type: TOGGLE_CAMERA_MODE });
+
 // Reducer
 const initialState = {
+  cameraMode: 'user',
   photoTaken: false,
   photos: []
 };
@@ -50,6 +55,11 @@ export default function reducer(prevState = initialState, { type, photos, dataUR
       return { ...prevState, photos };
     case SET_PHOTO:
       return setPhoto(prevState, dataURL);
+    case TOGGLE_CAMERA_MODE:
+      return {
+        ...prevState,
+        cameraMode: prevState.cameraMode === 'user' ? 'environment' : 'user'
+      };
     default:
       return prevState;
   }
