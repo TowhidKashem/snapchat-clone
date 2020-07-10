@@ -9,17 +9,11 @@
   color: $color-white;
   padding: 5px 10px;
   z-index: 150;
-  font-weight: bold;
+  font-weight: $font-medium;
 
   .left,
   .right {
     width: 50%;
-  }
-
-  .left {
-    time {
-      font-family: $font-work-sans;
-    }
   }
 
   .right {

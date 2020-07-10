@@ -9,7 +9,7 @@
   top: $toolbar-height;
   z-index: 1;
   width: 100%;
-  font-weight: bold;
+  font-weight: $font-bold;
   color: $color-white;
   text-shadow: 0 0 10px $color-grey-shade-1;
   padding: 0 10px;
@@ -27,13 +27,11 @@
 
   .center {
     .weather {
-      font-family: $font-verdana;
-      font-weight: bold;
       text-align: center;
       min-height: 65px;
 
       header {
-        font-size: 20px;
+        font-size: 23px;
         margin-bottom: 2px;
       }
 
@@ -48,7 +46,7 @@
         }
 
         .temperature {
-          font-size: 14px;
+          font-size: 15px;
           padding-bottom: 7px;
         }
       }

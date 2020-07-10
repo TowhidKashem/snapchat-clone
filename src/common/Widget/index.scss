@@ -1,12 +1,12 @@
 @import '~styles/vars';
 
 .widget {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 
   > header {
+    font-weight: $font-bold;
+    font-size: 16px;
     color: $color-grey-shade-1;
-    font-family: $font-work-sans;
-    font-size: 15px;
     margin-bottom: 8px;
   }
 

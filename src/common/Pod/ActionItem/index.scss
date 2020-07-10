@@ -4,11 +4,12 @@
 .pod.action-item {
   @extend %center-x-y;
   background: $color-white;
-  padding: 13px 15px;
-  font-weight: bold;
+  padding: 15px 20px;
+  font-weight: $font-medium;
+  font-size: 15px;
 
   &:not(.straight-edge) {
-    box-shadow: 0 0 8px $color-grey-shade-5;
+    box-shadow: 0 0 4px $color-grey-shade-5;
     border-radius: 8px;
   }
 

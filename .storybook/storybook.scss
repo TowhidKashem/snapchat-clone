@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Work+Sans:ital,wght@0,600;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,900&display=swap');
 
 @import '~styles/vars';
 @import '~styles/extendables';
 
 body {
-  width: 100%;
-
   #root {
     @extend %center-x-y;
     position: relative;

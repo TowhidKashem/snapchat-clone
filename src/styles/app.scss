@@ -32,7 +32,7 @@ img {
 }
 
 body {
-  font: normal 14px $font-lato;
+  font: $font-regular 14px 'Work Sans', sans-serif;
   color: $color-grey-shade-0;
   background: $color-grey-shade-0;
   -webkit-font-smoothing: antialiased;

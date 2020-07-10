@@ -50,15 +50,16 @@
       box-shadow: 0 0 4px $color-grey-shade-1;
       border-radius: 3px;
       text-align: center;
+      line-height: 18px;
 
       a {
         color: $color-blue;
-        font-weight: bold;
+        font-weight: $font-bold;
       }
 
       code {
         padding: 0 3px;
-        font-weight: bold;
+        font-weight: $font-bold;
         background: $color-grey-shade-6;
       }
     }

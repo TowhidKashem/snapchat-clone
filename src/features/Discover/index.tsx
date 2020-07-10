@@ -39,6 +39,7 @@ const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
     drawerContent.current.addEventListener('scroll', onScroll.current);
   }, [drawerContent]);
 
+  // Infinite scroll
   useEffect(() => {
     (async () => {
       isFetching.current = true;

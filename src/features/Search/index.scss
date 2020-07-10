@@ -4,7 +4,7 @@
   padding-bottom: 25px;
 
   > header {
-    padding: 0 0 7px;
+    padding: 0 5px 7px 0;
     margin-bottom: 10px;
     background: $color-grey-shade-6;
 
@@ -13,7 +13,7 @@
       justify-content: flex-end;
 
       .input {
-        margin-right: 7px;
+        margin-right: 10px;
       }
     }
   }
@@ -23,7 +23,7 @@
     margin: 0 -10px;
 
     .no-results {
-      font-weight: bold;
+      font-weight: $font-bold;
       text-align: center;
       padding: 100px 0;
 

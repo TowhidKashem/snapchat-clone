@@ -34,7 +34,8 @@
     );
 
     header {
-      font: italic 16px $font-work-sans;
+      font-style: italic;
+      font-size: 16px;
       text-shadow: 0 0 1px $color-black;
     }
   }

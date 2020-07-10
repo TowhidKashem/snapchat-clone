@@ -108,7 +108,6 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
             </a>
             , then rename the <code>.env.sample</code> file at the root of the project to
             just <code>.env</code> and place the key inside, finally run
-            <br />
             <code>npm start</code> again to view the snap map features!
           </p>
         </div>

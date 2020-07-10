@@ -3,9 +3,10 @@
 
 .snap {
   header {
+    @extend %center-x-y;
     display: flex;
     padding: 12px 18px;
-    font-weight: bold;
+    font-weight: $font-semi-bold;
     position: absolute;
     width: 100%;
     z-index: 1;

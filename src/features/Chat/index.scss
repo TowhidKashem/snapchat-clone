@@ -28,10 +28,6 @@ $footer-height: 70px;
       width: 50px;
     }
 
-    h2 {
-      font-family: $font-verdana;
-    }
-
     .right {
       @extend %center-x-y;
       margin-left: auto;
@@ -59,7 +55,7 @@ $footer-height: 70px;
       header {
         text-transform: uppercase;
         color: $color-blue;
-        font-weight: bold;
+        font-weight: $font-semi-bold;
         font-size: 12px;
         margin-bottom: 3px;
       }
@@ -144,11 +140,10 @@ $footer-height: 70px;
         }
 
         input[type='text'] {
-          font-weight: normal;
+          font-weight: $font-regular;
           border: 0;
 
           &::placeholder {
-            font: normal 14px $font-lato;
             color: $color-grey-shade-3;
           }
         }
