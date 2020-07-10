@@ -1,31 +1,31 @@
 <h1 align="center">👻 SnapChat Clone</h1>
 
 <div align="center">
-  <img src="./public/github/tech-logos/react.svg" width="55" alt="React" />
-  <img src="./public/github/tech-logos/redux.svg" width="55" alt="Redux" />
+  <img src="./public/readme/tech-logos/react.svg" width="55" alt="React" />
+  <img src="./public/readme/tech-logos/redux.svg" width="55" alt="Redux" />
   <img
-    src="./public/github/tech-logos/typescript-icon.svg"
+    src="./public/readme/tech-logos/typescript-icon.svg"
     width="55"
     alt="TypeScript"
   />
   <img
-    src="./public/github/tech-logos/javascript.svg"
+    src="./public/readme/tech-logos/javascript.svg"
     width="55"
     alt="JavaScript"
   />
-  <img src="./public/github/tech-logos/sass.svg" width="55" alt="Sass" />
-  <img src="./public/github/tech-logos/webpack.svg" width="55" alt="Webpack" />
-  <img src="./public/github/tech-logos/gulp.svg" width="35" alt="gulp" />
-  <img src="./public/github/tech-logos/cypress.svg" width="55" alt="Cypress" />
-  <img src="./public/github/tech-logos/jest.svg" width="55" alt="Jest" />
-  <img src="./public/github/tech-logos/eslint.svg" width="55" alt="Eslint" />
+  <img src="./public/readme/tech-logos/sass.svg" width="55" alt="Sass" />
+  <img src="./public/readme/tech-logos/webpack.svg" width="55" alt="Webpack" />
+  <img src="./public/readme/tech-logos/gulp.svg" width="35" alt="gulp" />
+  <img src="./public/readme/tech-logos/cypress.svg" width="55" alt="Cypress" />
+  <img src="./public/readme/tech-logos/jest.svg" width="55" alt="Jest" />
+  <img src="./public/readme/tech-logos/eslint.svg" width="55" alt="Eslint" />
   <img
-    src="./public/github/tech-logos/prettier.svg"
+    src="./public/readme/tech-logos/prettier.svg"
     width="55"
     alt="Prettier"
   />
   <img
-    src="./public/github/tech-logos/storybook-icon.svg"
+    src="./public/readme/tech-logos/storybook-icon.svg"
     width="50"
     alt="Storybook"
   />
@@ -41,8 +41,8 @@
     </tr>
     <tr>
       <td align="center" valign="top">
-        <a href="public/github/snapchat.mp4">
-          <img src="public/github/snapchat.gif" />
+        <a href="public/readme/snapchat.mp4">
+          <img src="public/readme/snapchat.gif" />
           <p>👆Click to see all implemented features</p>
         </a>
       </td>
@@ -171,11 +171,12 @@
     <code>&gt; npm start</code>
     <ul>
       <li>
-        The app should open automatically in your browser at
+        The app should open automatically in your browser usually at
         <code>https://localhost:3000/</code>
         <ul>
           <li>
-            In Chrome you will receive a "Your connection is not private" error
+            In Chrome you will receive a "Your connection is not private"
+            warning
             <ul>
               <li>
                 Click "Advanced" &gt; "Proceed to localhost (unsafe)"
@@ -214,13 +215,13 @@
         </tr>
         <tr>
           <td align="center" valign="middle">
-            <img src="public/github/https-step-1.png" />
+            <img src="public/readme/https-step-1.png" />
           </td>
           <td align="center" valign="middle">
-            <img src="public/github/https-step-2.png" />
+            <img src="public/readme/https-step-2.png" />
           </td>
           <td align="center" valign="middle">
-            <img src="public/github/camera-access.png" />
+            <img src="public/readme/camera-access.png" />
           </td>
         </tr>
       </tbody>
@@ -238,7 +239,7 @@
     </tr>
     <tr>
       <td align="center" valign="top">
-        <img src="public/github/guide.png" />
+        <img src="public/readme/guide.png" />
       </td>
       <td valign="top">
         Not all the buttons are actionable, many of them are there just for show
@@ -259,7 +260,7 @@
     </tr>
     <tr>
       <td valign="top">
-        <img src="public/github/storybook.png" />
+        <img src="public/readme/storybook.png" />
         <p>
           <strong>Storybook</strong> is used to showcase the app's custom
           component library. You can run Storybook using the command
@@ -267,7 +268,7 @@
         </p>
       </td>
       <td valign="top">
-        <img src="public/github/redux-extension.png" />
+        <img src="public/readme/redux-extension.png" />
         <p>
           <strong>Redux Devtools Extension</strong> is implemented in the app,
           it makes things like viewing the state, state flow and debugging much
@@ -302,7 +303,7 @@
     <tr>
       <td align="center" valign="top">
         <a href="">
-          <img src="public/github/cypress-run-screenshot.png" width="600" />
+          <img src="public/readme/cypress-run-screenshot.png" width="600" />
           👆Click to see the entire test suite being run
         </a>
       </td>
@@ -345,7 +346,7 @@
     </tr>
     <tr>
       <td valign="top">
-        <img src="public/github/unit-tests.png" width="400" />
+        <img src="public/readme/unit-tests.png" width="400" />
       </td>
       <td valign="top">
         <ul>
@@ -373,18 +374,17 @@
 <ul>
   <li>
     In addition to running on the localhost domain the app is also available on
-    your network at <code>https://192.168.0.185:3000</code> (useful for viewing
-    on mobile)
+    the network (useful for viewing on mobile), the actual address is revealed
+    in the terminal after running <code>npm start</code>
   </li>
   <li>
     If you want to make changes to the filter files, run the command
-    <code>cd filters &amp;&amp; gulp watchJS</code> to watch for changes
+    <code>cd filters &amp;&amp; npm run gulp watchJS</code> to watch for changes
   </li>
   <li>
     If you want to browse the production build run the command
-    <code>npm run build &amp;&amp; npm run serve</code>, then navigate to
-    <code>http://localhost:5000</code> locally or
-    <code>http://192.168.0.185:5000</code> on the network
+    <code>npm run build &amp;&amp; npm run serve</code>, then navigate to the local
+    or network addresses revealed in the terminal
   </li>
   <li>
     The <code>baseUrl</code> is set to the <code>src</code> directory in
