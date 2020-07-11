@@ -9,7 +9,7 @@ describe('<Loader />', () => {
   });
 
   it('can have message', () => {
-    const message = 'Something is loading..';
+    const message = 'Something is loading...';
     const component = shallow(<Loader message={message} />);
     expect(component.find('span').text()).toBe(message);
   });

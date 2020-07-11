@@ -5,7 +5,7 @@ import { getMessages, postMessage } from './duck';
 import { dummyMessages } from './data';
 import { hideDrawer } from 'AppShell/duck';
 import { HideDrawer } from 'AppShell/types';
-import { GetMessages, PostMessage, Message } from 'features/Chat/types';
+import { GetMessages, PostMessage, Message } from './types';
 import { randomArrayVal } from 'utils/array';
 import { playSound } from 'utils/audio';
 import { sleep } from 'utils/system';
@@ -46,7 +46,7 @@ const Chat: React.FC<Props> = ({
 
   const botResponse = useCallback(
     async (firstMsg?: boolean) => {
-      // Pretend to type for a bit..
+      // Pretend to type for a bit...
       const typeAndStop = firstMsg ? [1000, 0] : [800, 500, 1000, 700, 600, 0];
       for (let i = 0; i < typeAndStop.length; i++) {
         setTyping((prevTyping) => !prevTyping);

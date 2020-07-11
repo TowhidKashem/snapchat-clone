@@ -4,6 +4,7 @@ import { language } from './browser';
 import '@formatjs/intl-relativetimeformat/polyfill';
 import '@formatjs/intl-relativetimeformat/polyfill-locales';
 
+// https://twitter.com/addyosmani/status/1261929447122513921/photo/1
 export const relativeTime = (timestamp: number) => {
   const formatter = new (Intl as any).RelativeTimeFormat(language, {
     numeric: 'auto',

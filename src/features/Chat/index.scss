@@ -80,9 +80,9 @@ $footer-height: 70px;
 
   footer {
     @extend %app-width;
-    height: $footer-height;
     position: fixed;
     bottom: 0;
+    height: $footer-height;
     border-top: 1px solid $color-grey-shade-4;
 
     .icon {
@@ -116,8 +116,8 @@ $footer-height: 70px;
 
     .inner-content {
       @extend %center-x-y;
-      display: flex;
       position: relative;
+      display: flex;
       height: 100%;
       padding: 10px 0;
       background: $color-white;

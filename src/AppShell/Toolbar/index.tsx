@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
+import { language } from 'utils/browser';
 import { Drawer } from '../types';
 import { atleastOneDrawerOpen } from '../utils';
 import Icon from 'common/Icon';
@@ -10,11 +11,9 @@ interface Props {
 }
 
 const Toolbar: React.FC<Props> = ({ drawers }) => {
-  const { useState, useEffect } = React;
-  const [time, setTime] = useState<string>('');
+  const [time, setTime] = useState('');
 
-  const updateTime = (): void => {
-    const { language = 'en-US' } = navigator;
+  const updateTime = () => {
     const time = new Date()
       .toLocaleTimeString(language, {
         hour: 'numeric',

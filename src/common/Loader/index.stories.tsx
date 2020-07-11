@@ -8,4 +8,4 @@ export default {
 
 export const Default = () => <Loader />;
 
-export const withMessage = () => <Loader message="Something is loading.." />;
+export const withMessage = () => <Loader message="Something is loading..." />;

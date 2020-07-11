@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Input from './index';
 import Icon from 'common/Icon';
 
-const defaultProps = { placeholder: 'Type here..' };
+const defaultProps = { placeholder: 'Type here...' };
 
 describe('<Input />', () => {
   it('renders without crashing', () => {

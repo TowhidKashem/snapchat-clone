@@ -4,10 +4,10 @@
 .not-found {
   @extend %center-x-y;
   @extend %app-width;
-  background: $color-yellow;
-  height: 100vh;
   position: fixed;
   top: 0;
+  background: $color-yellow;
+  height: 100vh;
   z-index: 1000;
 
   .message {

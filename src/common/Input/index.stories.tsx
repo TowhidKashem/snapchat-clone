@@ -6,7 +6,7 @@ export default {
   component: Input
 };
 
-const defaultProps = { placeholder: 'Type here..' };
+const defaultProps = { placeholder: 'Type here...' };
 
 export const Default = () => <Input {...defaultProps} />;
 

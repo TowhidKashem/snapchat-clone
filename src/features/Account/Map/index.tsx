@@ -16,7 +16,7 @@ const hasApiKey = apiKey?.length ? true : false;
 if (hasApiKey) mapboxgl.accessToken = apiKey as string;
 
 const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
-  const mapRef = useRef<HTMLDivElement>(null);
+  const mapElem = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
 
   const loadMap = (lat, lon) => {
     const map = new mapboxgl.Map({
-      container: mapRef.current as HTMLDivElement,
+      container: mapElem.current as HTMLDivElement,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [lon, lat],
       zoom: 13,
@@ -115,7 +115,7 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
         <Loader />
       ) : null}
 
-      {hasApiKey && <div className="map" ref={mapRef}></div>}
+      {hasApiKey && <div className="map" ref={mapElem}></div>}
     </div>
   );
 };

@@ -34,10 +34,8 @@ const SnapMap: React.FC<Props> = ({
   getWeather,
   showDrawer,
   hideDrawer,
-  geolocation
+  geolocation: { latitude, longitude, city, state }
 }) => {
-  const { latitude, longitude, city, state } = geolocation;
-
   const mapElem = useRef<HTMLDivElement>(null);
 
   const [loading, setLoading] = useState(true);
@@ -66,7 +64,7 @@ const SnapMap: React.FC<Props> = ({
         new mapboxgl.Marker(tooltip).setLngLat([longitude, latitude]).addTo(map);
 
         setTimeout(() => {
-          tooltip.classList.add('zoomedIn');
+          tooltip.classList.add('zoomed-in');
 
           new mapboxgl.Popup({ closeOnClick: false })
             .setLngLat([longitude, latitude])
@@ -119,7 +117,7 @@ const SnapMap: React.FC<Props> = ({
     <div className="snap-map">
       <div className="inner">
         {loading && <Loader />}
-        <Header weather={weather} city={geolocation.city} hideDrawer={hideDrawer} />
+        <Header weather={weather} city={city} hideDrawer={hideDrawer} />
         <div ref={mapElem} className="content"></div>
       </div>
     </div>

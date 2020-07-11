@@ -4,10 +4,10 @@
 .snap {
   header {
     @extend %center-x-y;
+    position: absolute;
     display: flex;
     padding: 12px 18px;
     font-weight: $font-semi-bold;
-    position: absolute;
     width: 100%;
     z-index: 1;
     text-shadow: 0 0 1.5px $color-black;
@@ -32,10 +32,10 @@
   }
 
   footer {
-    padding: 0 30px 20px 0;
     position: absolute;
     bottom: 0;
     right: 0;
+    padding: 0 30px 20px 0;
 
     .btn {
       .icon {
@@ -73,16 +73,16 @@
     }
 
     .caption {
-      font-size: 18px;
-      background: rgba($color-black, 0.5);
       position: absolute;
       top: 50%;
       left: 0;
       z-index: 100;
       width: 100%;
-      text-align: center;
       height: 50px;
       line-height: 50px;
+      font-size: 18px;
+      background: rgba($color-black, 0.5);
+      text-align: center;
       margin-top: -25px;
     }
   }

@@ -47,11 +47,11 @@ a {
 
 .wrapper {
   @extend %app-width;
-  position: relative;
-  background: $color-grey-shade-1;
   height: 100vh;
   margin: 0 auto;
   overflow: hidden;
+  position: relative;
+  background: $color-grey-shade-1;
 }
 
 .app-sound {

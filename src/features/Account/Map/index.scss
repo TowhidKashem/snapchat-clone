@@ -42,7 +42,6 @@
     }
 
     p {
-      z-index: 10000;
       position: relative;
       width: 90%;
       padding: 10px 10px 15px;
@@ -51,6 +50,7 @@
       border-radius: 3px;
       text-align: center;
       line-height: 18px;
+      z-index: 10000;
 
       a {
         color: $color-blue;

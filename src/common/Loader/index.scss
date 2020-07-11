@@ -41,7 +41,7 @@
       .sk-cube {
         width: calc(33% - 2px);
         height: 33%;
-        background-color: $color-yellow;
+        background: $color-yellow;
         float: left;
         animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
         margin: 1px;

@@ -36,7 +36,7 @@ const Button: React.FC<Props> = ({
     type="button"
     onClick={onclick}
     className={classNames('btn', {
-      [buttonClass]: buttonClass,
+      [buttonClass]: true,
       round,
       plain,
       purple
@@ -59,7 +59,7 @@ const Button: React.FC<Props> = ({
       <Icon
         icon={icon}
         className={classNames({
-          [iconClass]: iconClass
+          [iconClass]: true
         })}
       />
     ) : null}
