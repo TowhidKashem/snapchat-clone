@@ -1,18 +1,6 @@
 @import 'vars';
 @import 'extendables';
 
-html {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  overflow: hidden;
-  user-select: none;
-  touch-action: none;
-}
-
 *,
 *:before,
 *:after {
@@ -27,8 +15,16 @@ body {
   outline-style: none;
 }
 
-img {
-  align-self: center;
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
 }
 
 body {
@@ -43,6 +39,10 @@ body {
 a {
   color: $color-white;
   text-decoration: none;
+}
+
+img {
+  align-self: center;
 }
 
 .wrapper {

@@ -40,12 +40,12 @@
       background: $color-grey-shade-6;
       overflow-x: hidden;
       overflow-y: scroll;
-      backface-visibility: hidden;
-      perspective: 1000;
-      transform: translate3d(0, 0, 0);
       -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
       -webkit-perspective: 1000;
+      perspective: 1000;
       -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
       -webkit-overflow-scrolling: touch;
 
       .header {

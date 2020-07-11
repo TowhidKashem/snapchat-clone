@@ -119,7 +119,7 @@ $footer-height: 70px;
       position: relative;
       display: flex;
       height: 100%;
-      padding: 10px 0;
+      padding: 10px;
       background: $color-white;
 
       .btn-camera {
@@ -154,6 +154,7 @@ $footer-height: 70px;
         @extend %center-x-y;
 
         .btn-archive {
+          display: flex;
           margin: 0 5px;
 
           .icon {

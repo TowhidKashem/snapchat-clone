@@ -274,7 +274,7 @@
         <img src="public/readme/redux-extension.png" />
         <p>
           <strong>Redux Devtools Extension</strong> is implemented in the app,
-          it makes things like viewing the state, state flow and debugging much
+          it makes things like viewing the state tree, state flow and debugging much
           easier, to use it you need to install the browser extension
           <a
             href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en"
