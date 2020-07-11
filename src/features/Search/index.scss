@@ -4,17 +4,13 @@
   padding-bottom: 25px;
 
   > header {
-    padding: 0 5px 7px 0;
-    margin-bottom: 10px;
-    background: $color-grey-shade-6;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5px;
+    margin-bottom: 20px;
 
-    form {
-      display: flex;
-      justify-content: flex-end;
-
-      .input {
-        margin-right: 7px;
-      }
+    .input {
+      margin-right: 7px;
     }
   }
 

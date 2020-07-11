@@ -1,5 +1,6 @@
 @import '~styles/vars';
 @import '~styles/extendables';
+@import '~styles/mixins';
 
 .input {
   position: relative;
@@ -14,18 +15,11 @@
     }
   }
 
-  &.disabled {
-    &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
   &.dark {
+    .icon {
+      filter: none;
+    }
+
     input[type='text'] {
       background: rgba($color-black, 0.1);
       border: 0;
@@ -38,12 +32,13 @@
 
   input[type='text'] {
     width: 100%;
-    background: rgba($color-black, 0.2);
-    border: 1px solid rgba($color-grey-shade-2, 0.3);
-    border-radius: 20px;
-    padding: 10px 5px;
+    background: rgba($color-grey-shade-1, 0.2);
+    border: 1px solid rgba($color-grey-shade-1, 0.2);
+    border-radius: 50px;
+    padding: 10.5px 5px;
     text-indent: 10px;
     font-weight: $font-semi-bold;
+    line-height: normal;
     outline: 0;
     -webkit-appearance: none;
     appearance: none;
@@ -52,17 +47,22 @@
       text-indent: 25px;
     }
 
+    &:disabled {
+      opacity: 1;
+    }
+
     &::placeholder {
       font-size: 15px;
-      color: $color-grey-shade-3;
+      color: $color-grey-shade-5;
     }
   }
 
-  .left-icon,
-  .right-icon {
+  .icon {
+    @include icon-shadow($color-grey-shade-2, 1px);
     position: absolute;
     top: 50%;
-    margin-top: -7px;
+    margin-top: -8px;
+    font-size: 15px;
   }
 
   .left-icon {

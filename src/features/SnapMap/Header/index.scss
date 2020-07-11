@@ -16,6 +16,7 @@
 
   .btn-close {
     @include highlight(35px, 35px, 10px);
+    border: 1px solid rgba($color-red, 0.1);
     margin-right: 10px;
   }
 

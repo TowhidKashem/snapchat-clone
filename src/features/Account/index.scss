@@ -19,11 +19,8 @@
       }
     }
 
-    .icon {
-      font-size: 20px;
-    }
-
     .ico-gear {
+      font-size: 20px;
       margin-left: auto;
     }
   }
@@ -43,10 +40,10 @@
   }
 
   footer {
-    padding: 10px 100px 35px;
+    padding: 10px 0 35px;
 
     p {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: $font-semi-bold;
       color: $color-grey-shade-4;
       text-align: center;

@@ -1,5 +1,6 @@
 @import '~styles/vars';
 @import '~styles/extendables';
+@import '~styles/mixins';
 
 .header {
   @extend %center-x-y;
@@ -11,11 +12,11 @@
 
   .btn-user {
     .icon {
-      font-size: 30px;
+      font-size: 35px;
     }
 
     img {
-      width: 30px;
+      width: 35px;
     }
   }
 
@@ -25,7 +26,8 @@
 
   .right {
     .icon {
-      font-size: 20px;
+      @include icon-shadow($color-grey-shade-2, 1px);
+      font-size: 23px;
     }
   }
 }

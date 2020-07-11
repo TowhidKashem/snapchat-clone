@@ -50,7 +50,7 @@ const Input: React.FC<Props> = ({
   return (
     <div
       onClick={onClick}
-      className={classNames('input', { animate, full, disabled, dark })}
+      className={classNames('input', { animate, full, dark })}
       data-test="input"
     >
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}

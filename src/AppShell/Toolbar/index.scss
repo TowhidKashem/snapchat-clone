@@ -1,5 +1,6 @@
 @import '~styles/vars';
 @import '~styles/extendables';
+@import '~styles/mixins';
 
 .toolbar {
   @extend %center-x-y;
@@ -14,11 +15,17 @@
   .left,
   .right {
     width: 50%;
+
+    .icon {
+      @include icon-shadow($color-grey-shade-2, 1px);
+    }
   }
 
   .left {
     time {
       margin-right: 3px;
+      font-weight: $font-bold;
+      text-shadow: 0 0 1px $color-grey-shade-0;
     }
 
     .icon-location {
@@ -37,8 +44,18 @@
   &.dark {
     color: $color-black;
 
-    .icon {
-      color: $color-black;
+    .left,
+    .right {
+      .icon {
+        filter: none;
+        color: $color-black;
+      }
+    }
+
+    .left {
+      time {
+        text-shadow: none;
+      }
     }
   }
 }

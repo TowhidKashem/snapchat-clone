@@ -35,23 +35,21 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
   return (
     <main className="search">
       <header>
-        <form>
-          <Input
-            placeholder="Search"
-            leftIcon="faSearch"
-            value={query}
-            onChange={(e) => setQuery(e.currentTarget.value)}
-            focus={show}
-            animate
-            dark
-          />
-          <Button
-            label="Cancel"
-            plain
-            onclick={() => hideDrawer('search')}
-            testId="btn-cancel"
-          />
-        </form>
+        <Input
+          placeholder="Search"
+          leftIcon="faSearch"
+          value={query}
+          onChange={(e) => setQuery(e.currentTarget.value)}
+          focus={show}
+          animate
+          dark
+        />
+        <Button
+          label="Cancel"
+          plain
+          onclick={() => hideDrawer('search')}
+          testId="btn-cancel"
+        />
       </header>
       <section>
         <Animated
@@ -84,9 +82,7 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  friends: user.friends
-});
+const mapStateToProps = ({ user }) => ({ friends: user.friends });
 
 const mapDispatchToProps = (dispatch) => ({
   hideDrawer: (component) => dispatch(hideDrawer(component))

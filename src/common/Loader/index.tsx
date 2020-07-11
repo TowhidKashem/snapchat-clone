@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Loader: React.FC<Props> = ({ fixed, message }) => (
-  <div className={classNames('loading', { fixed })}>
+  <div className={classNames('loading', { fixed, message })}>
     <div className="center">
       <div className="sk-cube-grid">
         {new Array(9).fill(null).map((val, index) => (
