@@ -1,20 +1,22 @@
 {
   "photos": [
     {
+      "month": "June",
+      "year": 2020,
+      "images": ["./images/selfies/6.jpg"]
+    },
+    {
       "month": "March",
       "year": 2020,
-      "images": [
-        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
-        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg"
-      ]
+      "images": ["./images/selfies/5.jpg", "./images/selfies/4.jpg"]
     },
     {
       "month": "January",
       "year": 2020,
       "images": [
-        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
-        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg",
-        "https://www.refinery29.com/file/11154/intro-hero-mobile-v2.jpg"
+        "./images/selfies/3.jpg",
+        "./images/selfies/2.jpg",
+        "./images/selfies/1.jpg"
       ]
     }
   ]

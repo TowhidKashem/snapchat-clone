@@ -17,20 +17,19 @@ Dog and bees dependency:
 jeelizFaceFilter/helpers/addDragEventListener.js                                        - 5kb
 */
 const gulp = require('gulp');
-const { watch } = require('gulp');
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
 
 exports.watchJS = () => {
-  watch('src/*.js', { ignoreInitial: false }, (cb) => {
+  gulp.watch('src/*.js', { ignoreInitial: false }, (cb) => {
     defaultTask();
     cb();
   });
 };
 
-const defaultTask = (cb) => {
-  return gulp
+const defaultTask = () =>
+  gulp
     .src([
       // Main dependencies
       'jeelizFaceFilter/dist/jeelizFaceFilter.js',
@@ -56,7 +55,5 @@ const defaultTask = (cb) => {
     )
     .pipe(terser())
     .pipe(gulp.dest('build'));
-  cb();
-};
 
 exports.default = defaultTask;
