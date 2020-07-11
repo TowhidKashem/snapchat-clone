@@ -13,6 +13,8 @@ import Header from './Header';
 import Loader from 'common/Loader';
 import './index.scss';
 
+mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY as string;
+
 interface Props {
   snaps: Snap[];
   weather: Weather;
