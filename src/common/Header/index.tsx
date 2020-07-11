@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShowDrawer } from 'AppShell/types';
+import Icon from 'common/Icon';
 import Button from 'common/Button';
 import Input from 'common/Input';
 import './index.scss';
@@ -41,7 +42,17 @@ const Header: React.FC<Props> = ({
         }
         dark={insideDrawer}
       />
-      <Button icon="faRetweet" buttonClass="btn-flip-camera" onclick={toggleCameraMode} />
+      <div className="right">
+        {insideDrawer ? (
+          <Icon icon="faEllipsisH" />
+        ) : (
+          <Button
+            icon="faRetweet"
+            buttonClass="btn-flip-camera"
+            onclick={toggleCameraMode}
+          />
+        )}
+      </div>
     </header>
   );
 };

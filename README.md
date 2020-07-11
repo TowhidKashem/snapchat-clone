@@ -100,6 +100,9 @@
             Feels close to a native app if you "add to homescreen" on mobile
           </li>
         </ul>
+                <h2 align="center">
+          <a href="https://google.com">[LIVE DEMO]</a>
+        </h2>
       </td>
     </tr>
   </tbody>
