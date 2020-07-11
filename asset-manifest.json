@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.69ca27fd.chunk.css",
-    "main.js": "/static/js/main.17e6aa54.chunk.js",
-    "main.js.map": "/static/js/main.17e6aa54.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.e4778e80.js",
-    "runtime-main.js.map": "/static/js/runtime-main.e4778e80.js.map",
-    "static/css/2.dda6c3ea.chunk.css": "/static/css/2.dda6c3ea.chunk.css",
-    "static/js/2.5ff46a2d.chunk.js": "/static/js/2.5ff46a2d.chunk.js",
-    "static/js/2.5ff46a2d.chunk.js.map": "/static/js/2.5ff46a2d.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.7bf535489578da17ffa55c2bc4208d5c.js": "/precache-manifest.7bf535489578da17ffa55c2bc4208d5c.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.dda6c3ea.chunk.css.map": "/static/css/2.dda6c3ea.chunk.css.map",
-    "static/css/main.69ca27fd.chunk.css.map": "/static/css/main.69ca27fd.chunk.css.map",
-    "static/js/2.5ff46a2d.chunk.js.LICENSE.txt": "/static/js/2.5ff46a2d.chunk.js.LICENSE.txt"
+    "main.css": "/snapchat-clone/static/css/main.69ca27fd.chunk.css",
+    "main.js": "/snapchat-clone/static/js/main.af9ce759.chunk.js",
+    "main.js.map": "/snapchat-clone/static/js/main.af9ce759.chunk.js.map",
+    "runtime-main.js": "/snapchat-clone/static/js/runtime-main.f21b9d06.js",
+    "runtime-main.js.map": "/snapchat-clone/static/js/runtime-main.f21b9d06.js.map",
+    "static/css/2.dda6c3ea.chunk.css": "/snapchat-clone/static/css/2.dda6c3ea.chunk.css",
+    "static/js/2.5ff46a2d.chunk.js": "/snapchat-clone/static/js/2.5ff46a2d.chunk.js",
+    "static/js/2.5ff46a2d.chunk.js.map": "/snapchat-clone/static/js/2.5ff46a2d.chunk.js.map",
+    "index.html": "/snapchat-clone/index.html",
+    "precache-manifest.3ec06d26a1168b2a40e710f0f5515a5a.js": "/snapchat-clone/precache-manifest.3ec06d26a1168b2a40e710f0f5515a5a.js",
+    "service-worker.js": "/snapchat-clone/service-worker.js",
+    "static/css/2.dda6c3ea.chunk.css.map": "/snapchat-clone/static/css/2.dda6c3ea.chunk.css.map",
+    "static/css/main.69ca27fd.chunk.css.map": "/snapchat-clone/static/css/main.69ca27fd.chunk.css.map",
+    "static/js/2.5ff46a2d.chunk.js.LICENSE.txt": "/snapchat-clone/static/js/2.5ff46a2d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.e4778e80.js",
+    "static/js/runtime-main.f21b9d06.js",
     "static/css/2.dda6c3ea.chunk.css",
     "static/js/2.5ff46a2d.chunk.js",
     "static/css/main.69ca27fd.chunk.css",
-    "static/js/main.17e6aa54.chunk.js"
+    "static/js/main.af9ce759.chunk.js"
   ]
 }
