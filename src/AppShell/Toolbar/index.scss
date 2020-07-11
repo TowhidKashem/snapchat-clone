@@ -15,22 +15,24 @@
   .left,
   .right {
     width: 50%;
-
-    .icon {
-      @include icon-shadow($color-grey-shade-2, 1px);
-    }
   }
 
-  .left {
-    time {
-      margin-right: 3px;
-      font-weight: $font-bold;
-      text-shadow: 0 0 1px $color-grey-shade-0;
-    }
+  time {
+    margin-right: 3px;
+    font-weight: $font-bold;
+    text-shadow: 0 0 1px $color-grey-shade-0;
+  }
 
-    .icon-location {
-      font-size: 10px;
-    }
+  .icon {
+    @include icon-shadow($color-grey-shade-2, 1px);
+  }
+
+  .icon-location {
+    font-size: 10px;
+  }
+
+  .icon-signal {
+    font-size: 12px;
   }
 
   .right {
@@ -44,18 +46,13 @@
   &.dark {
     color: $color-black;
 
-    .left,
-    .right {
-      .icon {
-        filter: none;
-        color: $color-black;
-      }
+    time {
+      text-shadow: none;
     }
 
-    .left {
-      time {
-        text-shadow: none;
-      }
+    .icon {
+      filter: none;
+      color: $color-black;
     }
   }
 }

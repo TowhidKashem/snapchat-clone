@@ -40,7 +40,7 @@ const Toolbar: React.FC<Props> = ({ drawers }) => {
         <Icon icon="faLocationArrow" className="icon-location" />
       </div>
       <div className="right">
-        <Icon icon="faSignal" />
+        <Icon icon="faSignal" className="icon-signal" />
         <Icon icon="faBatteryHalf" />
       </div>
     </div>
