@@ -46,7 +46,8 @@
     "precommit": "pretty-quick --staged && react-scripts test --watchAll=false",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "gulp": "gulp"
   },
   "eslintConfig": {
     "extends": "react-app"

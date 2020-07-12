@@ -41,22 +41,49 @@
     </tr>
     <tr>
       <td align="center" valign="top">
-        <a href="public/readme/snapchat.mp4">
+        <a href="public/readme/snapchat.mp4" target="_blank">
           <img src="public/readme/snapchat.gif" />
         </a>
         <p>👆Click the gif to see all implemented features</p>
       </td>
       <td valign="top">
         <h2 align="center">
-          <a href="https://google.com">[LIVE DEMO]</a>
+          <a
+            href="https://towhidkashem.github.io/snapchat-clone/"
+            target="_blank"
+            >[LIVE DEMO]</a
+          >
         </h2>
         <ul>
           <li>
             Built with <code>React</code>
             <ul>
-              <li>Functional components using hooks</li>
-              <li>Feature based modular folder structure</li>
-              <li><code>common</code> directory for shared components</li>
+              <li>Only functional components using hooks</li>
+              <li>
+                Folder structure:
+                <ul>
+                  <li>Flat - no greater than one level deep</li>
+                  <li>
+                    Modular - each folder contains all the relevant files needed
+                    to make up a particular feature (components, styles, tests,
+                    actions, etc). Having everything close at hand reduces
+                    cognitive load and deleting a folder removes the feature
+                    entirely from the code base without having to worry about
+                    left over code
+                  </li>
+                  <li>
+                    Organized semantically by Feature (not by the traditional
+                    "components" "containers", etc), this way of reasoning is
+                    more human friendly
+                  </li>
+                  <li>
+                    <code>common</code> directory houses all shared components
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Custom component library showcased in <code>Storybook</code>
+              </li>
               <li>Relatively few prod dependencies</li>
             </ul>
           </li>
@@ -64,33 +91,57 @@
             Global state management via <code>Redux</code>
             <ul>
               <li>
-                Follows the modular ducks proposal to bundle action types,
-                creators and reducers all in one file (reducing the need to jump
+                Follows the <code>ducks</code> proposal to bundle action types,
+                creators and reducers all in one file (removing the need to jump
                 around)
               </li>
-              <li>Flat state tree (avoids deeply nested properties)</li>
+              <li>Flat state tree avoids deeply nested properties</li>
               <li>
-                Follows official Redux styleguide naming conventions
+                Follows the updated Redux style guide recommendations for naming
+                action types
               </li>
-              <li>Uses <code>thunk</code> middleware for async operations</li>
+              <li>Uses <code>thunk</code> for async operations</li>
+              <li>
+                Integrates the powerful
+                <code>Redux Devtools Extension</code> for ease of development
+              </li>
             </ul>
           </li>
-          <li>Styled with <code>SASS</code></li>
-          <li>Type checked with <code>Typescript</code></li>
+          <li>
+            Styled with <code>SASS</code>
+            <ul>
+              <li>
+                Each view's set of rules are scoped to a single parent element
+                via nesting to avoid style clashes
+              </li>
+              <li>
+                Use of variables, extendables and mixins to keep things DRY and
+                uniform
+              </li>
+            </ul>
+          </li>
+          <li>
+            Written in <code>Typescript</code>
+            <ul>
+              <li>
+                To let the compiler catch bugs at build time instead of letting
+                users catch them at runtime!
+              </li>
+            </ul>
+          </li>
           <li>Unit tested with <code>Jest</code> and <code>Enzyme</code></li>
           <li>
             End-to-end tested with <code>Cypress</code>
             <ul>
               <li>
-                Selectors use <code>data</code> attributes to avoid writing
-                brittle tests
+                Selectors use <code>data</code> attributes instead of classes or
+                ids as these change often causing tests to break
               </li>
               <li>
                 Integration suite covers all essential feature happy paths
               </li>
             </ul>
           </li>
-          <li>Custom component library showcased in <code>Storybook</code></li>
           <li>Linted using <code>Eslint</code></li>
           <li>
             Code is auto formatted using <code>Prettier</code> (ran as a
@@ -100,8 +151,12 @@
             Feels close to a native app if you "add to homescreen" on mobile
           </li>
         </ul>
-                <h2 align="center">
-          <a href="https://google.com">[LIVE DEMO]</a>
+        <h2 align="center">
+          <a
+            href="https://towhidkashem.github.io/snapchat-clone/"
+            target="_blank"
+            >[LIVE DEMO]</a
+          >
         </h2>
       </td>
     </tr>
@@ -114,11 +169,11 @@
 
 <ol>
   <li>
-    <code>&gt; git clone git@github.com:TowhidKashem/snapchat-clone.git</code>
+    <code>$ git clone git@github.com:TowhidKashem/snapchat-clone.git</code>
   </li>
-  <li><code>&gt; cd snapchat-clone</code></li>
+  <li><code>$ cd snapchat-clone</code></li>
   <li>
-    <code>&gt; npm install</code>
+    <code>$ npm install</code>
     <ul>
       <li>
         This will:
@@ -126,7 +181,9 @@
           <li>Install the dependencies in package.json</li>
           <li>
             Checkout
-            <a href="https://github.com/jeeliz/jeelizFaceFilter_"
+            <a
+              href="https://github.com/jeeliz/jeelizFaceFilter_"
+              target="_blank"
               >jeelizFaceFilter</a
             >
             package (used for the filters) and set it to the last version this
@@ -142,7 +199,7 @@
     </ul>
   </li>
   <li>
-    This part is optional but strongly recomended, without it you won't be able
+    This part is optional but strongly recommended, without it you won't be able
     to view any of the snap map features:
     <ul>
       <li>
@@ -150,7 +207,6 @@
         <a
           href="https://docs.mapbox.com/help/glossary/access-token/"
           target="_blank"
-          rel="noopener noreferrer"
           >get a free API key</a
         >
       </li>
@@ -171,7 +227,7 @@
     </ul>
   </li>
   <li>
-    <code>&gt; npm start</code>
+    <code>$ npm start</code>
     <ul>
       <li>
         The app should open automatically in your browser usually at
@@ -246,9 +302,10 @@
       </td>
       <td valign="top">
         Not all the buttons are actionable, many of them are there just for show
-        since this is a minimal demo. This <a href="">video</a> shows all the
-        things you can currently do. Where it's not obvious which buttons
-        actually work I added a red box-shadow as guide.
+        since this is a minimal demo. This
+        <a href="" target="_blank">video</a> shows all the things you can
+        currently do. Where it's not obvious which buttons actually work I added
+        red box-shadows as guides.
       </td>
     </tr>
   </tbody>
@@ -267,15 +324,15 @@
         <p>
           <strong>Storybook</strong> is used to showcase the app's custom
           component library. You can run Storybook using the command
-          <code>npm run storybook</code>.
+          <code>npm run storybook</code>
         </p>
       </td>
       <td valign="top">
         <img src="public/readme/redux-ext.png" />
         <p>
           <strong>Redux Devtools Extension</strong> is implemented in the app,
-          it makes things like viewing the state tree, state flow and debugging much
-          easier, to use it you need to install the browser extension
+          it makes things like viewing the state tree, state flow and debugging
+          much easier, to use it you need to install the browser extension
           <a
             href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en"
             target="_blank"
@@ -287,7 +344,6 @@
             target="_blank"
             >here</a
           >
-          .
         </p>
       </td>
     </tr>
@@ -305,10 +361,10 @@
     </tr>
     <tr>
       <td align="center" valign="top">
-        <a href="">
+        <a href="" target="_blank">
           <img src="public/readme/cypress.png" width="600" />
         </a>
-        <p>👆Click to see the test suite run</p>
+        <p>👆Click to see the tests run</p>
       </td>
       <td valign="top">
         <ul>
@@ -317,22 +373,22 @@
             <code>cypress/integration/*.spec.ts</code>
             <ul>
               <li>
-                To run these first make sure the dev server is running via `npm
-                start`, then use the command <code>npm run e2e</code>
+                To run these first make sure the dev server is up and running
+                via <code>npm start</code>, then use the command
+                <code>npm run e2e</code>
               </li>
-              <li>This will spawn the Cypress electron app</li>
               <li>
-                Click "Run all specs" at the top right, Cypress will spawn a
-                Chrome instance and you will see all the tests as they're being
-                run:
+                This will open the Cypress electron app. Click "Run all specs"
+                at the top right, you'll then get a Chrome instance and see all
+                the tests being run
               </li>
             </ul>
           </li>
           <li>
-            Alternatively you can also run the test suite in the terminal using
-            the command <code>npm run e2e-headless</code>. This command still
+            Alternatively you can run the test suite in the terminal using the
+            command <code>npm run e2e-headless</code>. This command still
             generates videos in <code>cypress/videos/*.mp4</code> of the tests
-            being run should you need them.
+            should you need them.
           </li>
         </ul>
       </td>
@@ -376,46 +432,36 @@
 
 <ul>
   <li>
-    In addition to running on the localhost domain the app is also available on
-    the network (useful for viewing on mobile), the actual address is revealed
-    in the terminal after running <code>npm start</code>
+    If you want to make changes to the filter files located in
+    <code>public/filters/src/*.js</code>, run the command
+    <code>npm run gulp watchJS</code> so that your changes get picked up
   </li>
   <li>
-    If you want to make changes to the filter files, run the command
-    <code>cd filters &amp;&amp; npm run gulp watchJS</code> to watch for changes
+    The project's <code>baseUrl</code> is set to the <code>src</code> directory
+    in tsconfig so you can use clean import paths like
+    <code>import Foo from 'common/Foo';</code> instead of messy ones like
+    <code>import Foo from '../../common/Foo';</code>. You can also use these in
+    the SASS files, e.g. <code>@import '~styles/foo`;</code>
   </li>
   <li>
-    If you want to browse the production build run the command
-    <code>npm run build &amp;&amp; npm run serve</code>, then navigate to the local
-    or network addresses revealed in the terminal
-  </li>
-  <li>
-    The <code>baseUrl</code> is set to the <code>src</code> directory in
-    tsconfig which means you can use clean import paths like
-    <code>import Foo from 'common/Foo'</code> instead of messy relative paths
-    like <code>import Foo from '../../common/Foo'</code>
-  </li>
-  <li>
-    The project was bootsraped using
-    <code>Create React App</code>
-    in case you were wondering where webpack configs and such are. You can
-    always <code>eject</code> if you need access to those things
-  </li>
-  <li>
-    This is purely a front end demo project, the "API" is nothing but a bunch of
-    hard coded json files located in <code>/public/api/*.json</code>. All data
-    is dummy data!
+    This is a purely front end demo, the "API" is nothing but a bunch of json
+    files with hard coded dummy data, they're located in
+    <code>/public/api/*.json</code>
   </li>
 </ul>
 
 <h2>⚠️ Contributing</h2>
 
 <p>
-  Please note I won't be accepting PR's on this project since
-  it's part of my personal portfolio. You're more than welcome to fork and
-  maintain your own version if you like!
+  Please note I won't be accepting PR's on this project since it's part of my
+  personal portfolio. You're more than welcome to fork and maintain your own
+  version if you like!
 </p>
 
 <h2>⚖️ License</h2>
 
-<p>The Snapchat name, artwork, trademark are all property of Snap Inc. This project is provided for educational purposes only. It is not affiliated with and has not been approved by Snap Inc.</p>
+<p>
+  The Snapchat name, artwork, trademark are all property of Snap Inc. This
+  project is provided for educational purposes only. It is not affiliated with
+  and has not been approved by Snap Inc.
+</p>
