@@ -73,7 +73,7 @@
                   </li>
                   <li>
                     Organized semantically by Feature (not by the traditional
-                    "components" "containers", etc), this way of reasoning is
+                    "components/containers" model), this way of reasoning is
                     more human friendly
                   </li>
                   <li>
@@ -99,6 +99,10 @@
               <li>
                 Follows the updated Redux style guide recommendations for naming
                 action types
+              </li>
+              <li>
+                Only the base level container is connected to Redux, all other components on
+                the page receive state values via prop drilling
               </li>
               <li>Uses <code>thunk</code> for async operations</li>
               <li>
@@ -361,7 +365,7 @@
     </tr>
     <tr>
       <td align="center" valign="top">
-        <a href="" target="_blank">
+        <a href="https://www.youtube.com/embed/tNrx6NlTYKI?autoplay=1" target="_blank">
           <img src="public/readme/cypress.png" width="600" />
         </a>
         <p>👆Click to see all tests run</p>
@@ -388,7 +392,7 @@
             Alternatively you can run the test suite in the terminal using the
             command <code>npm run e2e-headless</code>. This command still
             generates videos in <code>cypress/videos/*.mp4</code> of the tests
-            should you need them.
+            should you need them
           </li>
         </ul>
       </td>

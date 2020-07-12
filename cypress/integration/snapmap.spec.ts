@@ -14,6 +14,7 @@ describe('Snap Map', () => {
   it('can open and close snap map', () => {
     cy.get('@snapMapDrawer').should('be.visible');
     cy.get('@snapMapDrawer').find('[data-test=btn-close]').click();
+    cy.wait(300);
     cy.get('@snapMapDrawer').should('not.be.visible');
   });
 

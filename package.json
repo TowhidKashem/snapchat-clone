@@ -17,7 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "animate.css": "^3.7.2",
     "classnames": "^2.2.6",
-    "mapbox-gl": "^1.10.0",
+    "mapbox-gl": "^1.11.1",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-animated-css": "^1.2.1",
