@@ -32,21 +32,14 @@
 </div>
 
 <h2 align="center">
-  <a href="https://towhidkashem.github.io/snapchat-clone/" target="_blank"
-    >[LIVE DEMO]</a
-  >
+  <a href="https://towhidkashem.github.io/snapchat-clone/">[LIVE APP]</a>
 </h2>
 
-<a href="https://www.youtube.com/embed/aRS88v-duKg?autoplay=1" target="_blank">
-  <img src="public/readme/filters.gif" width="1500" />
-</a>
-
-<p align="center">👆Click to see all implemented features</p>
+<img src="public/readme/filters.gif" width="1500" />
 
 <h2 align="center">
-  <a href="https://towhidkashem.github.io/snapchat-clone/" target="_blank"
-    >[LIVE DEMO]</a
-  >
+  <a href="https://towhidkashem.github.io/snapchat-clone/">Live App</a> &nbsp;&bull;&nbsp;
+  <a href="https://www.youtube.com/embed/aRS88v-duKg?autoplay=1">Video Demo</a>
 </h2>
 
 <h2>⚡️Breakdown</h2>
@@ -129,7 +122,7 @@
     <ul>
       <li>
         Selectors use <code>data</code> attributes instead of classes or ids as
-        these change often causing tests to break
+        these can change often causing tests to break
       </li>
       <li>
         Integration suite covers all essential feature happy paths
@@ -164,9 +157,7 @@
           <li>Install the dependencies in package.json</li>
           <li>
             Checkout
-            <a
-              href="https://github.com/jeeliz/jeelizFaceFilter_"
-              target="_blank"
+            <a href="https://github.com/jeeliz/jeelizFaceFilter_"
               >jeelizFaceFilter</a
             >
             package (used for the filters) and set it to the last version this
@@ -286,9 +277,13 @@
       <td valign="top">
         Not all the buttons are actionable, many of them are there just for show
         since this is a minimal demo. This
-        <a href="https://www.youtube.com/embed/aRS88v-duKg?autoplay=1" target="_blank">video</a> shows all the things you can
-        currently do. Where it's not obvious which buttons actually work I added
-        red box-shadows as guides.
+        <a
+          href="https://www.youtube.com/embed/aRS88v-duKg?autoplay=1"
+          target="_blank"
+          >video</a
+        >
+        shows all the things you can currently do. Where it's not obvious which
+        buttons actually work I added red box-shadows as guides.
       </td>
     </tr>
   </tbody>
@@ -318,13 +313,11 @@
           much easier, to use it you need to install the browser extension
           <a
             href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en"
-            target="_blank"
             >here</a
           >
           or
           <a
             href="https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/"
-            target="_blank"
             >here</a
           >
         </p>
@@ -344,10 +337,7 @@
     </tr>
     <tr>
       <td align="center" valign="top">
-        <a
-          href="https://www.youtube.com/embed/tNrx6NlTYKI?autoplay=1"
-          target="_blank"
-        >
+        <a href="https://www.youtube.com/embed/tNrx6NlTYKI?autoplay=1">
           <img src="public/readme/cypress.png" width="600" />
         </a>
         <p>👆Click to see all tests run</p>
