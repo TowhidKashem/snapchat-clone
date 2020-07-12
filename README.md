@@ -4,7 +4,7 @@
   <img src="./public/readme/tech-logos/react.svg" width="55" alt="React" />
   <img src="./public/readme/tech-logos/redux.svg" width="55" alt="Redux" />
   <img
-    src="./public/readme/tech-logos/typescript-icon.svg"
+    src="./public/readme/tech-logos/typescript.svg"
     width="55"
     alt="TypeScript"
   />
@@ -25,7 +25,7 @@
     alt="Prettier"
   />
   <img
-    src="./public/readme/tech-logos/storybook-icon.svg"
+    src="./public/readme/tech-logos/storybook.svg"
     width="50"
     alt="Storybook"
   />
@@ -218,13 +218,13 @@
         </tr>
         <tr>
           <td align="center" valign="middle">
-            <img src="public/readme/https-step-1.png" />
+            <img src="public/readme/step1.png" />
           </td>
           <td align="center" valign="middle">
-            <img src="public/readme/https-step-2.png" />
+            <img src="public/readme/step2.png" />
           </td>
           <td align="center" valign="middle">
-            <img src="public/readme/camera-access.png" />
+            <img src="public/readme/camera.png" />
           </td>
         </tr>
       </tbody>
@@ -271,7 +271,7 @@
         </p>
       </td>
       <td valign="top">
-        <img src="public/readme/redux-extension.png" />
+        <img src="public/readme/redux-ext.png" />
         <p>
           <strong>Redux Devtools Extension</strong> is implemented in the app,
           it makes things like viewing the state tree, state flow and debugging much
@@ -306,7 +306,7 @@
     <tr>
       <td align="center" valign="top">
         <a href="">
-          <img src="public/readme/cypress-run-screenshot.png" width="600" />
+          <img src="public/readme/cypress.png" width="600" />
           👆Click to see the entire test suite being run
         </a>
       </td>
@@ -349,7 +349,7 @@
     </tr>
     <tr>
       <td valign="top">
-        <img src="public/readme/unit-tests.png" width="400" />
+        <img src="public/readme/unit.png" width="400" />
       </td>
       <td valign="top">
         <ul>
@@ -411,12 +411,11 @@
 <h2>⚠️ Contributing</h2>
 
 <p>
-  Please note
-  <strong><ins>I will not be accepting PR's on this project</ins></strong> since
-  it is part of my personal portfolio. You're more than welcome to fork and
+  Please note I won't be accepting PR's on this project since
+  it's part of my personal portfolio. You're more than welcome to fork and
   maintain your own version if you like!
 </p>
 
 <h2>⚖️ License</h2>
 
-<p><a href="https://opensource.org/licenses/MIT" rel="nofollow">MIT</a></p>
+<p>The Snapchat name, artwork, trademark are all property of Snap Inc. This project is provided for educational purposes only. It is not affiliated with and has not been approved by Snap Inc.</p>
