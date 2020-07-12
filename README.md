@@ -158,9 +158,7 @@
           <li>Install the dependencies in package.json</li>
           <li>
             Checkout
-            <a href="https://github.com/jeeliz/jeelizFaceFilter_"
-              >jeelizFaceFilter</a
-            >
+            <a href="https://github.com/jeeliz/jeelizFaceFilter">jeelizFaceFilter</a>
             package (used for the filters) and set it to the last version this
             project was tested and confirmed to work with
           </li>
