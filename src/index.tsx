@@ -37,6 +37,7 @@ const App = () => (
         <AppShell>
           <Switch>
             <Route path="/" exact component={Camera} />
+            <Route path="/snapchat-clone" exact component={Camera} />
             <Route component={NotFound} />
           </Switch>
         </AppShell>

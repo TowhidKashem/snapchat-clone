@@ -10,6 +10,13 @@
   margin-top: $toolbar-height;
   z-index: 1;
 
+  .btn-user,
+  .right {
+    .icon {
+      @include icon-shadow($color-grey-shade-2, 1px);
+    }
+  }
+
   .btn-user {
     .icon {
       font-size: 35px;
@@ -26,7 +33,6 @@
 
   .right {
     .icon {
-      @include icon-shadow($color-grey-shade-2, 1px);
       font-size: 23px;
     }
   }

@@ -12,7 +12,7 @@
     cursor: pointer;
 
     .self-marker {
-      background-image: url(/images/bitmoji-self-full.png);
+      background-image: url(#{$base-image-path}/bitmoji-self-full.png);
       background-size: cover;
       width: 55px;
       height: 55px;
@@ -30,7 +30,7 @@
 
   .api-key-msg {
     @extend %center-x-y;
-    background: url(/images/map-bg.png) no-repeat;
+    background: url(#{$base-image-path}/map-bg.png) no-repeat;
     background-size: cover;
     z-index: 1000;
     overflow: hidden;

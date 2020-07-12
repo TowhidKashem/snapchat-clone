@@ -21,8 +21,11 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
 
+const dependencies = 'public/filters/jeelizFaceFilter';
+const src = 'public/filters/src';
+
 exports.watchJS = () => {
-  gulp.watch('src/*.js', { ignoreInitial: false }, (cb) => {
+  gulp.watch(src + '/*.js', { ignoreInitial: false }, (cb) => {
     defaultTask();
     cb();
   });
@@ -32,20 +35,20 @@ const defaultTask = () =>
   gulp
     .src([
       // Main dependencies
-      'jeelizFaceFilter/dist/jeelizFaceFilter.js',
-      'jeelizFaceFilter/helpers/JeelizResizer.js',
-      'jeelizFaceFilter/helpers/JeelizThreejsHelper.js',
+      dependencies + '/dist/jeelizFaceFilter.js',
+      dependencies + '/helpers/JeelizResizer.js',
+      dependencies + '/helpers/JeelizThreejsHelper.js',
       // Dog dependencies
-      'jeelizFaceFilter/libs/threejs/customMaterials/FlexMaterial/ThreeFlexMaterial.js',
-      'jeelizFaceFilter/demos/threejs/dog_face/libs/glfx.js',
+      dependencies + '/libs/threejs/customMaterials/FlexMaterial/ThreeFlexMaterial.js',
+      dependencies + '/demos/threejs/dog_face/libs/glfx.js',
       // Dog and bees dependency
-      'jeelizFaceFilter/helpers/addDragEventListener.js',
+      dependencies + '/helpers/addDragEventListener.js',
       // Filters
-      'src/dog.js',
-      'src/bees.js',
-      'src/halloween.js',
-      'src/deform.js',
-      'src/liberty.js'
+      src + '/dog.js',
+      src + '/bees.js',
+      src + '/halloween.js',
+      src + '/deform.js',
+      src + '/liberty.js'
     ])
     .pipe(concat('filters.min.js'))
     .pipe(
@@ -54,6 +57,6 @@ const defaultTask = () =>
       })
     )
     .pipe(terser())
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('public/filters/build'));
 
 exports.default = defaultTask;

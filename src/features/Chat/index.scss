@@ -98,7 +98,7 @@ $footer-height: 70px;
           content: '';
           width: 30px;
           height: 30px;
-          background: url(/images/thought-bubble.png) no-repeat;
+          background: url(#{$base-image-path}/thought-bubble.png) no-repeat;
           background-size: 100%;
         }
 

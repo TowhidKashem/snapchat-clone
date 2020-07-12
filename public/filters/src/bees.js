@@ -125,32 +125,6 @@ Filters.bees = {
       Filters.bees.ISANIMATED = true;
       threeStuffs.faceObject.add(Filters.bees.BEEOBJ3D);
     });
-    function createMat2d(threeTexture, isTransparent) {
-      return new THREE.RawShaderMaterial({
-        depthWrite: false,
-        depthTest: false,
-        transparent: isTransparent,
-        vertexShader:
-          'attribute vec2 position;\n\
-          varying vec2 vUV;\n\
-          void main(void){\n\
-            gl_Position=vec4(position, 0., 1.);\n\
-            vUV=0.5+0.5*position;\n\
-          }',
-        fragmentShader:
-          'precision lowp float;\n\
-          uniform sampler2D samplerVideo;\n\
-          varying vec2 vUV;\n\
-          void main(void){\n\
-            gl_FragColor = texture2D(samplerVideo, vUV);\n\
-          }',
-        uniforms: {
-          samplerVideo: {
-            value: threeTexture
-          }
-        }
-      });
-    }
     Filters.bees.THREECAMERA = THREE.JeelizHelper.create_camera();
     const ambient = new THREE.AmbientLight(0xffffff, 1);
     threeStuffs.scene.add(ambient);
@@ -159,9 +133,7 @@ Filters.bees = {
     threeStuffs.scene.add(dirLight);
   },
   animateFlyBees: (mesh, theta, sign) => {
-    let count = 0;
     setInterval(() => {
-      count += 1;
       const x = mesh.position.x;
       const z = mesh.position.z;
       const y = mesh.position.y;

@@ -1,5 +1,5 @@
 export const api = {
-  baseURL: '/api',
+  baseURL: './api',
   get: (endpoint, external = false) => api.respond('get', endpoint, null, external),
   post: (endpoint, options) => api.respond('post', endpoint, options),
   put: (endpoint, options) => api.respond('put', endpoint, options),
