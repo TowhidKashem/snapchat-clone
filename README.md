@@ -43,8 +43,8 @@
       <td align="center" valign="top">
         <a href="public/readme/snapchat.mp4">
           <img src="public/readme/snapchat.gif" />
-          <p>👆Click to see all implemented features</p>
         </a>
+        <p>👆Click the gif to see all implemented features</p>
       </td>
       <td valign="top">
         <h2 align="center">
@@ -307,8 +307,8 @@
       <td align="center" valign="top">
         <a href="">
           <img src="public/readme/cypress.png" width="600" />
-          👆Click to see the entire test suite being run
         </a>
+        <p>👆Click to see the test suite run</p>
       </td>
       <td valign="top">
         <ul>
