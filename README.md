@@ -42,7 +42,7 @@
     <tr>
       <td align="center" valign="top">
         <a href="public/readme/snapchat.mp4" target="_blank">
-          <img src="public/readme/snapchat.gif" width="600" />
+          <img src="public/readme/snapchat.gif" width="1500" />
         </a>
         <p>👆Click the gif to see all implemented features</p>
       </td>
@@ -324,7 +324,7 @@
         <p>
           <strong>Storybook</strong> is used to showcase the app's custom
           component library. You can run Storybook using the command
-          <code>npm run storybook</code>
+          <code>npm run storybook</code>.
         </p>
       </td>
       <td valign="top">
@@ -343,7 +343,7 @@
             href="https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/"
             target="_blank"
             >here</a
-          >
+          >.
         </p>
       </td>
     </tr>
@@ -356,7 +356,7 @@
   <tbody>
     <tr>
       <th colspan="2" align="left">
-        <h2>End-to-End Tests</h2>
+        <h3>End-to-End Tests</h3>
       </th>
     </tr>
     <tr>
@@ -400,7 +400,7 @@
   <tbody>
     <tr>
       <th colspan="2" align="left">
-        <h2>Unit Tests</h2>
+        <h3>Unit Tests</h3>
       </th>
     </tr>
     <tr>
