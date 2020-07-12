@@ -35,10 +35,11 @@
   <a href="https://towhidkashem.github.io/snapchat-clone/">[LIVE APP]</a>
 </h2>
 
-<img src="public/readme/filters.gif" width="1500" />
+<img src="public/readme/filters.gif" />
 
 <h2 align="center">
-  <a href="https://towhidkashem.github.io/snapchat-clone/">Live App</a> &nbsp;&bull;&nbsp;
+  <a href="https://towhidkashem.github.io/snapchat-clone/">Live App</a>
+  &nbsp;&bull;&nbsp;
   <a href="https://www.youtube.com/embed/aRS88v-duKg?autoplay=1">Video Demo</a>
 </h2>
 
