@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b808d1fe41860c8b9298ba34275a6205",
+    "revision": "e4b028ee86c2028a9a7fd90ef97b412c",
     "url": "/snapchat-clone/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/snapchat-clone/static/css/2.dda6c3ea.chunk.css"
   },
   {
-    "revision": "01750d38a1eaf8f0108d",
-    "url": "/snapchat-clone/static/css/main.e67b333c.chunk.css"
+    "revision": "20661288758b2f00910d",
+    "url": "/snapchat-clone/static/css/main.f269fdd5.chunk.css"
   },
   {
     "revision": "4b438d55e719d1471257",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/snapchat-clone/static/js/2.09b190a4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "01750d38a1eaf8f0108d",
+    "revision": "20661288758b2f00910d",
     "url": "/snapchat-clone/static/js/main.ff05b6f4.chunk.js"
   },
   {
