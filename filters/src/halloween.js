@@ -57,9 +57,6 @@ Filters.halloween = {
     let faceMesh = null;
     const faceLoader = new THREE.BufferGeometryLoader(loadingManager);
     faceLoader.load(Filters.halloween.BASE_URL + '/models/face/face.json', (geometry) => {
-      const material = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load('./models/face/diffuse_makeup.png')
-      });
       const vertexShaderSource =
         'varying vec2 vUVvideo;\n\
       varying float vY, vNormalDotZ;\n\
@@ -99,8 +96,7 @@ Filters.halloween = {
           samplerVideo: {
             value: THREE.JeelizHelper.get_threeVideoTexture()
           }
-        },
-        transparent: true
+        }
       });
       faceMesh = new THREE.Mesh(geometry, materialVideo);
     });
