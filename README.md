@@ -42,7 +42,7 @@
     <tr>
       <td align="center" valign="top">
         <a href="public/readme/snapchat.mp4" target="_blank">
-          <img src="public/readme/snapchat.gif" />
+          <img src="public/readme/snapchat.gif" width="600" />
         </a>
         <p>👆Click the gif to see all implemented features</p>
       </td>
