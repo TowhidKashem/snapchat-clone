@@ -30,142 +30,121 @@
     alt="Storybook"
   />
 </div>
-<br />
 
-<table>
-  <tbody>
-    <tr>
-      <th colspan="2" align="left">
-        <h2>⚡️Breakdown</h2>
-      </th>
-    </tr>
-    <tr>
-      <td align="center" valign="top">
-        <a href="public/readme/snapchat.mp4" target="_blank">
-          <img src="public/readme/snapchat.gif" width="1500" />
-        </a>
-        <p><br />👆Click to see all implemented features</p>
-      </td>
-      <td valign="top">
-        <h2 align="center">
-          <a
-            href="https://towhidkashem.github.io/snapchat-clone/"
-            target="_blank"
-            >[LIVE DEMO]</a
-          >
-        </h2>
+<h2 align="center">
+  <a href="https://towhidkashem.github.io/snapchat-clone/" target="_blank"
+    >[LIVE DEMO]</a
+  >
+</h2>
+
+<a href="https://www.youtube.com/embed/aRS88v-duKg?autoplay=1" target="_blank">
+  <img src="public/readme/filters.gif" width="1500" />
+</a>
+
+<p align="center">👆Click to see all implemented features</p>
+
+<h2 align="center">
+  <a href="https://towhidkashem.github.io/snapchat-clone/" target="_blank"
+    >[LIVE DEMO]</a
+  >
+</h2>
+
+<h2>⚡️Breakdown</h2>
+
+<ul>
+  <li>
+    Built with <code>React</code>
+    <ul>
+      <li>Only functional components using hooks</li>
+      <li>
+        Folder structure:
         <ul>
+          <li>Flat - no greater than one level deep</li>
           <li>
-            Built with <code>React</code>
-            <ul>
-              <li>Only functional components using hooks</li>
-              <li>
-                Folder structure:
-                <ul>
-                  <li>Flat - no greater than one level deep</li>
-                  <li>
-                    Modular - each folder contains all the relevant files needed
-                    to make up a particular feature (components, styles, tests,
-                    actions, etc). Having everything close at hand reduces
-                    cognitive load and deleting a folder removes the feature
-                    entirely from the code base without having to worry about
-                    left over code
-                  </li>
-                  <li>
-                    Organized semantically by Feature (not by the traditional
-                    "components/containers" model), this way of reasoning is
-                    more human friendly
-                  </li>
-                  <li>
-                    <code>common</code> directory houses all shared components
-                  </li>
-                </ul>
-              </li>
-              <li>
-                Custom component library showcased in <code>Storybook</code>
-              </li>
-              <li>Relatively few prod dependencies</li>
-            </ul>
+            Modular - each folder contains all the relevant files needed to make
+            up a particular feature (components, styles, tests, actions, etc).
+            Having everything close at hand reduces cognitive load and deleting
+            a folder removes the feature entirely from the code base without
+            having to worry about left over code
           </li>
           <li>
-            Global state management via <code>Redux</code>
-            <ul>
-              <li>
-                Follows the <code>ducks</code> proposal to bundle action types,
-                creators and reducers all in one file (removing the need to jump
-                around)
-              </li>
-              <li>Flat state tree avoids deeply nested properties</li>
-              <li>
-                Follows the updated Redux style guide recommendations for naming
-                action types
-              </li>
-              <li>
-                Only the base level container is connected to Redux, all other components on
-                the page receive state values via prop drilling
-              </li>
-              <li>Uses <code>thunk</code> for async operations</li>
-              <li>
-                Integrates the powerful
-                <code>Redux Devtools Extension</code> for ease of development
-              </li>
-            </ul>
+            Organized semantically by Feature (not by the traditional
+            "components/containers" model), this way of reasoning is more human
+            friendly
           </li>
-          <li>
-            Styled with <code>SASS</code>
-            <ul>
-              <li>
-                Each view's set of rules are scoped to a single parent element
-                via nesting to avoid style clashes
-              </li>
-              <li>
-                Use of variables, extendables and mixins to keep things DRY and
-                uniform
-              </li>
-            </ul>
-          </li>
-          <li>
-            Written in <code>Typescript</code>
-            <ul>
-              <li>
-                To let the compiler catch bugs at build time instead of letting
-                users catch them at runtime!
-              </li>
-            </ul>
-          </li>
-          <li>Unit tested with <code>Jest</code> and <code>Enzyme</code></li>
-          <li>
-            End-to-end tested with <code>Cypress</code>
-            <ul>
-              <li>
-                Selectors use <code>data</code> attributes instead of classes or
-                ids as these change often causing tests to break
-              </li>
-              <li>
-                Integration suite covers all essential feature happy paths
-              </li>
-            </ul>
-          </li>
-          <li>Linted using <code>Eslint</code></li>
-          <li>
-            Code is auto formatted using <code>Prettier</code> (ran as a
-            pre-commit git hook) before it gets pushed to the repo
-          </li>
-          <li>
-            Feels close to a native app if you "add to homescreen" on mobile
-          </li>
+          <li><code>common</code> directory houses all shared components</li>
         </ul>
-        <h2 align="center">
-          <a
-            href="https://towhidkashem.github.io/snapchat-clone/"
-            target="_blank"
-            >[LIVE DEMO]</a
-          >
-        </h2>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </li>
+      <li>Custom component library showcased in <code>Storybook</code></li>
+      <li>Relatively few prod dependencies</li>
+    </ul>
+  </li>
+  <li>
+    Global state management via <code>Redux</code>
+    <ul>
+      <li>
+        Follows the <code>ducks</code> proposal to bundle action types, creators
+        and reducers all in one file (removing the need to jump around)
+      </li>
+      <li>Flat state tree avoids deeply nested properties</li>
+      <li>
+        Follows the updated Redux style guide recommendations for naming action
+        types
+      </li>
+      <li>
+        Only the base level container is connected to Redux, all nested
+        components receive state values via prop drilling
+      </li>
+      <li>Uses <code>thunk</code> for async operations</li>
+      <li>
+        Integrates the powerful
+        <code>Redux Devtools Extension</code> for ease of development
+      </li>
+    </ul>
+  </li>
+  <li>
+    Styled with <code>SASS</code>
+    <ul>
+      <li>
+        Each view's set of rules are scoped to a single parent element via
+        nesting to avoid style clashes
+      </li>
+      <li>
+        Use of variables, extendables and mixins to keep things DRY and uniform
+      </li>
+    </ul>
+  </li>
+  <li>
+    Written in <code>Typescript</code>
+    <ul>
+      <li>
+        To let the compiler catch bugs at build time instead of letting users
+        catch them at runtime!
+      </li>
+    </ul>
+  </li>
+  <li>Unit tested with <code>Jest</code> and <code>Enzyme</code></li>
+  <li>
+    End-to-end tested with <code>Cypress</code>
+    <ul>
+      <li>
+        Selectors use <code>data</code> attributes instead of classes or ids as
+        these change often causing tests to break
+      </li>
+      <li>
+        Integration suite covers all essential feature happy paths
+      </li>
+    </ul>
+  </li>
+  <li>Linted using <code>Eslint</code></li>
+  <li>
+    Code is auto formatted using <code>Prettier</code> (ran as a pre-commit git
+    hook) before it gets pushed to the repo
+  </li>
+  <li>
+    Feels close to a native app if you "add to homescreen" on mobile
+  </li>
+</ul>
 
 <h2>💿 Installation</h2>
 
@@ -307,7 +286,7 @@
       <td valign="top">
         Not all the buttons are actionable, many of them are there just for show
         since this is a minimal demo. This
-        <a href="" target="_blank">video</a> shows all the things you can
+        <a href="https://www.youtube.com/embed/aRS88v-duKg?autoplay=1" target="_blank">video</a> shows all the things you can
         currently do. Where it's not obvious which buttons actually work I added
         red box-shadows as guides.
       </td>
@@ -365,7 +344,10 @@
     </tr>
     <tr>
       <td align="center" valign="top">
-        <a href="https://www.youtube.com/embed/tNrx6NlTYKI?autoplay=1" target="_blank">
+        <a
+          href="https://www.youtube.com/embed/tNrx6NlTYKI?autoplay=1"
+          target="_blank"
+        >
           <img src="public/readme/cypress.png" width="600" />
         </a>
         <p>👆Click to see all tests run</p>
