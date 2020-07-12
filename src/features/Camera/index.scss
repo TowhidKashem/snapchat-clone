@@ -22,6 +22,30 @@
     }
   }
 
+  .not-supported {
+    @extend %center-x-y;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: $color-white;
+    padding: 0 50px;
+
+    p {
+      font-style: italic;
+      font-size: 23px;
+      text-shadow: 0 0 3px $color-black;
+      margin-top: -100px;
+      line-height: 30px;
+
+      span {
+        font-style: normal;
+      }
+    }
+  }
+
   .open-mouth {
     position: absolute;
     top: 135px;

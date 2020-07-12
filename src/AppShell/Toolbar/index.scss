@@ -15,44 +15,52 @@
   .left,
   .right {
     width: 50%;
+
+    .icon {
+      @include icon-shadow($color-grey-shade-2, 1px);
+      margin-left: 8px;
+    }
   }
 
-  time {
-    margin-right: 3px;
-    font-weight: $font-bold;
-    text-shadow: 0 0 1px $color-grey-shade-0;
-  }
+  .left {
+    display: flex;
+    align-items: center;
 
-  .icon {
-    @include icon-shadow($color-grey-shade-2, 1px);
-  }
+    time {
+      font-weight: $font-bold;
+      text-shadow: 0 0 1px $color-grey-shade-0;
+    }
 
-  .icon-location {
-    font-size: 10px;
-  }
-
-  .icon-signal {
-    font-size: 12px;
+    .icon {
+      font-size: 10px;
+    }
   }
 
   .right {
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
-    .icon {
-      margin-left: 8px;
+    .icon-signal {
+      font-size: 12px;
     }
   }
 
   &.dark {
     color: $color-black;
 
-    time {
-      text-shadow: none;
+    .left,
+    .right {
+      .icon {
+        filter: none;
+        color: $color-black;
+      }
     }
 
-    .icon {
-      filter: none;
-      color: $color-black;
+    .left {
+      time {
+        text-shadow: none;
+      }
     }
   }
 }

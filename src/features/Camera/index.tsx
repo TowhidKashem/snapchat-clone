@@ -40,10 +40,12 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
   const [filterInitialized, setFilterInitialized] = useState(false);
   const [cameraStream, setCameraStream] = useState(null);
   const [takePic, setTakePic] = useState(false);
+  const [notSupported, setNotSupported] = useState(false);
 
   const startCamera = useCallback(async () => {
     const navigator: any = window.navigator;
     const maxWidth = (document.querySelector('#wrapper') as HTMLDivElement)?.offsetWidth;
+
     if (!('mediaDevices' in navigator)) navigator.mediaDevices = {};
     if (!('getUserMedia' in navigator.mediaDevices)) {
       navigator.mediaDevices.getUserMedia = (constraints) => {
@@ -56,6 +58,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
           );
       };
     }
+
     const [error, response] = await promise(
       navigator.mediaDevices.getUserMedia({
         video: {
@@ -64,8 +67,13 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
         }
       })
     );
-    setCameraStream(response);
-    if (!error && videoElem.current) videoElem.current.srcObject = response;
+
+    if (!error && videoElem.current) {
+      videoElem.current.srcObject = response;
+      setCameraStream(response);
+    } else {
+      setNotSupported(true);
+    }
   }, [cameraMode]);
 
   useEffect(() => {
@@ -111,6 +119,18 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
     <main className="camera">
       {loading && <Loader message="Applying Filter" fixed />}
 
+      {notSupported && (
+        <div className="not-supported">
+          <p>
+            <span role="img" aria-label="crying emoji">
+              😭
+            </span>{' '}
+            Unfortunately your browser doesn't support the getUserMedia API used by the
+            camera, please try another browser!
+          </p>
+        </div>
+      )}
+
       <Animated
         animationIn="tada"
         animationOut="fadeOut"
@@ -150,6 +170,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
           buttonClass="btn-capture"
           testId="btn-capture-main"
           onclick={() => {
+            if (notSupported) return;
             setTakePic(true);
             if (audioElem.current) playSound('cameraShutter', audioElem.current);
           }}
@@ -161,6 +182,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
             buttonClass="btn-filters"
             testId="btn-filters"
             onclick={() => {
+              if (notSupported) return;
               setShowFilterButtons(true);
               setFooterType('none');
               // Load the center filter on the button list by default
