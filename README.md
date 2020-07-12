@@ -324,7 +324,7 @@
         <p>
           <strong>Storybook</strong> is used to showcase the app's custom
           component library. You can run Storybook using the command
-          <code>npm run storybook</code>.
+          <code>npm run storybook</code>
         </p>
       </td>
       <td valign="top">
@@ -356,7 +356,7 @@
   <tbody>
     <tr>
       <th colspan="2" align="left">
-        <h3>End-to-End Tests</h3>
+        <strong>End-to-End Tests</strong>
       </th>
     </tr>
     <tr>
@@ -400,7 +400,7 @@
   <tbody>
     <tr>
       <th colspan="2" align="left">
-        <h3>Unit Tests</h3>
+        <strong>Unit Tests</strong>
       </th>
     </tr>
     <tr>
