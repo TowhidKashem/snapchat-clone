@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fd44887983f01f445cee52b166008ce3",
+    "revision": "25de71397b1c7ce6d3642b2491253787",
     "url": "/snapchat-clone/index.html"
   },
   {
