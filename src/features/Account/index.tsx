@@ -74,7 +74,7 @@ const Account: React.FC<Props> = ({
     <footer>
       <p>
         <a
-          href="https://github.com/TowhidKashem/react-snapchat-clone"
+          href="https://github.com/TowhidKashem/snapchat-clone"
           target="_blank"
           rel="noopener noreferrer"
           title="Github Repo"
