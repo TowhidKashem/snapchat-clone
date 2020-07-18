@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/snapchat-clone/static/css/main.f269fdd5.chunk.css",
-    "main.js": "/snapchat-clone/static/js/main.8519e6db.chunk.js",
-    "main.js.map": "/snapchat-clone/static/js/main.8519e6db.chunk.js.map",
+    "main.css": "/snapchat-clone/static/css/main.50855840.chunk.css",
+    "main.js": "/snapchat-clone/static/js/main.b76984ac.chunk.js",
+    "main.js.map": "/snapchat-clone/static/js/main.b76984ac.chunk.js.map",
     "runtime-main.js": "/snapchat-clone/static/js/runtime-main.f21b9d06.js",
     "runtime-main.js.map": "/snapchat-clone/static/js/runtime-main.f21b9d06.js.map",
     "static/css/2.dda6c3ea.chunk.css": "/snapchat-clone/static/css/2.dda6c3ea.chunk.css",
-    "static/js/2.09b190a4.chunk.js": "/snapchat-clone/static/js/2.09b190a4.chunk.js",
-    "static/js/2.09b190a4.chunk.js.map": "/snapchat-clone/static/js/2.09b190a4.chunk.js.map",
+    "static/js/2.953e7ed1.chunk.js": "/snapchat-clone/static/js/2.953e7ed1.chunk.js",
+    "static/js/2.953e7ed1.chunk.js.map": "/snapchat-clone/static/js/2.953e7ed1.chunk.js.map",
     "index.html": "/snapchat-clone/index.html",
-    "precache-manifest.8066dcbb3e6cf0d3eea5239addc47e5c.js": "/snapchat-clone/precache-manifest.8066dcbb3e6cf0d3eea5239addc47e5c.js",
+    "precache-manifest.2e41cc7f5d1f79b33a9f5adbc5a77d51.js": "/snapchat-clone/precache-manifest.2e41cc7f5d1f79b33a9f5adbc5a77d51.js",
     "service-worker.js": "/snapchat-clone/service-worker.js",
     "static/css/2.dda6c3ea.chunk.css.map": "/snapchat-clone/static/css/2.dda6c3ea.chunk.css.map",
-    "static/css/main.f269fdd5.chunk.css.map": "/snapchat-clone/static/css/main.f269fdd5.chunk.css.map",
-    "static/js/2.09b190a4.chunk.js.LICENSE.txt": "/snapchat-clone/static/js/2.09b190a4.chunk.js.LICENSE.txt"
+    "static/css/main.50855840.chunk.css.map": "/snapchat-clone/static/css/main.50855840.chunk.css.map",
+    "static/js/2.953e7ed1.chunk.js.LICENSE.txt": "/snapchat-clone/static/js/2.953e7ed1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f21b9d06.js",
     "static/css/2.dda6c3ea.chunk.css",
-    "static/js/2.09b190a4.chunk.js",
-    "static/css/main.f269fdd5.chunk.css",
-    "static/js/main.8519e6db.chunk.js"
+    "static/js/2.953e7ed1.chunk.js",
+    "static/css/main.50855840.chunk.css",
+    "static/js/main.b76984ac.chunk.js"
   ]
 }
