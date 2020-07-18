@@ -59,7 +59,7 @@ describe('<Header />', () => {
     });
 
     it('clicking input field opens search drawer', () => {
-      component.find(Input).simulate('click');
+      component.find(Input).find('.disabled-overlay').simulate('click');
       expect(mockDispatchFn).toHaveBeenCalledWith(
         expect.objectContaining({
           payload: {

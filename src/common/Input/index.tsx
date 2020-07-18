@@ -48,11 +48,8 @@ const Input: React.FC<Props> = ({
   const disabled = onClick ? true : false;
 
   return (
-    <div
-      onClick={onClick}
-      className={classNames('input', { animate, full, dark })}
-      data-test="input"
-    >
+    <div className={classNames('input', { animate, full, dark })} data-test="input">
+      {disabled && <div className="disabled-overlay" onClick={onClick} />}
       {leftIcon && <Icon icon={leftIcon} className="left-icon" />}
       <input
         type="text"

@@ -45,7 +45,7 @@ describe('<Input />', () => {
     it('supports `onClick` handler', () => {
       const callback = jest.fn();
       const component = shallow(<Input {...defaultProps} onClick={callback} />);
-      component.simulate('click');
+      component.find('.disabled-overlay').simulate('click');
       expect(callback).toHaveBeenCalledTimes(1);
     });
 
