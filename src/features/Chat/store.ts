@@ -21,7 +21,7 @@ export const getMessages = createAsyncThunk(
   }
 );
 
-const appSlice = createSlice({
+const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
@@ -71,6 +71,6 @@ const appSlice = createSlice({
   }
 });
 
-export const { postMessage } = appSlice.actions;
+export const { postMessage } = chatSlice.actions;
 
-export default appSlice.reducer;
+export default chatSlice.reducer;

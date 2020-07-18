@@ -112,7 +112,7 @@ export const getWeather = createAsyncThunk(
   }
 );
 
-const appSlice = createSlice({
+const snapMapSlice = createSlice({
   name: 'snapMap',
   initialState,
   reducers: {},
@@ -126,4 +126,4 @@ const appSlice = createSlice({
   }
 });
 
-export default appSlice.reducer;
+export default snapMapSlice.reducer;

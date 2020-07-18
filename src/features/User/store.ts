@@ -56,7 +56,7 @@ export const getGeoLocation = createAsyncThunk('user/geoLocationFetched', async 
   };
 });
 
-const appSlice = createSlice({
+const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -89,6 +89,6 @@ const appSlice = createSlice({
   }
 });
 
-export const { setLatLon } = appSlice.actions;
+export const { setLatLon } = userSlice.actions;
 
-export default appSlice.reducer;
+export default userSlice.reducer;
