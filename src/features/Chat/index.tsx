@@ -1,37 +1,26 @@
 import React, { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { getMessages, postMessage } from './duck';
+import { useSelector, useDispatch } from 'react-redux';
+import { hideDrawer } from 'AppShell/store';
+import { getMessages, postMessage } from './store';
 import { dummyMessages } from './data';
-import { hideDrawer } from 'AppShell/duck';
-import { HideDrawer } from 'AppShell/types';
-import { GetMessages, PostMessage, Message } from './types';
-import { randomArrayVal } from 'utils/array';
-import { playSound } from 'utils/audio';
-import { sleep } from 'utils/system';
+import { randomArrayVal, playSound, sleep } from 'utils';
 import Input from 'common/Input';
 import Avatar from 'common/Avatar';
 import Pill from 'common/Pill';
 import Button from 'common/Button';
+import Loader from 'common/Loader';
+import Error from 'common/Error';
 import './index.scss';
 
-interface Props {
-  username: string;
-  thread: string;
-  messages: Message[];
-  hideDrawer: HideDrawer;
-  getMessages: GetMessages;
-  postMessage: PostMessage;
-}
+const Chat: React.FC = () => {
+  const dispatch = useDispatch();
+  const { username, thread, messages } = useSelector(({ user, chat }) => ({
+    username: user.session.username,
+    thread: chat.thread,
+    messages: chat.messages
+  }));
 
-const Chat: React.FC<Props> = ({
-  username,
-  thread,
-  messages,
-  hideDrawer,
-  getMessages,
-  postMessage
-}) => {
   const messageContainer = useRef<HTMLElement>(null);
   const audioElem = useRef<HTMLAudioElement>(null);
 
@@ -54,20 +43,20 @@ const Chat: React.FC<Props> = ({
         continue;
       }
       const message = firstMsg ? 'Soooo, how was it!?' : randomArrayVal(dummyMessages);
-      postMessage(thread, message);
+      dispatch(postMessage(thread, message));
       if (audioElem.current) playSound('newAppMessage', audioElem.current);
     },
-    [postMessage, thread]
+    [thread, dispatch]
   );
 
   useEffect(() => {
-    getMessages(thread);
+    dispatch(getMessages(thread));
     botResponse(true);
-  }, [thread, getMessages, botResponse]);
+  }, [thread, botResponse, dispatch]);
 
   const submitMessage = () => {
     if (!message.length) return;
-    postMessage(username, message);
+    dispatch(postMessage(username, message));
     setMessage('');
     setTimeout(botResponse, 1000);
   };
@@ -81,7 +70,7 @@ const Chat: React.FC<Props> = ({
           <Pill icons={['faPhoneAlt', 'faVideo']} />
           <Button
             icon="faAngleRight"
-            onclick={() => hideDrawer('chat')}
+            onclick={() => dispatch(hideDrawer('chat'))}
             buttonClass="btn-arrow"
             testId="btn-close-chat"
           />
@@ -89,18 +78,24 @@ const Chat: React.FC<Props> = ({
       </header>
 
       <section ref={messageContainer} className="messages">
-        {messages.map(({ author, message, time }, index) => (
-          <article
-            key={time + index}
-            className={classNames('message', {
-              other: author !== username
-            })}
-            data-test="message"
-          >
-            <header>{author !== username ? author : 'Me'}</header>
-            <blockquote>{message}</blockquote>
-          </article>
-        ))}
+        {messages.loading ? (
+          <Loader nobg />
+        ) : messages.error ? (
+          <Error />
+        ) : (
+          messages.data.map(({ author, message, time }, index) => (
+            <article
+              key={time + index}
+              className={classNames('message', {
+                other: author !== username
+              })}
+              data-test="message"
+            >
+              <header>{author !== username ? author : 'Me'}</header>
+              <blockquote>{message}</blockquote>
+            </article>
+          ))
+        )}
       </section>
 
       <footer>
@@ -132,16 +127,4 @@ const Chat: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = ({ user, chat }) => ({
-  username: user.session.username,
-  thread: chat.thread,
-  messages: chat.messages
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: (component) => dispatch(hideDrawer(component)),
-  getMessages: (user) => dispatch(getMessages(user)),
-  postMessage: (author, message) => dispatch(postMessage(author, message))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+export default Chat;

@@ -1,5 +1,5 @@
 export interface Snap {
-  type: 'video' | 'photo';
+  type: 'video' | 'photo' | '';
   url: string;
   location?: string;
   lat?: number;
@@ -8,5 +8,3 @@ export interface Snap {
   caption?: string;
   shareable?: boolean;
 }
-
-export type AddSnap = (snap: Snap) => void;

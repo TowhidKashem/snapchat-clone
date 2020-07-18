@@ -7,17 +7,14 @@ interface Props {
   user: UserInterface;
 }
 
-const User: React.FC<Props> = ({ user }) => {
-  const { username, fullName, avatar } = user;
-  return (
-    <article className="pod user">
-      <Avatar src={avatar} size="sm" />
-      <div className="meta">
-        <header>{fullName}</header>
-        <span>{username}</span>
-      </div>
-    </article>
-  );
-};
+const User: React.FC<Props> = ({ user: { username, fullName, avatar } }) => (
+  <article className="pod user">
+    <Avatar src={avatar} size="sm" />
+    <div className="meta">
+      <header>{fullName}</header>
+      <span>{username}</span>
+    </div>
+  </article>
+);
 
 export default User;

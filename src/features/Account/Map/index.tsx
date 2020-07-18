@@ -1,21 +1,17 @@
 import React, { useRef, useState, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
-import { ShowDrawer } from 'AppShell/types';
-import { SetLatLon, GetGeoLocation } from 'features/User/types';
+import { useDispatch } from 'react-redux';
+import { showDrawer } from 'AppShell/store';
+import { getGeoLocation, setLatLon } from 'features/User/store';
 import Loader from 'common/Loader';
 import './index.scss';
-
-interface Props {
-  showDrawer: ShowDrawer;
-  getGeoLocation: GetGeoLocation;
-  setLatLon: SetLatLon;
-}
 
 const apiKey = process.env.REACT_APP_MAP_BOX_API_KEY;
 const hasApiKey = apiKey?.length ? true : false;
 if (hasApiKey) mapboxgl.accessToken = apiKey as string;
 
-const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
+const Map: React.FC = () => {
+  const dispatch = useDispatch();
   const mapElem = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
 
@@ -25,14 +21,21 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
     (async () => {
       // Attempt to get the user's geo location via this endpoint `https://geolocation-db.com/json/` (IP based)
       // if it fails ask the user for their location via the `navigator.geolocation` API (much slower)
-      const [error, response] = await getGeoLocation();
+      const response = await dispatch(getGeoLocation());
 
-      if (!error) {
-        loadMap(response.latitude, response.longitude);
+      if (response.payload) {
+        const { latitude, longitude } = response.payload;
+        loadMap(latitude, longitude);
       } else {
         const respond = (lat, lon) => {
           loadMap(lat, lon);
-          setLatLon(lat, lon);
+
+          dispatch(
+            setLatLon({
+              latitude: lat,
+              longitude: lon
+            })
+          );
         };
 
         // If the browser doesn't support geolocation or the call failed
@@ -58,7 +61,7 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
         }
       }
     })();
-  }, [getGeoLocation, setLatLon]);
+  }, [dispatch]);
 
   const loadMap = (lat, lon) => {
     const map = new mapboxgl.Map({
@@ -82,14 +85,16 @@ const Map: React.FC<Props> = ({ showDrawer, getGeoLocation, setLatLon }) => {
       data-test="preview-map"
       onClick={() =>
         hasApiKey &&
-        showDrawer({
-          component: 'snapMap',
-          animationIn: 'fadeIn',
-          animationOut: 'fadeOut',
-          animationInDuration: 0,
-          animationOutDuration: 0,
-          theme: 'stripped'
-        })
+        dispatch(
+          showDrawer({
+            component: 'snapMap',
+            animationIn: 'fadeIn',
+            animationOut: 'fadeOut',
+            animationInDuration: 0,
+            animationOutDuration: 0,
+            theme: 'stripped'
+          })
+        )
       }
     >
       {!hasApiKey ? (

@@ -3,8 +3,21 @@
 @import '~styles/mixins';
 
 .loading {
-  @include overlay-bg;
   color: $color-white;
+
+  &:not(.nobg) {
+    @include overlay-bg;
+  }
+
+  &.nobg {
+    .center {
+      .sk-cube-grid {
+        .sk-cube {
+          background: $color-grey-shade-2;
+        }
+      }
+    }
+  }
 
   &.fixed {
     @extend %app-width;

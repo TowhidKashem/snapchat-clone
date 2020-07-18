@@ -4,11 +4,12 @@ import './index.scss';
 
 interface Props {
   fixed?: boolean;
+  nobg?: boolean;
   message?: string;
 }
 
-const Loader: React.FC<Props> = ({ fixed, message }) => (
-  <div className={classNames('loading', { fixed, message })}>
+const Loader: React.FC<Props> = ({ fixed, nobg, message }) => (
+  <div className={classNames('loading', { fixed, message, nobg })}>
     <div className="center">
       <div className="sk-cube-grid">
         {new Array(9).fill(null).map((val, index) => (

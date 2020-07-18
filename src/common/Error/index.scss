@@ -1,0 +1,15 @@
+@import '~styles/vars';
+@import '~styles/extendables';
+
+.error {
+  @extend %center-x-y;
+  height: 60vh;
+
+  p {
+    font-size: 30px;
+    font-weight: $font-semi-bold;
+    text-align: center;
+    padding: 0 15px;
+    opacity: 0.3;
+  }
+}

@@ -1,17 +1,13 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { promise } from 'utils/system';
-import { playSound } from 'utils/audio';
-import { onAnimationComplete } from 'utils/animation';
-import { setFooterType } from 'AppShell/duck';
-import { SetFooterType } from 'AppShell/types';
-import { Filter, FilterScript, PickPhoto, CameraMode } from './types';
-import { pickPhoto } from './duck';
-import PhotoCapture from './PhotoCapture';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFooterType } from 'AppShell/store';
+import { Filter, FilterScript } from './types';
+import { promise, playSound, onAnimationComplete } from 'utils';
 import Button from 'common/Button';
 import Loader from 'common/Loader';
+import PhotoCapture from './PhotoCapture';
 import './index.scss';
 
 declare global {
@@ -21,15 +17,12 @@ declare global {
   }
 }
 
-interface Props {
-  setFooterType: SetFooterType;
-  pickPhoto: PickPhoto;
-  cameraMode: CameraMode;
-}
-
 const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'liberty'];
 
-const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
+const Camera: React.FC = () => {
+  const dispatch = useDispatch();
+  const cameraMode = useSelector(({ camera }) => camera.cameraMode);
+
   const videoElem = useRef<HTMLVideoElement>(null);
   const audioElem = useRef<HTMLAudioElement>(null);
 
@@ -125,8 +118,8 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
             <span role="img" aria-label="crying emoji">
               😭
             </span>{' '}
-            Unfortunately your browser doesn't support the getUserMedia API used by the
-            camera, please try another browser!
+            Either your browser doesn't support the getUserMedia API used by the camera or
+            you declined camera access!
           </p>
         </div>
       )}
@@ -161,7 +154,6 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
         takePic={takePic}
         closePic={() => setTakePic(false)}
         videoElem={videoElem.current as HTMLVideoElement}
-        pickPhoto={pickPhoto}
       />
 
       <section className="controls">
@@ -184,7 +176,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
             onclick={() => {
               if (notSupported) return;
               setShowFilterButtons(true);
-              setFooterType('none');
+              dispatch(setFooterType('none'));
               // Load the center filter on the button list by default
               onAnimationComplete(() => switchFilter(filters[2]), 100);
             }}
@@ -220,7 +212,7 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
                 setActiveFilter('');
                 setShowFilterButtons(false);
                 setFilterInitialized(false);
-                setFooterType('full');
+                dispatch(setFooterType('full'));
                 startCamera();
                 window.JEEFACEFILTERAPI.destroy();
               }}
@@ -236,11 +228,4 @@ const Camera: React.FC<Props> = ({ setFooterType, pickPhoto, cameraMode }) => {
   );
 };
 
-const mapStateToProps = ({ camera }) => ({ cameraMode: camera.cameraMode });
-
-const mapDispatchToProps = (dispatch) => ({
-  setFooterType: (footerType) => dispatch(setFooterType(footerType)),
-  pickPhoto: (dataURL) => dispatch(pickPhoto(dataURL))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Camera);
+export default Camera;

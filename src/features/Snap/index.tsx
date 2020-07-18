@@ -1,25 +1,18 @@
 import React, { useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { relativeTime } from 'utils/time';
-import { onAnimationComplete } from 'utils/animation';
-import { Snap as SnapType } from './types';
-import { removeSnap } from './duck';
-import { HideDrawer } from 'AppShell/types';
-import { hideDrawer } from 'AppShell/duck';
+import { useSelector, useDispatch } from 'react-redux';
+import { hideDrawer } from 'AppShell/store';
+import { removeSnap } from './store';
+import { onAnimationComplete, relativeTime } from 'utils';
 import Button from 'common/Button';
 import './index.scss';
 
-interface Props {
-  snap: SnapType;
-  removeSnap: () => void;
-  hideDrawer: HideDrawer;
-}
-
-const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
-  const { location, time, type, url, caption, shareable } = snap;
-
+const Snap: React.FC = () => {
+  const dispatch = useDispatch();
+  const snap = useSelector(({ snap }) => snap);
   const videoElem = useRef<HTMLVideoElement>(null);
+
+  const { location, time, type, url, caption, shareable } = snap;
 
   useEffect(() => {
     if (type === 'video' && videoElem.current) {
@@ -29,8 +22,8 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
   }, [snap, type]);
 
   const closeSnap = () => {
-    hideDrawer('snap');
-    onAnimationComplete(() => removeSnap());
+    dispatch(hideDrawer('snap'));
+    onAnimationComplete(() => dispatch(removeSnap()));
   };
 
   return (
@@ -46,6 +39,7 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
           <Button icon="faEllipsisV" />
         </div>
       </header>
+
       {type === 'video' ? (
         <div className="video-container">
           <video ref={videoElem} playsInline onEnded={closeSnap} data-test="video">
@@ -62,6 +56,7 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
           <img src={url} alt="" />
         </div>
       )}
+
       {shareable && (
         <footer>
           <Button icon="faLocationArrow" />
@@ -71,11 +66,4 @@ const Snap: React.FC<Props> = ({ snap, removeSnap, hideDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ snap }) => ({ snap });
-
-const mapDispatchToProps = (dispatch) => ({
-  removeSnap: () => dispatch(removeSnap()),
-  hideDrawer: (component) => dispatch(hideDrawer(component))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Snap);
+export default Snap;

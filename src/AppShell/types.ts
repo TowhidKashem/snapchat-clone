@@ -1,5 +1,14 @@
+export type DrawerComponent =
+  | 'account'
+  | 'search'
+  | 'snapMap'
+  | 'snap'
+  | 'archive'
+  | 'chat'
+  | 'discover';
+
 export interface Drawer {
-  component: string;
+  component: DrawerComponent;
   animationIn?: AnimationType;
   animationOut?: AnimationType;
   animationInDuration?: number;
@@ -8,14 +17,6 @@ export interface Drawer {
   position?: 'front' | 'back';
   show?: boolean;
 }
-
-export type ShowDrawer = (drawer: Drawer) => void;
-
-export type HideDrawer = (component?: string) => void;
-
-export type FooterType = 'full' | 'collapsed' | 'none';
-
-export type SetFooterType = (footerType: FooterType) => void;
 
 export type AnimationType =
   | 'bounce'
@@ -94,3 +95,5 @@ export type AnimationType =
   | 'slideOutLeft'
   | 'slideOutRight'
   | 'slideOutUp';
+
+export type FooterType = 'full' | 'collapsed' | 'none';

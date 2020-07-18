@@ -15,6 +15,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "@reduxjs/toolkit": "^1.4.0",
     "animate.css": "^3.7.2",
     "classnames": "^2.2.6",
     "mapbox-gl": "^1.11.1",
@@ -25,8 +26,7 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "uuid": "^8.2.0"
   },
   "scripts": {
     "start": "run-os",

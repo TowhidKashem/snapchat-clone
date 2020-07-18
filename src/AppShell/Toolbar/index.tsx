@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
-import { language } from 'utils/browser';
-import { Drawer } from '../types';
+import { language } from 'utils';
 import { atleastOneDrawerOpen } from '../utils';
 import Icon from 'common/Icon';
 import './index.scss';
 
-interface Props {
-  drawers: Drawer[];
-}
-
-const Toolbar: React.FC<Props> = ({ drawers }) => {
+const Toolbar: React.FC = () => {
+  const drawers = useSelector(({ app }) => app.drawers);
   const [time, setTime] = useState('');
 
   const updateTime = () => {

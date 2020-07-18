@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { onAnimationComplete } from 'utils/animation';
-import { Drawer as DrawerType, AnimationType } from '../types';
+import { onAnimationComplete } from 'utils';
+import { AnimationType } from '../types';
 import Account from 'features/Account';
 import Search from 'features/Search';
 import SnapMap from 'features/SnapMap';
@@ -12,11 +13,8 @@ import Chat from 'features/Chat';
 import Discover from 'features/Discover';
 import './index.scss';
 
-interface Props {
-  drawers: DrawerType[];
-}
-
-const Drawer: React.FC<Props> = ({ drawers }) => {
+const Drawer: React.FC = () => {
+  const drawers = useSelector(({ app }) => app.drawers);
   const drawerContent = useRef(null);
 
   const getComponent = (component, show) => {

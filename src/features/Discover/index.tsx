@@ -1,9 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { connect } from 'react-redux';
-import { api, sleep, debounce } from 'utils/system';
-import { elemInView } from 'utils/viewport';
-import { showDrawer } from 'AppShell/duck';
-import { ShowDrawer } from 'AppShell/types';
+import { api, sleep, debounce, elemInView } from 'utils';
 import Header from 'common/Header';
 import Widget from 'common/Widget';
 import Button from 'common/Button';
@@ -12,9 +8,7 @@ import SpotlightPod from 'common/Pod/Spotlight';
 import './index.scss';
 
 interface Props {
-  avatar: string;
   drawerContent: any;
-  showDrawer: ShowDrawer;
 }
 
 type Profile = {
@@ -22,7 +16,7 @@ type Profile = {
   title: string;
 };
 
-const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
+const Discover: React.FC<Props> = ({ drawerContent }) => {
   const loadMore = useRef(null);
   const isFetching = useRef(false);
   const onScroll = useRef(
@@ -57,7 +51,7 @@ const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
 
   return (
     <main className="discover">
-      <Header avatar={avatar} showDrawer={showDrawer} insideDrawer />
+      <Header insideDrawer />
       <section className="view">
         <Widget className="friends" header="Friends" transparent>
           <p>Stories from your friends will appear here.</p>
@@ -85,10 +79,4 @@ const Discover: React.FC<Props> = ({ avatar, drawerContent, showDrawer }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({ avatar: user.session.avatar });
-
-const mapDispatchToProps = (dispatch) => ({
-  showDrawer: (component) => dispatch(showDrawer(component))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Discover);
+export default Discover;

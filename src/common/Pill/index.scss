@@ -9,10 +9,14 @@
   .btn {
     @extend %center-x-y;
     border-right: 1px solid $color-white;
-    padding: 7px 12px;
+    padding: 7px 14px;
 
     &:last-child {
       border-right: 0;
+    }
+
+    .icon {
+      margin-right: 0;
     }
   }
 }

@@ -1,19 +1,13 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from 'index';
 import Header from './index';
+
+const withProvider = (component) => <Provider store={store}>{component}</Provider>;
 
 export default {
   title: 'Header',
   component: Header
 };
 
-export const withAvatar = () => (
-  <Header
-    avatar="https://i.imgur.com/EbafXMb.png"
-    showDrawer={() => {}}
-    toggleCameraMode={() => {}}
-  />
-);
-
-export const withIcon = () => (
-  <Header showDrawer={() => {}} toggleCameraMode={() => {}} />
-);
+export const Default = () => withProvider(<Header />);

@@ -1,47 +1,85 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import * as redux from 'react-redux';
+import { mount } from 'enzyme';
 import Button from 'common/Button';
 import Input from 'common/Input';
-import Icon from 'common/Icon';
 import Header from './index';
 
-const defaultProps = { showDrawer: jest.fn() };
+jest.mock('react-redux', () => ({
+  ...require.requireActual('react-redux'),
+  useSelector: jest.fn().mockImplementation(() => '/path/to/img.png')
+}));
 
 describe('<Header />', () => {
+  let useDispatchSpy, mockDispatchFn, component;
+
+  beforeEach(() => {
+    useDispatchSpy = jest.spyOn(redux, 'useDispatch');
+    mockDispatchFn = jest.fn();
+    useDispatchSpy.mockReturnValue(mockDispatchFn);
+    component = mount(<Header />);
+  });
+
+  afterEach(() => {
+    useDispatchSpy.mockClear();
+  });
+
   it('renders without crashing', () => {
-    const component = shallow(<Header {...defaultProps} />);
     expect(component.length).toBe(1);
   });
 
-  it('contains avatar/user icons and input field', () => {
-    const component = shallow(<Header {...defaultProps} />);
+  it('contains avatar/user icon, reverse camera button, and input field', () => {
     expect(component.find(Button).first().prop('buttonClass')).toEqual('btn-user');
     expect(component.find(Button).last().prop('buttonClass')).toEqual('btn-flip-camera');
     expect(component.find(Input)).toHaveLength(1);
   });
 
   it('contains avatar image', () => {
-    const image = '/path/to/img.png';
-    const component = mount(<Header {...defaultProps} avatar={image} />);
-    expect(component.find('img').prop('src')).toEqual(image);
+    expect(component.find('img').prop('src')).toEqual('/path/to/img.png');
   });
 
-  it("contains user icon if avatar prop isn't passed", () => {
-    const component = mount(<Header {...defaultProps} />);
-    expect(component.find(Icon).first().prop('icon')).toEqual('faUserCircle');
-  });
+  describe('click events', () => {
+    it('clicking avatar opens account drawer', () => {
+      component.find(Button).first().simulate('click');
+      expect(mockDispatchFn).toHaveBeenCalledWith(
+        expect.objectContaining({
+          payload: {
+            animationIn: 'slideInUp',
+            animationInDuration: 300,
+            animationOut: 'slideOutDown',
+            animationOutDuration: 300,
+            component: 'account',
+            position: 'front',
+            show: true,
+            theme: 'light'
+          },
+          type: 'app/showDrawer'
+        })
+      );
+    });
 
-  it('clicking avatar opens account drawer', () => {
-    const component = mount(<Header {...defaultProps} />);
-    component.find(Button).first().simulate('click');
-    expect(defaultProps.showDrawer).toHaveBeenCalledWith({ component: 'account' });
-  });
+    it('clicking input field opens search drawer', () => {
+      component.find(Input).simulate('click');
+      expect(mockDispatchFn).toHaveBeenCalledWith(
+        expect.objectContaining({
+          payload: {
+            animationIn: 'fadeIn',
+            animationInDuration: 200,
+            animationOut: 'fadeOut',
+            animationOutDuration: 200,
+            component: 'search',
+            position: 'front',
+            show: true,
+            theme: 'light'
+          },
+          type: 'app/showDrawer'
+        })
+      );
+    });
 
-  it('clicking input field opens search drawer', () => {
-    const component = mount(<Header {...defaultProps} />);
-    component.find(Input).simulate('click');
-    expect(defaultProps.showDrawer).toHaveBeenCalledWith(
-      expect.objectContaining({ component: 'search' })
-    );
+    it('can toggle camera', () => {
+      component.find(Button).last().simulate('click');
+      expect(mockDispatchFn).toHaveBeenCalled();
+    });
   });
 });

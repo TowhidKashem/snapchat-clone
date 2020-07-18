@@ -8,4 +8,6 @@ export default {
 
 export const Default = () => <Loader />;
 
+export const noOverlay = () => <Loader nobg />;
+
 export const withMessage = () => <Loader message="Something is loading..." />;

@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 
-import app from 'AppShell/duck';
-import user from 'features/User/duck';
-import snapMap from 'features/SnapMap/duck';
-import snap from 'features/Snap/duck';
-import chat from 'features/Chat/duck';
-import camera from 'features/Camera/duck';
+import app from 'AppShell/store';
+import camera from 'features/Camera/store';
+import user from 'features/User/store';
+import snapMap from 'features/SnapMap/store';
+import snap from 'features/Snap/store';
+import chat from 'features/Chat/store';
 
 import AppShell from './AppShell';
 import Camera from './features/Camera';
@@ -20,15 +19,9 @@ import 'normalize.css';
 import 'animate.css';
 import './styles/app.scss';
 
-const rootReducer = combineReducers({ app, user, snapMap, snap, chat, camera });
-
-// Redux devtools extension
-const composeEnhancers =
-  (typeof window !== 'undefined' &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-  compose;
-
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+export const store = configureStore({
+  reducer: { app, camera, user, snapMap, snap, chat }
+});
 
 const App = () => (
   <React.StrictMode>

@@ -17,13 +17,3 @@ export interface Geolocation {
   latitude: number;
   longitude: number;
 }
-
-export type SetLatLon = (lat: number, lon: number) => void;
-
-export type GetGeoLocation = () => [
-  boolean,
-  {
-    latitude: string;
-    longitude: string;
-  }
-];

@@ -1,29 +1,27 @@
 import React from 'react';
-import { ShowDrawer } from 'AppShell/types';
+import { useSelector, useDispatch } from 'react-redux';
+import { showDrawer } from 'AppShell/store';
+import { toggleCameraMode } from 'features/Camera/store';
 import Icon from 'common/Icon';
 import Button from 'common/Button';
 import Input from 'common/Input';
 import './index.scss';
 
 interface Props {
-  avatar?: string;
-  showDrawer: ShowDrawer;
   insideDrawer?: boolean;
-  toggleCameraMode?: () => void;
 }
 
-const Header: React.FC<Props> = ({
-  avatar,
-  showDrawer,
-  insideDrawer,
-  toggleCameraMode
-}) => {
+const Header: React.FC<Props> = ({ insideDrawer }) => {
+  const dispatch = useDispatch();
+  const avatar = useSelector(({ user }) => user.session.avatar);
+
   const iconImage = avatar ? { image: avatar } : { icon: 'faUserCircle' };
+
   return (
     <header className="header" data-test="header">
       <Button
         {...iconImage}
-        onclick={() => showDrawer({ component: 'account' })}
+        onclick={() => dispatch(showDrawer({ component: 'account' }))}
         buttonClass="btn-user"
         testId="btn-user"
       />
@@ -31,16 +29,18 @@ const Header: React.FC<Props> = ({
         placeholder="Search"
         leftIcon="faSearch"
         rightIcon="faUserPlus"
-        onClick={() =>
-          showDrawer({
-            component: 'search',
-            animationIn: 'fadeIn',
-            animationOut: 'fadeOut',
-            animationInDuration: 200,
-            animationOutDuration: 200
-          })
-        }
         dark={insideDrawer}
+        onClick={() =>
+          dispatch(
+            showDrawer({
+              component: 'search',
+              animationIn: 'fadeIn',
+              animationOut: 'fadeOut',
+              animationInDuration: 200,
+              animationOutDuration: 200
+            })
+          )
+        }
       />
       <div className="right">
         {insideDrawer ? (
@@ -49,7 +49,7 @@ const Header: React.FC<Props> = ({
           <Button
             icon="faRetweet"
             buttonClass="btn-flip-camera"
-            onclick={toggleCameraMode}
+            onclick={() => dispatch(toggleCameraMode())}
           />
         )}
       </div>

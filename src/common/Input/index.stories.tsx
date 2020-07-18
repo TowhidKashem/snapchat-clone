@@ -10,8 +10,6 @@ const defaultProps = { placeholder: 'Type here...' };
 
 export const Default = () => <Input {...defaultProps} />;
 
-export const Placeholder = () => <Input placeholder="Type here..." />;
-
 export const disabled = () => (
   <Input {...defaultProps} value="Can't type here.." onClick={() => {}} />
 );

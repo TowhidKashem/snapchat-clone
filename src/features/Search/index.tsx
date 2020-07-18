@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { Animated } from 'react-animated-css';
-import { HideDrawer } from 'AppShell/types';
-import { User } from 'features/User/types';
-import { hideDrawer } from 'AppShell/duck';
-import { escapeRegex } from 'utils/string';
+import { useSelector, useDispatch } from 'react-redux';
+import { hideDrawer } from 'AppShell/store';
+import { escapeRegex } from 'utils';
 import Input from 'common/Input';
 import Button from 'common/Button';
 import Widget from 'common/Widget';
 import UserPod from 'common/Pod/User';
+import Loader from 'common/Loader';
+import Error from 'common/Error';
 import './index.scss';
 
 interface Props {
-  friends: User[];
   show: boolean;
-  hideDrawer: HideDrawer;
 }
 
-const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
+const Search: React.FC<Props> = ({ show }) => {
+  const dispatch = useDispatch();
+  const { loading, error, data } = useSelector(({ user }) => user.friends);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -26,11 +26,11 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
 
   const pattern = new RegExp(escapeRegex(query), 'gi');
   const users = query
-    ? friends.filter(
+    ? data.filter(
         ({ fullName, username }) => fullName.match(pattern) || username.match(pattern)
       )
-    : friends;
-  const hasResults = users.length > 0;
+    : data;
+  const hasResults = users?.length > 0;
 
   return (
     <main className="search">
@@ -47,45 +47,45 @@ const Search: React.FC<Props> = ({ friends = [], show, hideDrawer }) => {
         <Button
           label="Cancel"
           plain
-          onclick={() => hideDrawer('search')}
+          onclick={() => dispatch(hideDrawer('search'))}
           testId="btn-cancel"
         />
       </header>
       <section>
-        <Animated
-          animationIn="slideInUp"
-          animationOut="slideOutDown"
-          animationInDuration={250}
-          animationOutDuration={0}
-          isVisible={show}
-        >
-          <div className="results">
-            {hasResults && (
-              <Widget header="Quick Add">
-                {users.map((user) => (
-                  <UserPod key={user.id} user={user} />
-                ))}
-              </Widget>
+        {loading ? (
+          <Loader nobg />
+        ) : error ? (
+          <Error />
+        ) : (
+          <Animated
+            animationIn="slideInUp"
+            animationOut="slideOutDown"
+            animationInDuration={250}
+            animationOutDuration={0}
+            isVisible={show}
+          >
+            <div className="results">
+              {hasResults && (
+                <Widget header="Quick Add">
+                  {users.map((user) => (
+                    <UserPod key={user.id} user={user} />
+                  ))}
+                </Widget>
+              )}
+            </div>
+            {query && !hasResults && (
+              <p className="no-results">
+                <span role="img" aria-label="poop emoji">
+                  💩
+                </span>{' '}
+                No results
+              </p>
             )}
-          </div>
-          {query && !hasResults && (
-            <p className="no-results">
-              <span role="img" aria-label="poop emoji">
-                💩
-              </span>{' '}
-              No results
-            </p>
-          )}
-        </Animated>
+          </Animated>
+        )}
       </section>
     </main>
   );
 };
 
-const mapStateToProps = ({ user }) => ({ friends: user.friends });
-
-const mapDispatchToProps = (dispatch) => ({
-  hideDrawer: (component) => dispatch(hideDrawer(component))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default Search;
