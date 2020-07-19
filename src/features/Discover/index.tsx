@@ -5,16 +5,12 @@ import Widget from 'common/Widget';
 import Button from 'common/Button';
 import SkeletonFrame from 'common/SkeletonFrame';
 import SpotlightPod from 'common/Pod/Spotlight';
+import { Profile } from './types';
 import './index.scss';
 
 interface Props {
   drawerContent: any;
 }
-
-type Profile = {
-  image: string;
-  title: string;
-};
 
 const Discover: React.FC<Props> = ({ drawerContent }) => {
   const loadMore = useRef(null);

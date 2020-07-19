@@ -423,7 +423,7 @@
     in tsconfig so you can use clean import paths like
     <code>import Foo from 'common/Foo';</code> instead of messy ones like
     <code>import Foo from '../../common/Foo';</code>. You can also use these in
-    the SASS files, e.g. <code>@import '~styles/foo`;</code>
+    the SASS files, e.g. <code>@import '~styles/foo';</code>
   </li>
   <li>
     This is a purely front end demo, the "API" is nothing but a bunch of json

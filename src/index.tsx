@@ -11,9 +11,9 @@ import snapMap from 'features/SnapMap/store';
 import snap from 'features/Snap/store';
 import chat from 'features/Chat/store';
 
-import AppShell from './AppShell';
-import Camera from './features/Camera';
-import NotFound from './features/404';
+import AppShell from 'AppShell';
+import Camera from 'features/Camera';
+import NotFound from 'features/404';
 
 import 'normalize.css';
 import 'animate.css';
