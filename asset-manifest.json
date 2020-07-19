@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/snapchat-clone/static/css/main.75637886.chunk.css",
-    "main.js": "/snapchat-clone/static/js/main.84b53503.chunk.js",
-    "main.js.map": "/snapchat-clone/static/js/main.84b53503.chunk.js.map",
+    "main.js": "/snapchat-clone/static/js/main.e6a10b25.chunk.js",
+    "main.js.map": "/snapchat-clone/static/js/main.e6a10b25.chunk.js.map",
     "runtime-main.js": "/snapchat-clone/static/js/runtime-main.f21b9d06.js",
     "runtime-main.js.map": "/snapchat-clone/static/js/runtime-main.f21b9d06.js.map",
     "static/css/2.dda6c3ea.chunk.css": "/snapchat-clone/static/css/2.dda6c3ea.chunk.css",
     "static/js/2.953e7ed1.chunk.js": "/snapchat-clone/static/js/2.953e7ed1.chunk.js",
     "static/js/2.953e7ed1.chunk.js.map": "/snapchat-clone/static/js/2.953e7ed1.chunk.js.map",
     "index.html": "/snapchat-clone/index.html",
-    "precache-manifest.c3e2a2d8eb2f4f9c27ab20dc088e88b9.js": "/snapchat-clone/precache-manifest.c3e2a2d8eb2f4f9c27ab20dc088e88b9.js",
+    "precache-manifest.d6674a2e1705688132a7893180f3c779.js": "/snapchat-clone/precache-manifest.d6674a2e1705688132a7893180f3c779.js",
     "service-worker.js": "/snapchat-clone/service-worker.js",
     "static/css/2.dda6c3ea.chunk.css.map": "/snapchat-clone/static/css/2.dda6c3ea.chunk.css.map",
     "static/css/main.75637886.chunk.css.map": "/snapchat-clone/static/css/main.75637886.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.dda6c3ea.chunk.css",
     "static/js/2.953e7ed1.chunk.js",
     "static/css/main.75637886.chunk.css",
-    "static/js/main.84b53503.chunk.js"
+    "static/js/main.e6a10b25.chunk.js"
   ]
 }
