@@ -8,11 +8,9 @@ import SpotlightPod from 'common/Pod/Spotlight';
 import { Profile } from './types';
 import './index.scss';
 
-interface Props {
-  drawerContent: any;
-}
-
-const Discover: React.FC<Props> = ({ drawerContent }) => {
+const Discover: React.FC<{
+  readonly drawerContent;
+}> = ({ drawerContent }) => {
   const loadMore = useRef(null);
   const isFetching = useRef(false);
   const onScroll = useRef(

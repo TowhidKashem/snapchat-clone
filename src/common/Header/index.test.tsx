@@ -76,10 +76,5 @@ describe('<Header />', () => {
         })
       );
     });
-
-    it('can toggle camera', () => {
-      component.find(Button).last().simulate('click');
-      expect(mockDispatchFn).toHaveBeenCalled();
-    });
   });
 });

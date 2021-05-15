@@ -3,22 +3,20 @@ import classNames from 'classnames';
 import Icon from 'common/Icon';
 import './index.scss';
 
-interface Props {
-  image?: string;
-  icon?: string;
-  icons?: string[];
-  iconClass?: string;
-  iconClasses?: Array<string | null>;
-  buttonClass?: string;
-  round?: boolean;
-  plain?: boolean;
-  purple?: boolean;
-  label?: string;
-  onclick?: () => void;
-  testId?: string;
-}
-
-const Button: React.FC<Props> = ({
+const Button: React.FC<{
+  readonly image?: string;
+  readonly icon?: string;
+  readonly icons?: string[];
+  readonly iconClass?: string;
+  readonly iconClasses?: Array<string | null>;
+  readonly buttonClass?: string;
+  readonly round?: boolean;
+  readonly plain?: boolean;
+  readonly purple?: boolean;
+  readonly label?: string;
+  readonly onclick?: () => void;
+  readonly testId?: string;
+}> = ({
   image,
   icon,
   icons,

@@ -32,7 +32,7 @@ const chatSlice = createSlice({
           id: string;
           author: string;
           message: string;
-          time: Date;
+          time: string;
         }>
       ) {
         const { id, author, message, time } = action.payload;
@@ -49,7 +49,7 @@ const chatSlice = createSlice({
             id: uuid(),
             author,
             message,
-            time: new Date()
+            time: JSON.stringify(new Date())
           }
         };
       }

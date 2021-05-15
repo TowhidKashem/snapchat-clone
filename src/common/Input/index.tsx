@@ -4,23 +4,21 @@ import { onAnimationComplete } from 'utils';
 import Icon from 'common/Icon';
 import './index.scss';
 
-interface Props {
-  placeholder: string;
-  value?: string;
-  leftIcon?: string;
-  rightIcon?: string;
-  onClick?: () => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  onChange?: (e: React.SyntheticEvent<HTMLInputElement>) => void;
-  onEnter?: () => void;
-  focus?: boolean;
-  spellCheck?: boolean;
-  animate?: boolean;
-  dark?: boolean;
-}
-
-const Input: React.FC<Props> = ({
+const Input: React.FC<{
+  readonly placeholder: string;
+  readonly value?: string;
+  readonly leftIcon?: string;
+  readonly rightIcon?: string;
+  readonly onClick?: () => void;
+  readonly onFocus?: () => void;
+  readonly onBlur?: () => void;
+  readonly onChange?: (e: React.SyntheticEvent<HTMLInputElement>) => void;
+  readonly onEnter?: () => void;
+  readonly focus?: boolean;
+  readonly spellCheck?: boolean;
+  readonly animate?: boolean;
+  readonly dark?: boolean;
+}> = ({
   placeholder,
   value,
   leftIcon,

@@ -23,24 +23,33 @@ const cameraSlice = createSlice({
   initialState,
   reducers: {
     setPhoto: {
-      reducer(state, action: PayloadAction<{ time: Date; dataURL: string }>) {
-        const { time, dataURL } = action.payload;
+      reducer(
+        state,
+        action: PayloadAction<{
+          month: string;
+          year: number;
+          dataURL: string;
+        }>
+      ) {
+        const { month, year, dataURL } = action.payload;
         if (state.photoTaken) {
           state.photos[0].data.images.unshift(action.payload.dataURL);
         } else {
           state.photoTaken = true;
           state.photos.data.unshift({
-            month: time.toLocaleString('default', { month: 'long' }),
-            year: time.getFullYear(),
+            month,
+            year,
             images: [dataURL]
           });
         }
       },
       prepare(dataURL: string) {
+        const time = new Date();
         return {
           payload: {
             dataURL,
-            time: new Date()
+            month: time.toLocaleString('default', { month: 'long' }),
+            year: time.getFullYear()
           }
         };
       }

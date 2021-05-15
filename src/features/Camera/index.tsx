@@ -148,7 +148,7 @@ const Camera: React.FC = () => {
         className={classNames('video-stream', {
           hide: filterInitialized || takePic
         })}
-      ></video>
+      />
 
       <PhotoCapture
         takePic={takePic}

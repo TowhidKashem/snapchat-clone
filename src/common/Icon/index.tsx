@@ -128,13 +128,11 @@ export const iconMap = {
   faExclamationCircle
 };
 
-interface Props {
-  icon: string;
-  onClick?: () => void;
-  className?: string;
-}
-
-const Icon: React.FC<Props> = ({ icon, onClick, className = '' }) =>
+const Icon: React.FC<{
+  readonly icon: string;
+  readonly onClick?: () => void;
+  readonly className?: string;
+}> = ({ icon, onClick, className = '' }) =>
   icon ? (
     <FontAwesomeIcon
       icon={iconMap[icon]}

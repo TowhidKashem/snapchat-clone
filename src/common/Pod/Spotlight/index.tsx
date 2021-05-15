@@ -1,13 +1,11 @@
 import React from 'react';
 import './index.scss';
 
-interface Props {
-  title: string;
-  image: string;
-  testId?: string;
-}
-
-const Spotlight: React.FC<Props> = ({ title, image, testId }) => (
+const Spotlight: React.FC<{
+  readonly title: string;
+  readonly image: string;
+  readonly testId?: string;
+}> = ({ title, image, testId }) => (
   <article className="pod spotlight" data-test={testId}>
     <img src={image} alt="" />
     <div className="meta">

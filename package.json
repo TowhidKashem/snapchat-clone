@@ -9,7 +9,6 @@
     "url": "https://github.com/TowhidKashem"
   },
   "dependencies": {
-    "@formatjs/intl-relativetimeformat": "^5.2.7",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",

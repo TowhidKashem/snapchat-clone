@@ -2,13 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.scss';
 
-interface Props {
-  fixed?: boolean;
-  nobg?: boolean;
-  message?: string;
-}
-
-const Loader: React.FC<Props> = ({ fixed, nobg, message }) => (
+const Loader: React.FC<{
+  readonly fixed?: boolean;
+  readonly nobg?: boolean;
+  readonly message?: string;
+}> = ({ fixed, nobg, message }) => (
   <div className={classNames('loading', { fixed, message, nobg })}>
     <div className="center">
       <div className="sk-cube-grid">

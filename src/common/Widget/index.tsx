@@ -2,14 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import './index.scss';
 
-interface Props {
-  header: string;
-  children: JSX.Element | JSX.Element[];
-  className?: string;
-  transparent?: boolean;
-}
-
-const Widget: React.FC<Props> = ({ header, children, className = '', transparent }) => (
+const Widget: React.FC<{
+  readonly header: string;
+  readonly children: JSX.Element | JSX.Element[];
+  readonly className?: string;
+  readonly transparent?: boolean;
+}> = ({ header, children, className = '', transparent }) => (
   <section
     className={classNames('widget', {
       [className]: true

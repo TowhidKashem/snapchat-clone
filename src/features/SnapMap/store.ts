@@ -79,8 +79,10 @@ export const getSnaps = createAsyncThunk(
 export const getWeather = createAsyncThunk(
   'snapMap/weatherFetched',
   async ({ lat, lon }: { lat: number; lon: number }) => {
-    const baseURL =
-      'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location';
+    // Hit the weather API through a free CORs proxy so we don't have to write one for this project..
+    const baseURL = `https://api.allorigins.win/get?url=${encodeURIComponent(
+      'https://www.metaweather.com/api/location'
+    )}`;
 
     // If fetching the user's actual weather fails below for some reason
     // store this dummy data for purposes of the demo
@@ -96,12 +98,14 @@ export const getWeather = createAsyncThunk(
 
     if (error) return false;
 
-    const whereOnEarthID = response[0]?.woeid;
+    const whereOnEarthID = JSON.parse(response.contents)[0]?.woeid;
     [error, response] = await api.get(`${baseURL}/${whereOnEarthID}/`, true);
 
     if (error) return false;
 
-    const { the_temp, weather_state_abbr } = response?.consolidated_weather[0];
+    const { the_temp, weather_state_abbr } = JSON.parse(
+      response?.contents
+    ).consolidated_weather[0];
 
     weather = {
       temperature: celsiusToFahrenheit(the_temp),

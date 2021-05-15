@@ -2,16 +2,15 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { showDrawer } from 'AppShell/store';
 import { toggleCameraMode } from 'features/Camera/store';
+import { isMobile } from 'utils';
 import Icon from 'common/Icon';
 import Button from 'common/Button';
 import Input from 'common/Input';
 import './index.scss';
 
-interface Props {
-  insideDrawer?: boolean;
-}
-
-const Header: React.FC<Props> = ({ insideDrawer }) => {
+const Header: React.FC<{
+  readonly insideDrawer?: boolean;
+}> = ({ insideDrawer }) => {
   const dispatch = useDispatch();
   const avatar = useSelector(({ user }) => user.session.avatar);
 
@@ -49,7 +48,13 @@ const Header: React.FC<Props> = ({ insideDrawer }) => {
           <Button
             icon="faRetweet"
             buttonClass="btn-flip-camera"
-            onclick={() => dispatch(toggleCameraMode())}
+            onclick={() => {
+              if (isMobile()) {
+                dispatch(toggleCameraMode());
+              } else {
+                alert('You need a front facing camera for this, try it on your phone!');
+              }
+            }}
           />
         )}
       </div>

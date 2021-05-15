@@ -6,13 +6,11 @@ import { isIOS, stretchViewPortHeight } from 'utils';
 import Button from 'common/Button';
 import './index.scss';
 
-interface Props {
-  takePic: boolean;
-  closePic: () => void;
-  videoElem: HTMLVideoElement;
-}
-
-const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
+const PhotoCapture: React.FC<{
+  readonly takePic: boolean;
+  readonly closePic: () => void;
+  readonly videoElem: HTMLVideoElement;
+}> = ({ takePic, closePic, videoElem }) => {
   const dispatch = useDispatch();
   const canvasElem = useRef<HTMLCanvasElement>(null);
 
@@ -50,12 +48,20 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
     }
   };
 
+  const buttons = [
+    'faTextHeight',
+    'faPen',
+    'faStickyNote',
+    'faCut',
+    'faPaperclip',
+    'faCropAlt',
+    'faStopwatch'
+  ];
+
   return (
     <section
       data-test="photo-capture"
-      className={classNames('photo-capture', {
-        hide: !takePic
-      })}
+      className={classNames('photo-capture', { hide: !takePic })}
     >
       <div className="inner">
         <header>
@@ -63,13 +69,9 @@ const PhotoCapture: React.FC<Props> = ({ takePic, closePic, videoElem }) => {
         </header>
         <canvas ref={canvasElem}></canvas>
         <aside>
-          <Button icon="faTextHeight" />
-          <Button icon="faPen" />
-          <Button icon="faStickyNote" />
-          <Button icon="faCut" />
-          <Button icon="faPaperclip" />
-          <Button icon="faCropAlt" />
-          <Button icon="faStopwatch" />
+          {buttons.map((button) => (
+            <Button key={button} icon={button} />
+          ))}
         </aside>
         <footer>
           <div className="left">

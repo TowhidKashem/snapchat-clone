@@ -7,11 +7,7 @@ import Toolbar from './Toolbar';
 import Drawer from './Drawer';
 import Footer from './Footer';
 
-interface Props {
-  children: JSX.Element;
-}
-
-const AppShell: React.FC<Props> = ({ children }) => {
+const AppShell: React.FC = ({ children }) => {
   const dispatch = useDispatch();
 
   // Init the app

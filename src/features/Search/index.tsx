@@ -11,11 +11,9 @@ import Loader from 'common/Loader';
 import Error from 'common/Error';
 import './index.scss';
 
-interface Props {
-  show: boolean;
-}
-
-const Search: React.FC<Props> = ({ show }) => {
+const Search: React.FC<{
+  readonly show: boolean;
+}> = ({ show }) => {
   const dispatch = useDispatch();
   const { loading, error, data } = useSelector(({ user }) => user.friends);
   const [query, setQuery] = useState('');
