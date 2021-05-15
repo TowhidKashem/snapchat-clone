@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 
-const Spotlight: React.FC<{
+const PodSpotlight: React.FC<{
   readonly title: string;
   readonly image: string;
   readonly testId?: string;
@@ -14,4 +14,4 @@ const Spotlight: React.FC<{
   </article>
 );
 
-export default Spotlight;
+export default PodSpotlight;

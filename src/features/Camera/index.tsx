@@ -19,6 +19,10 @@ declare global {
 
 const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'liberty'];
 
+const errorMessageMap = {
+  GL_INCOMPATIBLE: 'Browser does not support webGL'
+};
+
 const Camera: React.FC = () => {
   const dispatch = useDispatch();
   const cameraMode = useSelector(({ camera }) => camera.cameraMode);
@@ -33,7 +37,7 @@ const Camera: React.FC = () => {
   const [filterInitialized, setFilterInitialized] = useState(false);
   const [cameraStream, setCameraStream] = useState(null);
   const [takePic, setTakePic] = useState(false);
-  const [notSupported, setNotSupported] = useState(false);
+  const [hasBrowserSupport, setHasBrowserSupport] = useState(true);
 
   const startCamera = useCallback(async () => {
     const navigator: any = window.navigator;
@@ -65,26 +69,9 @@ const Camera: React.FC = () => {
       videoElem.current.srcObject = response;
       setCameraStream(response);
     } else {
-      setNotSupported(true);
+      setHasBrowserSupport(false);
     }
   }, [cameraMode]);
-
-  useEffect(() => {
-    startCamera();
-  }, [startCamera]);
-
-  useEffect(() => {
-    if (!activeFilter) return;
-
-    const stopCamera = () =>
-      (cameraStream as any).getTracks().forEach((track) => track.stop());
-
-    window.Filters[activeFilter].init(() => {
-      setFilterInitialized(true);
-      setLoading(false);
-      stopCamera();
-    });
-  }, [activeFilter, cameraStream]);
 
   // Set the chosen filter at the center of the nav
   const setActiveFilterButton = (selectFilter: Filter) => {
@@ -105,6 +92,38 @@ const Camera: React.FC = () => {
     }
   };
 
+  const stopFilter = useCallback(() => {
+    setActiveFilter('');
+    setShowFilterButtons(false);
+    setFilterInitialized(false);
+    dispatch(setFooterType('full'));
+    startCamera();
+    window.JEEFACEFILTERAPI.destroy();
+  }, [dispatch, startCamera]);
+
+  useEffect(() => {
+    startCamera();
+  }, [startCamera]);
+
+  useEffect(() => {
+    if (!activeFilter) return;
+
+    const stopCamera = () =>
+      (cameraStream as any).getTracks().forEach((track) => track.stop());
+
+    window.Filters[activeFilter].init((errCode) => {
+      if (errCode) {
+        alert(errorMessageMap[errCode] || 'Something went wrong!');
+        setLoading(false);
+        stopFilter();
+      } else {
+        setFilterInitialized(true);
+        setLoading(false);
+        stopCamera();
+      }
+    });
+  }, [activeFilter, cameraStream, stopFilter]);
+
   const showOpenMouth = (): boolean =>
     !loading && ['dog', 'halloween'].includes(activeFilter);
 
@@ -112,7 +131,7 @@ const Camera: React.FC = () => {
     <main className="camera">
       {loading && <Loader message="Applying Filter" fixed />}
 
-      {notSupported && (
+      {!hasBrowserSupport && (
         <div className="not-supported">
           <p>
             <span role="img" aria-label="crying emoji">
@@ -162,9 +181,10 @@ const Camera: React.FC = () => {
           buttonClass="btn-capture"
           testId="btn-capture-main"
           onclick={() => {
-            if (notSupported) return;
-            setTakePic(true);
-            if (audioElem.current) playSound('cameraShutter', audioElem.current);
+            if (hasBrowserSupport) {
+              setTakePic(true);
+              if (audioElem.current) playSound('cameraShutter', audioElem.current);
+            }
           }}
         />
 
@@ -174,11 +194,11 @@ const Camera: React.FC = () => {
             buttonClass="btn-filters"
             testId="btn-filters"
             onclick={() => {
-              if (notSupported) return;
-              setShowFilterButtons(true);
-              dispatch(setFooterType('none'));
-              // Load the center filter on the button list by default
-              onAnimationComplete(() => switchFilter(filters[2]), 100);
+              if (hasBrowserSupport) {
+                setShowFilterButtons(true);
+                dispatch(setFooterType('none'));
+                onAnimationComplete(() => switchFilter(filters[2]), 100); // Load the center filter on the button list by default
+              }
             }}
           />
         )}
@@ -195,8 +215,8 @@ const Camera: React.FC = () => {
             {filters.map((filter) => (
               <Button
                 key={filter}
-                image={`./images/filter-${filter}.svg`}
-                buttonClass={`filter-${filter}`}
+                image={'./images/filter-' + filter + '.svg'}
+                buttonClass={'filter-' + filter}
                 onclick={() => switchFilter(filter)}
               />
             ))}
@@ -205,18 +225,7 @@ const Camera: React.FC = () => {
           <div className="filter-actions">
             <Button icon="faMagic" round />
             <Button icon="faQrcode" round />
-            <Button
-              icon="faTimesCircle"
-              buttonClass="btn-close"
-              onclick={() => {
-                setActiveFilter('');
-                setShowFilterButtons(false);
-                setFilterInitialized(false);
-                dispatch(setFooterType('full'));
-                startCamera();
-                window.JEEFACEFILTERAPI.destroy();
-              }}
-            />
+            <Button icon="faTimesCircle" buttonClass="btn-close" onclick={stopFilter} />
             <Button icon="faLaugh" round />
             <Button icon="faSearch" round />
           </div>

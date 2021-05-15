@@ -4,7 +4,7 @@ import { hideDrawer } from 'AppShell/store';
 import { language } from 'utils';
 import Button from 'common/Button';
 import Widget from 'common/Widget';
-import ActionItem from 'common/Pod/ActionItem';
+import PodActionItem from 'common/PodActionItem';
 import Icon from 'common/Icon';
 import Map from './Map';
 import './index.scss';
@@ -34,19 +34,27 @@ const Account: React.FC = () => {
         <strong>{username}</strong>
       </div>
       <Widget header="Stories" transparent>
-        <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to My Story" />
-        <ActionItem
+        <PodActionItem
+          leftIcon="faCamera"
+          rightIcon="faEllipsisV"
+          label="Add to My Story"
+        />
+        <PodActionItem
           leftIcon="faCamera"
           rightIcon="faEllipsisV"
           label="Add to Our Story"
         />
       </Widget>
       <Widget header="Friends" transparent>
-        <ActionItem leftIcon="faUserPlus" rightIcon="faAngleRight" label="Add Friends" />
-        <ActionItem leftIcon="faListAlt" rightIcon="faAngleRight" label="My Friends" />
+        <PodActionItem
+          leftIcon="faUserPlus"
+          rightIcon="faAngleRight"
+          label="Add Friends"
+        />
+        <PodActionItem leftIcon="faListAlt" rightIcon="faAngleRight" label="My Friends" />
       </Widget>
       <Widget header="Bitmoji" transparent>
-        <ActionItem
+        <PodActionItem
           leftIcon="faGrinBeam"
           rightIcon="faAngleRight"
           label="Create Bitmoji"
@@ -54,7 +62,7 @@ const Account: React.FC = () => {
       </Widget>
       <Widget header="Snap Map">
         <Map />
-        <ActionItem
+        <PodActionItem
           leftIcon="faCompass"
           rightIcon="faAngleRight"
           label="Set a Status"

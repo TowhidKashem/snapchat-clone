@@ -6,7 +6,7 @@ import { escapeRegex } from 'utils';
 import Input from 'common/Input';
 import Button from 'common/Button';
 import Widget from 'common/Widget';
-import UserPod from 'common/Pod/User';
+import PodUser from 'common/PodUser';
 import Loader from 'common/Loader';
 import Error from 'common/Error';
 import './index.scss';
@@ -66,7 +66,7 @@ const Search: React.FC<{
               {hasResults && (
                 <Widget header="Quick Add">
                   {users.map((user) => (
-                    <UserPod key={user.id} user={user} />
+                    <PodUser key={user.id} user={user} />
                   ))}
                 </Widget>
               )}

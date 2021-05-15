@@ -9,7 +9,7 @@ export default {
 };
 
 export const Default = () => (
-  <Avatar src="https://s3.amazonaws.com/uifaces/faces/twitter/anatolinicolae/128.jpg" />
+  <Avatar src="https://randomuser.me/api/portraits/women/19.jpg" />
 );
 
 export const Sizes = () => {
@@ -22,10 +22,5 @@ export const Sizes = () => {
     },
     'sm'
   );
-  return (
-    <Avatar
-      src="https://s3.amazonaws.com/uifaces/faces/twitter/anatolinicolae/128.jpg"
-      size={size}
-    />
-  );
+  return <Avatar src="https://randomuser.me/api/portraits/women/19.jpg" size={size} />;
 };

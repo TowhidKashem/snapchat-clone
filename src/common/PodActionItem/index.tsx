@@ -4,7 +4,7 @@ import Icon from 'common/Icon';
 import Button from 'common/Button';
 import './index.scss';
 
-const ActionItem: React.FC<{
+const PodActionItem: React.FC<{
   readonly leftIcon: string;
   readonly rightIcon: string;
   readonly label: string;
@@ -21,4 +21,4 @@ const ActionItem: React.FC<{
   </article>
 );
 
-export default ActionItem;
+export default PodActionItem;

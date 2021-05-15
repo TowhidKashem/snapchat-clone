@@ -1,17 +1,17 @@
 import React from 'react';
-import ActionItem from './index';
+import PodActionItem from './index';
 
 export default {
-  title: 'Pod - ActionItem',
-  component: ActionItem
+  title: 'PodActionItem',
+  component: PodActionItem
 };
 
 export const Default = () => (
-  <ActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to My Story" />
+  <PodActionItem leftIcon="faCamera" rightIcon="faEllipsisV" label="Add to My Story" />
 );
 
 export const straightEdges = () => (
-  <ActionItem
+  <PodActionItem
     leftIcon="faCamera"
     rightIcon="faEllipsisV"
     label="Add to My Story"

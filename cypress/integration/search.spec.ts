@@ -18,7 +18,7 @@ describe('Search', () => {
 
   it('can filter search results', () => {
     cy.get('@searchField').focus().type('ed');
-    cy.get('@searchDrawer').find('.results .pod.user').should('have.length', 7);
+    cy.get('@searchDrawer').find('.results .pod.user').should('have.length', 3);
     cy.wait(100);
     cy.get('@searchField').type('d');
     cy.get('@searchDrawer').find('.results .pod.user').should('have.length', 1);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Spotlight from './index';
+import PodSpotlight from './index';
 
 const defaultProps = {
   title: 'What a Lovely Day!',
@@ -9,17 +9,17 @@ const defaultProps = {
 
 describe('<Spotlight />', () => {
   it('renders without crashing', () => {
-    const component = shallow(<Spotlight {...defaultProps} />);
+    const component = shallow(<PodSpotlight {...defaultProps} />);
     expect(component.length).toBe(1);
   });
 
   it('has title', () => {
-    const component = shallow(<Spotlight {...defaultProps} />);
+    const component = shallow(<PodSpotlight {...defaultProps} />);
     expect(component.find('header').text()).toBe(defaultProps.title);
   });
 
   it('has image', () => {
-    const component = shallow(<Spotlight {...defaultProps} />);
+    const component = shallow(<PodSpotlight {...defaultProps} />);
     expect(component.find('img').prop('src')).toBe(defaultProps.image);
   });
 });

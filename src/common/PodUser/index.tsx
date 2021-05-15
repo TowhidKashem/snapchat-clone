@@ -3,7 +3,7 @@ import { User as UserInterface } from 'features/User/types';
 import Avatar from 'common/Avatar';
 import './index.scss';
 
-const User: React.FC<{
+const PodUser: React.FC<{
   readonly user: UserInterface;
 }> = ({ user: { username, fullName, avatar } }) => (
   <article className="pod user">
@@ -15,4 +15,4 @@ const User: React.FC<{
   </article>
 );
 
-export default User;
+export default PodUser;

@@ -4,7 +4,7 @@ import Header from 'common/Header';
 import Widget from 'common/Widget';
 import Button from 'common/Button';
 import SkeletonFrame from 'common/SkeletonFrame';
-import SpotlightPod from 'common/Pod/Spotlight';
+import PodSpotlight from 'common/PodSpotlight';
 import { Profile } from './types';
 import './index.scss';
 
@@ -55,7 +55,7 @@ const Discover: React.FC<{
           <div className="inner">
             {profiles.length ? (
               profiles.map(({ image, title }) => (
-                <SpotlightPod
+                <PodSpotlight
                   key={image}
                   image={image}
                   title={title}
