@@ -97,7 +97,7 @@ Filters.deform = {
       NNCpath: './filters/jeelizFaceFilter/dist/',
       videoSettings,
       callbackReady: function (errCode, spec) {
-        if (errCode) return;
+        if (errCode && callback) return callback(errCode);
         Filters.deform.initThreeScene(spec);
         if (callback) setTimeout(callback, 100);
       },
