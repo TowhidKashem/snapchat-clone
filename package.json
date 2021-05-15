@@ -34,7 +34,7 @@
     "postinstall": "run-os",
     "postinstall:win32": "if not exist public/filters/jeelizFaceFilter (npm run install-filter-deps)",
     "postinstall:default": "if [ ! -d 'public/filters/jeelizFaceFilter' ]; then npm run install-filter-deps ; fi",
-    "install-filter-deps": "cd public/filters && git clone git@github.com:jeeliz/jeelizFaceFilter.git && cd jeelizFaceFilter && git reset --hard bd3cdcd0ca01ced09d836c55af82c36047d82dac && cd ../../../ && gulp",
+    "install-filter-deps": "cd public/filters && git clone git@github.com:jeeliz/jeelizFaceFilter.git && cd jeelizFaceFilter && git reset --hard 06afda0ea88a0fe30ff43d586c89024795747caa && cd ../../../ && gulp",
     "cleanup": "rm -rf node_modules build public/filters/jeelizFaceFilter",
     "build": "react-scripts build",
     "predeploy": "npm run build",

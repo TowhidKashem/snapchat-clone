@@ -4,10 +4,9 @@ import './index.scss';
 
 const Widget: React.FC<{
   readonly header: string;
-  readonly children: JSX.Element | JSX.Element[];
   readonly className?: string;
   readonly transparent?: boolean;
-}> = ({ header, children, className = '', transparent }) => (
+}> = ({ header, className = '', transparent, children }) => (
   <section
     className={classNames('widget', {
       [className]: true
