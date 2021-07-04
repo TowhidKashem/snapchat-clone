@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { v4 as uuid } from 'uuid';
-import { api, loadable } from 'utils';
+import { api, loadable, uuidv4 } from 'utils';
 import { Loadable } from 'types';
 import { Message } from './types';
 
@@ -46,7 +45,7 @@ const chatSlice = createSlice({
       prepare(author: string, message: string) {
         return {
           payload: {
-            id: uuid(),
+            id: uuidv4(),
             author,
             message,
             time: JSON.stringify(new Date())

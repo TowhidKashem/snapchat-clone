@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
 import { hideDrawer } from 'AppShell/store';
 import { language } from 'utils';
 import Button from 'common/Button';
@@ -17,7 +17,9 @@ const currentDate = new Date().toLocaleDateString(language, {
 
 const Account: React.FC = () => {
   const dispatch = useDispatch();
-  const username = useSelector(({ user }) => user.session.username);
+  const {
+    session: { username }
+  } = useSelector(({ user }: RootStateOrAny) => user);
 
   return (
     <main className="account">

@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
+import mapboxgl, { Map } from 'mapbox-gl';
+import { onAnimationComplete } from 'utils';
+import { getSnaps, getWeather } from './store';
 import { showDrawer } from 'AppShell/store';
 import { addSnap } from 'features/Snap/store';
-import { getSnaps, getWeather } from './store';
 import { Snap } from 'features/Snap/types';
-import { onAnimationComplete } from 'utils';
 import Loader from 'common/Loader';
 import Header from './Header';
 import './index.scss';
@@ -14,28 +14,29 @@ mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY as string;
 
 const SnapMap: React.FC = () => {
   const dispatch = useDispatch();
-  const { geolocation, snaps } = useSelector(({ user, snapMap }) => ({
-    geolocation: user.geolocation,
-    snaps: snapMap.snaps
-  }));
+  const {
+    user: { geolocation },
+    snapMap: { snaps }
+  } = useSelector(({ user, snapMap }: RootStateOrAny) => ({ user, snapMap }));
 
   const mapElem = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
-  const [map, setMap] = useState<mapboxgl.Map | null>(null);
+  const [map, setMap] = useState<Map | null>(null);
 
   const { latitude, longitude, city, state } = geolocation;
 
   useEffect(() => {
     dispatch(getSnaps({ lat: latitude, lon: longitude, city, state }));
     dispatch(getWeather({ lat: latitude, lon: longitude }));
-    setMap(
-      new mapboxgl.Map({
-        container: mapElem.current as HTMLDivElement,
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [longitude, latitude],
-        zoom: 13
-      }).on('load', () => setLoading(false))
-    );
+    if (mapElem.current)
+      setMap(
+        new mapboxgl.Map({
+          container: mapElem.current,
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: [longitude, latitude],
+          zoom: 13
+        }).on('load', () => setLoading(false))
+      );
   }, [dispatch, latitude, longitude, city, state]);
 
   // Add self marker on map
@@ -43,7 +44,7 @@ const SnapMap: React.FC = () => {
     if (map) {
       const addSelfMarker = () => {
         const tooltip = document.createElement('div');
-        tooltip.className = 'self-marker';
+        tooltip.classList.add('self-marker');
 
         new mapboxgl.Marker(tooltip).setLngLat([longitude, latitude]).addTo(map);
 
@@ -70,12 +71,17 @@ const SnapMap: React.FC = () => {
   // Add snaps on map after they've loaded
   useEffect(() => {
     const addSnapToMap = (snap: Snap) => {
-      const marker = document.createElement('div');
-      marker.className = 'marker';
+      const { lat, lon } = snap;
+
+      const marker = document.createElement('a');
+      marker.classList.add('marker');
       marker.setAttribute('data-test', 'marker');
-      marker.onclick = function (e: any) {
+      marker.addEventListener('click', (e: any) => {
+        e.preventDefault();
+
         // Show pulse animation
         e.target.classList.add('active');
+
         // Delay opening the drawer so we can see the pulse
         onAnimationComplete(() => {
           dispatch(addSnap(snap));
@@ -88,15 +94,17 @@ const SnapMap: React.FC = () => {
             })
           );
         }, 900);
+
         // Remove pulse
         onAnimationComplete(() => e.target.classList.remove('active'), 1000);
-      };
-      new mapboxgl.Marker(marker)
-        .setLngLat([snap.lon as number, snap.lat as number])
-        .addTo(map as mapboxgl.Map);
+      });
+
+      if (lat && lon) {
+        new mapboxgl.Marker(marker).setLngLat([lon, lat]).addTo(map as Map);
+      }
     };
 
-    snaps.map((snap) => addSnapToMap(snap));
+    snaps.map((snap: Snap) => addSnapToMap(snap));
   }, [snaps, map, dispatch]);
 
   return (

@@ -1,5 +1,7 @@
+import { Object } from 'types';
+
 export const playSound = async (sound: string, audioElem: HTMLAudioElement) => {
-  const soundMap = {
+  const soundMap: Object<string> = {
     newAppMessage: './audio/blip.mp3',
     cameraShutter: './audio/shutter.mp3'
   };

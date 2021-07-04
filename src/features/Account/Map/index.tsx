@@ -1,14 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl';
 import { useDispatch } from 'react-redux';
+import mapboxgl from 'mapbox-gl';
 import { showDrawer } from 'AppShell/store';
 import { getGeoLocation, setLatLon } from 'features/User/store';
 import Loader from 'common/Loader';
 import './index.scss';
 
-const apiKey = process.env.REACT_APP_MAP_BOX_API_KEY;
+const apiKey = process.env.REACT_APP_MAP_BOX_API_KEY as string;
 const hasApiKey = apiKey?.length ? true : false;
-if (hasApiKey) mapboxgl.accessToken = apiKey as string;
+if (hasApiKey) mapboxgl.accessToken = apiKey;
 
 const Map: React.FC = () => {
   const dispatch = useDispatch();
@@ -21,13 +21,13 @@ const Map: React.FC = () => {
     (async () => {
       // Attempt to get the user's geo location via this endpoint `https://geolocation-db.com/json/` (IP based)
       // if it fails ask the user for their location via the `navigator.geolocation` API (much slower)
-      const response = await dispatch(getGeoLocation());
+      const response: any = await dispatch(getGeoLocation());
 
       if (response.payload) {
         const { latitude, longitude } = response.payload;
         loadMap(latitude, longitude);
       } else {
-        const respond = (lat, lon) => {
+        const respond = (lat: number, lon: number) => {
           loadMap(lat, lon);
 
           dispatch(
@@ -63,9 +63,10 @@ const Map: React.FC = () => {
     })();
   }, [dispatch]);
 
-  const loadMap = (lat, lon) => {
+  const loadMap = (lat: number, lon: number) => {
+    if (!mapElem.current) return;
     const map = new mapboxgl.Map({
-      container: mapElem.current as HTMLDivElement,
+      container: mapElem.current,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [lon, lat],
       zoom: 13,
@@ -74,7 +75,7 @@ const Map: React.FC = () => {
       setLoading(false);
       // Add self marker
       const tooltip = document.createElement('div');
-      tooltip.className = 'self-marker';
+      tooltip.classList.add('self-marker');
       new mapboxgl.Marker(tooltip).setLngLat([lon, lat]).addTo(map);
     });
   };

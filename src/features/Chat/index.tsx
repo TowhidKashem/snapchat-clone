@@ -1,8 +1,9 @@
 import React, { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
 import classNames from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
 import { hideDrawer } from 'AppShell/store';
 import { getMessages, postMessage } from './store';
+import { Message } from './types';
 import { dummyMessages } from './data';
 import { randomArrayVal, playSound, sleep } from 'utils';
 import Input from 'common/Input';
@@ -15,11 +16,12 @@ import './index.scss';
 
 const Chat: React.FC = () => {
   const dispatch = useDispatch();
-  const { username, thread, messages } = useSelector(({ user, chat }) => ({
-    username: user.session.username,
-    thread: chat.thread,
-    messages: chat.messages
-  }));
+  const {
+    user: {
+      session: { username }
+    },
+    chat: { thread, messages }
+  } = useSelector(({ user, chat }: RootStateOrAny) => ({ user, chat }));
 
   const messageContainer = useRef<HTMLElement>(null);
   const audioElem = useRef<HTMLAudioElement>(null);
@@ -83,7 +85,7 @@ const Chat: React.FC = () => {
         ) : messages.error ? (
           <Error />
         ) : (
-          messages.data.map(({ author, message, time }) => (
+          messages.data.map(({ author, message, time }: Message) => (
             <article
               key={time}
               className={classNames('message', {

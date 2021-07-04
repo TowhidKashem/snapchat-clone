@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
 import { Animated } from 'react-animated-css';
-import { useSelector, useDispatch } from 'react-redux';
 import { hideDrawer } from 'AppShell/store';
+import { User } from 'features/User/types';
 import { escapeRegex } from 'utils';
 import Input from 'common/Input';
 import Button from 'common/Button';
@@ -15,7 +16,9 @@ const Search: React.FC<{
   readonly show: boolean;
 }> = ({ show }) => {
   const dispatch = useDispatch();
-  const { loading, error, data } = useSelector(({ user }) => user.friends);
+  const {
+    friends: { loading, error, data }
+  } = useSelector(({ user }: RootStateOrAny) => user);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -25,7 +28,8 @@ const Search: React.FC<{
   const pattern = new RegExp(escapeRegex(query), 'gi');
   const users = query
     ? data.filter(
-        ({ fullName, username }) => fullName.match(pattern) || username.match(pattern)
+        ({ fullName, username }: User) =>
+          fullName.match(pattern) || username.match(pattern)
       )
     : data;
   const hasResults = users?.length > 0;
@@ -65,7 +69,7 @@ const Search: React.FC<{
             <div className="results">
               {hasResults && (
                 <Widget header="Quick Add">
-                  {users.map((user) => (
+                  {users.map((user: User) => (
                     <PodUser key={user.id} user={user} />
                   ))}
                 </Widget>

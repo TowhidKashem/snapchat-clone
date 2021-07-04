@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { api, loadable } from 'utils';
 import { Loadable } from 'types';
-import { Photos, CameraMode } from './types';
+import { Photo, CameraMode } from './types';
 
 const initialState: {
   cameraMode: CameraMode;
   photoTaken: boolean;
-  photos: Loadable<Photos>;
+  photos: Loadable<Photo[]>;
 } = {
   cameraMode: 'user',
   photoTaken: false,
@@ -33,7 +33,7 @@ const cameraSlice = createSlice({
       ) {
         const { month, year, dataURL } = action.payload;
         if (state.photoTaken) {
-          state.photos[0].data.images.unshift(action.payload.dataURL);
+          state.photos.data[0].images.unshift(action.payload.dataURL);
         } else {
           state.photoTaken = true;
           state.photos.data.unshift({

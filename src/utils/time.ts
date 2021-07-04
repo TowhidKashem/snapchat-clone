@@ -1,4 +1,4 @@
-export const relativeTime = (timestamp: number) => {
+export const relativeTime = (timestamp: number): string => {
   const msPerMinute = 60 * 1000;
   const msPerHour = msPerMinute * 60;
   const msPerDay = msPerHour * 24;

@@ -1,31 +1,25 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
-import { useSelector, useDispatch } from 'react-redux';
 import { setFooterType } from 'AppShell/store';
-import { Filter, FilterScript } from './types';
+import { Object } from 'types';
+import { Filter } from './types';
 import { promise, playSound, onAnimationComplete } from 'utils';
 import Button from 'common/Button';
 import Loader from 'common/Loader';
 import PhotoCapture from './PhotoCapture';
 import './index.scss';
 
-declare global {
-  interface Window {
-    JEEFACEFILTERAPI: any;
-    Filters: FilterScript;
-  }
-}
-
 const defaultFilters: Filter[] = ['dog', 'halloween', 'deform', 'bees', 'liberty'];
 
-const errorMessageMap = {
+const errorMessageMap: Object<string> = {
   GL_INCOMPATIBLE: 'Browser does not support webGL'
 };
 
 const Camera: React.FC = () => {
   const dispatch = useDispatch();
-  const cameraMode = useSelector(({ camera }) => camera.cameraMode);
+  const { cameraMode } = useSelector(({ camera }: RootStateOrAny) => camera);
 
   const videoElem = useRef<HTMLVideoElement>(null);
   const audioElem = useRef<HTMLAudioElement>(null);
@@ -35,17 +29,17 @@ const Camera: React.FC = () => {
   const [filters, setFilters] = useState<Filter[]>(defaultFilters);
   const [activeFilter, setActiveFilter] = useState<Filter>('');
   const [filterInitialized, setFilterInitialized] = useState(false);
-  const [cameraStream, setCameraStream] = useState(null);
+  const [cameraStream, setCameraStream] = useState<any>(null);
   const [takePic, setTakePic] = useState(false);
   const [hasBrowserSupport, setHasBrowserSupport] = useState(true);
 
   const startCamera = useCallback(async () => {
-    const navigator: any = window.navigator;
+    const { navigator }: any = window;
     const maxWidth = (document.querySelector('#wrapper') as HTMLDivElement)?.offsetWidth;
 
     if (!('mediaDevices' in navigator)) navigator.mediaDevices = {};
     if (!('getUserMedia' in navigator.mediaDevices)) {
-      navigator.mediaDevices.getUserMedia = (constraints) => {
+      navigator.mediaDevices.getUserMedia = (constraints: any) => {
         const getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
         if (!getUserMedia)
           return Promise.reject(new Error('getUserMedia() is not implemented!'));
@@ -109,9 +103,9 @@ const Camera: React.FC = () => {
     if (!activeFilter) return;
 
     const stopCamera = () =>
-      (cameraStream as any).getTracks().forEach((track) => track.stop());
+      cameraStream?.getTracks().forEach((track: any) => track.stop());
 
-    window.Filters[activeFilter].init((errCode) => {
+    window.Filters[activeFilter].init((errCode: string) => {
       if (errCode) {
         alert(errorMessageMap[errCode] || 'Something went wrong!');
         setLoading(false);
@@ -169,11 +163,13 @@ const Camera: React.FC = () => {
         })}
       />
 
-      <PhotoCapture
-        takePic={takePic}
-        closePic={() => setTakePic(false)}
-        videoElem={videoElem.current as HTMLVideoElement}
-      />
+      {videoElem.current && (
+        <PhotoCapture
+          takePic={takePic}
+          closePic={() => setTakePic(false)}
+          videoElem={videoElem.current}
+        />
+      )}
 
       <section className="controls">
         <Button
@@ -215,8 +211,8 @@ const Camera: React.FC = () => {
             {filters.map((filter) => (
               <Button
                 key={filter}
-                image={'./images/filter-' + filter + '.svg'}
-                buttonClass={'filter-' + filter}
+                image={`./images/filter-${filter}.svg`}
+                buttonClass={`filter-${filter}`}
                 onclick={() => switchFilter(filter)}
               />
             ))}

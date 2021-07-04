@@ -1,11 +1,21 @@
+import { Object } from 'types';
+
+type Options = Object<any> | null;
+
 export const api = {
   baseURL: './api',
-  get: (endpoint, external = false) => api.respond('get', endpoint, null, external),
-  post: (endpoint, options) => api.respond('post', endpoint, options),
-  put: (endpoint, options) => api.respond('put', endpoint, options),
-  patch: (endpoint, options) => api.respond('patch', endpoint, options),
-  delete: (endpoint) => api.respond('delete', endpoint),
-  respond: async (method, endpoint, data?, external?) => {
+  get: (endpoint: string, external = false) =>
+    api.respond('get', endpoint, null, external),
+  post: (endpoint: string, options: Options) => api.respond('post', endpoint, options),
+  put: (endpoint: string, options: Options) => api.respond('put', endpoint, options),
+  patch: (endpoint: string, options: Options) => api.respond('patch', endpoint, options),
+  delete: (endpoint: string) => api.respond('delete', endpoint),
+  respond: async (
+    method: string,
+    endpoint: string,
+    data?: Options,
+    external?: boolean
+  ) => {
     const url = external ? endpoint : api.baseURL + endpoint;
     const options = data
       ? {
@@ -33,17 +43,18 @@ export const promise = (promise: Promise<[boolean, any]>) =>
     .catch((err) => [err]);
 
 // https://levelup.gitconnected.com/debounce-in-javascript-improve-your-applications-performance-5b01855e086
-export const debounce = (func, wait) => {
-  let timeout;
-  return function executedFunction(...args) {
+export const debounce = (func: () => void, wait: number) => {
+  let timeout: ReturnType<typeof setTimeout> | null;
+  return function executedFunction(...args: any) {
     const later = () => {
       timeout = null;
+      // @ts-ignore
       func(...args);
     };
-    clearTimeout(timeout);
+    if (timeout) clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
 };
 
-export const sleep = (milliseconds) =>
+export const sleep = (milliseconds: number) =>
   new Promise((resolve) => setTimeout(resolve, milliseconds));

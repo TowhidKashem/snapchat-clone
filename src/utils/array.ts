@@ -1,1 +1,1 @@
-export const randomArrayVal = (arr) => arr[Math.floor(Math.random() * arr.length)];
+export const randomArrayVal = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];

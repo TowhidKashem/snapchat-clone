@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, RootStateOrAny } from 'react-redux';
 import classNames from 'classnames';
 import { language } from 'utils';
 import { atleastOneDrawerOpen } from '../utils';
@@ -7,7 +7,7 @@ import Icon from 'common/Icon';
 import './index.scss';
 
 const Toolbar: React.FC = () => {
-  const drawers = useSelector(({ app }) => app.drawers);
+  const { drawers } = useSelector(({ app }: RootStateOrAny) => app);
   const [time, setTime] = useState('');
 
   const updateTime = () => {

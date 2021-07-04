@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Input from './index';
 import Icon from 'common/Icon';
+import Input from './index';
 
 const defaultProps = { placeholder: 'Type here...' };
 
@@ -68,9 +68,12 @@ describe('<Input />', () => {
         onChange: 'change'
       };
       for (let i in handlers) {
+        // @ts-ignore
         const prop = { [i]: handlers[i] };
         const component = shallow(<Input {...defaultProps} {...prop} />);
+        // @ts-ignore
         component.find('input[type="text"]').simulate(events[i]);
+        // @ts-ignore
         expect(handlers[i]).toHaveBeenCalledTimes(1);
       }
     });

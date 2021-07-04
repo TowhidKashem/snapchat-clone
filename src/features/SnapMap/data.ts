@@ -1,4 +1,6 @@
-export const abbrConditionMap = {
+import { Object } from 'types';
+
+export const abbrConditionMap: Object<string> = {
   sn: 'snow',
   sl: 'sleet',
   h: 'hail',
@@ -11,7 +13,7 @@ export const abbrConditionMap = {
   lc: 'light-cloud'
 };
 
-export const conditionIconMap = {
+export const conditionIconMap: Object<string> = {
   snow: 'faSnowflake',
   sleet: 'faIcicles',
   hail: 'faCloudMeatball',

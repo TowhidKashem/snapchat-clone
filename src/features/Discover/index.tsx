@@ -1,21 +1,21 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, RefObject } from 'react';
 import { api, sleep, debounce, elemInView } from 'utils';
+import { Profile } from './types';
 import Header from 'common/Header';
 import Widget from 'common/Widget';
 import Button from 'common/Button';
 import SkeletonFrame from 'common/SkeletonFrame';
 import PodSpotlight from 'common/PodSpotlight';
-import { Profile } from './types';
 import './index.scss';
 
 const Discover: React.FC<{
-  readonly drawerContent;
+  readonly drawerContent: RefObject<HTMLElement>;
 }> = ({ drawerContent }) => {
-  const loadMore = useRef(null);
+  const loadMore = useRef<HTMLDivElement>(null);
   const isFetching = useRef(false);
   const onScroll = useRef(
     debounce(() => {
-      if (!isFetching.current && elemInView(loadMore.current))
+      if (!isFetching.current && elemInView(loadMore))
         setPage((prevPage) => prevPage + 1);
     }, 10)
   );
@@ -24,7 +24,7 @@ const Discover: React.FC<{
   const [profiles, setProfiles] = useState<Profile[]>([]);
 
   useEffect(() => {
-    drawerContent.current.addEventListener('scroll', onScroll.current);
+    drawerContent?.current?.addEventListener('scroll', onScroll.current);
   }, [drawerContent]);
 
   // Infinite scroll
@@ -39,7 +39,7 @@ const Discover: React.FC<{
         isFetching.current = false;
       }
       if (page === 3)
-        drawerContent.current.removeEventListener('scroll', onScroll.current);
+        drawerContent?.current?.removeEventListener('scroll', onScroll.current);
     })();
   }, [page, drawerContent]);
 

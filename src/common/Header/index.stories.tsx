@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Provider } from 'react-redux';
 import { store } from 'index';
 import Header from './index';
 
-const withProvider = (component) => <Provider store={store}>{component}</Provider>;
+const withProvider = (component: ReactElement) => (
+  <Provider store={store}>{component}</Provider>
+);
 
 export default {
   title: 'Header',

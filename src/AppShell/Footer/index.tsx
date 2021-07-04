@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
 import classNames from 'classnames';
 import { Animated } from 'react-animated-css';
 import { showDrawer, hideAllDrawers, setFooterType } from 'AppShell/store';
@@ -9,10 +9,7 @@ import './index.scss';
 
 const Footer: React.FC = () => {
   const dispatch = useDispatch();
-  const { drawers, footerType } = useSelector(({ app }) => ({
-    drawers: app.drawers,
-    footerType: app.footerType
-  }));
+  const { drawers, footerType } = useSelector(({ app }: RootStateOrAny) => app);
 
   return (
     <>

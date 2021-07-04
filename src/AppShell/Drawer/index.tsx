@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
-import { useSelector } from 'react-redux';
-import classNames from 'classnames';
+import React, { useRef, ReactElement } from 'react';
+import { useSelector, RootStateOrAny } from 'react-redux';
 import { Animated } from 'react-animated-css';
 import { onAnimationComplete } from 'utils';
-import { AnimationType } from '../types';
+import { Object } from 'types';
+import { AnimationType, Drawer as DrawerT } from '../types';
 import Account from 'features/Account';
 import Search from 'features/Search';
 import SnapMap from 'features/SnapMap';
@@ -14,11 +14,11 @@ import Discover from 'features/Discover';
 import './index.scss';
 
 const Drawer: React.FC = () => {
-  const drawers = useSelector(({ app }) => app.drawers);
-  const drawerContent = useRef(null);
+  const { drawers } = useSelector(({ app }: RootStateOrAny) => app);
+  const drawerContent = useRef<HTMLElement>(null);
 
-  const getComponent = (component, show) => {
-    const componentMap = {
+  const getComponent = (component: string, show: boolean): ReactElement => {
+    const componentMap: Object<ReactElement> = {
       account: <Account />,
       search: <Search show={show} />,
       snapMap: <SnapMap />,
@@ -40,10 +40,10 @@ const Drawer: React.FC = () => {
             animationOut,
             animationInDuration,
             animationOutDuration,
-            show,
+            show = false,
             theme,
             position
-          }) => {
+          }: DrawerT) => {
             const elem = document.getElementById(component);
             if (show) {
               elem?.classList.remove('collapse');
@@ -58,10 +58,7 @@ const Drawer: React.FC = () => {
               <aside
                 id={component}
                 key={component}
-                className={classNames('drawer', {
-                  [theme as string]: true,
-                  [position as string]: true
-                })}
+                className={`drawer ${theme} ${position}`}
               >
                 <div className="view" data-test={`${component}-drawer`}>
                   <Animated
@@ -69,7 +66,7 @@ const Drawer: React.FC = () => {
                     animationOut={animationOut as AnimationType}
                     animationInDuration={animationInDuration}
                     animationOutDuration={animationOutDuration}
-                    isVisible={show as boolean}
+                    isVisible={show}
                   >
                     <section
                       ref={drawerContent}

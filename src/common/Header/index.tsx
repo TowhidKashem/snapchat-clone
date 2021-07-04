@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
 import { showDrawer } from 'AppShell/store';
 import { toggleCameraMode } from 'features/Camera/store';
 import { isMobile } from 'utils';
@@ -12,9 +12,11 @@ const Header: React.FC<{
   readonly insideDrawer?: boolean;
 }> = ({ insideDrawer }) => {
   const dispatch = useDispatch();
-  const avatar = useSelector(({ user }) => user.session.avatar);
+  const { session } = useSelector(({ user }: RootStateOrAny) => user);
 
-  const iconImage = avatar ? { image: avatar } : { icon: 'faUserCircle' };
+  const iconImage = session?.avatar
+    ? { image: session.avatar }
+    : { icon: 'faUserCircle' };
 
   return (
     <header className="header" data-test="header">

@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from 'utils';
 import { celsiusToFahrenheit } from './utils';
-import { Snap } from 'features/Snap/types';
 import { Weather } from './types';
+import { Snap } from 'features/Snap/types';
 import { abbrConditionMap } from './data';
 
 const initialState: {
@@ -65,7 +65,7 @@ export const getSnaps = createAsyncThunk(
       }
     ];
 
-    const snaps = response.snaps.map((snap, index) => ({
+    const snaps = response.snaps.map((snap: Snap, index: number) => ({
       ...snap,
       location: city && state ? `${city}, ${state}` : null,
       lat: coords[index].lat,

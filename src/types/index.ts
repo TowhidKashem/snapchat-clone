@@ -3,3 +3,7 @@ export interface Loadable<T> {
   error: boolean;
   data: T;
 }
+
+export interface Object<T> {
+  [key: string]: T;
+}

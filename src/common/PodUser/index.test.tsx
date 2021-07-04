@@ -1,15 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Gender } from 'features/User/types';
+import { User } from 'features/User/types';
 import Avatar from 'common/Avatar';
 import PodUser from './index';
 
-const defaultProps = {
+const defaultProps: {
+  user: User;
+} = {
   user: {
     id: '00975694-7b26-4cdc-83d7-a6bdd783c987',
     username: 'Itzel50',
     avatar: 'https://randomuser.me/api/portraits/women/19.jpg',
-    gender: 'male' as Gender,
+    gender: 'male',
     age: 22,
     fullName: 'Josiane Keebler'
   }

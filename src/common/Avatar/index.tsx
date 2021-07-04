@@ -1,9 +1,10 @@
 import React from 'react';
+import { Object } from 'types';
 import './index.scss';
 
 export type sizeType = 'sm' | 'md' | 'lg';
 
-export const sizeMap = {
+export const sizeMap: Object<number> = {
   sm: 45,
   md: 100,
   lg: 150

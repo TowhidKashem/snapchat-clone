@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
 import { showDrawer } from 'AppShell/store';
 import { addSnap } from 'features/Snap/store';
+import { Photo } from 'features/Camera/types';
 import Header from 'common/Header';
 import Button from 'common/Button';
 import Loader from 'common/Loader';
@@ -10,12 +11,9 @@ import './index.scss';
 
 const Archive: React.FC = () => {
   const dispatch = useDispatch();
-  const { photos, photoTaken } = useSelector(({ camera }) => ({
-    photos: camera.photos,
-    photoTaken: camera.photoTaken
-  }));
+  const { photos, photoTaken } = useSelector(({ camera }: RootStateOrAny) => camera);
 
-  const openPhoto = (image) => {
+  const openPhoto = (image: string) => {
     dispatch(
       addSnap({
         type: 'photo',
@@ -54,7 +52,7 @@ const Archive: React.FC = () => {
             </section>
           )}
 
-          {photos.data.map(({ month, year, images }) => (
+          {photos.data.map(({ month, year, images }: Photo) => (
             <section key={month} className="month" data-test="month">
               <h3>
                 {month} {year}

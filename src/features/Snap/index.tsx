@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
 import classNames from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
 import { hideDrawer } from 'AppShell/store';
 import { removeSnap } from './store';
 import { onAnimationComplete, relativeTime } from 'utils';
@@ -9,7 +9,7 @@ import './index.scss';
 
 const Snap: React.FC = () => {
   const dispatch = useDispatch();
-  const snap = useSelector(({ snap }) => snap);
+  const snap = useSelector(({ snap }: RootStateOrAny) => snap);
   const videoElem = useRef<HTMLVideoElement>(null);
 
   const { location, time, type, url, caption, shareable } = snap;

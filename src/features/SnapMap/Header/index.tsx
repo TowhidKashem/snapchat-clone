@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
 import { hideDrawer } from 'AppShell/store';
 import Button from 'common/Button';
 import Icon from 'common/Icon';
@@ -8,10 +8,12 @@ import './index.scss';
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
-  const { city, weather } = useSelector(({ user, snapMap }) => ({
-    city: user.geolocation.city,
-    weather: snapMap.weather
-  }));
+  const {
+    user: {
+      geolocation: { city }
+    },
+    snapMap: { weather }
+  } = useSelector(({ user, snapMap }: RootStateOrAny) => ({ user, snapMap }));
   const { temperature, condition } = weather;
 
   return (

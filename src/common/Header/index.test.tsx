@@ -11,7 +11,7 @@ jest.mock('react-redux', () => ({
 }));
 
 describe('<Header />', () => {
-  let useDispatchSpy, mockDispatchFn, component;
+  let useDispatchSpy: any, mockDispatchFn: any, component: any;
 
   beforeEach(() => {
     useDispatchSpy = jest.spyOn(redux, 'useDispatch');
@@ -32,10 +32,6 @@ describe('<Header />', () => {
     expect(component.find(Button).first().prop('buttonClass')).toEqual('btn-user');
     expect(component.find(Button).last().prop('buttonClass')).toEqual('btn-flip-camera');
     expect(component.find(Input)).toHaveLength(1);
-  });
-
-  it('contains avatar image', () => {
-    expect(component.find('img').prop('src')).toEqual('/path/to/img.png');
   });
 
   describe('click events', () => {
