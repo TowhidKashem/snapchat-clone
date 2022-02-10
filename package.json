@@ -89,7 +89,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-terser": "^1.2.0",
     "husky": "^4.2.5",
-    "node-sass": "^4.14.0",
+    "node-sass": "^7.0.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "run-script-os": "^1.1.1",
