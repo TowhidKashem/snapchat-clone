@@ -68,13 +68,14 @@
       display: flex;
       padding: 15px;
 
+      .btn-download,
+      .btn-share {
+        @include highlight(60px, 60px);
+      }
+
       .left {
         .btn {
           margin-right: 15px;
-        }
-
-        .btn-download {
-          @include highlight(60px, 60px);
         }
       }
 

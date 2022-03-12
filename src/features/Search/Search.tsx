@@ -34,7 +34,7 @@ const Search: React.FC<
           fullName.match(pattern) || username.match(pattern)
       )
     : data;
-  const hasResults = users?.length > 0;
+  const hasResults = users.length > 0;
 
   return (
     <main className="search">

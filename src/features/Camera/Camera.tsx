@@ -7,6 +7,7 @@ import Button from 'components/Button/Button';
 import Loader from 'components/Loader/Loader';
 import PhotoCapture from './PhotoCapture/PhotoCapture';
 import { getDeviceWidth, playSound, onAnimationComplete } from 'utils';
+import { GENERIC_ERROR } from 'utils/system';
 import { Filter, FilterState, CameraState, filterButtonIcons } from './data';
 import './Camera.scss';
 
@@ -48,7 +49,7 @@ const Camera: React.FC = () => {
 
   useEffect(() => {
     startCamera();
-  }, []);
+  }, [cameraMode]);
 
   const startCamera = async () => {
     try {
@@ -87,7 +88,7 @@ const Camera: React.FC = () => {
       if (errorCode) {
         removeFilter();
         dispatchFilter({ isLoading: false });
-        alert('Oops something went wrong!');
+        alert(GENERIC_ERROR);
       } else {
         stopCamera();
         dispatchFilter({
@@ -122,7 +123,7 @@ const Camera: React.FC = () => {
             <span role="img" aria-label="crying emoji">
               😭
             </span>{' '}
-            Either your browser doesn't support the getUserMedia API used by the camera or
+            Either your browser doesn't support the MediaDevices API used by the camera or
             you declined camera access!
           </p>
         </div>

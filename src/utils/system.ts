@@ -1,3 +1,6 @@
+export const GENERIC_ERROR = 'Something went wrong!';
+export const GENERIC_ERROR_RETRY = 'Something went wrong, please try again!';
+
 type Options = Record<string, string | number | boolean | Object | any[]> | null;
 
 export const api = {

@@ -10,7 +10,10 @@ const Section: React.FC<
     } & React.HTMLAttributes<HTMLElement>
   >
 > = ({ header, transparent, children, ...nativeElemProps }) => (
-  <section className={classNames('section', nativeElemProps.className)}>
+  <section
+    {...nativeElemProps}
+    className={classNames('section', nativeElemProps.className)}
+  >
     <header>{header}</header>
     <div
       className={classNames('inner-content', {

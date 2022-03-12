@@ -1,4 +1,4 @@
-<h1 align="center">👻 SnapChat Clone</h1>
+<h1 align="center">👻 Snapchat Clone</h1>
 
 <div align="center">
   <img src="./public/readme/tech-logos/react.svg" width="55" alt="React" />
@@ -35,7 +35,7 @@
   <a href="https://towhidkashem.github.io/snapchat-clone/">[LIVE APP]</a>
 </h2>
 
-<img src="public/readme/filters.gif" />
+<img src="public/readme/filters.gif" alt="Preview" />
 
 <h3 align="center">
   <a href="https://towhidkashem.github.io/snapchat-clone/">[Live App]</a>
@@ -66,7 +66,7 @@
             "components/containers" model), this way of reasoning is more human
             friendly
           </li>
-          <li><code>common</code> directory houses all shared components</li>
+          <li><code>components</code> directory houses all shared components</li>
         </ul>
       </li>
       <li>Custom component library showcased in <code>Storybook</code></li>
@@ -388,7 +388,7 @@
       <td valign="top">
         <ul>
           <li>
-            All the shared components in the <code>common</code> directory have
+            All the shared components in the <code>components</code> directory have
             unit tests inside their respective folders. They end with a
             <code>*.test.tsx</code> extension.
           </li>
@@ -417,8 +417,8 @@
   <li>
     The project's <code>baseUrl</code> is set to the <code>src</code> directory
     in tsconfig so you can use clean import paths like
-    <code>import Foo from 'common/Foo';</code> instead of messy ones like
-    <code>import Foo from '../../common/Foo';</code>. You can also use these in
+    <code>import Foo from 'components/Foo';</code> instead of messy ones like
+    <code>import Foo from '../../components/Foo';</code>. You can also use these in
     the SASS files, e.g. <code>@import '~styles/foo';</code>
   </li>
   <li>

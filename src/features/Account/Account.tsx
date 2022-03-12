@@ -66,7 +66,7 @@ const Account: React.FC = () => {
           >
             <Icon name="faGithub" />
           </a>
-          Joined SnapChat on {currentDate}
+          Joined Snapchat on {currentDate}
         </p>
       </footer>
     </main>

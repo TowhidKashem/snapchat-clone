@@ -1,6 +1,6 @@
 {
-  "short_name": "SnapChat Clone",
-  "name": "SnapChat clone built with React, Redux and TypeScript",
+  "short_name": "Snapchat Clone",
+  "name": "Snapchat clone built with React, Redux and TypeScript",
   "icons": [
     {
       "src": "favicon.ico",

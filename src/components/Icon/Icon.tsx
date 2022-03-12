@@ -137,6 +137,7 @@ const Icon: React.FC<Readonly<{ name: string } & Partial<FontAwesomeIconProps>>>
   ...libraryProps
 }) => (
   <FontAwesomeIcon
+    {...libraryProps}
     icon={iconMap[name] as IconProp}
     className={`icon ${libraryProps.className}`}
   />

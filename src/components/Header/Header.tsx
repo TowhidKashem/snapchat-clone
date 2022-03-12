@@ -56,7 +56,7 @@ const Header: React.FC<
               if (isMobile()) {
                 dispatch(toggleCameraMode());
               } else {
-                alert('You need a front facing camera for this, try it on your phone!');
+                alert('You need a front facing camera for this, try it on your phone.');
               }
             }}
           />

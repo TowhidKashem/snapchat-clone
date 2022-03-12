@@ -30,8 +30,8 @@ const Input: React.FC<
   const [full, setFull] = useState(false);
 
   useEffect(() => {
-    animate && setFull(true);
-    onAnimationComplete(() => focus && inputElem?.current?.focus());
+    if (animate) setFull(true);
+    onAnimationComplete(() => focus && inputElem.current?.focus());
   }, [animate, focus]);
 
   const disabled = nativeElemProps.onClick ? true : false;

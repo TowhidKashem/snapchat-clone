@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import { setPhoto } from '../CameraStore';
-import { isIOS, stretchViewPortHeight } from 'utils';
+import { stretchViewPortHeight, canvasToBase64, base64ToBlob, downloadFile } from 'utils';
+import { GENERIC_ERROR_RETRY } from 'utils/system';
 import Button from 'components/Button/Button';
 import './PhotoCapture.scss';
 
@@ -24,6 +25,10 @@ const PhotoCapture: React.FC<
   }>
 > = ({ takePic, closePic, videoElem }) => {
   const dispatch = useDispatch();
+
+  const { photos } = useSelector(({ camera }: RootStateOrAny) => camera);
+  const latestPhoto = photos.data.length ? photos.data[0].images[0] : null;
+
   const canvasElem = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -33,13 +38,18 @@ const PhotoCapture: React.FC<
   useEffect(() => {
     if (takePic) {
       takePhoto();
-      dispatch(setPhoto(getDataURL()));
+
+      if (canvasElem.current) {
+        const base64url = canvasToBase64(canvasElem.current, 'image/png');
+        dispatch(setPhoto(base64url));
+      }
     }
   }, [takePic]);
 
   const takePhoto = () => {
     const { innerWidth, innerHeight } = window;
-    const context = canvasElem?.current?.getContext('2d');
+    const context = canvasElem.current?.getContext('2d');
+
     if (context) {
       context.canvas.width = innerWidth;
       context.canvas.height = innerHeight;
@@ -47,19 +57,32 @@ const PhotoCapture: React.FC<
     }
   };
 
-  const downloadPhoto = () => {
-    const dataURL = getDataURL();
-    if (isIOS()) {
-      window.open(dataURL, '_blank');
-    } else {
-      const link = document.createElement('a');
-      link.download = 'download.png';
-      link.href = dataURL;
-      link.click();
+  const sharePhoto = async () => {
+    const navigator = window.navigator as any;
+    const errorMessage = "Your device doesn't support the Web Share API.";
+
+    if (!navigator.share || !navigator.canShare) return alert(errorMessage);
+
+    const blob = await base64ToBlob(latestPhoto);
+    const files = [
+      new File([blob], 'share.png', {
+        type: blob.type
+      })
+    ];
+
+    if (!navigator.canShare({ files })) return alert(errorMessage);
+
+    try {
+      navigator.share({
+        title: 'Share',
+        text: 'Hey, check out this photo I just took!',
+        url: window.location.href,
+        files
+      });
+    } catch (error) {
+      alert(GENERIC_ERROR_RETRY);
     }
   };
-
-  const getDataURL = () => canvasElem?.current?.toDataURL('image/png') || '';
 
   return (
     <section
@@ -83,13 +106,18 @@ const PhotoCapture: React.FC<
             <Button
               icon="faDownload"
               label="Save"
-              onClick={downloadPhoto}
               className="btn-download"
+              onClick={() => downloadFile(latestPhoto)}
             />
             <Button icon="faExternalLinkAlt" label="Story" />
           </div>
           <div className="right">
-            <Button icon="faPlayCircle" label="Send To" />
+            <Button
+              icon="faPlayCircle"
+              label="Send To"
+              className="btn-share"
+              onClick={sharePhoto}
+            />
           </div>
         </footer>
       </div>
