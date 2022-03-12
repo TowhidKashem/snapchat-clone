@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/snapchat-clone/precache-manifest.a66870eeee884ff84e97e01cfe0778ff.js"
+  "/snapchat-clone/precache-manifest.7b84a425625eda22d6c90385fd56c8d7.js"
 );
 
 self.addEventListener('message', (event) => {
