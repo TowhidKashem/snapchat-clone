@@ -39,6 +39,7 @@ describe('Archive', () => {
   describe('new photos', () => {
     beforeEach(() => {
       cy.loadApp();
+      cy.wait(500);
       cy.get('[data-test=btn-capture-main]').as('captureBtn');
       cy.get('@captureBtn').click();
       cy.get('[data-test=photo-capture]').as('photoCapture');

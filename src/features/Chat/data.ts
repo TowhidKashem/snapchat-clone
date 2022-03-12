@@ -1,3 +1,10 @@
+export type Message = {
+  id: string;
+  author: string;
+  message: string;
+  time: string;
+};
+
 export const dummyMessages = [
   "Oh wow I can't believe it!",
   "Hahaha you're so right!!",

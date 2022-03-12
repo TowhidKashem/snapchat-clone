@@ -1,0 +1,20 @@
+@import '~styles/vars';
+
+.section {
+  margin-bottom: 20px;
+
+  > header {
+    font-weight: $font-semi-bold;
+    font-size: 16px;
+    color: $color-grey-shade-1;
+    margin-bottom: 8px;
+  }
+
+  .inner-content {
+    &:not(.transparent) {
+      box-shadow: 0 0 8px $color-grey-shade-5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  }
+}

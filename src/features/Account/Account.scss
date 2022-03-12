@@ -1,0 +1,62 @@
+@import '~styles/vars';
+@import '~styles/extendables';
+@import '~styles/mixins';
+
+.account {
+  padding-bottom: 15px;
+
+  > header {
+    @extend %center-x-y;
+    display: flex;
+    padding: 10px 10px;
+    margin-bottom: -15px;
+
+    .btn-close {
+      @include highlight(35px, 35px, 10px);
+
+      .icon {
+        font-size: 25px;
+      }
+    }
+
+    .ico-gear {
+      font-size: 20px;
+      margin-left: auto;
+    }
+  }
+
+  .logo {
+    text-align: center;
+
+    svg {
+      width: 100px;
+      margin-bottom: 5px;
+    }
+
+    strong {
+      display: block;
+      font-weight: $font-semi-bold;
+    }
+  }
+
+  footer {
+    padding: 10px 0 35px;
+
+    p {
+      font-size: 12px;
+      font-weight: $font-semi-bold;
+      color: $color-grey-shade-4;
+      text-align: center;
+
+      a {
+        display: block;
+        margin-bottom: 10px;
+
+        .icon {
+          color: $color-grey-shade-4;
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}

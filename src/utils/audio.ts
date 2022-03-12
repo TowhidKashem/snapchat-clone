@@ -1,7 +1,5 @@
-import { Object } from 'types';
-
 export const playSound = async (sound: string, audioElem: HTMLAudioElement) => {
-  const soundMap: Object<string> = {
+  const soundMap: Record<string, string> = {
     newAppMessage: './audio/blip.mp3',
     cameraShutter: './audio/shutter.mp3'
   };
@@ -11,5 +9,5 @@ export const playSound = async (sound: string, audioElem: HTMLAudioElement) => {
   audioElem.src = soundMap[sound];
   try {
     await audioElem.play();
-  } catch (err) {}
+  } catch (error) {}
 };

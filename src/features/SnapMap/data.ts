@@ -1,6 +1,12 @@
-import { Object } from 'types';
+export const celsiusToFahrenheit = (celsius: number): number =>
+  Math.round(celsius * 1.8 + 32);
 
-export const abbrConditionMap: Object<string> = {
+export type Weather = {
+  temperature: number;
+  condition: string;
+};
+
+export const abbrConditionMap: Record<string, string> = {
   sn: 'snow',
   sl: 'sleet',
   h: 'hail',
@@ -13,7 +19,7 @@ export const abbrConditionMap: Object<string> = {
   lc: 'light-cloud'
 };
 
-export const conditionIconMap: Object<string> = {
+export const conditionIconMap: Record<string, string> = {
   snow: 'faSnowflake',
   sleet: 'faIcicles',
   hail: 'faCloudMeatball',

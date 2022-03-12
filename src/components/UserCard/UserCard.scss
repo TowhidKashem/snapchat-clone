@@ -1,0 +1,22 @@
+@import '~styles/vars';
+
+.user-card {
+  display: flex;
+  padding: 10px;
+  background: $color-white;
+  border-bottom: 1px solid $color-grey-shade-6;
+
+  .meta {
+    padding: 3px 0 0 10px;
+
+    header {
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    span {
+      color: $color-grey-shade-3;
+      text-transform: lowercase;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import '~styles/vars';
+@import '~styles/extendables';
+
+.menu-item {
+  @extend %center-x-y;
+  background: $color-white;
+  padding: 15px 20px;
+  font-weight: $font-medium;
+  font-size: 15px;
+
+  &:not(.straight-edge) {
+    box-shadow: 0 0 4px $color-grey-shade-5;
+    border-radius: 8px;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+
+  .ico-left {
+    margin-right: 10px;
+    color: $color-grey-shade-7;
+  }
+
+  .ico-right {
+    margin-left: auto;
+
+    .icon {
+      color: $color-grey-shade-7;
+    }
+  }
+}

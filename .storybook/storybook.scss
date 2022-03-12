@@ -33,28 +33,26 @@ body {
       }
     }
 
-    .pod {
-      &.action-item {
-        width: 400px;
+    .menu-item {
+      width: 400px;
 
-        .btn {
-          .icon {
-            font-size: inherit;
-          }
+      .btn {
+        .icon {
+          font-size: inherit;
         }
       }
+    }
 
-      &.spotlight,
-      &.user {
-        width: 190px;
-      }
+    .card,
+    .user-card {
+      width: 190px;
     }
 
     .skeleton-frame {
       width: 200px;
     }
 
-    .widget {
+    .section {
       > header,
       p {
         color: $color-white;

@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
-import app from 'AppShell/store';
-import camera from 'features/Camera/store';
-import user from 'features/User/store';
-import snapMap from 'features/SnapMap/store';
-import snap from 'features/Snap/store';
-import chat from 'features/Chat/store';
+import app from 'AppShell/AppShellStore';
+import camera from 'features/Camera/CameraStore';
+import user from 'features/User/UserStore';
+import snapMap from 'features/SnapMap/SnapMapStore';
+import snap from 'features/Snap/SnapStore';
+import chat from 'features/Chat/ChatStore';
 
-import AppShell from 'AppShell';
-import Camera from 'features/Camera';
-import NotFound from 'features/404';
+import AppShell from 'AppShell/AppShell';
+import Camera from 'features/Camera/Camera';
+import NotFound from 'features/404/404';
 
 import 'normalize.css';
 import 'animate.css';
@@ -26,15 +26,15 @@ export const store = configureStore({
 const App = () => (
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <BrowserRouter>
         <AppShell>
           <Switch>
-            <Route path="/" exact component={Camera} />
-            <Route path="/snapchat-clone" exact component={Camera} />
+            <Route path="/" component={Camera} exact />
+            <Route path="/snapchat-clone" component={Camera} exact />
             <Route component={NotFound} />
           </Switch>
         </AppShell>
-      </Router>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

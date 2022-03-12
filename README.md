@@ -191,15 +191,11 @@
         >
       </li>
       <li>
-        Rename the <code>.env.sample</code> file at the root of the project to
-        just <code>.env</code>
-      </li>
-      <li>
-        Inside enter your new API key, for example:
+        In the <code>.env</code> file enter your new API key, for example:
         <ul>
           <li>
             Before:
-            <code>REACT_APP_MAP_BOX_API_KEY=&lt;REPLACE_WITH_API_KEY&gt;</code>
+            <code>REACT_APP_MAP_BOX_API_KEY=REPLACE_WITH_API_KEY</code>
           </li>
           <li>After: <code>REACT_APP_MAP_BOX_API_KEY=xy.abc123</code></li>
         </ul>

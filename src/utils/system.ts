@@ -1,6 +1,4 @@
-import { Object } from 'types';
-
-type Options = Object<any> | null;
+type Options = Record<string, string | number | boolean | Object | any[]> | null;
 
 export const api = {
   baseURL: './api',
@@ -33,16 +31,6 @@ export const api = {
   }
 };
 
-// https://gist.github.com/DavidWells/54f9dd1af4a489e5f1358f33ce59e8ad
-export const promise = (promise: Promise<[boolean, any]>) =>
-  promise
-    .then((data) => {
-      if (data instanceof Error) return [data];
-      return [null, data];
-    })
-    .catch((err) => [err]);
-
-// https://levelup.gitconnected.com/debounce-in-javascript-improve-your-applications-performance-5b01855e086
 export const debounce = (func: () => void, wait: number) => {
   let timeout: ReturnType<typeof setTimeout> | null;
   return function executedFunction(...args: any) {
